@@ -9,7 +9,8 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "IntroLayer.h"
+#import "HelloWorldLayer.h"
+
 
 @implementation AppController
 
@@ -73,7 +74,8 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]]; 
+	//[director_ pushScene: [IntroLayer scene]];
+    [director_ pushScene: [HelloWorldLayer scene]];
 
 	
 	// Create a Navigation Controller with the Director
@@ -93,7 +95,7 @@
 // Supported orientations: Landscape. Customize it for your own needs
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return UIInterfaceOrientationIsPortrait( interfaceOrientation );
 }
 
 
