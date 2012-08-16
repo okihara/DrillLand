@@ -26,15 +26,8 @@
 -(void) make_can_destroy_map:(CGPoint)pos;
 -(void) chk_by_recursive:(CGPoint)pos;
 -(void) erase:(CGPoint)pos;
-
--(int) get_state:(CGPoint)pos;
 -(void) set_state:(CGPoint)pos type:(int)_type;
-
--(int) get_can:(CGPoint)pos;
--(void) set_can:(CGPoint) type:(int)_type;
-
--(BOOL) get_done:(CGPoint)pos;
--(void) set_done:(CGPoint)pos done:(BOOL)_done;
--(BOOL) is_outbound:(CGPoint)pos;
+-(int) get_value:(int)_x y:(int)_y;
+-(int) get_can_value:(int)_x y:(int)_y;
 
 @end

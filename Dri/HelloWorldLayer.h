@@ -22,7 +22,6 @@
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
--(void) updateView:(TileMap*)data;
-
+- (void) notify:(DungeonModel*)_dungeon;
 
 @end

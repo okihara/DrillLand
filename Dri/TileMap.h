@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define W 5
+#define H 6
+
 @interface TileMap : NSObject
 {
     int tile_map[10][10];
@@ -16,7 +19,9 @@
 }
 
 -(void)copy_array;
+-(void)clear;
 -(int)get_value:(int)_x y:(int)_y;
 -(void)set_value:(int)_x y:(int)_y value:(int)_value;
+-(BOOL)is_outbound:(int)_x y:(int)y;
 
 @end

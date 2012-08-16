@@ -57,33 +57,48 @@
         dungeon = [[DungeonModel alloc] init:NULL];
         [dungeon add_observer:self];
 
-        [dungeon set_state:ccp(0,0) type:0];
+        [dungeon set_state:ccp(0,0) type:1];
 	}
 	return self;
 }
 
-- (void) updateView:(TileMap*)map
+- (void) notify:(DungeonModel*)_dungeon
 {
     [self removeAllChildrenWithCleanup:YES];
     
-    // ブロック
     for (int j = 0; j < 6; j++) {
         for (int i = 0; i < 5; i++) {
-            if ([map get_value:i y:j] == 0 ) continue;
+            if ([_dungeon get_value:i y:j] == 0 ) continue;
+            
+            // ブロック
             CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
             [self addChild:block];
-            [block setPosition:ccp(30 + i * 60, 30 + j * 60)];
+            [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
+            
+            // 数字
+            if ([_dungeon get_can_value:i y:j] == 1) {
+                CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
+                    //CGSize size = [[CCDirector sharedDirector] winSize];
+                label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
+                [self addChild: label];
+            }
         }
     }
-    
-    // 数字
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    CGPoint pos = ccp(2,2);
-    [self->dungeon set_state:pos type:0];
-    NSLog(@"hoge");
+    // Choose one of the touches to work with
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    location =[[CCDirector sharedDirector] convertToGL:location];
+    
+    int x = (int)(location.x / 60);
+    int y = (int)((480 - location.y) / 60);
+    
+    [self->dungeon erase:ccp(x, y)];
+    
+    NSLog(@"touched %d, %d", x, y);
 }
 
 // on "dealloc" you need to release all your retained objects
