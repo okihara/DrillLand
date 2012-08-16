@@ -44,7 +44,7 @@
         //
         disp_w = 5;
         disp_h = 6;
-        offset_y = 1;
+        offset_y = 0;
         
 		// enable touch
         self.isTouchEnabled = YES;
@@ -85,7 +85,7 @@
             // 数字
             if ([_dungeon get_can_value:x y:y] == 1) {
                 CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
-                    //CGSize size = [[CCDirector sharedDirector] winSize];
+                    // CGSize size = [[CCDirector sharedDirector] winSize];
                 label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
                 [self addChild: label];
             }
@@ -102,7 +102,8 @@
     
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y) / 60) + offset_y;
-    
+
+    offset_y++;
     [self->dungeon erase:ccp(x, y)];
     
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y);
