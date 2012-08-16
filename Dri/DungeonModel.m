@@ -17,7 +17,12 @@
         self->map = [[TileMap alloc] init];
         self->can_map = [[TileMap alloc] init];
         self->done_map = [[TileMap alloc] init];
-        [map copy_array];
+        [map fill:1];
+        [map set_value:2 y:0 value:0];
+        [map set_value:2 y:1 value:0];
+        [map set_value:2 y:2 value:0];
+        [map set_value:2 y:3 value:0];
+
     }
     return self;
 }
@@ -37,7 +42,6 @@
 
 -(void) make_can_destroy_map:(CGPoint)pos
 {
-    
     // 起点は 0 でなければならない
     if ( [self->map get_value:(int)pos.x y:(int)pos.y] == 1 ) return;
     

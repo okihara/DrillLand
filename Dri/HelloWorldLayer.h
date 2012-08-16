@@ -18,6 +18,9 @@
 @interface HelloWorldLayer : CCLayer
 {
     DungeonModel *dungeon;
+    int offset_y;
+    int disp_w;
+    int disp_h;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

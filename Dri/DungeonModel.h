@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TileMap.h"
 
-#define H 6
-#define W 5
+//#define H 6
+//#define W 5
 
 @interface DungeonModel : NSObject
 {

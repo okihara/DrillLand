@@ -41,6 +41,11 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         
+        //
+        disp_w = 5;
+        disp_h = 6;
+        offset_y = 1;
+        
 		// enable touch
         self.isTouchEnabled = YES;
 
@@ -57,7 +62,7 @@
         dungeon = [[DungeonModel alloc] init:NULL];
         [dungeon add_observer:self];
 
-        [dungeon set_state:ccp(0,0) type:1];
+        [dungeon set_state:ccp(1,0) type:1];
 	}
 	return self;
 }
@@ -66,9 +71,11 @@
 {
     [self removeAllChildrenWithCleanup:YES];
     
-    for (int j = 0; j < 6; j++) {
-        for (int i = 0; i < 5; i++) {
-            if ([_dungeon get_value:i y:j] == 0 ) continue;
+    for (int j = 0; j < disp_h; j++) {
+        for (int i = 0; i < disp_w; i++) {
+            int x = i;
+            int y = offset_y + j;
+            if ([_dungeon get_value:x y:y] == 0 ) continue;
             
             // ブロック
             CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
@@ -76,7 +83,7 @@
             [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
             
             // 数字
-            if ([_dungeon get_can_value:i y:j] == 1) {
+            if ([_dungeon get_can_value:x y:y] == 1) {
                 CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
                     //CGSize size = [[CCDirector sharedDirector] winSize];
                 label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
@@ -94,11 +101,11 @@
     location =[[CCDirector sharedDirector] convertToGL:location];
     
     int x = (int)(location.x / 60);
-    int y = (int)((480 - location.y) / 60);
+    int y = (int)((480 - location.y) / 60) + offset_y;
     
     [self->dungeon erase:ccp(x, y)];
     
-    NSLog(@"touched %d, %d", x, y);
+    NSLog(@"touched %d, %d offset_y %d", x, y, offset_y);
 }
 
 // on "dealloc" you need to release all your retained objects
