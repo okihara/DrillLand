@@ -8,15 +8,6 @@
 
 #import "TileMap.h"
 
-//static int test_map[6][5] = {
-//    {1,1,0,1,1},
-//    {1,1,0,1,1},
-//    {1,1,1,1,1},
-//    {1,1,1,1,1},
-//    {1,1,1,1,1},
-//    {1,1,1,1,1},
-//};
-
 @implementation TileMap
 
 -(id) init
@@ -27,15 +18,6 @@
     }
     return self;
 }
-    
-//-(void)copy_array
-//{
-//    for (int j = 0; j < bound_h; j++) {
-//        for (int i = 0; i < bound_w; i++) {
-//            self->tile_map[j][i] = test_map[j][i];
-//        }
-//    }
-//}
 
 -(void)fill:(int)value
 {
@@ -51,7 +33,7 @@
     [self fill:0];
 }
 
--(int)get_value:(int)_x y:(int)_y
+-(int)get_x:(int)_x y:(int)_y
 {
     if ([self is_outbound:_x y:_y]) {
         return -1;
@@ -59,7 +41,7 @@
     return tile_map[_y][_x];
 }
 
--(void)set_value:(int)_x y:(int)_y value:(int)_value
+-(void)set_x:(int)_x y:(int)_y value:(int)_value
 {
     if ([self is_outbound:_x y:_y]) {
         return;

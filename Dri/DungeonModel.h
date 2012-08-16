@@ -23,7 +23,7 @@
 
 -(id) init:(NSArray*)initial;
 -(void) add_observer:(id)observer;
--(void) make_can_destroy_map:(CGPoint)pos;
+-(void) update_can_tap_map:(CGPoint)pos;
 -(void) chk_by_recursive:(CGPoint)pos;
 -(void) erase:(CGPoint)pos;
 -(void) set_state:(CGPoint)pos type:(int)_type;

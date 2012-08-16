@@ -18,10 +18,10 @@
         self->can_map = [[TileMap alloc] init];
         self->done_map = [[TileMap alloc] init];
         [map fill:1];
-        [map set_value:2 y:0 value:0];
-        [map set_value:2 y:1 value:0];
-        [map set_value:2 y:2 value:0];
-        [map set_value:2 y:3 value:0];
+        [map set_x:2 y:0 value:0];
+        [map set_x:2 y:1 value:0];
+        [map set_x:2 y:2 value:0];
+        [map set_x:2 y:3 value:0];
 
     }
     return self;
@@ -40,10 +40,10 @@
     self->observer = _observer;
 }
 
--(void) make_can_destroy_map:(CGPoint)pos
+-(void) update_can_tap_map:(CGPoint)pos
 {
     // 起点は 0 でなければならない
-    if ( [self->map get_value:(int)pos.x y:(int)pos.y] == 1 ) return;
+    if ( [self->map get_x:(int)pos.x y:(int)pos.y] == 1 ) return;
     
     // 操作済み判別テーブルを初期化
     [done_map clear];
@@ -57,16 +57,16 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    if ([self->done_map get_value:x y:y] != 0) {
+    if ([self->done_map get_x:x y:y] != 0) {
         return;
     }
     
-    if ([self->map get_value:x y:y] == 1) {
-        [can_map set_value:x y:y value:1];
-        [done_map set_value:x y:y value:1];
-    } else if ([self->map get_value:x y:y] == 0) {
-        [can_map set_value:x y:y value:0];
-        [done_map set_value:x y:y value:1];
+    if ([self->map get_x:x y:y] == 1) {
+        [can_map set_x:x y:y value:1];
+        [done_map set_x:x y:y value:1];
+    } else if ([self->map get_x:x y:y] == 0) {
+        [can_map set_x:x y:y value:0];
+        [done_map set_x:x y:y value:1];
         [self chk_by_recursive:ccp(x, y - 1)];
         [self chk_by_recursive:ccp(x, y + 1)];
         [self chk_by_recursive:ccp(x + 1, y)];
@@ -79,7 +79,7 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    if ([self->can_map get_value:x y:y] == 0) {
+    if ([self->can_map get_x:x y:y] == 0) {
         NSLog(@"can not destroy me!");
         return;
     }
@@ -89,20 +89,20 @@
 
 -(void) set_state:(CGPoint)pos type:(int)_type
 {
-    [self->map set_value:(int)pos.x y:(int)pos.y value:_type];
-    [self make_can_destroy_map:ccp(2, 0)]; // TODO:
+    [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
+    [self update_can_tap_map:ccp(2, 0)]; // TODO:
 
     [self->observer notify:self];
 }
 
 -(int) get_value:(int)_x y:(int)_y
 {
-    return [self->map get_value:_x y:_y];
+    return [self->map get_x:_x y:_y];
 }
 
 -(int) get_can_value:(int)_x y:(int)_y
 {
-    return [self->can_map get_value:_x y:_y];
+    return [self->can_map get_x:_x y:_y];
 }
 
 @end

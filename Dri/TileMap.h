@@ -15,10 +15,9 @@
     int bound_h;
 }
 
-//-(void)copy_array;
 -(void)clear;
--(int)get_value:(int)_x y:(int)_y;
--(void)set_value:(int)_x y:(int)_y value:(int)_value;
+-(int)get_x:(int)_x y:(int)_y;
+-(void)set_x:(int)_x y:(int)_y value:(int)_value;
 -(BOOL)is_outbound:(int)_x y:(int)y;
 -(void)fill:(int)value;
 

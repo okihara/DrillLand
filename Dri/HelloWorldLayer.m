@@ -49,15 +49,7 @@
 		// enable touch
         self.isTouchEnabled = YES;
 
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		// add the label as a child to this Layer
-		[self addChild: label];
-        
+
         // setup model
         dungeon = [[DungeonModel alloc] init:NULL];
         [dungeon add_observer:self];
@@ -67,10 +59,8 @@
 	return self;
 }
 
-- (void) notify:(DungeonModel*)_dungeon
+- (void)update_view:(DungeonModel *)_dungeon
 {
-    [self removeAllChildrenWithCleanup:YES];
-    
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
             int x = i;
@@ -85,12 +75,17 @@
             // 数字
             if ([_dungeon get_can_value:x y:y] == 1) {
                 CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
-                    // CGSize size = [[CCDirector sharedDirector] winSize];
                 label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
                 [self addChild: label];
             }
         }
     }
+}
+
+- (void) notify:(DungeonModel*)_dungeon
+{
+    [self removeAllChildrenWithCleanup:YES];    
+    [self update_view:_dungeon];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
