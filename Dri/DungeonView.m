@@ -22,9 +22,6 @@
         disp_h = 6;
         offset_y = 0;
         
-		// enable touch
-        self.isTouchEnabled = YES;
-        
         CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
         [self addChild:block];
 	}

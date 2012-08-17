@@ -397,7 +397,7 @@
 		C19547C115D7F48B002119CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C19547C315D7F48B002119CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C19547C415D7F48B002119CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C19547C615D7F48B002119CC /* DungeonLayer.h */ = {isa = PBXFileReference; path = DungeonLayer.h; sourceTree = "<group>"; };
+		C19547C615D7F48B002119CC /* DungeonLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DungeonLayer.h; sourceTree = "<group>"; };
 		C19547C715D7F48B002119CC /* DungeonLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DungeonLayer.m; sourceTree = "<group>"; };
 		C1DCF88915DBB70800C15562 /* DungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonModel.h; sourceTree = "<group>"; };
 		C1DCF88A15DBB70800C15562 /* DungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonModel.m; sourceTree = "<group>"; };

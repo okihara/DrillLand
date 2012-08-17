@@ -34,9 +34,9 @@
 // on "init" you need to initialize your instance
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
+ 
+        offset_y = 0;
         
         // setup dungeon view
         dungeon_view = [DungeonView node];
@@ -49,6 +49,9 @@
 
         // 更新
         [dungeon set_state:ccp(1,0) type:1];
+        
+		// enable touch
+        self.isTouchEnabled = YES;
 	}
 	return self;
 }
@@ -59,13 +62,17 @@
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
-    
     int x = (int)(location.x / 60);
-    int y = (int)((480 - location.y) / 60) + offset_y;
+    int y = (int)((480 - location.y) / 60) + (int)(offset_y / 60);
 
     [self->dungeon erase:ccp(x, y)];
-    
-    NSLog(@"touched %d, %d offset_y %d", x, y, offset_y);
+
+    NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
+
+    // ここでタップ禁止にしてー
+    offset_y += 30;
+    DungeonView* dv = (DungeonView*)dungeon_view;
+    dv.position = ccp(0, offset_y);
 }
 
 // on "dealloc" you need to release all your retained objects
