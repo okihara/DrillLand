@@ -10,4 +10,10 @@
 
 @implementation BlockBase
 
+@synthesize hp;
+@synthesize type;
+@synthesize group_id;
+@synthesize group_info;
+@synthesize can_tap;
+
 @end
