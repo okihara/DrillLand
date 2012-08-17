@@ -50,7 +50,7 @@
         [dungeon add_observer:dungeon_view];
 
         // 更新
-        [dungeon set_state:ccp(1,0) type:1];
+        [dungeon set:ccp(1,0) type:1];
         
 		// enable touch
         self.isTouchEnabled = YES;
@@ -67,7 +67,7 @@
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y + offset_y) / 60);
 
-    [self->dungeon erase:ccp(x, y)];
+    [self->dungeon hit:ccp(x, y)];
 
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
 

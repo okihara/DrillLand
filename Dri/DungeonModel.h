@@ -29,8 +29,8 @@
 -(void) add_observer:(id<DungenModelObserver>)observer;
 -(void) update_can_tap_map:(CGPoint)pos;
 -(void) update_can_tap_r:(CGPoint)pos;
--(void) erase:(CGPoint)pos;
--(void) set_state:(CGPoint)pos type:(int)_type;
+-(void) hit:(CGPoint)pos;
+-(void) set:(CGPoint)pos type:(int)_type;
 -(int) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
 

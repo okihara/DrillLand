@@ -30,7 +30,7 @@
     self->observer = _observer;
 }
 
--(void) erase:(CGPoint)pos
+-(void) hit:(CGPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -40,11 +40,17 @@
         return;
     }
     
-    [self set_state:pos type:0];
+    [self set:pos type:0];
 }
 
--(void) set_state:(CGPoint)pos type:(int)_type
+-(void) set:(CGPoint)pos type:(int)_type
 {
+    //    @map.set(x, y, value)
+    //    group_id = value.group_id
+    //    # group_id=0 の時はグループ化しない
+    //    return if group_id == 0
+    //    self.update_group_info(x, y, group_id)
+
     [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
     [self update_can_tap_map:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
     
@@ -77,10 +83,10 @@
         [can_map set_x:x y:y value:1];
     } else if ([self->map get_x:x y:y] == 0) {
         [can_map set_x:x y:y value:0];
-        [self update_can_tap_r:ccp(x, y - 1)];
-        [self update_can_tap_r:ccp(x, y + 1)];
-        [self update_can_tap_r:ccp(x + 1, y)];
-        [self update_can_tap_r:ccp(x - 1, y)];
+        [self update_can_tap_r:ccp(x + 0, y - 1)];
+        [self update_can_tap_r:ccp(x + 0, y + 1)];
+        [self update_can_tap_r:ccp(x + 1, y + 0)];
+        [self update_can_tap_r:ccp(x - 1, y + 0)];
     }
 }
 
