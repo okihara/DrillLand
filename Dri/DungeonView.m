@@ -31,26 +31,31 @@
 	return self;
 }
 
+- (void)update_view_line:(int)j _model:(DungeonModel *)_dungeon
+{
+    for (int i = 0; i < disp_w; i++) {
+        int x = i;
+        int y = offset_y + j;
+        if ([_dungeon get_value:x y:y] == 0) continue;
+        
+        // ブロック
+        CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
+        [self addChild:block];
+        [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
+        
+        // 数字
+        if ([_dungeon get_can_value:x y:y] == 1) {
+            CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
+            label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
+            [self addChild: label];
+        }
+    }
+}
+
 - (void)update_view:(DungeonModel *)_dungeon
 {
     for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
-            int x = i;
-            int y = offset_y + j;
-            if ([_dungeon get_value:x y:y] == 0 ) continue;
-            
-            // ブロック
-            CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
-            [self addChild:block];
-            [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
-            
-            // 数字
-            if ([_dungeon get_can_value:x y:y] == 1) {
-                CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
-                label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
-                [self addChild: label];
-            }
-        }
+        [self update_view_line:j _model:_dungeon];
     }
 }
 
