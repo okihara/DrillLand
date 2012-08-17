@@ -9,9 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
-
-// Needed to obtain the Navigation Controller
-#import "AppDelegate.h"
+//#import "TileMap.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -41,51 +39,19 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         
-        //
-        disp_w = 5;
-        disp_h = 6;
-        offset_y = 0;
+        // setup dungeon view
+        dungeon_view = [DungeonView node];
+        [dungeon_view setDelegate:self];
+        [self addChild:dungeon_view];
         
-		// enable touch
-        self.isTouchEnabled = YES;
-
-
-        // setup model
+        // setup dungeon model
         dungeon = [[DungeonModel alloc] init:NULL];
-        [dungeon add_observer:self];
+        [dungeon add_observer:dungeon_view];
 
+        // 更新
         [dungeon set_state:ccp(1,0) type:1];
 	}
 	return self;
-}
-
-- (void)update_view:(DungeonModel *)_dungeon
-{
-    for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
-            int x = i;
-            int y = offset_y + j;
-            if ([_dungeon get_value:x y:y] == 0 ) continue;
-            
-            // ブロック
-            CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
-            [self addChild:block];
-            [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
-            
-            // 数字
-            if ([_dungeon get_can_value:x y:y] == 1) {
-                CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:16];
-                label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
-                [self addChild: label];
-            }
-        }
-    }
-}
-
-- (void) notify:(DungeonModel*)_dungeon
-{
-    [self removeAllChildrenWithCleanup:YES];    
-    [self update_view:_dungeon];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -98,7 +64,6 @@
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y) / 60) + offset_y;
 
-    offset_y++;
     [self->dungeon erase:ccp(x, y)];
     
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y);

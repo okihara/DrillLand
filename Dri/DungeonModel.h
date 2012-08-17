@@ -7,17 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 #import "TileMap.h"
-
-//#define H 6
-//#define W 5
 
 @interface DungeonModel : NSObject
 {
     TileMap *map;
     TileMap *can_map;
     TileMap *done_map;
-    
     id observer;
 }
 

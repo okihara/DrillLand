@@ -7,7 +7,6 @@
 //
 
 #import "DungeonModel.h"
-#import "HelloWorldLayer.h"
 
 @implementation DungeonModel
 
@@ -61,12 +60,11 @@
         return;
     }
     
+    [done_map set_x:x y:y value:1];
     if ([self->map get_x:x y:y] == 1) {
         [can_map set_x:x y:y value:1];
-        [done_map set_x:x y:y value:1];
     } else if ([self->map get_x:x y:y] == 0) {
         [can_map set_x:x y:y value:0];
-        [done_map set_x:x y:y value:1];
         [self chk_by_recursive:ccp(x, y - 1)];
         [self chk_by_recursive:ccp(x, y + 1)];
         [self chk_by_recursive:ccp(x + 1, y)];
@@ -90,7 +88,7 @@
 -(void) set_state:(CGPoint)pos type:(int)_type
 {
     [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
-    [self update_can_tap_map:ccp(2, 0)]; // TODO:
+    [self update_can_tap_map:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
 
     [self->observer notify:self];
 }

@@ -11,20 +11,18 @@
 
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
-#import "TileMap.h"
 #import "DungeonModel.h"
+#import "DungeonView.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
 {
+    id dungeon_view;
     DungeonModel *dungeon;
+    
     int offset_y;
-    int disp_w;
-    int disp_h;
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
-- (void) notify:(DungeonModel*)_dungeon;
 
 @end
