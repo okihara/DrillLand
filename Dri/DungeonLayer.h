@@ -15,7 +15,7 @@
 #import "DungeonView.h"
 
 // HelloWorldLayer
-@interface HelloWorldLayer : CCLayer
+@interface DungeonLayer : CCLayer
 {
     id dungeon_view;
     DungeonModel *dungeon;

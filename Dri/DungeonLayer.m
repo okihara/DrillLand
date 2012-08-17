@@ -8,13 +8,12 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
-//#import "TileMap.h"
+#import "DungeonLayer.h"
 
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
-@implementation HelloWorldLayer
+@implementation DungeonLayer
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -23,7 +22,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	DungeonLayer *layer = [DungeonLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];

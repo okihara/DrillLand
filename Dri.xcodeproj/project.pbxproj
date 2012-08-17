@@ -131,7 +131,7 @@
 		C19547BD15D7F48B002119CC /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BC15D7F48B002119CC /* vec4.c */; };
 		C19547C215D7F48B002119CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C115D7F48B002119CC /* main.m */; };
 		C19547C515D7F48B002119CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C415D7F48B002119CC /* AppDelegate.m */; };
-		C19547C815D7F48B002119CC /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C715D7F48B002119CC /* HelloWorldLayer.m */; };
+		C19547C815D7F48B002119CC /* DungeonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C715D7F48B002119CC /* DungeonLayer.m */; };
 		C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88A15DBB70800C15562 /* DungeonModel.m */; };
 		C1DCF88E15DC61A700C15562 /* TileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88D15DC61A600C15562 /* TileMap.m */; };
 		C1DCF89115DCA5FC00C15562 /* BlockBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89015DCA5FC00C15562 /* BlockBase.m */; };
@@ -397,8 +397,8 @@
 		C19547C115D7F48B002119CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C19547C315D7F48B002119CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C19547C415D7F48B002119CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C19547C615D7F48B002119CC /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		C19547C715D7F48B002119CC /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		C19547C615D7F48B002119CC /* DungeonLayer.h */ = {isa = PBXFileReference; path = DungeonLayer.h; sourceTree = "<group>"; };
+		C19547C715D7F48B002119CC /* DungeonLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DungeonLayer.m; sourceTree = "<group>"; };
 		C1DCF88915DBB70800C15562 /* DungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonModel.h; sourceTree = "<group>"; };
 		C1DCF88A15DBB70800C15562 /* DungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonModel.m; sourceTree = "<group>"; };
 		C1DCF88C15DC61A600C15562 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
@@ -467,8 +467,8 @@
 			children = (
 				C19547C315D7F48B002119CC /* AppDelegate.h */,
 				C19547C415D7F48B002119CC /* AppDelegate.m */,
-				C19547C615D7F48B002119CC /* HelloWorldLayer.h */,
-				C19547C715D7F48B002119CC /* HelloWorldLayer.m */,
+				C19547C615D7F48B002119CC /* DungeonLayer.h */,
+				C19547C715D7F48B002119CC /* DungeonLayer.m */,
 				C1DCF88C15DC61A600C15562 /* TileMap.h */,
 				C1DCF88D15DC61A600C15562 /* TileMap.m */,
 				C1DCF88F15DCA5FC00C15562 /* BlockBase.h */,
@@ -1022,7 +1022,7 @@
 				C19547BD15D7F48B002119CC /* vec4.c in Sources */,
 				C19547C215D7F48B002119CC /* main.m in Sources */,
 				C19547C515D7F48B002119CC /* AppDelegate.m in Sources */,
-				C19547C815D7F48B002119CC /* HelloWorldLayer.m in Sources */,
+				C19547C815D7F48B002119CC /* DungeonLayer.m in Sources */,
 				C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */,
 				C1DCF88E15DC61A700C15562 /* TileMap.m in Sources */,
 				C1DCF89115DCA5FC00C15562 /* BlockBase.m in Sources */,
