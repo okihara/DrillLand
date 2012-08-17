@@ -12,7 +12,6 @@
 {
     int hp;
     int type;
-    BOOL done_check;
     BOOL can_tap;
     unsigned int group_id;
     id group_info;

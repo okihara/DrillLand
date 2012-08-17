@@ -21,7 +21,6 @@
         [map set_x:2 y:1 value:0];
         [map set_x:2 y:2 value:0];
         [map set_x:2 y:3 value:0];
-
     }
     return self;
 }
@@ -61,10 +60,10 @@
     [done_map clear];
     
     // チェック処理本体
-    [self check_can_tap_r:pos];
+    [self update_can_tap_r:pos];
 }
 
--(void) check_can_tap_r:(CGPoint)pos
+-(void) update_can_tap_r:(CGPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -78,10 +77,10 @@
         [can_map set_x:x y:y value:1];
     } else if ([self->map get_x:x y:y] == 0) {
         [can_map set_x:x y:y value:0];
-        [self check_can_tap_r:ccp(x, y - 1)];
-        [self check_can_tap_r:ccp(x, y + 1)];
-        [self check_can_tap_r:ccp(x + 1, y)];
-        [self check_can_tap_r:ccp(x - 1, y)];
+        [self update_can_tap_r:ccp(x, y - 1)];
+        [self update_can_tap_r:ccp(x, y + 1)];
+        [self update_can_tap_r:ccp(x + 1, y)];
+        [self update_can_tap_r:ccp(x - 1, y)];
     }
 }
 

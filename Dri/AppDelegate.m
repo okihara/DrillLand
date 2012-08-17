@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "DungeonLayer.h"
+#import "DungeonScene.h"
 
 
 @implementation AppController
@@ -75,7 +75,7 @@
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 	//[director_ pushScene: [IntroLayer scene]];
-    [director_ pushScene: [DungeonLayer scene]];
+    [director_ pushScene: [DungeonScene scene]];
 
 	
 	// Create a Navigation Controller with the Director

@@ -16,7 +16,7 @@
 @class DungeonView;
 
 // HelloWorldLayer
-@interface DungeonLayer : CCLayer
+@interface DungeonScene : CCLayer
 {
     DungeonView *dungeon_view;
     DungeonModel *dungeon;
