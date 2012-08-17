@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
+#import "DungeonModel.h"
 
-@interface DungeonView : CCLayer
+@interface DungeonView : CCLayer<DungenModelObserver>
 {
     id  delegate;
     int offset_y;
     int disp_w;
     int disp_h;
 }
+
 @property (nonatomic, retain) id delegate;
 
 @end

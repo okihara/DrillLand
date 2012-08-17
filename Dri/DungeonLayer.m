@@ -9,6 +9,8 @@
 
 // Import the interfaces
 #import "DungeonLayer.h"
+#import "DungeonModel.h"
+#import "DungeonView.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -63,16 +65,17 @@
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / 60);
-    int y = (int)((480 - location.y) / 60) + (int)(offset_y / 60);
+    int y = (int)((480 - location.y + offset_y) / 60);
 
     [self->dungeon erase:ccp(x, y)];
 
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
 
     // ここでタップ禁止にしてー
-    offset_y += 30;
-    DungeonView* dv = (DungeonView*)dungeon_view;
-    dv.position = ccp(0, offset_y);
+    offset_y += 60;
+
+    CCAction* act_move = [CCMoveTo actionWithDuration: 0.3 position:ccp(0, offset_y)];
+    [dungeon_view runAction: act_move];
 }
 
 // on "dealloc" you need to release all your retained objects

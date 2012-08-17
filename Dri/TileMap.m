@@ -14,7 +14,7 @@
 {
 	if( (self=[super init]) ) {
         bound_w  = 5;
-        bound_h =  10;
+        bound_h =  20;
     }
     return self;
 }
