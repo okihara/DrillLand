@@ -15,6 +15,9 @@
 @synthesize group_id;
 @synthesize group_info;
 @synthesize can_tap;
+@synthesize x;
+@synthesize y;
+
 
 -(id) init
 {
@@ -24,8 +27,18 @@
         group_id = 0;
         group_info = NULL;
         can_tap = NO;
+        x = 0;
+        y = 0;
 	}
 	return self;
+}
+
+// TODO:あとでポリモる
+-(void)hit
+{
+    if (--hp == 0) {
+        type = 0;
+    }
 }
 
 @end

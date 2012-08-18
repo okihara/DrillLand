@@ -91,6 +91,16 @@
     self->observer = _observer;
 }
 
+-(void) _hit:(BlockBase*)b
+{
+    [b hit];
+    
+    [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
+    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self->observer notify:self];
+}
+
+
 -(void) hit:(CGPoint)pos
 {
     int x = (int)pos.x;
@@ -102,9 +112,15 @@
         NSLog(@"can not destroy me!");
         return;
     }
-    
-    b.type = 0;
-    [self set:pos type:b];
+
+    if (b.group_info) {
+        for (id block in b.group_info) {
+            [self _hit:block];
+        }
+    } else {
+        [self _hit:b];
+    }
+
 }
 
 -(void) set:(CGPoint)pos type:(BlockBase*)_type
@@ -131,7 +147,6 @@
     [self _clear_can_tap];
     
     // チェック処理本体
-    NSLog(@"can_tap ---------------------");
     [self update_can_tap_r:pos];
 }
 
@@ -148,14 +163,14 @@
     [done_map set_x:x y:y value:1];
     if (b.type > 0) {
         b.can_tap = YES;
-        NSLog(@"can_tap YES %d, %d", x, y);
     } else if (b.type == 0) {
         b.can_tap = NO;
-        NSLog(@"can_tap NO %d, %d", x, y);
         [self update_can_tap_r:ccp(x + 0, y + 1)];
         [self update_can_tap_r:ccp(x + 0, y - 1)];
         [self update_can_tap_r:ccp(x + 1, y + 0)];
         [self update_can_tap_r:ccp(x - 1, y + 0)];
+    } else {
+        // マイナスの時は？？
     }
 }
 

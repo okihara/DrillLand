@@ -17,10 +17,14 @@
     BOOL can_tap;
 }
 
+-(void)hit;
+
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;
 @property (nonatomic, assign) unsigned int group_id;
 @property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL can_tap;
+@property (nonatomic, assign) UInt32 x;
+@property (nonatomic, assign) UInt32 y;
 
 @end
