@@ -27,9 +27,7 @@
     fire.speed = 200;
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;
-    
-    NSLog(@"pos %f %f %u %u", pos.x, pos.y, b.x, b.y);
-    
+        
     [self->effect_layer addChild:fire];
 }
 
