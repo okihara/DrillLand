@@ -184,6 +184,7 @@
 
 }
 
+// TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
 -(void) set:(CGPoint)pos block:(BlockBase*)block
 {
     int x = (int)pos.x;
