@@ -59,3 +59,64 @@
 }
 
 @end
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+
+@implementation TileMap2
+
+-(id) init
+{
+	if( (self=[super init]) ) {
+        bound_w  = 5;
+        bound_h =  20;
+    }
+    return self;
+}
+
+-(void)fill:(id)value
+{
+    //    for (int j = 0; j < bound_h; j++) {
+    //        for (int i = 0; i < bound_w; i++) {
+    //            self->tile_map[j][i] = value;
+    //        }
+    //    }
+}
+
+-(void)clear
+{
+    [self fill:0];
+}
+
+-(id)get_x:(int)_x y:(int)_y
+{
+    if ([self is_outbound:_x y:_y]) {
+        return NULL;
+    }
+    return tile_map[_y][_x];
+}
+
+-(void)set_x:(int)_x y:(int)_y value:(id)_value
+{
+    if ([self is_outbound:_x y:_y]) {
+        return;
+    }
+    tile_map[_y][_x] = _value;
+}
+
+-(BOOL)is_outbound:(int)_x y:(int)_y
+{
+    if (_x <  0) return YES;
+    if (_x >= bound_w) return YES;
+    if (_y <  0) return YES;
+    if (_y >= bound_h) return YES;
+    return NO;
+}
+
+@end
+

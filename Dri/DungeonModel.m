@@ -7,20 +7,50 @@
 //
 
 #import "DungeonModel.h"
+#import "BlockBase.h"
 
 @implementation DungeonModel
+
+-(void)_fill_blocks
+{
+    int disp_w = 5;
+    int disp_h = 10;
+    for (int j = 0; j < disp_h; j++) {
+        for (int i = 0; i < disp_w; i++) {
+            BlockBase* b = [[BlockBase alloc] init];
+            b.type = 1;
+            [self set:ccp(i, j) type:b];
+        }
+    }
+}
 
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
-        self->map = [[TileMap alloc] init];
-        self->can_map = [[TileMap alloc] init];
+
         self->done_map = [[TileMap alloc] init];
-        [map fill:1];
-        [map set_x:2 y:0 value:0];
-        [map set_x:2 y:1 value:0];
-        [map set_x:2 y:2 value:0];
-        [map set_x:2 y:3 value:0];
+        self->map = [[TileMap2 alloc] init];
+        self->can_map = [[TileMap alloc] init];
+        [self _fill_blocks];
+        
+        // dummy
+        BlockBase* b;
+        
+        b = [[BlockBase alloc] init];
+        b.type = 0;
+        [self set:ccp(2, 0) type:(id)b];
+
+        b = [[BlockBase alloc] init];
+        b.type = 0;
+        [self set:ccp(2, 1) type:(id)b];
+        
+        b = [[BlockBase alloc] init];
+        b.type = 0;
+        [self set:ccp(2, 2) type:(id)b];
+        
+        b = [[BlockBase alloc] init];
+        b.type = 0;
+        [self set:ccp(2, 3) type:(id)b];
     }
     return self;
 }
@@ -40,27 +70,26 @@
         return;
     }
     
-    [self set:pos type:0];
+    BlockBase* b = [[BlockBase alloc] init];
+    b.type = 0;
+    [self set:pos type:b];
 }
 
--(void) set:(CGPoint)pos type:(int)_type
+-(void) set:(CGPoint)pos type:(id)_type
 {
-    //    @map.set(x, y, value)
-    //    group_id = value.group_id
-    //    # group_id=0 の時はグループ化しない
-    //    return if group_id == 0
-    //    self.update_group_info(x, y, group_id)
-
     [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
-    [self update_can_tap_map:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
-    
+    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
     [self->observer notify:self];
 }
 
--(void) update_can_tap_map:(CGPoint)pos
+-(void) update_can_tap:(CGPoint)pos
 {
+    int x = (int)pos.x;
+    int y = (int)pos.y;
+    
     // 起点は 0 でなければならない
-    if ( [self->map get_x:(int)pos.x y:(int)pos.y] == 1 ) return;
+    BlockBase* b = [self->map get_x:x y:y]; 
+    if ( b.type == 1 ) return;
     
     // 操作済み判別テーブルを初期化
     [done_map clear];
@@ -78,10 +107,13 @@
         return;
     }
     
+    BlockBase* b = [self->map get_x:x y:y];
+    if (!b) return;
+    
     [done_map set_x:x y:y value:1];
-    if ([self->map get_x:x y:y] == 1) {
+    if (b.type == 1) {
         [can_map set_x:x y:y value:1];
-    } else if ([self->map get_x:x y:y] == 0) {
+    } else if (b.type == 0) {
         [can_map set_x:x y:y value:0];
         [self update_can_tap_r:ccp(x + 0, y - 1)];
         [self update_can_tap_r:ccp(x + 0, y + 1)];
@@ -90,7 +122,7 @@
     }
 }
 
--(int) get_x:(int)_x y:(int)_y
+-(BlockBase*) get_x:(int)_x y:(int)_y
 {
     return [self->map get_x:_x y:_y];
 }

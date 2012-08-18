@@ -50,7 +50,9 @@
         [dungeon add_observer:dungeon_view];
 
         // 更新
-        [dungeon set:ccp(1,0) type:1];
+        BlockBase* b = [[BlockBase alloc] init];
+        b.type = 1;
+        [dungeon set:ccp(1,0) type:b];
         
 		// enable touch
         self.isTouchEnabled = YES;

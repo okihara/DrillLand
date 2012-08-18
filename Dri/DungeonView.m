@@ -33,7 +33,8 @@
     for (int i = 0; i < disp_w; i++) {
         int x = i;
         int y = offset_y + j;
-        if ([_dungeon get_x:x y:y] == 0) continue;
+        BlockBase* b = [_dungeon get_x:x y:y]; 
+        if (b.type == 0) continue;
         
         // ブロック
         CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
@@ -41,6 +42,7 @@
         [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
         
         // 数字
+//        if ([_dungeon can_tap_x:x y:y] == 1) {
         if ([_dungeon can_tap_x:x y:y] == 1) {
             CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
             label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));

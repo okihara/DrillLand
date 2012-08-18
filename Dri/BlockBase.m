@@ -16,4 +16,16 @@
 @synthesize group_info;
 @synthesize can_tap;
 
+-(id) init
+{
+	if( (self=[super init]) ) {
+        hp = 1;
+        type = 0;
+        group_id = 1;
+        group_info = NULL;
+        can_tap = NO;
+	}
+	return self;
+}
+
 @end

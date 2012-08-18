@@ -22,3 +22,18 @@
 -(void)fill:(int)value;
 
 @end
+
+@interface TileMap2 : NSObject
+{
+    id tile_map[30][20];
+    int bound_w;
+    int bound_h;
+}
+
+-(void)clear;
+-(id)get_x:(int)_x y:(int)_y;
+-(void)set_x:(int)_x y:(int)_y value:(id)_value;
+-(BOOL)is_outbound:(int)_x y:(int)y;
+-(void)fill:(id)value;
+
+@end
