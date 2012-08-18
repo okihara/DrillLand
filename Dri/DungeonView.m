@@ -31,8 +31,10 @@
 - (void)update_view_line:(int)j _model:(DungeonModel *)_dungeon
 {
     for (int i = 0; i < disp_w; i++) {
+        
         int x = i;
         int y = offset_y + j;
+        
         BlockBase* b = [_dungeon get_x:x y:y]; 
         if (b.type == 0) continue;
         
@@ -42,8 +44,7 @@
         [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
         
         // 数字
-//        if ([_dungeon can_tap_x:x y:y] == 1) {
-        if ([_dungeon can_tap_x:x y:y] == 1) {
+        if (b.can_tap == YES) {
             CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
             label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
             [self addChild: label];

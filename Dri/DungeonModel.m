@@ -24,6 +24,18 @@
     }
 }
 
+-(void)_clear_can_tap
+{
+    int disp_w = 5;
+    int disp_h = 10;
+    for (int j = 0; j < disp_h; j++) {
+        for (int i = 0; i < disp_w; i++) {
+            BlockBase* b = [self->map get_x:i y:j];
+            b.can_tap = NO;
+        }
+    }   
+}
+
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
@@ -49,6 +61,26 @@
         
         b = [[BlockBase alloc] init];
         b.type = 0;
+        [self set:ccp(2, 3) type:(id)b];
+        
+   
+        
+        //        self.set(0, 2, Block.new(2, 1))
+        //        self.set(1, 2, Block.new(2, 1))
+        //        self.set(1, 3, Block.new(2, 1))
+        b = [[BlockBase alloc] init];
+        b.type = 1;
+        b.group_id = 1;
+        [self set:ccp(1, 2) type:(id)b];
+        
+        b = [[BlockBase alloc] init];
+        b.type = 1;
+        b.group_id = 1;
+        [self set:ccp(2, 2) type:(id)b];
+        
+        b = [[BlockBase alloc] init];
+        b.type = 1;
+        b.group_id = 1;
         [self set:ccp(2, 3) type:(id)b];
     }
     return self;
@@ -78,8 +110,8 @@
 -(void) set:(CGPoint)pos type:(BlockBase*)_type
 {
     [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
-    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
     [self update_group_info:pos group_id:_type.group_id];
+    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
     [self->observer notify:self];
 }
 
@@ -90,12 +122,16 @@
     
     // 起点は 0 でなければならない
     BlockBase* b = [self->map get_x:x y:y]; 
-    if ( b.type == 1 ) return;
+    if ( b.type > 0 ) return;
     
     // 操作済み判別テーブルを初期化
     [done_map clear];
     
+    // タップ可能かどうかを初期化
+    [self _clear_can_tap];
+    
     // チェック処理本体
+    NSLog(@"can_tap ---------------------");
     [self update_can_tap_r:pos];
 }
 
@@ -110,12 +146,14 @@
     if (!b) return;
     
     [done_map set_x:x y:y value:1];
-    if (b.type == 1) {
+    if (b.type > 0) {
         b.can_tap = YES;
+        NSLog(@"can_tap YES %d, %d", x, y);
     } else if (b.type == 0) {
         b.can_tap = NO;
-        [self update_can_tap_r:ccp(x + 0, y - 1)];
+        NSLog(@"can_tap NO %d, %d", x, y);
         [self update_can_tap_r:ccp(x + 0, y + 1)];
+        [self update_can_tap_r:ccp(x + 0, y - 1)];
         [self update_can_tap_r:ccp(x + 1, y + 0)];
         [self update_can_tap_r:ccp(x - 1, y + 0)];
     }
@@ -128,6 +166,7 @@
     [self->done_map clear];
     NSMutableArray* group_info = [[NSMutableArray alloc] init];
     [self update_group_info_r:pos group_id:_group_id group_info:group_info];
+    NSLog(@"group_info %d %@", _group_id, group_info);
 }
 
 -(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info
@@ -136,10 +175,10 @@
     int y = (int)pos.y;
     
     // もうみた
-    if ([self->done_map get_x:x y:y] != 0) return;
+    if ([done_map get_x:x y:y] != 0) return;
 
     // おかしい
-    BlockBase* b =  [self->map get_x:x y:y];
+    BlockBase* b = [map get_x:x y:y];
     if (b == NULL) return;
 
     // みたよ
@@ -148,12 +187,13 @@
     // 同じじゃないならなにもしない
     if (b.group_id != _group_id) return;
     
-//    //
-//    if(b.group_info != NULL) {
-//        [b.group_info release];
-//    }
-//    [_group_info addObject:b];
-//    b.group_info = _group_info;
+    //
+    if(b.group_info != NULL) {
+        // TODO:メモリリーク
+        //[b.group_info release];
+    }
+    [_group_info addObject:b];
+    b.group_info = _group_info;
     
     [self update_group_info_r:ccp(x + 0, y + 1) group_id:_group_id group_info:_group_info];
     [self update_group_info_r:ccp(x + 0, y - 1) group_id:_group_id group_info:_group_info];
