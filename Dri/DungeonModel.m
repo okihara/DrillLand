@@ -46,7 +46,23 @@
         
         // dummy
         BlockBase* b;
+
+        // 消えない
+        b = [[BlockBase alloc] init];
+        b.type = 99;
+        b.hp = -1;
+        [self set:ccp(0, 7) block:(id)b];
+        b = [[BlockBase alloc] init];
+        b.type = 99;
+        b.hp = -1;
+        [self set:ccp(1, 7) block:(id)b];
         
+        b = [[BlockBase alloc] init];
+        b.type = 99;
+        b.hp = -1;
+        [self set:ccp(2, 7) block:(id)b];
+        
+        //
         b = [[BlockBase alloc] init];
         b.type = 0;
         [self set:ccp(2, 0) block:(id)b];
@@ -119,6 +135,7 @@
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
+        b.hp = 2;
         [self set:ccp(3, 8) block:(id)b];
         
         b = [[BlockBase alloc] init];

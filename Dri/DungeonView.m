@@ -10,6 +10,7 @@
 #import "DungeonView.h"
 #import "TileMap.h"
 #import "BlockBase.h"
+#import "BlockView.h"
 
 @implementation DungeonView
 
@@ -23,7 +24,7 @@
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
     [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
     fire.totalParticles = 40;
-    fire.speed = 100;
+    fire.speed = 200;
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;
     
@@ -54,40 +55,13 @@
     for (int i = 0; i < disp_w; i++) {
         
         int x = i;
-        int y = offset_y + j;
+        int y = j;
         
-        BlockBase* b = [_dungeon get_x:x y:y]; 
-        if (b.type == 0) continue;
+        BlockBase* block_base = [_dungeon get_x:x y:y];
         
-        // ブロック
-        NSString *filename;
-        switch (b.type) {
-            case 1:
-                filename = @"block00.png";
-                break;
-            case 2:
-                filename = @"block01.png";
-                break;
-            case 3:
-                filename = @"block02.png";
-                break;
-            case 4:
-                filename = @"block03.png";
-                break;
-            default:
-                break;
-        }
-        CCSprite *block = [CCSprite spriteWithFile:filename];
+        BlockView* block = [BlockView create:block_base];
+        [block setPosition:ccp(30 + x * 60, 480 - (30 + y * 60))];
         [self->block_layer addChild:block];
-        [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
-        
-        // 数字
-        if (b.can_tap == YES) {
-            CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
-            label.position =  ccp(30, 30);
-            label.color = ccc3(0, 0, 0);
-            [block addChild:label];
-        }
         
         [view_map set_x:x y:y value:block];
     }
