@@ -102,27 +102,27 @@
         
         // グループ消しサンプル3
         b = [[BlockBase alloc] init];
-        b.type = 2;
+        b.type = 4;
         b.group_id = 2;
         [self set:ccp(0, 8) type:(id)b];
         
         b = [[BlockBase alloc] init];
-        b.type = 2;
+        b.type = 4;
         b.group_id = 2;
         [self set:ccp(1, 8) type:(id)b];
         
         b = [[BlockBase alloc] init];
-        b.type = 2;
+        b.type = 4;
         b.group_id = 2;
         [self set:ccp(2, 8) type:(id)b];
         
         b = [[BlockBase alloc] init];
-        b.type = 2;
+        b.type = 4;
         b.group_id = 2;
         [self set:ccp(3, 8) type:(id)b];
         
         b = [[BlockBase alloc] init];
-        b.type = 2;
+        b.type = 4;
         b.group_id = 2;
         [self set:ccp(4, 8) type:(id)b];    
     }

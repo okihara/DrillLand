@@ -62,6 +62,9 @@
             case 3:
                 filename = @"block02.png";
                 break;
+            case 4:
+                filename = @"block03.png";
+                break;
             default:
                 break;
         }
