@@ -153,7 +153,7 @@
 
 -(void) _hit:(BlockModel*)b
 {
-    [b hit];
+    [b on_hit];
     
     [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
     [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない

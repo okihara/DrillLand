@@ -18,7 +18,7 @@
     NSMutableArray* behavior_list;
 }
 
--(void)hit;
+-(void)on_hit;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

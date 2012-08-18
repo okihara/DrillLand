@@ -34,12 +34,22 @@
 }
 
 // TODO:あとでポリモる
--(void)hit
+-(void)on_hit
 {
     if (--hp == 0) {
         type = 0;
         // fire MSG_HP_0
     }
+}
+
+-(void)on_updage
+{
+}
+
+-(void)on_after_updte
+{
+    // 死んでなかったら
+    // プレイヤーに攻撃
 }
 
 @end
