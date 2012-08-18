@@ -33,7 +33,7 @@
 -(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id;
 -(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
 -(void) hit:(CGPoint)pos;
--(void) set:(CGPoint)pos type:(BlockBase*)_type;
+-(void) set:(CGPoint)pos block:(BlockBase*)block;
 -(BlockBase*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
 

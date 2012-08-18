@@ -9,12 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "DungeonModel.h"
 
+@class TileMap;
+
 @interface DungeonView : CCLayer<DungenModelObserver>
 {
     id  delegate;
     int offset_y;
     int disp_w;
     int disp_h;
+    
+    TileMap2* view_map;
+    
+    CCLayer* effect_layer;
+    CCLayer* block_layer;
 }
 
 @property (nonatomic, retain) id delegate;

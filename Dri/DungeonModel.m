@@ -19,7 +19,7 @@
         for (int i = 0; i < disp_w; i++) {
             BlockBase* b = [[BlockBase alloc] init];
             b.type = 1;
-            [self set:ccp(i, j) type:b];
+            [self set:ccp(i, j) block:b];
         }
     }
 }
@@ -49,82 +49,82 @@
         
         b = [[BlockBase alloc] init];
         b.type = 0;
-        [self set:ccp(2, 0) type:(id)b];
+        [self set:ccp(2, 0) block:(id)b];
 
         b = [[BlockBase alloc] init];
         b.type = 0;
-        [self set:ccp(2, 1) type:(id)b];
+        [self set:ccp(2, 1) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 0;
-        [self set:ccp(2, 2) type:(id)b];
+        [self set:ccp(2, 2) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 0;
-        [self set:ccp(2, 3) type:(id)b];
+        [self set:ccp(2, 3) block:(id)b];
 
         // グループ消しサンプル
         b = [[BlockBase alloc] init];
         b.type = 2;
         b.group_id = 1;
-        [self set:ccp(1, 2) type:(id)b];
+        [self set:ccp(1, 2) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 2;
         b.group_id = 1;
-        [self set:ccp(2, 2) type:(id)b];
+        [self set:ccp(2, 2) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 2;
         b.group_id = 1;
-        [self set:ccp(2, 3) type:(id)b];
+        [self set:ccp(2, 3) block:(id)b];
 
         // グループ消しサンプル2
         b = [[BlockBase alloc] init];
         b.type = 3;
         b.group_id = 1;
-        [self set:ccp(3, 4) type:(id)b];
+        [self set:ccp(3, 4) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 3;
         b.group_id = 1;
-        [self set:ccp(3, 5) type:(id)b];
+        [self set:ccp(3, 5) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 3;
         b.group_id = 1;
-        [self set:ccp(3, 6) type:(id)b];
+        [self set:ccp(3, 6) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 3;
         b.group_id = 1;
-        [self set:ccp(3, 7) type:(id)b];
+        [self set:ccp(3, 7) block:(id)b];
         
         // グループ消しサンプル3
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
-        [self set:ccp(0, 8) type:(id)b];
+        [self set:ccp(0, 8) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
-        [self set:ccp(1, 8) type:(id)b];
+        [self set:ccp(1, 8) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
-        [self set:ccp(2, 8) type:(id)b];
+        [self set:ccp(2, 8) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
-        [self set:ccp(3, 8) type:(id)b];
+        [self set:ccp(3, 8) block:(id)b];
         
         b = [[BlockBase alloc] init];
         b.type = 4;
         b.group_id = 2;
-        [self set:ccp(4, 8) type:(id)b];    
+        [self set:ccp(4, 8) block:(id)b];    
     }
     return self;
 }
@@ -140,8 +140,8 @@
     
     [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
     [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
-    [self->observer notify:self];
     [self->observer notify_particle:b];
+    [self->observer notify:self];
 }
 
 
@@ -167,10 +167,16 @@
 
 }
 
--(void) set:(CGPoint)pos type:(BlockBase*)_type
+-(void) set:(CGPoint)pos block:(BlockBase*)block
 {
-    [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
-    [self update_group_info:pos group_id:_type.group_id];
+    int x = (int)pos.x;
+    int y = (int)pos.y;
+    
+    block.x = x;
+    block.y = y;
+    
+    [self->map set_x:x y:y value:block];
+    [self update_group_info:pos group_id:block.group_id];
     [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
     [self->observer notify:self];
 }

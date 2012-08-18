@@ -52,7 +52,7 @@
         // 更新
         BlockBase* b = [[BlockBase alloc] init];
         b.type = 1;
-        [dungeon set:ccp(1,0) type:b];
+        [dungeon set:ccp(1,0) block:b];
         
 		// enable touch
         self.isTouchEnabled = YES;
