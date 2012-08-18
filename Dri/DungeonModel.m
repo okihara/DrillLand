@@ -7,7 +7,7 @@
 //
 
 #import "DungeonModel.h"
-#import "BlockBase.h"
+#import "BlockModel.h"
 
 @implementation DungeonModel
 
@@ -17,7 +17,7 @@
     int disp_h = 10;
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
-            BlockBase* b = [[BlockBase alloc] init];
+            BlockModel* b = [[BlockModel alloc] init];
             b.type = 1;
             [self set:ccp(i, j) block:b];
         }
@@ -30,7 +30,7 @@
     int disp_h = 10;
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
-            BlockBase* b = [self->map get_x:i y:j];
+            BlockModel* b = [self->map get_x:i y:j];
             b.can_tap = NO;
         }
     }   
@@ -45,100 +45,100 @@
         [self _fill_blocks];
         
         // dummy
-        BlockBase* b;
+        BlockModel* b;
 
         // 消えない
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 99;
         b.hp = -1;
         [self set:ccp(0, 7) block:(id)b];
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 99;
         b.hp = -1;
         [self set:ccp(1, 7) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 99;
         b.hp = -1;
         [self set:ccp(2, 7) block:(id)b];
         
         //
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 0;
         [self set:ccp(2, 0) block:(id)b];
 
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 0;
         [self set:ccp(2, 1) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 0;
         [self set:ccp(2, 2) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 0;
         [self set:ccp(2, 3) block:(id)b];
 
         // グループ消しサンプル
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 2;
         b.group_id = 1;
         [self set:ccp(1, 2) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 2;
         b.group_id = 1;
         [self set:ccp(2, 2) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 2;
         b.group_id = 1;
         [self set:ccp(2, 3) block:(id)b];
 
         // グループ消しサンプル2
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 3;
         b.group_id = 1;
         [self set:ccp(3, 4) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 3;
         b.group_id = 1;
         [self set:ccp(3, 5) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 3;
         b.group_id = 1;
         [self set:ccp(3, 6) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 3;
         b.group_id = 1;
         [self set:ccp(3, 7) block:(id)b];
         
         // グループ消しサンプル3
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 4;
         b.group_id = 2;
         [self set:ccp(0, 8) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 4;
         b.group_id = 2;
         [self set:ccp(1, 8) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 4;
         b.group_id = 2;
         [self set:ccp(2, 8) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 4;
         b.group_id = 2;
         b.hp = 2;
         [self set:ccp(3, 8) block:(id)b];
         
-        b = [[BlockBase alloc] init];
+        b = [[BlockModel alloc] init];
         b.type = 4;
         b.group_id = 2;
         [self set:ccp(4, 8) block:(id)b];    
@@ -151,7 +151,7 @@
     self->observer = _observer;
 }
 
--(void) _hit:(BlockBase*)b
+-(void) _hit:(BlockModel*)b
 {
     [b hit];
     
@@ -167,7 +167,7 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
 
-    BlockBase* b = [self get_x:x y:y];
+    BlockModel* b = [self get_x:x y:y];
     
     if (b.can_tap == NO) {
         NSLog(@"can not destroy me!");
@@ -185,7 +185,7 @@
 }
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
--(void) set:(CGPoint)pos block:(BlockBase*)block
+-(void) set:(CGPoint)pos block:(BlockModel*)block
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -205,7 +205,7 @@
     int y = (int)pos.y;
     
     // 起点は 0 でなければならない
-    BlockBase* b = [self->map get_x:x y:y]; 
+    BlockModel* b = [self->map get_x:x y:y]; 
     if ( b.type > 0 ) return;
     
     // 操作済み判別テーブルを初期化
@@ -225,7 +225,7 @@
     
     if ([self->done_map get_x:x y:y] != 0) return;
     
-    BlockBase* b = [self->map get_x:x y:y];
+    BlockModel* b = [self->map get_x:x y:y];
     if (!b) return;
     
     [done_map set_x:x y:y value:1];
@@ -261,7 +261,7 @@
     if ([done_map get_x:x y:y] != 0) return;
 
     // おかしい
-    BlockBase* b = [map get_x:x y:y];
+    BlockModel* b = [map get_x:x y:y];
     if (b == NULL) return;
 
     // みたよ
@@ -284,14 +284,14 @@
     [self update_group_info_r:ccp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
 }
 
--(BlockBase*) get_x:(int)_x y:(int)_y
+-(BlockModel*) get_x:(int)_x y:(int)_y
 {
     return [self->map get_x:_x y:_y];
 }
 
 -(int) can_tap_x:(int)_x y:(int)_y
 {
-    BlockBase* b = [self->map get_x:_x y:_y];
+    BlockModel* b = [self->map get_x:_x y:_y];
     return b.can_tap;
 }
 

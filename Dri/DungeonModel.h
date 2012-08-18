@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "TileMap.h"
-#import "BlockBase.h"
+#import "BlockModel.h"
 
 @class DungeonModel;
 @protocol DungenModelObserver <NSObject>
 
 -(void) notify:(DungeonModel*)_dungeon;
--(void) notify_particle:(BlockBase*)block;
+-(void) notify_particle:(BlockModel*)block;
 
 @end
 
@@ -33,8 +33,8 @@
 -(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id;
 -(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
 -(void) hit:(CGPoint)pos;
--(void) set:(CGPoint)pos block:(BlockBase*)block;
--(BlockBase*) get_x:(int)_x y:(int)_y;
+-(void) set:(CGPoint)pos block:(BlockModel*)block;
+-(BlockModel*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
 
 @end

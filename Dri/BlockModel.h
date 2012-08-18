@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BlockBase : NSObject
+@interface BlockModel : NSObject
 {
     int hp;
     int type;
     unsigned int group_id;
     id group_info;
     BOOL can_tap;
+    NSMutableArray* behavior_list;
 }
 
 -(void)hit;

@@ -20,16 +20,9 @@
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
 	DungeonScene *layer = [DungeonScene node];
-	
-	// add layer as a child to scene
 	[scene addChild: layer];
-	
-	// return the scene
 	return scene;
 }
 
@@ -50,7 +43,7 @@
         [dungeon add_observer:dungeon_view];
 
         // 更新
-        BlockBase* b = [[BlockBase alloc] init];
+        BlockModel* b = [[BlockModel alloc] init];
         b.type = 1;
         [dungeon set:ccp(1,0) block:b];
         
@@ -73,7 +66,7 @@
 
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
 
-    // ここでタップ禁止にしてー
+    // ここでタップ禁止にしてたいね
     offset_y += 30;
 
     CCAction* act_move = [CCMoveTo actionWithDuration: 0.3 position:ccp(0, offset_y)];

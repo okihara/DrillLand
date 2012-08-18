@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class BlockBase;
+@class BlockModel;
 
 @interface BlockView : CCSprite
 {
     
 }
 
-+(BlockView *) create:(BlockBase *)b;
++(BlockView *) create:(BlockModel *)b;
 
 @end

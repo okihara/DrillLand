@@ -141,7 +141,7 @@
 		C1B178AD15DF995500014FD2 /* block04.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B178AC15DF995400014FD2 /* block04.png */; };
 		C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88A15DBB70800C15562 /* DungeonModel.m */; };
 		C1DCF88E15DC61A700C15562 /* TileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88D15DC61A600C15562 /* TileMap.m */; };
-		C1DCF89115DCA5FC00C15562 /* BlockBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89015DCA5FC00C15562 /* BlockBase.m */; };
+		C1DCF89115DCA5FC00C15562 /* BlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89015DCA5FC00C15562 /* BlockModel.m */; };
 		C1DCF89815DE130D00C15562 /* DungeonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89715DE130D00C15562 /* DungeonView.m */; };
 /* End PBXBuildFile section */
 
@@ -418,8 +418,8 @@
 		C1DCF88A15DBB70800C15562 /* DungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonModel.m; sourceTree = "<group>"; };
 		C1DCF88C15DC61A600C15562 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
 		C1DCF88D15DC61A600C15562 /* TileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMap.m; sourceTree = "<group>"; };
-		C1DCF88F15DCA5FC00C15562 /* BlockBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBase.h; sourceTree = "<group>"; };
-		C1DCF89015DCA5FC00C15562 /* BlockBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBase.m; sourceTree = "<group>"; };
+		C1DCF88F15DCA5FC00C15562 /* BlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = BlockModel.h; sourceTree = "<group>"; };
+		C1DCF89015DCA5FC00C15562 /* BlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockModel.m; sourceTree = "<group>"; };
 		C1DCF89615DE130C00C15562 /* DungeonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonView.h; sourceTree = "<group>"; };
 		C1DCF89715DE130D00C15562 /* DungeonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -486,8 +486,8 @@
 				C19547C715D7F48B002119CC /* DungeonScene.m */,
 				C1B178A915DF903000014FD2 /* BlockView.h */,
 				C1B178AA15DF903100014FD2 /* BlockView.m */,
-				C1DCF88F15DCA5FC00C15562 /* BlockBase.h */,
-				C1DCF89015DCA5FC00C15562 /* BlockBase.m */,
+				C1DCF88F15DCA5FC00C15562 /* BlockModel.h */,
+				C1DCF89015DCA5FC00C15562 /* BlockModel.m */,
 				C1DCF89615DE130C00C15562 /* DungeonView.h */,
 				C1DCF89715DE130D00C15562 /* DungeonView.m */,
 				C1DCF88915DBB70800C15562 /* DungeonModel.h */,
@@ -1054,7 +1054,7 @@
 				C19547C815D7F48B002119CC /* DungeonScene.m in Sources */,
 				C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */,
 				C1DCF88E15DC61A700C15562 /* TileMap.m in Sources */,
-				C1DCF89115DCA5FC00C15562 /* BlockBase.m in Sources */,
+				C1DCF89115DCA5FC00C15562 /* BlockModel.m in Sources */,
 				C1DCF89815DE130D00C15562 /* DungeonView.m in Sources */,
 				C1B178AB15DF903100014FD2 /* BlockView.m in Sources */,
 			);

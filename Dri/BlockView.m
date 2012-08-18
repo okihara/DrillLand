@@ -7,11 +7,11 @@
 //
 
 #import "BlockView.h"
-#import "BlockBase.h"
+#import "BlockModel.h"
 
 @implementation BlockView
 
-+(BlockView *) create:(BlockBase*)b
++(BlockView *) create:(BlockModel*)b
 {
     // ブロック
     NSString *filename;
@@ -39,14 +39,18 @@
     BlockView* block = [BlockView spriteWithFile:filename];
     
     // 数字
-    if (b.can_tap == YES) {
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
-        label.position =  ccp(30, 30);
-        label.color = ccc3(0, 0, 0);
-        [block addChild:label];
-    }
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
+    label.position =  ccp(30, 30);
+    label.color = ccc3(0, 0, 0);
+    label.visible = b.can_tap; // タップ出来ないときは数字を見せない
+    [block addChild:label];
     
     return block;
+}
+
+-(BOOL)handle_event:(NSString*)event
+{
+    return NO;
 }
 
 @end

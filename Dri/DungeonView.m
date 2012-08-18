@@ -9,14 +9,14 @@
 #import "cocos2d.h"
 #import "DungeonView.h"
 #import "TileMap.h"
-#import "BlockBase.h"
+#import "BlockModel.h"
 #import "BlockView.h"
 
 @implementation DungeonView
 
 @synthesize delegate;
 
--(void) make_particle:(BlockBase*)b
+-(void) make_particle:(BlockModel*)b
 {
     CCSprite* block = [view_map get_x:b.x y:b.y];
     CGPoint pos = block.position;
@@ -55,7 +55,7 @@
         int x = i;
         int y = j;
         
-        BlockBase* block_base = [_dungeon get_x:x y:y];
+        BlockModel* block_base = [_dungeon get_x:x y:y];
         
         BlockView* block = [BlockView create:block_base];
         [block setPosition:ccp(30 + x * 60, 480 - (30 + y * 60))];
@@ -79,7 +79,7 @@
     [self update_view:_dungeon];
 }
 
--(void) notify_particle:(BlockBase*)block
+-(void) notify_particle:(BlockModel*)block
 {
     [self make_particle:block];
 }

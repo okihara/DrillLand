@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BlockBase.h"
+#import "BlockModel.h"
 
-@implementation BlockBase
+@implementation BlockModel
 
 @synthesize hp;
 @synthesize type;
@@ -38,6 +38,7 @@
 {
     if (--hp == 0) {
         type = 0;
+        // fire MSG_HP_0
     }
 }
 
