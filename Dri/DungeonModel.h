@@ -14,7 +14,8 @@
 @class DungeonModel;
 @protocol DungenModelObserver <NSObject>
 
-- (void) notify:(DungeonModel*)_dungeon;
+-(void) notify:(DungeonModel*)_dungeon;
+-(void) notify_particle:(BlockBase*)block;
 
 @end
 

@@ -74,7 +74,7 @@
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
 
     // ここでタップ禁止にしてー
-    offset_y += 60;
+    offset_y += 30;
 
     CCAction* act_move = [CCMoveTo actionWithDuration: 0.3 position:ccp(0, offset_y)];
     [dungeon_view runAction: act_move];

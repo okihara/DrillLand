@@ -13,6 +13,18 @@
 
 @synthesize delegate;
 
+-(void) make_particle
+{
+    CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
+    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
+    fire.totalParticles = 40;
+    fire.speed = 100;
+    fire.gravity = ccp(0.0, -500.0);
+    fire.position = ccp(160, 240);
+    
+    [self addChild:fire];
+}
+
 -(id) init
 {
 	if( (self=[super init]) ) {
@@ -39,7 +51,21 @@
         if (b.type == 0) continue;
         
         // ブロック
-        CCSprite *block = [CCSprite spriteWithFile:@"Icon.png"];
+        NSString *filename;
+        switch (b.type) {
+            case 1:
+                filename = @"block00.png";
+                break;
+            case 2:
+                filename = @"block01.png";
+                break;
+            case 3:
+                filename = @"block02.png";
+                break;
+            default:
+                break;
+        }
+        CCSprite *block = [CCSprite spriteWithFile:filename];
         [self addChild:block];
         [block setPosition:ccp(30 + i * 60, 480 - (30 + j * 60))];
         
@@ -47,6 +73,7 @@
         if (b.can_tap == YES) {
             CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
             label.position =  ccp(30 + i * 60, 480 - (30 + j * 60));
+            label.color = ccc3(0, 0, 0);
             [self addChild: label];
         }
     }
@@ -63,6 +90,11 @@
 {
     [self removeAllChildrenWithCleanup:YES];    
     [self update_view:_dungeon];
+}
+
+-(void) notify_particle:(BlockBase*)block
+{
+    [self make_particle];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

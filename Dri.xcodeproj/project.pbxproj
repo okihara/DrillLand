@@ -132,6 +132,9 @@
 		C19547C215D7F48B002119CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C115D7F48B002119CC /* main.m */; };
 		C19547C515D7F48B002119CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C415D7F48B002119CC /* AppDelegate.m */; };
 		C19547C815D7F48B002119CC /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C715D7F48B002119CC /* DungeonScene.m */; };
+		C1B1789B15DF669300014FD2 /* block00.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789A15DF669300014FD2 /* block00.png */; };
+		C1B1789E15DF686500014FD2 /* block01.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789D15DF686500014FD2 /* block01.png */; };
+		C1B178A015DF695D00014FD2 /* block02.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789F15DF695D00014FD2 /* block02.png */; };
 		C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88A15DBB70800C15562 /* DungeonModel.m */; };
 		C1DCF88E15DC61A700C15562 /* TileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88D15DC61A600C15562 /* TileMap.m */; };
 		C1DCF89115DCA5FC00C15562 /* BlockBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89015DCA5FC00C15562 /* BlockBase.m */; };
@@ -399,6 +402,9 @@
 		C19547C415D7F48B002119CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C19547C615D7F48B002119CC /* DungeonScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DungeonScene.h; sourceTree = "<group>"; };
 		C19547C715D7F48B002119CC /* DungeonScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DungeonScene.m; sourceTree = "<group>"; };
+		C1B1789A15DF669300014FD2 /* block00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block00.png; path = Resources/block00.png; sourceTree = "<group>"; };
+		C1B1789D15DF686500014FD2 /* block01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block01.png; path = Resources/block01.png; sourceTree = "<group>"; };
+		C1B1789F15DF695D00014FD2 /* block02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block02.png; path = Resources/block02.png; sourceTree = "<group>"; };
 		C1DCF88915DBB70800C15562 /* DungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonModel.h; sourceTree = "<group>"; };
 		C1DCF88A15DBB70800C15562 /* DungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonModel.m; sourceTree = "<group>"; };
 		C1DCF88C15DC61A600C15562 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
@@ -489,9 +495,12 @@
 			children = (
 				C195464D15D7F485002119CC /* Default.png */,
 				C195464F15D7F485002119CC /* Default-Landscape~ipad.png */,
+				C1B1789F15DF695D00014FD2 /* block02.png */,
 				C195465115D7F485002119CC /* fps_images.png */,
+				C1B1789A15DF669300014FD2 /* block00.png */,
 				C195465315D7F485002119CC /* fps_images-hd.png */,
 				C195465515D7F485002119CC /* fps_images-ipadhd.png */,
+				C1B1789D15DF686500014FD2 /* block01.png */,
 				C195465715D7F485002119CC /* Icon-72.png */,
 				C195465915D7F485002119CC /* Icon-Small-50.png */,
 				C195465B15D7F485002119CC /* Icon-Small.png */,
@@ -910,6 +919,9 @@
 				C195466215D7F485002119CC /* Icon@2x.png in Resources */,
 				C195466515D7F486002119CC /* iTunesArtwork in Resources */,
 				C19547A315D7F48B002119CC /* ChangeLog in Resources */,
+				C1B1789B15DF669300014FD2 /* block00.png in Resources */,
+				C1B1789E15DF686500014FD2 /* block01.png in Resources */,
+				C1B178A015DF695D00014FD2 /* block02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
