@@ -20,7 +20,7 @@
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;
 @property (nonatomic, assign) unsigned int group_id;
-@property (nonatomic, assign) id group_info;
+@property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL can_tap;
 
 @end

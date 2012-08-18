@@ -75,22 +75,23 @@
 	if( (self=[super init]) ) {
         bound_w  = 5;
         bound_h =  20;
+        [self clear];
     }
     return self;
 }
 
 -(void)fill:(id)value
 {
-    //    for (int j = 0; j < bound_h; j++) {
-    //        for (int i = 0; i < bound_w; i++) {
-    //            self->tile_map[j][i] = value;
-    //        }
-    //    }
+    for (int j = 0; j < bound_h; j++) {
+        for (int i = 0; i < bound_w; i++) {
+            self->tile_map[j][i] = value;
+        }
+    }
 }
 
 -(void)clear
 {
-    [self fill:0];
+    [self fill:NULL];
 }
 
 -(id)get_x:(int)_x y:(int)_y

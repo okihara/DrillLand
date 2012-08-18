@@ -75,10 +75,11 @@
     [self set:pos type:b];
 }
 
--(void) set:(CGPoint)pos type:(id)_type
+-(void) set:(CGPoint)pos type:(BlockBase*)_type
 {
     [self->map set_x:(int)pos.x y:(int)pos.y value:_type];
     [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_group_info:pos group_id:_type.group_id];
     [self->observer notify:self];
 }
 
@@ -103,9 +104,7 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    if ([self->done_map get_x:x y:y] != 0) {
-        return;
-    }
+    if ([self->done_map get_x:x y:y] != 0) return;
     
     BlockBase* b = [self->map get_x:x y:y];
     if (!b) return;
@@ -120,6 +119,46 @@
         [self update_can_tap_r:ccp(x + 1, y + 0)];
         [self update_can_tap_r:ccp(x - 1, y + 0)];
     }
+}
+
+-(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id
+{
+    // group_id=0 の時はグループ化しない
+    if (_group_id == 0) return;
+    [self->done_map clear];
+    NSMutableArray* group_info = [[NSMutableArray alloc] init];
+    [self update_group_info_r:pos group_id:_group_id group_info:group_info];
+}
+
+-(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info
+{
+    int x = (int)pos.x;
+    int y = (int)pos.y;
+    
+    // もうみた
+    if ([self->done_map get_x:x y:y] != 0) return;
+
+    // おかしい
+    BlockBase* b =  [self->map get_x:x y:y];
+    if (b == NULL) return;
+
+    // みたよ
+    [done_map set_x:x y:y value:1];
+    
+    // 同じじゃないならなにもしない
+    if (b.group_id != _group_id) return;
+    
+//    //
+//    if(b.group_info != NULL) {
+//        [b.group_info release];
+//    }
+//    [_group_info addObject:b];
+//    b.group_info = _group_info;
+    
+    [self update_group_info_r:ccp(x + 0, y + 1) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:ccp(x + 0, y - 1) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:ccp(x + 1, y + 0) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:ccp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
 }
 
 -(BlockBase*) get_x:(int)_x y:(int)_y
