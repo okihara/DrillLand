@@ -30,7 +30,6 @@
 
         self->done_map = [[TileMap alloc] init];
         self->map = [[TileMap2 alloc] init];
-        self->can_map = [[TileMap alloc] init];
         [self _fill_blocks];
         
         // dummy
@@ -64,13 +63,14 @@
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
+
+    BlockBase* b = [self get_x:x y:y];
     
-    if ([self->can_map get_x:x y:y] == 0) {
+    if (b.can_tap == NO) {
         NSLog(@"can not destroy me!");
         return;
     }
     
-    BlockBase* b = [[BlockBase alloc] init];
     b.type = 0;
     [self set:pos type:b];
 }
@@ -112,9 +112,9 @@
     
     [done_map set_x:x y:y value:1];
     if (b.type == 1) {
-        [can_map set_x:x y:y value:1];
+        b.can_tap = YES;
     } else if (b.type == 0) {
-        [can_map set_x:x y:y value:0];
+        b.can_tap = NO;
         [self update_can_tap_r:ccp(x + 0, y - 1)];
         [self update_can_tap_r:ccp(x + 0, y + 1)];
         [self update_can_tap_r:ccp(x + 1, y + 0)];
@@ -129,13 +129,13 @@
 
 -(int) can_tap_x:(int)_x y:(int)_y
 {
-    return [self->can_map get_x:_x y:_y];
+    BlockBase* b = [self->map get_x:_x y:_y];
+    return b.can_tap;
 }
 
 -(void) dealloc
 {
     [self->map release];
-    [self->can_map release];
     [self->done_map release];
     [super dealloc];
 }

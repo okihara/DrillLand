@@ -21,7 +21,6 @@
 @interface DungeonModel : NSObject
 {
     TileMap2 *map;
-    TileMap *can_map;
     TileMap *done_map;
     id<DungenModelObserver> observer;
 }
