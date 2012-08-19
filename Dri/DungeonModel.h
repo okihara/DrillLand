@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "TileMap.h"
+#import "XDMap.h"
 #import "BlockModel.h"
 
 #define WIDTH 5
@@ -28,8 +28,8 @@
 {
     PlayerModel* player;
     TileMap2 *map;
-    TileMap *done_map;
-    TileMap *route_map;
+    XDMap *done_map;
+    XDMap *route_map;
     id<DungenModelObserver> observer;
 }
 

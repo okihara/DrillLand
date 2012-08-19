@@ -16,8 +16,8 @@
 {
     if (self = [super init]) {
         self->player = [[PlayerModel alloc]init];
-        self->done_map = [[TileMap alloc] init];
-        self->route_map = [[TileMap alloc] init];
+        self->done_map = [[XDMap alloc] init];
+        self->route_map = [[XDMap alloc] init];
 
         self->map = [[TileMap2 alloc] init];
         [self _fill_blocks];

@@ -8,7 +8,7 @@
 
 #import "cocos2d.h"
 #import "DungeonView.h"
-#import "TileMap.h"
+#import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
 

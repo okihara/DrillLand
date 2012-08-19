@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DungeonModel.h"
 
-@class TileMap;
+@class XDMap;
 
 @interface DungeonView : CCLayer<DungenModelObserver>
 {

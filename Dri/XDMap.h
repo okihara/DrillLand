@@ -15,7 +15,7 @@ struct DLPoint {
 typedef struct DLPoint DLPoint;
 DLPoint cdp(int x, int y);
 
-@interface TileMap : NSObject
+@interface XDMap : NSObject
 {
     int tile_map[30][20];
     int bound_w;

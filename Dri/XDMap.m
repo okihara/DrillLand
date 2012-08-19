@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TileMap.h"
+#import "XDMap.h"
 
-@implementation TileMap
+@implementation XDMap
 
 -(id) init
 {
