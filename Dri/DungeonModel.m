@@ -8,6 +8,7 @@
 
 #import "DungeonModel.h"
 #import "BlockModel.h"
+#import "PlayerModel.h"
 
 @implementation DungeonModel
 
@@ -40,7 +41,7 @@
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
-
+        self->player = [[PlayerModel alloc]init];
         self->done_map = [[TileMap alloc] init];
         self->route_map = [[TileMap alloc] init];
 
@@ -72,6 +73,13 @@
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
+    
+    
+    
+    // player
+    [self update_route_map:cdp(x, y) target:player.pos];
+
+    
 
     BlockModel* b = [self get_x:x y:y];
     
@@ -238,6 +246,8 @@
 
 -(void) dealloc
 {
+    [self->player release];
+    [self->route_map release];
     [self->map release];
     [self->done_map release];
     [super dealloc];

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BlockModel.h"
 
 @interface PlayerModel : NSObject
 {
@@ -14,11 +15,9 @@
     int exp;
     int atk;
     int def;
-    int x;
-    int y;
+    DLPoint pos;
 }
 
-@property(nonatomic, readonly) int x;
-@property(nonatomic, readonly) int y;
+@property(nonatomic, readonly) DLPoint pos;
 
 @end

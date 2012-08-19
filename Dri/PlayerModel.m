@@ -10,8 +10,14 @@
 
 @implementation PlayerModel
 
-@synthesize x;
-@synthesize y;
+@synthesize pos;
 
+-(id) init
+{
+	if( (self=[super init]) ) {
+        self->pos = cdp(0, 2);
+ 	}
+	return self;
+}
 
 @end

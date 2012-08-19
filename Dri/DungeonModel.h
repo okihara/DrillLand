@@ -22,8 +22,11 @@
 
 @end
 
+@class PlayerModel;
+
 @interface DungeonModel : NSObject
 {
+    PlayerModel* player;
     TileMap2 *map;
     TileMap *done_map;
     TileMap *route_map;

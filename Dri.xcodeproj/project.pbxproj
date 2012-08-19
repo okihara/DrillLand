@@ -417,7 +417,7 @@
 		C1B178A915DF903000014FD2 /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockView.h; sourceTree = "<group>"; };
 		C1B178AA15DF903100014FD2 /* BlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockView.m; sourceTree = "<group>"; };
 		C1B178AC15DF995400014FD2 /* block04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block04.png; path = Resources/block04.png; sourceTree = "<group>"; };
-		C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PlayerModel.h; sourceTree = "<group>"; };
+		C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerModel.h; sourceTree = "<group>"; };
 		C1B178AF15DFB1B000014FD2 /* PlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerModel.m; sourceTree = "<group>"; };
 		C1B178B115DFBB1600014FD2 /* mon001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon001.png; path = Resources/mon001.png; sourceTree = "<group>"; };
 		C1B178B315DFC5B700014FD2 /* mon002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon002.png; path = Resources/mon002.png; sourceTree = "<group>"; };
@@ -493,8 +493,6 @@
 				C19547C415D7F48B002119CC /* AppDelegate.m */,
 				C19547C615D7F48B002119CC /* DungeonScene.h */,
 				C19547C715D7F48B002119CC /* DungeonScene.m */,
-				C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */,
-				C1B178AF15DFB1B000014FD2 /* PlayerModel.m */,
 				C1B178A915DF903000014FD2 /* BlockView.h */,
 				C1B178AA15DF903100014FD2 /* BlockView.m */,
 				C1DCF88F15DCA5FC00C15562 /* BlockModel.h */,
@@ -503,6 +501,8 @@
 				C1DCF89715DE130D00C15562 /* DungeonView.m */,
 				C1DCF88915DBB70800C15562 /* DungeonModel.h */,
 				C1DCF88A15DBB70800C15562 /* DungeonModel.m */,
+				C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */,
+				C1B178AF15DFB1B000014FD2 /* PlayerModel.m */,
 				C195464C15D7F485002119CC /* Resources */,
 				C195466615D7F486002119CC /* libs */,
 				C19547BF15D7F48B002119CC /* Supporting Files */,
