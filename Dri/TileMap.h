@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+struct DLPoint {
+    int x;
+    int y;
+};
+typedef struct DLPoint DLPoint;
+DLPoint cdp(int x, int y);
+
 @interface TileMap : NSObject
 {
     int tile_map[30][20];

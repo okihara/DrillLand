@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-struct DLPoint {
-    int x;
-    int y;
-};
-typedef struct DLPoint DLPoint;
-DLPoint cdp(int x, int y);
-
 @interface BlockModel : NSObject
 {
     int hp;

@@ -54,9 +54,3 @@
 
 @end
 
-DLPoint cdp(int x, int y) {
-    DLPoint p;
-    p.x = x;
-    p.y = y;
-    return p;
-}

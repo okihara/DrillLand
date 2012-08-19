@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BlockModel.h"
+#import "TileMap.h"
 
 @interface PlayerModel : NSObject
 {

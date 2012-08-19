@@ -41,6 +41,12 @@
     return tile_map[_y][_x];
 }
 
+
+-(void)set:(DLPoint)pos value:(int)_value
+{
+    [self set_x:pos.x y:pos.y value:_value];
+}
+
 -(void)set_x:(int)_x y:(int)_y value:(int)_value
 {
     if ([self is_outbound:_x y:_y]) {
@@ -61,7 +67,12 @@
 @end
 
 
-
+DLPoint cdp(int x, int y) {
+    DLPoint p;
+    p.x = x;
+    p.y = y;
+    return p;
+}
 
 
 /////////////////////////////////////////////////////////////////////

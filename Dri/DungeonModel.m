@@ -183,7 +183,7 @@
     if (pos.x == target.x && pos.y == target.y) return;
     
     // ブロックの場合はそれ以上探索しない
-    // level = 0 （最初の一回目は）例外
+    // ただし level = 0 （最初の一回目は）例外
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
     if (b.type != 0 && level != 0) return;
 
@@ -196,7 +196,7 @@
     // 計算済みの cost が同じか小さい場合探索しない
     if (cost <= level) return;
 
-    [self->route_map set_x:pos.y y:pos.x value:level];
+    [self->route_map set_x:pos.x y:pos.y value:level];
 
     [self update_route_map_r:cdp(pos.x + 0, pos.y - 1) target:target level: level + 1];
     [self update_route_map_r:cdp(pos.x + 0, pos.y + 1) target:target level: level + 1];
@@ -214,7 +214,12 @@
     // TODO: マジックナンバー(>_<)
     if (cost == 999) return pos;
 
-    //NSArray *cost_list = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], nil];
+    NSArray *cost_list = [NSArray arrayWithObjects:
+                          [NSNumber numberWithInt:0],
+                          [NSNumber numberWithInt:1],
+                          [NSNumber numberWithInt:2],
+                          [NSNumber numberWithInt:3],
+                          nil];
 //u = [route_map.get(x + 0, y - 1), [0, -1]]
 //d = [route_map.get(x + 0, y + 1), [0, 1]]
 //l = [route_map.get(x - 1, y + 0), [-1, 0]]
