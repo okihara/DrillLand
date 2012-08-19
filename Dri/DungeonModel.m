@@ -12,6 +12,9 @@
 
 @implementation DungeonModel
 
+@synthesize route_map;
+@synthesize player;
+
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
@@ -41,9 +44,12 @@
     
     // player
     [self update_route_map:cdp(x, y) target:player.pos];
+    DLPoint next_pos = [self get_player_pos:player.pos];
+    self->player.pos = next_pos;
+    NSLog(@"next_pos %d %d", next_pos.x, next_pos.y);
 
     
-
+    
     BlockModel* b = [self get_x:x y:y];
     
     if (b.can_tap == NO) {
@@ -66,7 +72,7 @@
     [b on_hit];
     
     [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
-    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
     [self->observer notify_particle:b];
     [self->observer notify:self];
 }
@@ -82,7 +88,7 @@
     
     [self->map set_x:x y:y value:block];
     [self update_group_info:pos group_id:block.group_id];
-    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
     [self->observer notify:self];
 }
 
@@ -180,7 +186,10 @@
 -(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level
 {
     // ゴール以降は探索しない
-    if (pos.x == target.x && pos.y == target.y) return;
+//    if (pos.x == target.x && pos.y == target.y) {
+//        [self->route_map set_x:pos.x y:pos.y value:level];
+//        return;
+//    }
     
     // ブロックの場合はそれ以上探索しない
     // ただし level = 0 （最初の一回目は）例外
@@ -208,33 +217,61 @@
 -(DLPoint) get_player_pos:(DLPoint)pos
 {
     //# ゴールなので座標を返す
-    int cost = [self->route_map get_x:pos.x y:pos.y];
+    int cost = [self->route_map get:pos];
     if (cost == 1) return pos;
     // 移動なし
     // TODO: マジックナンバー(>_<)
     if (cost == 999) return pos;
 
+    DLPoint u_pos = cdp(pos.x + 0, pos.y - 1);
+    DLPoint d_pos = cdp(pos.x + 0, pos.y + 1);
+    DLPoint l_pos = cdp(pos.x - 1, pos.y + 0);
+    DLPoint r_pos = cdp(pos.x + 1, pos.y + 0);
+    int u_cost = [self->route_map get:u_pos];
+    int d_cost = [self->route_map get:d_pos];
+    int l_cost = [self->route_map get:l_pos];
+    int r_cost = [self->route_map get:r_pos];
+    u_cost = u_cost < 0 ? 999 : u_cost;
+    d_cost = d_cost < 0 ? 999 : d_cost;
+    l_cost = l_cost < 0 ? 999 : l_cost;
+    r_cost = r_cost < 0 ? 999 : r_cost;
+
     NSArray *cost_list = [NSArray arrayWithObjects:
-                          [NSNumber numberWithInt:0],
-                          [NSNumber numberWithInt:1],
-                          [NSNumber numberWithInt:2],
-                          [NSNumber numberWithInt:3],
+                          [NSNumber numberWithInt:l_cost],
+                          [NSNumber numberWithInt:r_cost],
+                          [NSNumber numberWithInt:d_cost],
+                          [NSNumber numberWithInt:u_cost],
                           nil];
-//u = [route_map.get(x + 0, y - 1), [0, -1]]
-//d = [route_map.get(x + 0, y + 1), [0, 1]]
-//l = [route_map.get(x - 1, y + 0), [-1, 0]]
-//r = [route_map.get(x + 1, y + 0), [1, 0]]
-//
-//map_list = []
-//map_list.push(u) if u[0]
-//map_list.push(d) if d[0]
-//map_list.push(l) if l[0]
-//map_list.push(r) if r[0]
-//sorted = map_list.sort { |a,b| a[0] <=> b[0] }
-//pos = sorted[0][1]
-//
-//return get_player_pos(route_map, x + pos[0], y + pos[1])
-    return pos;
+    
+    int min_cost = l_cost;
+    int index = 0;
+    for (int i = 1; i < 4; i++) {
+        int cost = [[cost_list objectAtIndex:i] intValue];
+        if (cost < min_cost) {
+            min_cost = cost;
+            index = i;
+        }
+    }
+
+    DLPoint out_pos;
+    switch (index) {
+        case 0:
+            out_pos = l_pos;
+            break;
+        case 1:
+            out_pos = r_pos;
+            break;
+        case 2:
+            out_pos = d_pos;
+            break;
+        case 3:
+            out_pos = u_pos;
+            break;
+        default:
+            break;
+    }
+    
+    return [self get_player_pos:out_pos];
 }
 
 

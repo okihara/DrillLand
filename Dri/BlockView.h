@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "DungeonModel.h"
 
 @class BlockModel;
 
@@ -16,6 +17,6 @@
     
 }
 
-+(BlockView *) create:(BlockModel *)b;
++(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
 
 @end

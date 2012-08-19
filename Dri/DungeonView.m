@@ -57,7 +57,7 @@
         
         BlockModel* block_base = [_dungeon get_x:x y:y];
         
-        BlockView* block = [BlockView create:block_base];
+        BlockView* block = [BlockView create:block_base ctx:_dungeon];
         [block setPosition:ccp(30 + x * 60, 480 - (30 + y * 60))];
         [self->block_layer addChild:block];
         

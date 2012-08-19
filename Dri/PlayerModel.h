@@ -19,6 +19,6 @@
     DLPoint pos;
 }
 
-@property(nonatomic, readonly) DLPoint pos;
+@property(nonatomic, readwrite, assign) DLPoint pos;
 
 @end

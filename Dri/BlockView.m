@@ -8,10 +8,11 @@
 
 #import "BlockView.h"
 #import "BlockModel.h"
+#import "PlayerModel.h"
 
 @implementation BlockView
 
-+(BlockView *) create:(BlockModel*)b
++(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx
 {
     // ブロック
     NSString *filename;
@@ -50,6 +51,21 @@
     label.color = ccc3(0, 0, 0);
     label.visible = b.can_tap; // タップ出来ないときは数字を見せない
     [block addChild:label];
+    
+    // 数字
+    int c = [ctx.route_map get:cdp(b.x, b.y)];
+    CCLabelTTF *cost = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", c] fontName:@"AppleGothic" fontSize:20];
+    cost.position =  ccp(40, 30);
+    cost.color = ccc3(0, 0, 255);
+    [block addChild:cost];
+    
+    // 数字
+    if (ctx.player.pos.x == b.x && ctx.player.pos.y == b.y) {
+        CCLabelTTF *cost = [CCLabelTTF labelWithString:@"@" fontName:@"AppleGothic" fontSize:20];
+        cost.position =  ccp(40, 20);
+        cost.color = ccc3(0, 255, 0);
+        [block addChild:cost];
+    }
     
     return block;
 }
