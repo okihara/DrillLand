@@ -33,26 +33,30 @@
     [self fill:0];
 }
 
--(int)get_x:(int)_x y:(int)_y
+-(int)get:(DLPoint)pos
 {
-    if ([self is_outbound:_x y:_y]) {
+    if ([self is_outbound:pos.x y:pos.y]) {
         return -1;
     }
-    return tile_map[_y][_x];
+    return tile_map[pos.y][pos.x];
 }
 
+-(int)get_x:(int)_x y:(int)_y
+{
+    return [self get:cdp(_x, _y)];
+}    
 
 -(void)set:(DLPoint)pos value:(int)_value
 {
-    [self set_x:pos.x y:pos.y value:_value];
+    if ([self is_outbound:pos.x y:pos.y]) {
+        return;
+    }
+    tile_map[pos.y][pos.x] = _value;
 }
 
 -(void)set_x:(int)_x y:(int)_y value:(int)_value
 {
-    if ([self is_outbound:_x y:_y]) {
-        return;
-    }
-    tile_map[_y][_x] = _value;
+    [self set:cdp(_x, _y) value:_value];
 }
 
 -(BOOL)is_outbound:(int)_x y:(int)_y

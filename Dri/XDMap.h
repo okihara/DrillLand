@@ -23,7 +23,9 @@ DLPoint cdp(int x, int y);
 }
 
 -(void)clear;
+-(int)get:(DLPoint)pos;
 -(int)get_x:(int)_x y:(int)_y;
+-(void)set:(DLPoint)pos value:(int)_value;
 -(void)set_x:(int)_x y:(int)_y value:(int)_value;
 -(BOOL)is_outbound:(int)_x y:(int)y;
 -(void)fill:(int)value;
