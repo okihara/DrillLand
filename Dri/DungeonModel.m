@@ -42,6 +42,8 @@
     if (self = [super init]) {
 
         self->done_map = [[TileMap alloc] init];
+        self->route_map = [[TileMap alloc] init];
+
         self->map = [[TileMap2 alloc] init];
         [self _fill_blocks];
         
@@ -187,6 +189,41 @@
     [self update_group_info_r:ccp(x + 1, y + 0) group_id:_group_id group_info:_group_info];
     [self update_group_info_r:ccp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
 }
+
+-(void) update_route_map:(DLPoint)pos target:(DLPoint)target
+{
+    [self->route_map fill:999];
+    [self update_route_map_r:pos target:target level:0];
+}
+
+-(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level
+{
+    // ゴール以降は探索しない
+    if (pos.x == target.x && pos.y == target.y) return;
+    
+    // ブロックの場合はそれ以上探索しない
+    // level = 0 （最初の一回目は）例外
+    BlockModel* b = [self->map get_x:pos.x y:pos.y];
+    if (b.type != 0 && level != 0) return;
+
+    int cost = [self->route_map get_x:pos.x y:pos.y];
+
+    // 画面外は -1 が返る
+    // 画面外なら、それ以上探索しない
+    if (cost < 0) return;
+    
+    // 計算済みの cost が同じか小さい場合探索しない
+    if (cost <= level) return;
+
+    [self->route_map set_x:pos.y y:pos.x value:level];
+
+    [self update_route_map_r:cdp(pos.x + 0, pos.y - 1) target:target level: level + 1];
+    [self update_route_map_r:cdp(pos.x + 0, pos.y + 1) target:target level: level + 1];
+    [self update_route_map_r:cdp(pos.x - 1, pos.y + 0) target:target level: level + 1];
+    [self update_route_map_r:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
+}
+
+//---------------------------------------------------
 
 -(BlockModel*) get_x:(int)_x y:(int)_y
 {
