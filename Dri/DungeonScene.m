@@ -11,6 +11,7 @@
 #import "DungeonScene.h"
 #import "DungeonModel.h"
 #import "DungeonView.h"
+#import "PlayerModel.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -64,20 +65,26 @@
 
     [self->dungeon hit:ccp(x, y)];
 
-    NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
-
     // ここでタップ禁止にしてたいね
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
-    if (1) {
+    if (0) {
         offset_y += 30;
+    } else {
+        int y = (int)(offset_y / 60);
+        int diff = self->dungeon.player.pos.y - y;
+        NSLog(@" scroll y:%d, player.y:%d diff %d", y, self->dungeon.player.pos.y, diff);
+        
+        if (diff - 2 > 0) {
+            offset_y += 60 * (diff - 2);
+        }
     }
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
     if (offset_y > 510) offset_y = 510;
 
-    CCAction* act_move = [CCMoveTo actionWithDuration: 0.2 position:ccp(0, offset_y)];
+    CCAction* act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
     [dungeon_view runAction: act_move];
 }
 

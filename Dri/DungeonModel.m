@@ -327,47 +327,47 @@
     
     // グループ0
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(2, 1) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(1, 1) block:(id)b];
 
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(0, 1) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(0, 2) block:(id)b];
 
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(0, 3) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(1, 3) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(0, 4) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(1, 4) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 3;
+    b.type = 4;
     b.group_id = 2;
     [self set:ccp(2, 4) block:(id)b];
     
@@ -436,12 +436,19 @@
     b.group_id = 2;
     [self set:ccp(4, 8) block:(id)b];
     
-    
+    // slime1
     b = [[BlockModel alloc] init];
     b.type = 5;
     b.hp = 3;
     [self set:ccp(2, 9) block:(id)b];
     
+    // slime2
+    b = [[BlockModel alloc] init];
+    b.type = 5;
+    b.hp = 3;
+    [self set:ccp(1, 13) block:(id)b];
+    
+    //slime2
     b = [[BlockModel alloc] init];
     b.type = 6;
     b.hp = 10;
