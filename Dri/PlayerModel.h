@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Player : NSObject
+@interface PlayerModel : NSObject
 {
     int hp;
     int exp;

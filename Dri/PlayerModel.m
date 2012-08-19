@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Player.h"
+#import "PlayerModel.h"
 
-@implementation Player
+@implementation PlayerModel
 
 @synthesize x;
 @synthesize y;

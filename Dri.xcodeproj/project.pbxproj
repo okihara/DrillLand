@@ -139,7 +139,7 @@
 		C1B178A815DF871700014FD2 /* block99.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B178A715DF871700014FD2 /* block99.png */; };
 		C1B178AB15DF903100014FD2 /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B178AA15DF903100014FD2 /* BlockView.m */; };
 		C1B178AD15DF995500014FD2 /* block04.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B178AC15DF995400014FD2 /* block04.png */; };
-		C1B178B015DFB1B100014FD2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B178AF15DFB1B000014FD2 /* Player.m */; };
+		C1B178B015DFB1B100014FD2 /* PlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B178AF15DFB1B000014FD2 /* PlayerModel.m */; };
 		C1B178B215DFBB1600014FD2 /* mon001.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B178B115DFBB1600014FD2 /* mon001.png */; };
 		C1B178B415DFC5B800014FD2 /* mon002.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B178B315DFC5B700014FD2 /* mon002.png */; };
 		C1DCF88B15DBB70800C15562 /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88A15DBB70800C15562 /* DungeonModel.m */; };
@@ -417,8 +417,8 @@
 		C1B178A915DF903000014FD2 /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockView.h; sourceTree = "<group>"; };
 		C1B178AA15DF903100014FD2 /* BlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockView.m; sourceTree = "<group>"; };
 		C1B178AC15DF995400014FD2 /* block04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block04.png; path = Resources/block04.png; sourceTree = "<group>"; };
-		C1B178AE15DFB1AF00014FD2 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		C1B178AF15DFB1B000014FD2 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PlayerModel.h; sourceTree = "<group>"; };
+		C1B178AF15DFB1B000014FD2 /* PlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerModel.m; sourceTree = "<group>"; };
 		C1B178B115DFBB1600014FD2 /* mon001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon001.png; path = Resources/mon001.png; sourceTree = "<group>"; };
 		C1B178B315DFC5B700014FD2 /* mon002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon002.png; path = Resources/mon002.png; sourceTree = "<group>"; };
 		C1DCF88915DBB70800C15562 /* DungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonModel.h; sourceTree = "<group>"; };
@@ -493,8 +493,8 @@
 				C19547C415D7F48B002119CC /* AppDelegate.m */,
 				C19547C615D7F48B002119CC /* DungeonScene.h */,
 				C19547C715D7F48B002119CC /* DungeonScene.m */,
-				C1B178AE15DFB1AF00014FD2 /* Player.h */,
-				C1B178AF15DFB1B000014FD2 /* Player.m */,
+				C1B178AE15DFB1AF00014FD2 /* PlayerModel.h */,
+				C1B178AF15DFB1B000014FD2 /* PlayerModel.m */,
 				C1B178A915DF903000014FD2 /* BlockView.h */,
 				C1B178AA15DF903100014FD2 /* BlockView.m */,
 				C1DCF88F15DCA5FC00C15562 /* BlockModel.h */,
@@ -1070,7 +1070,7 @@
 				C1DCF89115DCA5FC00C15562 /* BlockModel.m in Sources */,
 				C1DCF89815DE130D00C15562 /* DungeonView.m in Sources */,
 				C1B178AB15DF903100014FD2 /* BlockView.m in Sources */,
-				C1B178B015DFB1B100014FD2 /* Player.m in Sources */,
+				C1B178B015DFB1B100014FD2 /* PlayerModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
