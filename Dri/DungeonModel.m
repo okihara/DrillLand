@@ -12,32 +12,6 @@
 
 @implementation DungeonModel
 
--(void)_fill_blocks
-{
-    int disp_w = WIDTH;
-    int disp_h = HEIGHT;
-    for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
-            BlockModel* b = [[BlockModel alloc] init];
-            b.type = 1;
-            [self set:ccp(i, j) block:b];
-        }
-    }
-}
-
--(void)_clear_can_tap
-{
-    int disp_w = WIDTH;
-    int disp_h = HEIGHT;
-    for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
-            BlockModel* b = [self->map get_x:i y:j];
-            b.can_tap = NO;
-        }
-    }   
-}
-
-
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
@@ -57,17 +31,6 @@
 {
     self->observer = _observer;
 }
-
--(void) _hit:(BlockModel*)b
-{
-    [b on_hit];
-    
-    [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
-    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
-    [self->observer notify_particle:b];
-    [self->observer notify:self];
-}
-
 
 -(void) hit:(CGPoint)pos
 {
@@ -96,6 +59,16 @@
         [self _hit:b];
     }
 
+}
+
+-(void) _hit:(BlockModel*)b
+{
+    [b on_hit];
+    
+    [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
+    [self update_can_tap:ccp(2, 0)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self->observer notify_particle:b];
+    [self->observer notify:self];
 }
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
@@ -229,6 +202,34 @@
     [self update_route_map_r:cdp(pos.x + 0, pos.y + 1) target:target level: level + 1];
     [self update_route_map_r:cdp(pos.x - 1, pos.y + 0) target:target level: level + 1];
     [self update_route_map_r:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
+}
+
+//# かならず 1 に辿り着けることを期待してるね
+-(DLPoint) get_player_pos:(DLPoint)pos
+{
+    //# ゴールなので座標を返す
+    int cost = [self->route_map get_x:pos.x y:pos.y];
+    if (cost == 1) return pos;
+    // 移動なし
+    // TODO: マジックナンバー(>_<)
+    if (cost == 999) return pos;
+
+    //NSArray *cost_list = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], nil];
+//u = [route_map.get(x + 0, y - 1), [0, -1]]
+//d = [route_map.get(x + 0, y + 1), [0, 1]]
+//l = [route_map.get(x - 1, y + 0), [-1, 0]]
+//r = [route_map.get(x + 1, y + 0), [1, 0]]
+//
+//map_list = []
+//map_list.push(u) if u[0]
+//map_list.push(d) if d[0]
+//map_list.push(l) if l[0]
+//map_list.push(r) if r[0]
+//sorted = map_list.sort { |a,b| a[0] <=> b[0] }
+//pos = sorted[0][1]
+//
+//return get_player_pos(route_map, x + pos[0], y + pos[1])
+    return pos;
 }
 
 //---------------------------------------------------
@@ -390,6 +391,31 @@
     b.type = 99;
     b.hp = -1;
     [self set:ccp(4, 16) block:(id)b];
+}
+
+-(void)_fill_blocks
+{
+    int disp_w = WIDTH;
+    int disp_h = HEIGHT;
+    for (int j = 0; j < disp_h; j++) {
+        for (int i = 0; i < disp_w; i++) {
+            BlockModel* b = [[BlockModel alloc] init];
+            b.type = 1;
+            [self set:ccp(i, j) block:b];
+        }
+    }
+}
+
+-(void)_clear_can_tap
+{
+    int disp_w = WIDTH;
+    int disp_h = HEIGHT;
+    for (int j = 0; j < disp_h; j++) {
+        for (int i = 0; i < disp_w; i++) {
+            BlockModel* b = [self->map get_x:i y:j];
+            b.can_tap = NO;
+        }
+    }   
 }
 
 @end
