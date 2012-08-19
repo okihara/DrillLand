@@ -11,6 +11,9 @@
 #import "TileMap.h"
 #import "BlockModel.h"
 
+#define WIDTH 5
+#define HEIGHT 17
+
 @class DungeonModel;
 @protocol DungenModelObserver <NSObject>
 
@@ -36,5 +39,6 @@
 -(void) set:(CGPoint)pos block:(BlockModel*)block;
 -(BlockModel*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
+- (void)_setup;
 
 @end

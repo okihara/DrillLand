@@ -28,6 +28,12 @@
         case 4:
             filename = @"block04.png";
             break;
+        case 5:
+            filename = @"mon001.png";
+            break;
+        case 6:
+            filename = @"mon002.png";
+            break;
         case 99:
             filename = @"block99.png";
             break;

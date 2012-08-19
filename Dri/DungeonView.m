@@ -35,8 +35,8 @@
 {
 	if( (self=[super init]) ) {
         
-        disp_w = 5;
-        disp_h = 10;
+        disp_w = WIDTH;
+        disp_h = HEIGHT;
         offset_y = 0;
         
         self->view_map = [[TileMap2 alloc] init];

@@ -13,8 +13,8 @@
 
 -(void)_fill_blocks
 {
-    int disp_w = 5;
-    int disp_h = 10;
+    int disp_w = WIDTH;
+    int disp_h = HEIGHT;
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
             BlockModel* b = [[BlockModel alloc] init];
@@ -26,8 +26,8 @@
 
 -(void)_clear_can_tap
 {
-    int disp_w = 5;
-    int disp_h = 10;
+    int disp_w = WIDTH;
+    int disp_h = HEIGHT;
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
             BlockModel* b = [self->map get_x:i y:j];
@@ -35,6 +35,7 @@
         }
     }   
 }
+
 
 -(id) init:(NSArray*)initial
 {
@@ -44,104 +45,7 @@
         self->map = [[TileMap2 alloc] init];
         [self _fill_blocks];
         
-        // dummy
-        BlockModel* b;
-
-        // 消えない
-        b = [[BlockModel alloc] init];
-        b.type = 99;
-        b.hp = -1;
-        [self set:ccp(0, 7) block:(id)b];
-        b = [[BlockModel alloc] init];
-        b.type = 99;
-        b.hp = -1;
-        [self set:ccp(1, 7) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 99;
-        b.hp = -1;
-        [self set:ccp(2, 7) block:(id)b];
-        
-        //
-        b = [[BlockModel alloc] init];
-        b.type = 0;
-        [self set:ccp(2, 0) block:(id)b];
-
-        b = [[BlockModel alloc] init];
-        b.type = 0;
-        [self set:ccp(2, 1) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 0;
-        [self set:ccp(2, 2) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 0;
-        [self set:ccp(2, 3) block:(id)b];
-
-        // グループ消しサンプル
-        b = [[BlockModel alloc] init];
-        b.type = 2;
-        b.group_id = 1;
-        [self set:ccp(1, 2) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 2;
-        b.group_id = 1;
-        [self set:ccp(2, 2) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 2;
-        b.group_id = 1;
-        [self set:ccp(2, 3) block:(id)b];
-
-        // グループ消しサンプル2
-        b = [[BlockModel alloc] init];
-        b.type = 3;
-        b.group_id = 1;
-        [self set:ccp(3, 4) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 3;
-        b.group_id = 1;
-        [self set:ccp(3, 5) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 3;
-        b.group_id = 1;
-        [self set:ccp(3, 6) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 3;
-        b.group_id = 1;
-        [self set:ccp(3, 7) block:(id)b];
-        
-        // グループ消しサンプル3
-        b = [[BlockModel alloc] init];
-        b.type = 4;
-        b.group_id = 2;
-        [self set:ccp(0, 8) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 4;
-        b.group_id = 2;
-        [self set:ccp(1, 8) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 4;
-        b.group_id = 2;
-        [self set:ccp(2, 8) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 4;
-        b.group_id = 2;
-        b.hp = 2;
-        [self set:ccp(3, 8) block:(id)b];
-        
-        b = [[BlockModel alloc] init];
-        b.type = 4;
-        b.group_id = 2;
-        [self set:ccp(4, 8) block:(id)b];    
+        [self _setup];
     }
     return self;
 }
@@ -300,6 +204,145 @@
     [self->map release];
     [self->done_map release];
     [super dealloc];
+}
+
+- (void)_setup
+{
+    // dummy
+    BlockModel* b;
+    
+    // 消えない
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(0, 7) block:(id)b];
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(1, 7) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(2, 7) block:(id)b];
+    
+    //
+    b = [[BlockModel alloc] init];
+    b.type = 0;
+    [self set:ccp(2, 0) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 0;
+    [self set:ccp(2, 1) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 0;
+    [self set:ccp(2, 2) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 0;
+    [self set:ccp(2, 3) block:(id)b];
+    
+    // グループ消しサンプル
+    b = [[BlockModel alloc] init];
+    b.type = 2;
+    b.group_id = 1;
+    [self set:ccp(1, 2) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 2;
+    b.group_id = 1;
+    [self set:ccp(2, 2) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 2;
+    b.group_id = 1;
+    [self set:ccp(2, 3) block:(id)b];
+    
+    // グループ消しサンプル2
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 1;
+    [self set:ccp(3, 4) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 1;
+    [self set:ccp(3, 5) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 1;
+    [self set:ccp(3, 6) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 1;
+    [self set:ccp(3, 7) block:(id)b];
+    
+    // グループ消しサンプル3
+    b = [[BlockModel alloc] init];
+    b.type = 4;
+    b.group_id = 2;
+    [self set:ccp(0, 8) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 4;
+    b.group_id = 2;
+    [self set:ccp(1, 8) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 4;
+    b.group_id = 2;
+    [self set:ccp(2, 8) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 4;
+    b.group_id = 2;
+    b.hp = 2;
+    [self set:ccp(3, 8) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 4;
+    b.group_id = 2;
+    [self set:ccp(4, 8) block:(id)b];
+    
+    
+    b = [[BlockModel alloc] init];
+    b.type = 5;
+    b.hp = 3;
+    [self set:ccp(2, 9) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 6;
+    b.hp = 10;
+    [self set:ccp(4, 15) block:(id)b];
+    
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(0, 16) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(1, 16) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(2, 16) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(3, 16) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 99;
+    b.hp = -1;
+    [self set:ccp(4, 16) block:(id)b];
 }
 
 @end

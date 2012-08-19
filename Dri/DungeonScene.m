@@ -67,9 +67,17 @@
     NSLog(@"touched %d, %d offset_y %d", x, y, offset_y / 60);
 
     // ここでタップ禁止にしてたいね
-    offset_y += 30;
+    // 一番現在移動できるポイントが中央にくるまでスクロール？
+    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
+    // 一度いった時は引き返せない
+    if (1) {
+        offset_y += 30;
+    }
+    // ここらへんはフロアの情報によって決まる
+    // current_floor_max_rows * block_height + margin
+    if (offset_y > 510) offset_y = 510;
 
-    CCAction* act_move = [CCMoveTo actionWithDuration: 0.3 position:ccp(0, offset_y)];
+    CCAction* act_move = [CCMoveTo actionWithDuration: 0.2 position:ccp(0, offset_y)];
     [dungeon_view runAction: act_move];
 }
 
