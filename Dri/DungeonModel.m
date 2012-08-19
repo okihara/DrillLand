@@ -320,22 +320,57 @@
     b.hp = -1;
     [self set:ccp(2, 7) block:(id)b];
     
-    //
+    // 隙間
     b = [[BlockModel alloc] init];
     b.type = 0;
     [self set:ccp(2, 0) block:(id)b];
     
+    // グループ0
     b = [[BlockModel alloc] init];
-    b.type = 0;
+    b.type = 3;
+    b.group_id = 2;
     [self set:ccp(2, 1) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 0;
-    [self set:ccp(2, 2) block:(id)b];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(1, 1) block:(id)b];
+
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(0, 1) block:(id)b];
     
     b = [[BlockModel alloc] init];
-    b.type = 0;
-    [self set:ccp(2, 3) block:(id)b];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(0, 2) block:(id)b];
+
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(0, 3) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(1, 3) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(0, 4) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(1, 4) block:(id)b];
+    
+    b = [[BlockModel alloc] init];
+    b.type = 3;
+    b.group_id = 2;
+    [self set:ccp(2, 4) block:(id)b];
+    
     
     // グループ消しサンプル
     b = [[BlockModel alloc] init];
