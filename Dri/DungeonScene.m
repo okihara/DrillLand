@@ -62,23 +62,17 @@
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y + offset_y) / 60);
-
     [self->dungeon hit:ccp(x, y)];
 
     // ここでタップ禁止にしてたいね
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
-    if (0) {
-        offset_y += 30;
-    } else {
-        int y = (int)(offset_y / 60);
-        int diff = self->dungeon.player.pos.y - y;
-        NSLog(@" scroll y:%d, player.y:%d diff %d", y, self->dungeon.player.pos.y, diff);
-        
-        if (diff - 2 > 0) {
-            offset_y += 60 * (diff - 2);
-        }
+    int by = (int)(offset_y / 60);
+    int diff = self->dungeon.player.pos.y - by;
+    NSLog(@" scroll y:%d, player.y:%d diff %d", y, self->dungeon.player.pos.y, diff);
+    if (diff - 2 > 0) {
+        offset_y += 60 * (diff - 2);
     }
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
