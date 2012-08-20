@@ -84,9 +84,4 @@
     [self make_particle:block];
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-{
-    [delegate ccTouchesEnded:touches withEvent:event];
-}
-
 @end
