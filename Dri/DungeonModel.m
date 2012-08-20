@@ -40,15 +40,14 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    
-    // プレイヤーの移動フェイズ
+    // -- プレイヤーの移動フェイズ
     [self update_route_map:cdp(x, y) target:player.pos];
     DLPoint next_pos = [self get_player_pos:player.pos];
     self->player.pos = next_pos;
     // TODO: ここで notify すべき
     NSLog(@"next_pos %d %d", next_pos.x, next_pos.y);
     
-    // ブロックのヒット処理フェイズ
+    // -- ブロックのヒット処理フェイズ
     BlockModel* b = [self get_x:x y:y];
     if (b.can_tap == NO) {
         // TODO: notify
@@ -63,10 +62,13 @@
         [self _hit:b];
     }
     
-    // アップデートフェイズ
+    // -- アップデートフェイズ
     // ブロックのターン！
     // 全ブロックに対して
     // update 呼ぶ
+    // for (block in 可視範囲のブロック) {
+    //     block.update(context);
+    // }
 }
 
 -(void) _hit:(BlockModel*)b
