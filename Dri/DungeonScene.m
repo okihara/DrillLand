@@ -84,8 +84,9 @@
     // current_floor_max_rows * block_height + margin
     if (offset_y > 510) offset_y = 510;
 
-    CCAction* act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
-    [dungeon_view runAction: act_move];
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
+    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [dungeon_view runAction:ease];
 }
 
 // on "dealloc" you need to release all your retained objects
