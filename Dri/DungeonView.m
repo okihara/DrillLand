@@ -48,17 +48,13 @@
 	return self;
 }
 
-- (void)update_view_line:(int)j _model:(DungeonModel *)_dungeon
+- (void)update_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
-    for (int i = 0; i < disp_w; i++) {
+    for (int x = 0; x < disp_w; x++) {
         
-        int x = i;
-        int y = j;
-        
-        BlockModel* block_base = [_dungeon get_x:x y:y];
-        
-        BlockView* block = [BlockView create:block_base ctx:_dungeon];
-        [block setPosition:ccp(30 + x * 60, 480 - (30 + y * 60))];
+        BlockModel *block_base = [_dungeon get_x:x y:y];
+        BlockView *block = [BlockView create:block_base ctx:_dungeon];
+        block.position = ccp(30 + x * 60, 480 - (30 + y * 60));
         [self->block_layer addChild:block];
         
         [view_map set_x:x y:y value:block];
@@ -68,8 +64,8 @@
 - (void)update_view:(DungeonModel *)_dungeon
 {
     [view_map clear];
-    for (int j = 0; j < disp_h; j++) {
-        [self update_view_line:j _model:_dungeon];
+    for (int y = 0; y < disp_h; y++) {
+        [self update_view_line:y _model:_dungeon];
     }
 }
 

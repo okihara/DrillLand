@@ -73,6 +73,10 @@
     
     [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    
+    // このふたつがおかしい
+    // どのオブジェクトがタップされたか？
+    // それだけで良い
     [self->observer notify_particle:b];
     [self->observer notify:self];
 }
