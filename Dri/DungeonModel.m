@@ -81,6 +81,7 @@
     // このふたつがおかしい
     // どのオブジェクトがタップされたか？
     // それだけで良い
+    // しかもここじゃなくモデルにかくべき
     [self->observer notify_particle:b];
     [self->observer notify:self];
 }

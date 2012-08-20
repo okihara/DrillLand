@@ -39,6 +39,7 @@
     if (--hp == 0) {
         type = 0;
         // fire MSG_HP_0
+        // TODO: notify
     }
 }
 
