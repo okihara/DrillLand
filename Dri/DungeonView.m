@@ -16,7 +16,21 @@
 
 @synthesize delegate;
 
--(void) make_particle:(BlockModel*)b
+-(void) make_particle02:(BlockModel*)b
+{
+    CCSprite* block = [view_map get_x:b.x y:b.y];
+    CGPoint pos = block.position;
+    
+    CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
+    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
+    fire.totalParticles = 8;
+    fire.speed = 100;
+    fire.position = pos;
+    
+    [self->effect_layer addChild:fire];
+}
+
+-(void) make_particle01:(BlockModel*)b
 {
     CCSprite* block = [view_map get_x:b.x y:b.y];
     CGPoint pos = block.position;
@@ -29,6 +43,12 @@
     fire.position = pos;
         
     [self->effect_layer addChild:fire];
+}
+
+-(void) make_particle:(BlockModel*)b
+{
+    [self make_particle01:b];
+    [self make_particle02:b];
 }
 
 -(id) init

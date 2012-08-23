@@ -32,7 +32,7 @@
 	}
 	return self;
 }
-
+    
 // TODO:あとでポリモる
 -(void)on_hit
 {
