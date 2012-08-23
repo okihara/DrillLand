@@ -146,6 +146,7 @@
 		C1DCF88E15DC61A700C15562 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF88D15DC61A600C15562 /* XDMap.m */; };
 		C1DCF89115DCA5FC00C15562 /* BlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89015DCA5FC00C15562 /* BlockModel.m */; };
 		C1DCF89815DE130D00C15562 /* DungeonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCF89715DE130D00C15562 /* DungeonView.m */; };
+		C1EEBCAF15E6F1E7007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCAE15E6F1E7007F1814 /* XDMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -423,12 +424,13 @@
 		C1B178B315DFC5B700014FD2 /* mon002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon002.png; path = Resources/mon002.png; sourceTree = "<group>"; };
 		C1DCF88915DBB70800C15562 /* DungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonModel.h; sourceTree = "<group>"; };
 		C1DCF88A15DBB70800C15562 /* DungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonModel.m; sourceTree = "<group>"; };
-		C1DCF88C15DC61A600C15562 /* XDMap.h */ = {isa = PBXFileReference; fileEncoding = 4; path = XDMap.h; sourceTree = "<group>"; };
+		C1DCF88C15DC61A600C15562 /* XDMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDMap.h; path = src/XDMap.h; sourceTree = "<group>"; };
 		C1DCF88D15DC61A600C15562 /* XDMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMap.m; sourceTree = "<group>"; };
 		C1DCF88F15DCA5FC00C15562 /* BlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockModel.h; sourceTree = "<group>"; };
 		C1DCF89015DCA5FC00C15562 /* BlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockModel.m; sourceTree = "<group>"; };
 		C1DCF89615DE130C00C15562 /* DungeonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonView.h; sourceTree = "<group>"; };
 		C1DCF89715DE130D00C15562 /* DungeonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonView.m; sourceTree = "<group>"; };
+		C1EEBCAE15E6F1E7007F1814 /* XDMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDMap.m; path = src/XDMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 			children = (
 				C1DCF88C15DC61A600C15562 /* XDMap.h */,
 				C1DCF88D15DC61A600C15562 /* XDMap.m */,
+				C1EEBCAE15E6F1E7007F1814 /* XDMap.m */,
 				C19547C315D7F48B002119CC /* AppDelegate.h */,
 				C19547C415D7F48B002119CC /* AppDelegate.m */,
 				C19547C615D7F48B002119CC /* DungeonScene.h */,
@@ -1071,6 +1074,7 @@
 				C1DCF89815DE130D00C15562 /* DungeonView.m in Sources */,
 				C1B178AB15DF903100014FD2 /* BlockView.m in Sources */,
 				C1B178B015DFB1B100014FD2 /* PlayerModel.m in Sources */,
+				C1EEBCAF15E6F1E7007F1814 /* XDMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
