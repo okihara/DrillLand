@@ -914,24 +914,12 @@
 		C1EEBCC515E6F31B007F1814 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C1EEBCB015E6F2DB007F1814 /* BlockModel.h */,
-				C1EEBCB115E6F2DB007F1814 /* BlockModel.m */,
-				C1EEBCB215E6F2DC007F1814 /* BlockView.h */,
-				C1EEBCB315E6F2DC007F1814 /* BlockView.m */,
-				C1EEBD0515E83BEC007F1814 /* PlayerView.h */,
-				C1EEBD0615E83BED007F1814 /* PlayerView.m */,
-				C1EEBCB415E6F2DC007F1814 /* DungeonModel.h */,
-				C1EEBCB515E6F2DC007F1814 /* DungeonModel.m */,
+				C1EEBD0915E84329007F1814 /* view */,
+				C1EEBD0815E8431E007F1814 /* model */,
 				C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */,
 				C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */,
 				C1EEBCF615E6F74C007F1814 /* DungeonPreloadScene.h */,
 				C1EEBCF715E6F74C007F1814 /* DungeonPreloadScene.m */,
-				C1EEBCB815E6F2DC007F1814 /* DungeonView.h */,
-				C1EEBCB915E6F2DC007F1814 /* DungeonView.m */,
-				C1EEBCBA15E6F2DC007F1814 /* PlayerModel.h */,
-				C1EEBCBB15E6F2DC007F1814 /* PlayerModel.m */,
-				C1EEBCC915E6F425007F1814 /* XDMap.h */,
-				C1EEBCCA15E6F425007F1814 /* XDMap.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1001,6 +989,34 @@
 				C1EEBCFF15E79485007F1814 /* link.json */,
 			);
 			name = animation;
+			sourceTree = "<group>";
+		};
+		C1EEBD0815E8431E007F1814 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBCB415E6F2DC007F1814 /* DungeonModel.h */,
+				C1EEBCB515E6F2DC007F1814 /* DungeonModel.m */,
+				C1EEBCB015E6F2DB007F1814 /* BlockModel.h */,
+				C1EEBCB115E6F2DB007F1814 /* BlockModel.m */,
+				C1EEBCBA15E6F2DC007F1814 /* PlayerModel.h */,
+				C1EEBCBB15E6F2DC007F1814 /* PlayerModel.m */,
+				C1EEBCC915E6F425007F1814 /* XDMap.h */,
+				C1EEBCCA15E6F425007F1814 /* XDMap.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		C1EEBD0915E84329007F1814 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBCB815E6F2DC007F1814 /* DungeonView.h */,
+				C1EEBCB915E6F2DC007F1814 /* DungeonView.m */,
+				C1EEBCB215E6F2DC007F1814 /* BlockView.h */,
+				C1EEBCB315E6F2DC007F1814 /* BlockView.m */,
+				C1EEBD0515E83BEC007F1814 /* PlayerView.h */,
+				C1EEBD0615E83BED007F1814 /* PlayerView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
