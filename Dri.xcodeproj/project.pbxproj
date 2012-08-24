@@ -159,6 +159,7 @@
 		C1EEBCF115E6F50E007F1814 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCE415E6F50E007F1814 /* SBJsonUTF8Stream.m */; };
 		C1EEBCF215E6F50E007F1814 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCE615E6F50E007F1814 /* SBJsonWriter.m */; };
 		C1EEBCF815E6F74C007F1814 /* DungeonPreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCF715E6F74C007F1814 /* DungeonPreloadScene.m */; };
+		C1EEBCFA15E6FC39007F1814 /* anim01.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBCF915E6FC39007F1814 /* anim01.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -469,6 +470,7 @@
 		C1EEBCE615E6F50E007F1814 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		C1EEBCF615E6F74C007F1814 /* DungeonPreloadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonPreloadScene.h; path = src/DungeonPreloadScene.h; sourceTree = "<group>"; };
 		C1EEBCF715E6F74C007F1814 /* DungeonPreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonPreloadScene.m; path = src/DungeonPreloadScene.m; sourceTree = "<group>"; };
+		C1EEBCF915E6FC39007F1814 /* anim01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = anim01.json; path = Resources/animation/anim01.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +541,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBCF915E6FC39007F1814 /* anim01.json */,
 				C195464D15D7F485002119CC /* Default.png */,
 				C195464F15D7F485002119CC /* Default-Landscape~ipad.png */,
 				C1B1789F15DF695D00014FD2 /* block02.png */,
@@ -1044,6 +1047,7 @@
 				C1B178AD15DF995500014FD2 /* block04.png in Resources */,
 				C1B178B215DFBB1600014FD2 /* mon001.png in Resources */,
 				C1B178B415DFC5B800014FD2 /* mon002.png in Resources */,
+				C1EEBCFA15E6FC39007F1814 /* anim01.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

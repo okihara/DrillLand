@@ -29,6 +29,13 @@
 
 -(void)onEnter
 {
+    NSLog(@"preload on enter");
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"anim01.json"];
+    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+                          
+    id jsonItem = [jsonData JSONValue];  
+
+    //-------------------------------------------------
     CCDirector* director = [CCDirector sharedDirector];
     [director replaceScene:[DungeonScene scene]];
 }
