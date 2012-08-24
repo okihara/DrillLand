@@ -27,7 +27,7 @@
 @interface DungeonModel : NSObject
 {
     PlayerModel* player;
-    TileMap2 *map;
+    ObjectXDMap *map;
     XDMap *done_map;
     XDMap *route_map;
     id<DungenModelObserver> observer;

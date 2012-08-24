@@ -19,7 +19,7 @@
     int disp_w;
     int disp_h;
     
-    TileMap2* view_map;
+    ObjectXDMap* view_map;
     
     CCLayer* effect_layer;
     CCLayer* block_layer;

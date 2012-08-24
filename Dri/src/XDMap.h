@@ -32,7 +32,7 @@ DLPoint cdp(int x, int y);
 
 @end
 
-@interface TileMap2 : NSObject
+@interface ObjectXDMap : NSObject
 {
     id tile_map[30][20];
     int bound_w;

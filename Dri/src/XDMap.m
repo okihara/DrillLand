@@ -84,7 +84,7 @@ DLPoint cdp(int x, int y) {
 
 
 
-@implementation TileMap2
+@implementation ObjectXDMap
 
 -(id) init
 {

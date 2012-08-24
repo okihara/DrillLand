@@ -61,7 +61,7 @@
         disp_h = HEIGHT;
         offset_y = 0;
         
-        self->view_map = [[TileMap2 alloc] init];
+        self->view_map = [[ObjectXDMap alloc] init];
         
         self->block_layer = [[CCLayer alloc]init];
         [self addChild:self->block_layer];

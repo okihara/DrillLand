@@ -22,7 +22,7 @@
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
 
-        self->map = [[TileMap2 alloc] init];
+        self->map = [[ObjectXDMap alloc] init];
         [self _fill_blocks];
         
         [self _setup];
