@@ -11,6 +11,8 @@
 #import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
+#import "PlayerModel.h"
+#import "PlayerView.h"
 
 @implementation DungeonView
 
@@ -60,10 +62,15 @@
         offset_y = 0;
         
         self->view_map = [[TileMap2 alloc] init];
+        
         self->block_layer = [[CCLayer alloc]init];
         [self addChild:self->block_layer];
+        
         self->effect_layer = [[CCLayer alloc]init];
         [self addChild:self->effect_layer];
+        
+        self->player = [[PlayerView alloc] init];
+        [self addChild:self->player];
 	}
 	return self;
 }
@@ -87,6 +94,8 @@
     for (int y = 0; y < disp_h; y++) {
         [self update_view_line:y _model:_dungeon];
     }
+    
+    self->player.position = ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60));
 }
 
 - (void) notify:(DungeonModel*)_dungeon

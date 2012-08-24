@@ -66,6 +66,8 @@
     NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     id jsonItem = [jsonData JSONValue];
     NSDictionary *frames = [(NSDictionary*)jsonItem objectForKey:@"frames"];
+    NSDictionary *meta = [(NSDictionary*)jsonItem objectForKey:@"meta"];
+    NSString* sheet_name = [meta objectForKey:@"image"];
 
     for (NSString* key in [frames keyEnumerator]) {
         NSDictionary* fr = [[frames objectForKey:key] objectForKey:@"frame"];
@@ -75,7 +77,7 @@
         float h = [(NSNumber*)[fr objectForKey:@"h"] floatValue];
         CGRect rect = CGRectMake(x, y, w, h);
         
-        [frame_cache addSpriteFrame:[CCSpriteFrame frameWithTextureFilename:@"link_f.png" rect:rect] name:key];
+        [frame_cache addSpriteFrame:[CCSpriteFrame frameWithTextureFilename:sheet_name rect:rect] name:key];
     }
 }
 
@@ -83,6 +85,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
+        
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
         
@@ -94,10 +97,18 @@
         [self addChild:sp];
         
         CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
-        //CCAction *act = [CCMoveTo actionWithDuration:10 position:ccp(0, 0)];
+        CCAction* act2 = [CCMoveTo actionWithDuration:10 position:ccp(160, 0)];
         [sp runAction:act];
+        [sp runAction:act2];
 	}
 	return self;
+}
+
+-(void)onEnter
+{
+    [super onEnter];
+    
+    [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
 }
 
 @end

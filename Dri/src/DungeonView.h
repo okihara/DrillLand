@@ -10,6 +10,7 @@
 #import "DungeonModel.h"
 
 @class XDMap;
+@class PlayerView;
 
 @interface DungeonView : CCLayer<DungenModelObserver>
 {
@@ -22,6 +23,8 @@
     
     CCLayer* effect_layer;
     CCLayer* block_layer;
+    
+    PlayerView* player;
 }
 
 @property (nonatomic, retain) id delegate;
