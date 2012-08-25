@@ -43,7 +43,7 @@
         dungeon = [[DungeonModel alloc] init:NULL];
         //[dungeon _setup];
         [dungeon add_observer:dungeon_view];
-        [dungeon loadFromFile:@"floor001.json"];
+        [dungeon load_from_file:@"floor001.json"];
         
 		// enable touch
         self.isTouchEnabled = YES;

@@ -34,7 +34,7 @@
 }
 
 -(id) init:(NSArray*)initial;
--(void)loadFromFile:(NSString*)filename;
+-(void) load_from_file:(NSString*)filename;
 -(void) add_observer:(id<DungenModelObserver>)observer;
 -(void) update_can_tap:(CGPoint)pos;
 -(void) update_can_tap_r:(CGPoint)pos;
@@ -48,8 +48,8 @@
 -(void) set:(CGPoint)pos block:(BlockModel*)block;
 -(BlockModel*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
--(void)_fill_blocks;
--(void)_clear_can_tap;
+-(void) _fill_blocks;
+-(void) _clear_can_tap;
 
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) PlayerModel *player;

@@ -307,7 +307,7 @@
 
 //---------------------------------------------------
 
--(void)loadFromFile:(NSString*)filename
+-(void)load_from_file:(NSString*)filename
 {
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
     NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
