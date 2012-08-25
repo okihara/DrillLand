@@ -29,6 +29,7 @@
     fire.life = 1.0;
     fire.speed = 100;
     fire.position = pos;
+    fire.autoRemoveOnFinish = YES;
     
     [self->effect_layer addChild:fire];
 }
@@ -45,6 +46,7 @@
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;
     fire.life = 0.7;
+    fire.autoRemoveOnFinish = YES;
         
     [self->effect_layer addChild:fire];
 }
@@ -58,6 +60,7 @@
     CCSprite* block = [view_map get_x:b.x y:b.y];
     CGPoint pos = block.position;
     p.position = pos;
+    p.autoRemoveOnFinish = YES;
     [self->effect_layer addChild:p];
 }
 
@@ -106,7 +109,6 @@
     CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [self->player runAction:ease];
-    //[self->player.position = ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60));
 }
 
 - (void) notify:(DungeonModel*)_dungeon
