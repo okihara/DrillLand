@@ -70,7 +70,7 @@
         [self addChild:self->effect_layer];
         
         self->player = [[PlayerView alloc] init];
-        [self addChild:self->player];
+        [self->effect_layer addChild:self->player];
 	}
 	return self;
 }
@@ -95,7 +95,10 @@
         [self update_view_line:y _model:_dungeon];
     }
     
-    self->player.position = ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60));
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
+    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [self->player runAction:ease];
+    //[self->player.position = ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60));
 }
 
 - (void) notify:(DungeonModel*)_dungeon

@@ -102,6 +102,19 @@
             "sourceSize":{
                 "w":16,"h":22
             }
+        },
+        "link_a1.png":{
+            "frame":{
+                "x":2,"y":64,"w":32,"h":22
+            },
+            "rotated":false,
+            "trimmed":true,
+            "spriteSourceSize":{
+                "x":0,"y":0,"w":32,"h":22
+            },
+            "sourceSize":{
+                "w":32,"h":22
+            }
         }
     },
     "meta":{

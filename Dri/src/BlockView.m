@@ -52,20 +52,20 @@
     label.visible = b.can_tap; // タップ出来ないときは数字を見せない
     [block addChild:label];
     
-    // 数字
-    int c = [ctx.route_map get:cdp(b.x, b.y)];
-    CCLabelTTF *cost = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", c] fontName:@"AppleGothic" fontSize:20];
-    cost.position =  ccp(40, 30);
-    cost.color = ccc3(0, 0, 255);
-    [block addChild:cost];
-    
-    // 自機
-    if (ctx.player.pos.x == b.x && ctx.player.pos.y == b.y) {
-        CCLabelTTF *cost = [CCLabelTTF labelWithString:@"@" fontName:@"AppleGothic" fontSize:20];
-        cost.position =  ccp(30, 30);
-        cost.color = ccc3(0, 255, 0);
-        [block addChild:cost];
-    }
+//    // 数字
+//    int c = [ctx.route_map get:cdp(b.x, b.y)];
+//    CCLabelTTF *cost = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", c] fontName:@"AppleGothic" fontSize:20];
+//    cost.position =  ccp(40, 30);
+//    cost.color = ccc3(0, 0, 255);
+//    [block addChild:cost];
+//    
+//    // 自機
+//    if (ctx.player.pos.x == b.x && ctx.player.pos.y == b.y) {
+//        CCLabelTTF *cost = [CCLabelTTF labelWithString:@"@" fontName:@"AppleGothic" fontSize:20];
+//        cost.position =  ccp(30, 30);
+//        cost.color = ccc3(0, 255, 0);
+//        [block addChild:cost];
+//    }
     
     return block;
 }
