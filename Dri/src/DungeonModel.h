@@ -48,7 +48,6 @@
 -(void) set:(CGPoint)pos block:(BlockModel*)block;
 -(BlockModel*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;
-- (void)_setup;
 -(void)_fill_blocks;
 -(void)_clear_can_tap;
 
