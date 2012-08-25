@@ -88,18 +88,18 @@
         
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
-        
-        CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:@"walk"];
-        
-        CCSprite *sp = [CCSprite spriteWithSpriteFrameName:@"link_f8.png"];
-        sp.position = ccp(160, 240);
-        sp.scale = 2.0;
-        [self addChild:sp];
-        
-        CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
-        CCAction* act2 = [CCMoveTo actionWithDuration:10 position:ccp(160, 0)];
-        [sp runAction:act];
-        [sp runAction:act2];
+//        
+//        CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:@"walk"];
+//        
+//        CCSprite *sp = [CCSprite spriteWithSpriteFrameName:@"link_f8.png"];
+//        sp.position = ccp(160, 240);
+//        sp.scale = 2.0;
+//        [self addChild:sp];
+//        
+//        CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
+//        CCAction* act2 = [CCMoveTo actionWithDuration:10 position:ccp(160, 0)];
+//        [sp runAction:act];
+//        [sp runAction:act2];
 	}
 	return self;
 }

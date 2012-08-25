@@ -12,7 +12,7 @@
 #import "BlockModel.h"
 
 #define WIDTH 5
-#define HEIGHT 17
+#define HEIGHT 28
 
 @class DungeonModel;
 @protocol DungenModelObserver <NSObject>

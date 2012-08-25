@@ -14,7 +14,7 @@
 {
 	if( (self=[super init]) ) {
         bound_w  = 5;
-        bound_h =  20;
+        bound_h =  30;
     }
     return self;
 }
@@ -90,7 +90,7 @@ DLPoint cdp(int x, int y) {
 {
 	if( (self=[super init]) ) {
         bound_w  = 5;
-        bound_h =  20;
+        bound_h =  30;
         [self clear];
     }
     return self;

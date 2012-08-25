@@ -15,7 +15,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        self->pos = cdp(2, 0);
+        self->pos = cdp(2, 2);
  	}
 	return self;
 }

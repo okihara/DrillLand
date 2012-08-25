@@ -15,7 +15,6 @@
 {
 	if( (self=[super init]) ) {
         [self initWithSpriteFrameName:@"link_f8.png"];
-        self.position = ccp(160, 240);
         self.scale = 2.0;
         [self action:@"walk"];
 	}

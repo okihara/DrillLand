@@ -73,7 +73,8 @@
     }
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
-    if (offset_y > 510) offset_y = 510;
+    int max_scroll = (HEIGHT - 9) * 60 + 30;
+    if (offset_y > max_scroll) offset_y = max_scroll;
 
     CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
