@@ -4,18 +4,43 @@
   <image source="../spritesheet/floor1.png" width="256" height="256"/>
   <tile id="0">
    <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="1"/>
     <property name="type" value="1"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="type" value=""/>
+    <property name="group_id" value="2"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="2"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="group_id" value="3"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="3"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="group_id" value="4"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="4"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="65535"/>
+    <property name="type" value="99"/>
    </properties>
   </tile>
  </tileset>
  <layer name="main" width="5" height="100">
   <data encoding="base64" compression="zlib">
-   eJzjZGBg4ARiRiiNjKklxoQFs2LBbFgwPjtYiXQLMh4Fo2AUjIJRMAqGIwAAyk0Bmw==
+   eJzjZGBg4GSAAE40jE2MkQwxJiyYFQtmw4Lx2cFKpFvQ/TQKRsEoGAWjYBQMNwAAutEBmQ==
   </data>
  </layer>
 </map>

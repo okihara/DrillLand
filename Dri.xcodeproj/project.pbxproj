@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C102EAC615E8E2A5000E8366 /* floor001.json in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC415E8E2A5000E8366 /* floor001.json */; };
+		C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC515E8E2A5000E8366 /* floor001.tmx */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -168,6 +170,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C102EAC415E8E2A5000E8366 /* floor001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor001.json; sourceTree = "<group>"; };
+		C102EAC515E8E2A5000E8366 /* floor001.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = floor001.tmx; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -504,6 +508,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C102EAC315E8E2A5000E8366 /* tilemap */ = {
+			isa = PBXGroup;
+			children = (
+				C102EAC415E8E2A5000E8366 /* floor001.json */,
+				C102EAC515E8E2A5000E8366 /* floor001.tmx */,
+			);
+			name = tilemap;
+			path = Resources/tilemap;
+			sourceTree = "<group>";
+		};
 		C195462A15D7F485002119CC = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +566,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C102EAC315E8E2A5000E8366 /* tilemap */,
 				C1EEBD0A15E86D25007F1814 /* particle */,
 				C1EEBCFC15E79423007F1814 /* animation */,
 				C1EEBCFB15E793F3007F1814 /* spritesheet */,
@@ -1110,6 +1125,8 @@
 				C1EEBD0415E839CF007F1814 /* link_f.png in Resources */,
 				C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */,
 				C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */,
+				C102EAC615E8E2A5000E8366 /* floor001.json in Resources */,
+				C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

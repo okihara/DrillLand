@@ -34,6 +34,7 @@
 }
 
 -(id) init:(NSArray*)initial;
+-(void)loadFromFile:(NSString*)filename;
 -(void) add_observer:(id<DungenModelObserver>)observer;
 -(void) update_can_tap:(CGPoint)pos;
 -(void) update_can_tap_r:(CGPoint)pos;

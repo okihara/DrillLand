@@ -41,12 +41,9 @@
         
         // setup dungeon model
         dungeon = [[DungeonModel alloc] init:NULL];
+        //[dungeon _setup];
         [dungeon add_observer:dungeon_view];
-
-        // 更新
-        BlockModel* b = [[BlockModel alloc] init];
-        b.type = 1;
-        [dungeon set:ccp(1,0) block:b];
+        [dungeon loadFromFile:@"floor001.json"];
         
 		// enable touch
         self.isTouchEnabled = YES;

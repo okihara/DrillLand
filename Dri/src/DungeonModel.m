@@ -9,6 +9,7 @@
 #import "DungeonModel.h"
 #import "BlockModel.h"
 #import "PlayerModel.h"
+#import "SBJson.h"
 
 @implementation DungeonModel
 
@@ -24,8 +25,6 @@
 
         self->map = [[ObjectXDMap alloc] init];
         [self _fill_blocks];
-        
-        [self _setup];
     }
     return self;
 }
@@ -222,7 +221,8 @@
     [self update_route_map_r:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
 }
 
-//# かならず 1 に辿り着けることを期待してるね
+// かならず 1 に辿り着けることを期待してるね
+// TODO: ここの実装ひどい
 -(DLPoint) get_player_pos:(DLPoint)pos
 {
     //# ゴールなので座標を返す
@@ -306,6 +306,41 @@
     [super dealloc];
 }
 
+//---------------------------------------------------
+
+-(void)loadFromFile:(NSString*)filename
+{
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
+    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    id jsonItem = [jsonData JSONValue];
+    NSArray* layers = [(NSDictionary*)jsonItem objectForKey:@"layers"];
+    NSArray* data = [[layers objectAtIndex:0] objectForKey:@"data"];
+    
+    NSArray *tilesets = [(NSDictionary*)jsonItem objectForKey:@"tilesets"];
+    NSDictionary* tileset = [tilesets objectAtIndex:0];
+    NSDictionary* tileproperties = [tileset objectForKey:@"tileproperties"];
+    
+    int width  = [[jsonItem objectForKey:@"width"] integerValue];
+    //int height = [[jsonItem objectForKey:@"height"] integerValue];
+    
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < width; i++) {
+            BlockModel* b = [[BlockModel alloc] init];
+            int b_ind = [[data objectAtIndex:i + j * width] integerValue];
+            if (b_ind == 0) {
+                b.type = 0;
+            } else {
+                NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
+                b.type = [[prop objectForKey:@"type"] intValue];
+                b.hp   = [[prop objectForKey:@"hp"] intValue];
+                b.group_id = [[prop objectForKey:@"group_id"] intValue];
+            }
+            
+            [self set:ccp(i, j) block:b];
+        }
+    }
+    
+}
 
 //---------------------------------------------------
 
