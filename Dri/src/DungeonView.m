@@ -26,6 +26,7 @@
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
     [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
     fire.totalParticles = 8;
+    fire.life = 1.0;
     fire.speed = 100;
     fire.position = pos;
     
@@ -43,6 +44,7 @@
     fire.speed = 200;
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;
+    fire.life = 0.7;
         
     [self->effect_layer addChild:fire];
 }
@@ -51,6 +53,12 @@
 {
     [self make_particle01:b];
     [self make_particle02:b];
+    
+    CCParticleSystem *p = [[[CCParticleSystemQuad alloc] initWithFile:@"hit2.plist"] autorelease];
+    CCSprite* block = [view_map get_x:b.x y:b.y];
+    CGPoint pos = block.position;
+    p.position = pos;
+    [self->effect_layer addChild:p];
 }
 
 -(id) init

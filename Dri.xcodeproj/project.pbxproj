@@ -163,6 +163,8 @@
 		C1EEBD0215E7B995007F1814 /* link_f.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0115E7B995007F1814 /* link_f.json */; };
 		C1EEBD0415E839CF007F1814 /* link_f.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0315E839CF007F1814 /* link_f.png */; };
 		C1EEBD0715E83BED007F1814 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD0615E83BED007F1814 /* PlayerView.m */; };
+		C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0B15E86D25007F1814 /* hit1.plist */; };
+		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -478,6 +480,8 @@
 		C1EEBD0315E839CF007F1814 /* link_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = link_f.png; path = Resources/spritesheet/link_f.png; sourceTree = "<group>"; };
 		C1EEBD0515E83BEC007F1814 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerView.h; path = src/PlayerView.h; sourceTree = "<group>"; };
 		C1EEBD0615E83BED007F1814 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerView.m; path = src/PlayerView.m; sourceTree = "<group>"; };
+		C1EEBD0B15E86D25007F1814 /* hit1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit1.plist; sourceTree = "<group>"; };
+		C1EEBD0D15E870BB007F1814 /* hit2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit2.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +552,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBD0A15E86D25007F1814 /* particle */,
 				C1EEBCFC15E79423007F1814 /* animation */,
 				C1EEBCFB15E793F3007F1814 /* spritesheet */,
 				C195464D15D7F485002119CC /* Default.png */,
@@ -1019,6 +1024,16 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		C1EEBD0A15E86D25007F1814 /* particle */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD0D15E870BB007F1814 /* hit2.plist */,
+				C1EEBD0B15E86D25007F1814 /* hit1.plist */,
+			);
+			name = particle;
+			path = Resources/particle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1093,6 +1108,8 @@
 				C1EEBD0015E79485007F1814 /* link.json in Resources */,
 				C1EEBD0215E7B995007F1814 /* link_f.json in Resources */,
 				C1EEBD0415E839CF007F1814 /* link_f.png in Resources */,
+				C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */,
+				C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
