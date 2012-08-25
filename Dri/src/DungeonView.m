@@ -113,10 +113,13 @@
 
 - (void) notify:(DungeonModel*)_dungeon
 {
-    [self->block_layer removeAllChildrenWithCleanup:YES];    
+    // TODO: ここは、ひたすらQueにためるだけ
+    
+    [self->block_layer removeAllChildrenWithCleanup:YES];
     [self update_view:_dungeon];
 }
 
+// TODO: いずれいらなくなる
 -(void) notify_particle:(BlockModel*)block
 {
     [self make_particle:block];

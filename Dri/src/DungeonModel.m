@@ -22,7 +22,6 @@
         self->player = [[PlayerModel alloc]init];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
-
         self->map = [[ObjectXDMap alloc] init];
         [self _fill_blocks];
     }
@@ -327,7 +326,7 @@
         for (int i = 0; i < width; i++) {
             BlockModel* b = [[BlockModel alloc] init];
             int b_ind = [[data objectAtIndex:i + j * width] integerValue];
-            if (b_ind == 0) {
+            if (b_ind == 0 || b_ind == 1) {
                 b.type = 0;
             } else {
                 NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
