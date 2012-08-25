@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="5" height="100" tilewidth="60" tileheight="60">
+ <tileset firstgid="1" name="floor1" tilewidth="60" tileheight="60">
+  <image source="../spritesheet/floor1.png" width="256" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="main" width="5" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzjZGBg4ARiRiiNjKklxoQFs2LBbFgwPjtYiXQLMh4Fo2AUjIJRMAqGIwAAyk0Bmw==
+  </data>
+ </layer>
+</map>
