@@ -95,16 +95,22 @@
 }
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
+-(void) _set:(DLPoint)pos block:(BlockModel*)block
+{
+    block.pos = pos;
+    [self->map set_x:pos.x y:pos.y value:block];
+    [self update_group_info:ccp(pos.x, pos.y) group_id:block.group_id];
+}
+
 -(void) set:(CGPoint)pos block:(BlockModel*)block
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    block.pos = cdp(x, y);
+    [self _set:cdp(x, y) block:block];
     
-    [self->map set_x:x y:y value:block];
-    [self update_group_info:pos group_id:block.group_id];
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    
     [self->observer notify:0 dungeon:self params:self];
 }
 
