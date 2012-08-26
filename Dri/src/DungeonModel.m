@@ -176,6 +176,7 @@
 {
     // group_id=0 の時はグループ化しない
     if (_group_id == 0) return;
+    
     [self->done_map clear];
     NSMutableArray* group_info = [[NSMutableArray alloc] init];
     [self update_group_info_r:pos group_id:_group_id group_info:group_info];
@@ -340,7 +341,7 @@
     
     int width  = [[jsonItem objectForKey:@"width"] integerValue];
     //int height = [[jsonItem objectForKey:@"height"] integerValue];
-    
+
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < width; i++) {
             BlockModel* b = [[BlockModel alloc] init];
@@ -354,10 +355,12 @@
                 b.group_id = [[prop objectForKey:@"group_id"] intValue];
             }
             
-            [self set:ccp(i, j) block:b];
+            [self _set:cdp(i, j) block:b];
         }
     }
-    
+ 
+    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self->observer notify:0 dungeon:self params:self];
 }
 
 -(void)_fill_blocks
