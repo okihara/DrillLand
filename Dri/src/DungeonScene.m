@@ -53,7 +53,6 @@
 
 -(void)scroll_to
 {
-    // ここでタップ禁止にしてたいね
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
@@ -76,7 +75,13 @@
 
 - (void)render_and_animation
 {
+    // タップ禁止に
+    
+    
+    //[dungeon_view do_all_animation];
     [self scroll_to];
+
+    // タップ禁止解除
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
