@@ -51,7 +51,7 @@
 	return self;
 }
 
-- (void)render_and_animation
+-(void)scroll_to
 {
     // ここでタップ禁止にしてたいね
     // 一番現在移動できるポイントが中央にくるまでスクロール？
@@ -72,6 +72,11 @@
     CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [dungeon_view runAction:ease];
+}
+
+- (void)render_and_animation
+{
+    [self scroll_to];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
