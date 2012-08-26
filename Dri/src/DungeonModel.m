@@ -50,6 +50,7 @@
     BlockModel* b = [self get_x:x y:y];
     if (b.can_tap == NO) {
         // TODO: notify
+        // 「そこはタップできません」とかね
         return;
     }
 
@@ -69,17 +70,16 @@
     // for (block in 可視範囲のブロック) {
     //     block.update(context);
     // }
+
+    // フロアの情報が変わったので更新＆通知
+    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    // 0 == ON_UPDATE
+    [self->observer notify:0 dungeon:self params:self];
 }
 
 -(void) _hit:(BlockModel*)b
 {
     [b on_hit:self];
-    
-    [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
-    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    
-    // 0 == ON_UPDATE
-    [self->observer notify:0 dungeon:self params:self];
 }
 
 -(void) notify:(int)type params:(id)params

@@ -51,6 +51,29 @@
 	return self;
 }
 
+- (void)render_and_animation
+{
+    // ここでタップ禁止にしてたいね
+    // 一番現在移動できるポイントが中央にくるまでスクロール？
+    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
+    // 一度いった時は引き返せない
+    int by = (int)(offset_y / 60);
+    int diff = self->dungeon.player.pos.y - by;
+    if (diff - 2 > 0) {
+        offset_y += 60 * (diff - 2);
+    }
+    
+    // ここらへんはフロアの情報によって決まる
+    // current_floor_max_rows * block_height + margin
+    int max_scroll = (HEIGHT - 9) * 60 + 30;
+    if (offset_y > max_scroll) offset_y = max_scroll;
+
+    // 実際の処理
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
+    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [dungeon_view runAction:ease];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     // スクリーン座標からビューの座標へ変換
@@ -63,23 +86,8 @@
     // モデルへ通知
     [self->dungeon hit:ccp(x, y)];
 
-    // ここでタップ禁止にしてたいね
-    // 一番現在移動できるポイントが中央にくるまでスクロール？
-    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
-    // 一度いった時は引き返せない
-    int by = (int)(offset_y / 60);
-    int diff = self->dungeon.player.pos.y - by;
-    if (diff - 2 > 0) {
-        offset_y += 60 * (diff - 2);
-    }
-    // ここらへんはフロアの情報によって決まる
-    // current_floor_max_rows * block_height + margin
-    int max_scroll = (HEIGHT - 9) * 60 + 30;
-    if (offset_y > max_scroll) offset_y = max_scroll;
-
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
-    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
-    [dungeon_view runAction:ease];
+    // アニメーション開始
+    [self render_and_animation];
 }
 
 // on "dealloc" you need to release all your retained objects
