@@ -20,7 +20,9 @@
     NSMutableArray* behavior_list;
 }
 
+-(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
+-(void)on_update:(DungeonModel*)dungeon;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

@@ -33,7 +33,25 @@
     self->observer = _observer;
 }
 
--(void) hit:(CGPoint)pos
+-(void)update
+{
+    // -- アップデートフェイズ
+    // ブロックのターン！
+    // 全ブロックに対して
+    // update 呼ぶ
+    // TODO: 可視範囲のブロックをターゲットに
+    // for (block in 可視範囲のブロック) {
+    //     block.update(context);
+    // }
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self get_x:i y:j];
+            [b on_update:self];
+        }
+    }
+}
+
+-(void) on_hit:(CGPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -55,31 +73,20 @@
     }
 
     if (b.group_info) {
-        for (id block in b.group_info) {
-            [self _hit:block];
+        for (BlockModel* block in b.group_info) {
+            [block on_hit:self];
         }
     } else {
-        [self _hit:b];
+        [b on_hit:self];
     }
     
+    [self update];
+    
     // ここはシーンから呼ぶほうがいいか
-    // -- アップデートフェイズ
-    // ブロックのターン！
-    // 全ブロックに対して
-    // update 呼ぶ
-    // for (block in 可視範囲のブロック) {
-    //     block.update(context);
-    // }
-
     // フロアの情報が変わったので更新＆通知
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
     // 0 == ON_UPDATE
     [self->observer notify:0 dungeon:self params:self];
-}
-
--(void) _hit:(BlockModel*)b
-{
-    [b on_hit:self];
 }
 
 -(void) notify:(int)type params:(id)params

@@ -42,8 +42,7 @@
 -(void) update_route_map:(DLPoint)pos target:(DLPoint)target;
 -(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint) get_player_pos:(DLPoint)pos;
--(void) hit:(CGPoint)pos;
--(void) _hit:(BlockModel*)b;
+-(void) on_hit:(CGPoint)pos;
 -(void) set:(CGPoint)pos block:(BlockModel*)block;
 -(BlockModel*) get_x:(int)_x y:(int)_y;
 -(int) can_tap_x:(int)_x y:(int)_y;

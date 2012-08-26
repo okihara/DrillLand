@@ -94,7 +94,7 @@
     int y = (int)((480 - location.y + offset_y) / 60);
     
     // モデルへ通知
-    [self->dungeon hit:ccp(x, y)];
+    [self->dungeon on_hit:ccp(x, y)];
 
     // アニメーション開始
     [self render_and_animation];

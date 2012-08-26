@@ -23,15 +23,20 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        hp = 1;
-        type = 0;
-        group_id = 0;
-        group_info = NULL;
-        can_tap = NO;
-        x = 0;
-        y = 0;
+        [self clear];
 	}
 	return self;
+}
+
+-(void)clear
+{
+    hp = 1;
+    type = 0;
+    group_id = 0;
+    group_info = NULL;
+    can_tap = NO;
+    x = 0;
+    y = 0;  
 }
     
 // TODO:あとでポリモる
@@ -51,9 +56,15 @@
     }
 }
 
--(void)on_updage
+-(BOOL)is_attack_range:(DungeonModel*)dungeon
 {
-//    if (周りにプレイヤーがいれば) {
+    PlayerModel* p = dungeon.player;
+    return NO;
+}
+
+-(void)on_update:(DungeonModel*)dungeon
+{
+//    if (自分の攻撃範囲にプレイヤーがいれば) {
 //        攻撃 to  プレイヤー
 //    }
 }
