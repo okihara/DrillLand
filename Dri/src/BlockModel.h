@@ -27,7 +27,7 @@
 -(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
--(void)damage:(int)atk_ dungeon:(DungeonModel*)dungeon;
+-(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

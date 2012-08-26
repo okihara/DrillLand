@@ -45,16 +45,8 @@
 {
     // 1 == ON_HIT
     [dungeon notify:1 params:self];
-    if (--hp == 0) {
-        
-        // タイプを変更
-        type = 0;
-        
-        // fire MSG_HP_0
-        // TODO: notify
-        // 2 == ON_DESTROY
-        [dungeon notify:2 params:self];
-    }
+    
+    [dungeon.player attack:self dungeon:dungeon];
 }
 
 -(BOOL)is_attack_range:(DungeonModel*)dungeon
@@ -71,18 +63,26 @@
 
 -(void)on_update:(DungeonModel*)dungeon
 {
-    BlockModel* p = (BlockModel*)dungeon.player;
-    if ([self is_attack_range:dungeon]) {
-        [p damage:self.atk dungeon:dungeon];
-    }
+//    BlockModel* p = (BlockModel*)dungeon.player;
+//    if ([self is_attack_range:dungeon]) {
+//        [self attack:p dungeon:dungeon];
+//    }
 }
 
--(void)damage:(int)atk_ dungeon:(DungeonModel*)dungeon
+-(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
-    self.hp -= atk_;
-    if (self.hp <= 0) {
-        self.hp = 0;
-        [dungeon notify:3 params:self];
+    int damage = self.atk - target.def;
+    target.hp -= damage;
+    if (target.hp <= 0) {
+        
+        target.hp = 0;
+        // タイプを変更
+        target.type = 0;
+        
+        // fire MSG_HP_0
+        // 2 == ON_DESTROY
+        [dungeon notify:2 params:target];
+        //[dungeon notify:3 params:self];
     }
 }
 

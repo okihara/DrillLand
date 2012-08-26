@@ -16,6 +16,7 @@
 {
 	if( (self=[super init]) ) {
         hp = 7;
+        atk = 3;
         self->pos = cdp(2, 2);
  	}
 	return self;
