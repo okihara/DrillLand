@@ -173,7 +173,7 @@
     [self->done_map clear];
     NSMutableArray* group_info = [[NSMutableArray alloc] init];
     [self update_group_info_r:pos group_id:_group_id group_info:group_info];
-    NSLog(@"group_info %d %@", _group_id, group_info);
+    //NSLog(@"group_info %d %@", _group_id, group_info);
 }
 
 -(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info

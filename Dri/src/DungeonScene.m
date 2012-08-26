@@ -58,8 +58,9 @@
     // 一度いった時は引き返せない
     int by = (int)(offset_y / 60);
     int diff = self->dungeon.player.pos.y - by;
-    if (diff - 2 > 0) {
-        offset_y += 60 * (diff - 2);
+    int hoge = 3;
+    if (diff - hoge > 0) {
+        offset_y += 60 * (diff - hoge);
     }
     
     // ここらへんはフロアの情報によって決まる

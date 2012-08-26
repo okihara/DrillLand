@@ -15,6 +15,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
+        hp = 7;
         self->pos = cdp(2, 2);
  	}
 	return self;

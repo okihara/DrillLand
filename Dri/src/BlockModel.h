@@ -27,9 +27,12 @@
 -(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
+-(void)damage:(int)atk_ dungeon:(DungeonModel*)dungeon;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;
+@property (nonatomic, assign) int atk;
+@property (nonatomic, assign) int def;
 @property (nonatomic, assign) unsigned int group_id;
 @property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL can_tap;

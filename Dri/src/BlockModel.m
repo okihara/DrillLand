@@ -13,6 +13,8 @@
 
 @synthesize hp;
 @synthesize type;
+@synthesize atk;
+@synthesize def;
 @synthesize group_id;
 @synthesize group_info;
 @synthesize can_tap;
@@ -29,6 +31,8 @@
 -(void)clear
 {
     hp = 1;
+    atk = 1;
+    def = 1;
     type = 0;
     group_id = 0;
     group_info = NULL;
@@ -55,15 +59,31 @@
 
 -(BOOL)is_attack_range:(DungeonModel*)dungeon
 {
-    PlayerModel* p = dungeon.player;
+    BlockModel* p = (BlockModel*)dungeon.player;
+    if((p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y - 1) ||
+       (p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y + 1) ||
+       (p.pos.x == self.pos.x - 1 && p.pos.y == self.pos.y + 0) ||
+       (p.pos.x == self.pos.x + 1 && p.pos.y == self.pos.y + 0)) {
+        return YES;
+    }
     return NO;
 }
 
 -(void)on_update:(DungeonModel*)dungeon
 {
-//    if (自分の攻撃範囲にプレイヤーがいれば) {
-//        攻撃 to  プレイヤー
-//    }
+    BlockModel* p = (BlockModel*)dungeon.player;
+    if ([self is_attack_range:dungeon]) {
+        [p damage:self.atk dungeon:dungeon];
+    }
+}
+
+-(void)damage:(int)atk_ dungeon:(DungeonModel*)dungeon
+{
+    self.hp -= atk_;
+    if (self.hp <= 0) {
+        self.hp = 0;
+        [dungeon notify:3 params:self];
+    }
 }
 
 -(void)on_after_updte
