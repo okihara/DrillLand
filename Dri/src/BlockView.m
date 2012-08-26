@@ -9,6 +9,7 @@
 #import "BlockView.h"
 #import "BlockModel.h"
 #import "PlayerModel.h"
+#import "DungeonView.h"
 
 @implementation BlockView
 
@@ -70,9 +71,21 @@
     return block;
 }
 
--(BOOL)handle_event:(NSString*)event
+-(BOOL)handle_event:(DungeonView*)ctx type:(int)type
 {
-    return NO;
+    switch (type) {
+        case 1:
+            [ctx make_particle03:self];
+            break;
+        case 2:
+            [ctx make_particle:self];
+            
+        default:
+            break;
+    }
+
+    // ここでパーティクル作る
+    return YES;
 }
 
 @end

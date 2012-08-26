@@ -17,8 +17,7 @@
 @class DungeonModel;
 @protocol DungenModelObserver <NSObject>
 
--(void) notify:(DungeonModel*)_dungeon;
--(void) notify_particle:(BlockModel*)block;
+-(void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params;
 
 @end
 
@@ -50,6 +49,8 @@
 -(int) can_tap_x:(int)_x y:(int)_y;
 -(void) _fill_blocks;
 -(void) _clear_can_tap;
+
+-(void) notify:(int)type params:(id)params;
 
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) PlayerModel *player;

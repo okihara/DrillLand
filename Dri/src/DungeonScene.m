@@ -53,12 +53,14 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    // Choose one of the touches to work with
+    // スクリーン座標からビューの座標へ変換
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y + offset_y) / 60);
+    
+    // モデルへ通知
     [self->dungeon hit:ccp(x, y)];
 
     // ここでタップ禁止にしてたいね
@@ -67,7 +69,6 @@
     // 一度いった時は引き返せない
     int by = (int)(offset_y / 60);
     int diff = self->dungeon.player.pos.y - by;
-    NSLog(@" scroll y:%d, player.y:%d diff %d", y, self->dungeon.player.pos.y, diff);
     if (diff - 2 > 0) {
         offset_y += 60 * (diff - 2);
     }

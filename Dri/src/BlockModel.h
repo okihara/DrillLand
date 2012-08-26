@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class DungeonModel;
+
 @interface BlockModel : NSObject
 {
     int hp;
@@ -18,7 +20,7 @@
     NSMutableArray* behavior_list;
 }
 
--(void)on_hit;
+-(void)on_hit:(DungeonModel*)dungeon;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

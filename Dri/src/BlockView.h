@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "DungeonModel.h"
 
-@class BlockModel;
+@class BlockModel, DungeonView;
 
 @interface BlockView : CCSprite
 {
@@ -18,5 +18,7 @@
 }
 
 +(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
+-(BOOL)handle_event:(DungeonView*)ctx type:(int)type;
+
 
 @end

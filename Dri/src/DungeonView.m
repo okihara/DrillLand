@@ -18,9 +18,8 @@
 
 @synthesize delegate;
 
--(void) make_particle02:(BlockModel*)b
+-(void) make_particle02:(BlockView*)block
 {
-    CCSprite* block = [view_map get_x:b.x y:b.y];
     CGPoint pos = block.position;
     
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
@@ -34,9 +33,8 @@
     [self->effect_layer addChild:fire];
 }
 
--(void) make_particle01:(BlockModel*)b
+-(void) make_particle01:(BlockView*)block
 {
-    CCSprite* block = [view_map get_x:b.x y:b.y];
     CGPoint pos = block.position;
     
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
@@ -51,17 +49,20 @@
     [self->effect_layer addChild:fire];
 }
 
--(void) make_particle:(BlockModel*)b
+-(void) make_particle03:(BlockView*)block
 {
-    [self make_particle01:b];
-    [self make_particle02:b];
+    CGPoint pos = block.position;
     
     CCParticleSystem *p = [[[CCParticleSystemQuad alloc] initWithFile:@"hit2.plist"] autorelease];
-    CCSprite* block = [view_map get_x:b.x y:b.y];
-    CGPoint pos = block.position;
     p.position = pos;
     p.autoRemoveOnFinish = YES;
     [self->effect_layer addChild:p];
+}
+
+-(void) make_particle:(BlockView*)block
+{
+    [self make_particle01:block];
+    [self make_particle02:block];
 }
 
 -(id) init
@@ -111,18 +112,36 @@
     [self->player runAction:ease];
 }
 
-- (void) notify:(DungeonModel*)_dungeon
+- (void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params
 {
     // TODO: ここは、ひたすらQueにためるだけ
-    
-    [self->block_layer removeAllChildrenWithCleanup:YES];
-    [self update_view:_dungeon];
+    switch (type) {
+        case 0:
+            // 更新
+            [self->block_layer removeAllChildrenWithCleanup:YES];
+            [self update_view:_dungeon];
+            break;
+            
+        case 1:
+            // ON_TAP
+        case 2:
+            // ON_DESTROY
+            // ブロックにも通知
+        {
+            BlockModel* b = (BlockModel*)params;
+            BlockView* block = [view_map get_x:b.x y:b.y];
+            [block handle_event:self type:type];
+        }
+            break;            
+        default:
+            break;
+    }
 }
 
-// TODO: いずれいらなくなる
--(void) notify_particle:(BlockModel*)block
-{
-    [self make_particle:block];
-}
+//// TODO: いずれいらなくなる
+//-(void) notify_particle:(BlockModel*)block
+//{
+//    [self make_particle:block];
+//}
 
 @end

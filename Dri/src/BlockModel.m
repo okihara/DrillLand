@@ -7,6 +7,7 @@
 //
 
 #import "BlockModel.h"
+#import "DungeonModel.h"
 
 @implementation BlockModel
 
@@ -34,12 +35,19 @@
 }
     
 // TODO:あとでポリモる
--(void)on_hit
+-(void)on_hit:(DungeonModel*)dungeon
 {
+    // 1 == ON_HIT
+    [dungeon notify:1 params:self];
     if (--hp == 0) {
+        
+        // タイプを変更
         type = 0;
+        
         // fire MSG_HP_0
         // TODO: notify
+        // 2 == ON_DESTROY
+        [dungeon notify:2 params:self];
     }
 }
 

@@ -42,6 +42,7 @@
     [self update_route_map:cdp(x, y) target:player.pos];
     DLPoint next_pos = [self get_player_pos:player.pos];
     self->player.pos = next_pos;
+    
     // TODO: ここで notify すべき
     NSLog(@"next_pos %d %d", next_pos.x, next_pos.y);
     
@@ -60,6 +61,7 @@
         [self _hit:b];
     }
     
+    // ここはシーンから呼ぶほうがいいか
     // -- アップデートフェイズ
     // ブロックのターン！
     // 全ブロックに対して
@@ -71,17 +73,18 @@
 
 -(void) _hit:(BlockModel*)b
 {
-    [b on_hit];
+    [b on_hit:self];
     
     [self update_group_info:ccp(b.x, b.y) group_id:b.group_id];
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
     
-    // このふたつがおかしい
-    // どのオブジェクトがタップされたか？
-    // それだけで良い
-    // しかもここじゃなくモデルにかくべき
-    [self->observer notify_particle:b];
-    [self->observer notify:self];
+    // 0 == ON_UPDATE
+    [self->observer notify:0 dungeon:self params:self];
+}
+
+-(void) notify:(int)type params:(id)params
+{
+    [self->observer notify:type dungeon:self params:params];
 }
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
@@ -96,8 +99,23 @@
     [self->map set_x:x y:y value:block];
     [self update_group_info:pos group_id:block.group_id];
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    [self->observer notify:self];
+    [self->observer notify:0 dungeon:self params:self];
 }
+
+-(BlockModel*)get_x:(int)_x y:(int)_y
+{
+    return [self->map get_x:_x y:_y];
+}
+
+-(int)can_tap_x:(int)_x y:(int)_y
+{
+    BlockModel* b = [self->map get_x:_x y:_y];
+    return b.can_tap;
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------
+
 
 -(void) update_can_tap:(CGPoint)pos
 {
@@ -284,17 +302,6 @@
 
 
 //---------------------------------------------------
-
--(BlockModel*)get_x:(int)_x y:(int)_y
-{
-    return [self->map get_x:_x y:_y];
-}
-
--(int)can_tap_x:(int)_x y:(int)_y
-{
-    BlockModel* b = [self->map get_x:_x y:_y];
-    return b.can_tap;
-}
 
 -(void) dealloc
 {
