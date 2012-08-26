@@ -53,6 +53,9 @@
 
 -(void)on_updage
 {
+//    if (周りにプレイヤーがいれば) {
+//        攻撃 to  プレイヤー
+//    }
 }
 
 -(void)on_after_updte

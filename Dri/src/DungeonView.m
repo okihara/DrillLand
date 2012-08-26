@@ -138,10 +138,4 @@
     }
 }
 
-//// TODO: いずれいらなくなる
-//-(void) notify_particle:(BlockModel*)block
-//{
-//    [self make_particle:block];
-//}
-
 @end

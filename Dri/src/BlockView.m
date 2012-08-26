@@ -46,7 +46,7 @@
     
     BlockView* block = [BlockView spriteWithFile:filename];
     
-    // 数字
+    // 破壊できるか表示
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
     label.position =  ccp(30, 30);
     label.color = ccc3(0, 0, 0);
@@ -59,14 +59,6 @@
 //    cost.position =  ccp(40, 30);
 //    cost.color = ccc3(0, 0, 255);
 //    [block addChild:cost];
-//    
-//    // 自機
-//    if (ctx.player.pos.x == b.x && ctx.player.pos.y == b.y) {
-//        CCLabelTTF *cost = [CCLabelTTF labelWithString:@"@" fontName:@"AppleGothic" fontSize:20];
-//        cost.position =  ccp(30, 30);
-//        cost.color = ccc3(0, 255, 0);
-//        [block addChild:cost];
-//    }
     
     return block;
 }

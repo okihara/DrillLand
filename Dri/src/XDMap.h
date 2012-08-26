@@ -15,9 +15,12 @@ struct DLPoint {
 typedef struct DLPoint DLPoint;
 DLPoint cdp(int x, int y);
 
+#define CAP_W 20
+#define CAP_H 100
+
 @interface XDMap : NSObject
 {
-    int tile_map[30][20];
+    int tile_map[CAP_H][CAP_W];
     int bound_w;
     int bound_h;
 }
@@ -34,7 +37,7 @@ DLPoint cdp(int x, int y);
 
 @interface ObjectXDMap : NSObject
 {
-    id tile_map[30][20];
+    id tile_map[CAP_H][CAP_W];
     int bound_w;
     int bound_h;
 }
