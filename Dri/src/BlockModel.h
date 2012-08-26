@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XDMap.h"
 
 @class DungeonModel;
 
@@ -14,6 +15,9 @@
 {
     int hp;
     int type;
+    int exp;
+    int atk;
+    int def;
     unsigned int group_id;
     id group_info;
     BOOL can_tap;
@@ -29,7 +33,6 @@
 @property (nonatomic, assign) unsigned int group_id;
 @property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL can_tap;
-@property (nonatomic, assign) unsigned int x;
-@property (nonatomic, assign) unsigned int y;
+@property (nonatomic, readwrite, assign) DLPoint pos;
 
 @end

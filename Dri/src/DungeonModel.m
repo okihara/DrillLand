@@ -100,8 +100,7 @@
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    block.x = x;
-    block.y = y;
+    block.pos = cdp(x, y);
     
     [self->map set_x:x y:y value:block];
     [self update_group_info:pos group_id:block.group_id];

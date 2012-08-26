@@ -129,7 +129,7 @@
             // ブロックにも通知
         {
             BlockModel* b = (BlockModel*)params;
-            BlockView* block = [view_map get_x:b.x y:b.y];
+            BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
             [block handle_event:self type:type];
         }
             break;            

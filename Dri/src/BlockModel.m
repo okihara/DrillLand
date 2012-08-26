@@ -16,9 +16,7 @@
 @synthesize group_id;
 @synthesize group_info;
 @synthesize can_tap;
-@synthesize x;
-@synthesize y;
-
+@synthesize pos;
 
 -(id) init
 {
@@ -35,8 +33,7 @@
     group_id = 0;
     group_info = NULL;
     can_tap = NO;
-    x = 0;
-    y = 0;  
+    pos = cdp(0, 0);
 }
     
 // TODO:あとでポリモる

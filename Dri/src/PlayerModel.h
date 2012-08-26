@@ -10,15 +10,8 @@
 #import "BlockModel.h"
 #import "XDMap.h"
 
-@interface PlayerModel : NSObject
+@interface PlayerModel : BlockModel
 {
-    int hp;
-    int exp;
-    int atk;
-    int def;
-    DLPoint pos;
 }
-
-@property(nonatomic, readwrite, assign) DLPoint pos;
 
 @end
