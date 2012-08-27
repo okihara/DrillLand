@@ -10,6 +10,7 @@
 #import "BlockModel.h"
 #import "PlayerModel.h"
 #import "SBJson.h"
+#import "BlockBuilder.h"
 
 @implementation DungeonModel
 
@@ -19,7 +20,9 @@
 -(id) init:(NSArray*)initial
 {
     if (self = [super init]) {
-        self->player = [[PlayerModel alloc]init];
+        self->block_builder = [[BlockBuilder alloc] init];
+//        self->player = [[PlayerModel alloc]init];
+        self->player = [block_builder buildWithName:@"PLAYER"];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->map = [[ObjectXDMap alloc] init];
@@ -62,7 +65,7 @@
     self->player.pos = next_pos;
     
     // TODO: ここで notify すべき
-    NSLog(@"next_pos %d %d", next_pos.x, next_pos.y);
+    NSLog(@"PLAYER MOVED %d %d", next_pos.x, next_pos.y);
     
     // -- ブロックのヒット処理フェイズ
     BlockModel* b = [self get_x:x y:y];

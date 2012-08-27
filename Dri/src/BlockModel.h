@@ -9,7 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "XDMap.h"
 
+
 @class DungeonModel;
+
+@class BlockModel;
+@protocol BlockBehaivior <NSObject>
+
+-(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+
+@end
+
 
 @interface BlockModel : NSObject
 {
@@ -28,6 +38,7 @@
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
+-(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

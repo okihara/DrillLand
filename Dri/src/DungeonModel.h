@@ -15,17 +15,19 @@
 #define HEIGHT 48
 
 @class DungeonModel;
+
 @protocol DungenModelObserver <NSObject>
 
 -(void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params;
 
 @end
 
-@class PlayerModel;
+@class PlayerModel, BlockBuilder;
 
 @interface DungeonModel : NSObject
 {
-    PlayerModel* player;
+    BlockBuilder *block_builder;
+    BlockModel* player;
     ObjectXDMap *map;
     XDMap *done_map;
     XDMap *route_map;
@@ -52,6 +54,6 @@
 -(void) notify:(int)type params:(id)params;
 
 @property (nonatomic, readonly) XDMap *route_map;
-@property (nonatomic, readonly) PlayerModel *player;
+@property (nonatomic, readonly) BlockModel *player;
 
 @end

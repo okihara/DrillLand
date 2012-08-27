@@ -39,6 +39,11 @@
     can_tap = NO;
     pos = cdp(0, 0);
 }
+
+-(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_
+{
+    [self->behavior_list addObject:behaivior_];
+}
     
 // TODO:あとでポリモる
 -(void)on_hit:(DungeonModel*)dungeon
@@ -63,10 +68,9 @@
 
 -(void)on_update:(DungeonModel*)dungeon
 {
-//    BlockModel* p = (BlockModel*)dungeon.player;
-//    if ([self is_attack_range:dungeon]) {
-//        [self attack:p dungeon:dungeon];
-//    }
+    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
+        [b on_update:self dungeon:dungeon];
+    }
 }
 
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon

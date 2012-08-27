@@ -33,7 +33,7 @@
 	if( (self=[super init]) ) {
  
         offset_y = 0;
-        
+            
         // setup dungeon view
         dungeon_view = [DungeonView node];
         [dungeon_view setDelegate:self];
