@@ -6,13 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "NormalBehaivior.h"
+#import "BreakableBehaivior.h"
+#import "DungeonModel.h" // TODO:ここは protocol で解決したい
 
-@implementation NormalBehaivior
+@implementation BreakableBehaivior
 
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
+    // 1 == ON_HIT
+    [dungeon_ notify:1 params:context_];
     
+    [dungeon_.player attack:context_ dungeon:dungeon_];
 }
 
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_

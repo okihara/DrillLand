@@ -21,7 +21,6 @@
 {
     if (self = [super init]) {
         self->block_builder = [[BlockBuilder alloc] init];
-//        self->player = [[PlayerModel alloc]init];
         self->player = [block_builder buildWithName:@"PLAYER"];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
@@ -347,7 +346,7 @@
 
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < width; i++) {
-            BlockModel* b = [[BlockModel alloc] init];
+            BlockModel* b = [block_builder buildWithName:@"NORMAL"];
             int b_ind = [[data objectAtIndex:i + j * width] integerValue];
             if (b_ind == 0 || b_ind == 1) {
                 b.type = 0;

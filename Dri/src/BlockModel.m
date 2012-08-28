@@ -23,6 +23,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
+        self->behavior_list = [[NSMutableArray alloc] init];
         [self clear];
 	}
 	return self;
@@ -48,10 +49,16 @@
 // TODO:あとでポリモる
 -(void)on_hit:(DungeonModel*)dungeon
 {
-    // 1 == ON_HIT
-    [dungeon notify:1 params:self];
-    
-    [dungeon.player attack:self dungeon:dungeon];
+    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
+        [b on_hit:self dungeon:dungeon];
+    }    
+}
+
+-(void)on_update:(DungeonModel*)dungeon
+{
+    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
+        [b on_update:self dungeon:dungeon];
+    }
 }
 
 -(BOOL)is_attack_range:(DungeonModel*)dungeon
@@ -64,13 +71,6 @@
         return YES;
     }
     return NO;
-}
-
--(void)on_update:(DungeonModel*)dungeon
-{
-    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
-        [b on_update:self dungeon:dungeon];
-    }
 }
 
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
@@ -90,10 +90,10 @@
     }
 }
 
--(void)on_after_updte
+-(void)dealloc
 {
-    // 死んでなかったら
-    // プレイヤーに攻撃
+    [self->behavior_list release];
+    [super dealloc];
 }
 
 @end

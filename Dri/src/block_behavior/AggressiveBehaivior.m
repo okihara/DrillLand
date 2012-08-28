@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EnemyBehaivior.h"
+#import "AggressiveBehaivior.h"
 
-@implementation EnemyBehaivior
+@implementation AggressiveBehaivior
 
 @end

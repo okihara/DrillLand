@@ -1,5 +1,5 @@
 //
-//  NormalBehaivior.h
+//  EnemyBehaivior.h
 //  Dri
 //
 //  Created by  on 12/08/28.
@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BlockModel.h"
 
-@interface NormalBehaivior : NSObject<BlockBehaivior>
+@interface AggressiveBehaivior : NSObject
 
 @end

@@ -8,6 +8,7 @@
 
 #import "BlockBuilder.h"
 #import "BlockModel.h"
+#import "BreakableBehaivior.h"
 
 @implementation BlockBuilder
 
@@ -23,6 +24,7 @@
 -(void)setupBuilders
 {
     [self setBuilderWithName:@"PLAYER" builder:@selector(build_player)];
+    [self setBuilderWithName:@"NORMAL" builder:@selector(build_normal)];
 }
 
 -(void)setBuilderWithName:(NSString *)name builder:(SEL)builder_method
@@ -56,18 +58,16 @@
     
     // PlayerBehavior を attach する
     
-    
     return b;
 }
 
--(BlockModel*)build_normal_block
+-(BlockModel*)build_normal
 {
     BlockModel* b = [[BlockModel alloc] init];
-    b.hp = 7;
-    b.atk = 3;
-    b.pos = cdp(2, 2);
+    [b clear];
     
-    // PlayerBehavior を attach する
+    // NormalBehavior を attach する
+    [b attach_behaivior:[[[BreakableBehaivior alloc] init] autorelease]];
     
     return b;
 }

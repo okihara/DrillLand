@@ -10,8 +10,8 @@
 		C102EAC615E8E2A5000E8366 /* floor001.json in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC415E8E2A5000E8366 /* floor001.json */; };
 		C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC515E8E2A5000E8366 /* floor001.tmx */; };
 		C11D62AE15EBB37700F7633D /* BlockBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62AD15EBB37700F7633D /* BlockBuilder.m */; };
-		C11D62B315EC3B5200F7633D /* NormalBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* NormalBehaivior.m */; };
-		C11D62B615EC3B6F00F7633D /* EnemyBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* EnemyBehaivior.m */; };
+		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
+		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -177,10 +177,10 @@
 		C102EAC515E8E2A5000E8366 /* floor001.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = floor001.tmx; sourceTree = "<group>"; };
 		C11D62AC15EBB37600F7633D /* BlockBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockBuilder.h; path = src/BlockBuilder.h; sourceTree = "<group>"; };
 		C11D62AD15EBB37700F7633D /* BlockBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockBuilder.m; path = src/BlockBuilder.m; sourceTree = "<group>"; };
-		C11D62B115EC3B5200F7633D /* NormalBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalBehaivior.h; path = src/block_behavior/NormalBehaivior.h; sourceTree = "<group>"; };
-		C11D62B215EC3B5200F7633D /* NormalBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NormalBehaivior.m; path = src/block_behavior/NormalBehaivior.m; sourceTree = "<group>"; };
-		C11D62B415EC3B6F00F7633D /* EnemyBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyBehaivior.h; path = src/block_behavior/EnemyBehaivior.h; sourceTree = "<group>"; };
-		C11D62B515EC3B6F00F7633D /* EnemyBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyBehaivior.m; path = src/block_behavior/EnemyBehaivior.m; sourceTree = "<group>"; };
+		C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakableBehaivior.h; path = src/block_behavior/BreakableBehaivior.h; sourceTree = "<group>"; };
+		C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakableBehaivior.m; path = src/block_behavior/BreakableBehaivior.m; sourceTree = "<group>"; };
+		C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggressiveBehaivior.h; path = src/block_behavior/AggressiveBehaivior.h; sourceTree = "<group>"; };
+		C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AggressiveBehaivior.m; path = src/block_behavior/AggressiveBehaivior.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -530,10 +530,10 @@
 		C11D62B015EC3B1800F7633D /* block_behaivior */ = {
 			isa = PBXGroup;
 			children = (
-				C11D62B415EC3B6F00F7633D /* EnemyBehaivior.h */,
-				C11D62B515EC3B6F00F7633D /* EnemyBehaivior.m */,
-				C11D62B115EC3B5200F7633D /* NormalBehaivior.h */,
-				C11D62B215EC3B5200F7633D /* NormalBehaivior.m */,
+				C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */,
+				C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */,
+				C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */,
+				C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */,
 			);
 			name = block_behaivior;
 			sourceTree = "<group>";
@@ -1284,8 +1284,8 @@
 				C1EEBCF815E6F74C007F1814 /* DungeonPreloadScene.m in Sources */,
 				C1EEBD0715E83BED007F1814 /* PlayerView.m in Sources */,
 				C11D62AE15EBB37700F7633D /* BlockBuilder.m in Sources */,
-				C11D62B315EC3B5200F7633D /* NormalBehaivior.m in Sources */,
-				C11D62B615EC3B6F00F7633D /* EnemyBehaivior.m in Sources */,
+				C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */,
+				C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
