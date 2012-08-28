@@ -11,7 +11,6 @@
 #import "DungeonScene.h"
 #import "DungeonModel.h"
 #import "DungeonView.h"
-#import "PlayerModel.h"
 
 #pragma mark - HelloWorldLayer
 

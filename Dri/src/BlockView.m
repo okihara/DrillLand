@@ -8,7 +8,6 @@
 
 #import "BlockView.h"
 #import "BlockModel.h"
-#import "PlayerModel.h"
 #import "DungeonView.h"
 
 @implementation BlockView

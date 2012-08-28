@@ -11,7 +11,6 @@
 #import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
-#import "PlayerModel.h"
 #import "PlayerView.h"
 
 @implementation DungeonView

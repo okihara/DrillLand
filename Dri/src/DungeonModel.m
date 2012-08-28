@@ -8,7 +8,6 @@
 
 #import "DungeonModel.h"
 #import "BlockModel.h"
-#import "PlayerModel.h"
 #import "SBJson.h"
 #import "BlockBuilder.h"
 

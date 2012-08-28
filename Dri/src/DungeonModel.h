@@ -22,7 +22,7 @@
 
 @end
 
-@class PlayerModel, BlockBuilder;
+@class BlockBuilder;
 
 @interface DungeonModel : NSObject
 {

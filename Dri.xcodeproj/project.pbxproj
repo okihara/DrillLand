@@ -148,7 +148,6 @@
 		C1EEBCC015E6F2DC007F1814 /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB515E6F2DC007F1814 /* DungeonModel.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC215E6F2DC007F1814 /* DungeonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB915E6F2DC007F1814 /* DungeonView.m */; };
-		C1EEBCC315E6F2DC007F1814 /* PlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCBB15E6F2DC007F1814 /* PlayerModel.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
 		C1EEBCE715E6F50E007F1814 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCF15E6F50E007F1814 /* NSObject+SBJson.m */; };
@@ -455,8 +454,6 @@
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCB815E6F2DC007F1814 /* DungeonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonView.h; path = src/DungeonView.h; sourceTree = "<group>"; };
 		C1EEBCB915E6F2DC007F1814 /* DungeonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonView.m; path = src/DungeonView.m; sourceTree = "<group>"; };
-		C1EEBCBA15E6F2DC007F1814 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerModel.h; path = src/PlayerModel.h; sourceTree = "<group>"; };
-		C1EEBCBB15E6F2DC007F1814 /* PlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerModel.m; path = src/PlayerModel.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C1EEBCC715E6F354007F1814 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1EEBCC915E6F425007F1814 /* XDMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDMap.h; path = src/XDMap.h; sourceTree = "<group>"; };
@@ -1041,8 +1038,6 @@
 				C1EEBCB515E6F2DC007F1814 /* DungeonModel.m */,
 				C1EEBCB015E6F2DB007F1814 /* BlockModel.h */,
 				C1EEBCB115E6F2DB007F1814 /* BlockModel.m */,
-				C1EEBCBA15E6F2DC007F1814 /* PlayerModel.h */,
-				C1EEBCBB15E6F2DC007F1814 /* PlayerModel.m */,
 				C1EEBCC915E6F425007F1814 /* XDMap.h */,
 				C1EEBCCA15E6F425007F1814 /* XDMap.m */,
 			);
@@ -1266,7 +1261,6 @@
 				C1EEBCC015E6F2DC007F1814 /* DungeonModel.m in Sources */,
 				C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */,
 				C1EEBCC215E6F2DC007F1814 /* DungeonView.m in Sources */,
-				C1EEBCC315E6F2DC007F1814 /* PlayerModel.m in Sources */,
 				C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */,
 				C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */,
 				C1EEBCE715E6F50E007F1814 /* NSObject+SBJson.m in Sources */,
