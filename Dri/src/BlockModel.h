@@ -17,6 +17,8 @@
 
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
 
 @end
 

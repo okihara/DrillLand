@@ -15,7 +15,7 @@
 }
 
 -(void)setupBuilders;
--(void)setBuilderWithName:(NSString*)name builder:(SEL)builder_method;
--(BlockModel*)buildWithName:(NSString*)name;
+-(void)setBuilderWithID:(enum ID_BLOCK)name builder:(SEL)builder_method;
+-(BlockModel*)buildWithID:(enum ID_BLOCK)name;
 
 @end

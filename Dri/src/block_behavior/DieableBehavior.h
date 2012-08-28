@@ -1,5 +1,5 @@
 //
-//  EnemyBehaivior.h
+//  DieableBehavior.h
 //  Dri
 //
 //  Created by  on 12/08/28.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "BlockModel.h"
 
-@interface AggressiveBehaivior : NSObject<BlockBehaivior>
+@interface DieableBehavior : NSObject<BlockBehaivior>
 
 @end

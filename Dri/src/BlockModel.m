@@ -32,8 +32,8 @@
 -(void)clear
 {
     hp = 1;
-    atk = 1;
-    def = 1;
+    atk = 0;
+    def = 0;
     type = 0;
     group_id = 0;
     group_info = NULL;
@@ -46,7 +46,6 @@
     [self->behavior_list addObject:behaivior_];
 }
     
-// TODO:あとでポリモる
 -(void)on_hit:(DungeonModel*)dungeon
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
@@ -58,6 +57,20 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_update:self dungeon:dungeon];
+    }
+}
+
+-(void)on_damage:(DungeonModel*)dungeon
+{
+    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
+        [b on_damage:self dungeon:dungeon];
+    }
+}
+
+-(void)on_break:(DungeonModel*)dungeon
+{
+    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
+        [b on_break:self dungeon:dungeon];
     }
 }
 
@@ -77,16 +90,11 @@
 {
     int damage = self.atk - target.def;
     target.hp -= damage;
+    
+    [target on_damage:dungeon];
+    
     if (target.hp <= 0) {
-        
-        target.hp = 0;
-        // タイプを変更
-        target.type = 0;
-        
-        // fire MSG_HP_0
-        // 2 == ON_DESTROY
-        [dungeon notify:2 params:target];
-        //[dungeon notify:3 params:self];
+        [target on_break:dungeon];
     }
 }
 

@@ -12,6 +12,7 @@
 		C11D62AE15EBB37700F7633D /* BlockBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62AD15EBB37700F7633D /* BlockBuilder.m */; };
 		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
 		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
+		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -180,6 +181,8 @@
 		C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakableBehaivior.m; path = src/block_behavior/BreakableBehaivior.m; sourceTree = "<group>"; };
 		C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggressiveBehaivior.h; path = src/block_behavior/AggressiveBehaivior.h; sourceTree = "<group>"; };
 		C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AggressiveBehaivior.m; path = src/block_behavior/AggressiveBehaivior.m; sourceTree = "<group>"; };
+		C11D62B715EC9C0700F7633D /* DieableBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DieableBehavior.h; path = src/block_behavior/DieableBehavior.h; sourceTree = "<group>"; };
+		C11D62B815EC9C0700F7633D /* DieableBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DieableBehavior.m; path = src/block_behavior/DieableBehavior.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -531,6 +534,8 @@
 				C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */,
 				C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */,
 				C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */,
+				C11D62B715EC9C0700F7633D /* DieableBehavior.h */,
+				C11D62B815EC9C0700F7633D /* DieableBehavior.m */,
 			);
 			name = block_behaivior;
 			sourceTree = "<group>";
@@ -951,15 +956,13 @@
 		C1EEBCC515E6F31B007F1814 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1EEBD0915E84329007F1814 /* view */,
+				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1EEBD0815E8431E007F1814 /* model */,
 				C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */,
 				C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */,
 				C1EEBCF615E6F74C007F1814 /* DungeonPreloadScene.h */,
 				C1EEBCF715E6F74C007F1814 /* DungeonPreloadScene.m */,
-				C11D62AC15EBB37600F7633D /* BlockBuilder.h */,
-				C11D62AD15EBB37700F7633D /* BlockBuilder.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1036,6 +1039,8 @@
 			children = (
 				C1EEBCB415E6F2DC007F1814 /* DungeonModel.h */,
 				C1EEBCB515E6F2DC007F1814 /* DungeonModel.m */,
+				C11D62AC15EBB37600F7633D /* BlockBuilder.h */,
+				C11D62AD15EBB37700F7633D /* BlockBuilder.m */,
 				C1EEBCB015E6F2DB007F1814 /* BlockModel.h */,
 				C1EEBCB115E6F2DB007F1814 /* BlockModel.m */,
 				C1EEBCC915E6F425007F1814 /* XDMap.h */,
@@ -1280,6 +1285,7 @@
 				C11D62AE15EBB37700F7633D /* BlockBuilder.m in Sources */,
 				C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */,
 				C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */,
+				C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

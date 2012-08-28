@@ -20,7 +20,7 @@
 {
     if (self = [super init]) {
         self->block_builder = [[BlockBuilder alloc] init];
-        self->player = [block_builder buildWithName:@"PLAYER"];
+        self->player = [block_builder buildWithID:ID_PLAYER];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->map = [[ObjectXDMap alloc] init];
@@ -345,15 +345,15 @@
 
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < width; i++) {
-            BlockModel* b = [block_builder buildWithName:@"NORMAL"];
+            BlockModel* b;
             int b_ind = [[data objectAtIndex:i + j * width] integerValue];
             if (b_ind == 0 || b_ind == 1) {
+                b = [block_builder buildWithID:ID_NORMAL_BLOCK];
                 b.type = 0;
             } else {
                 NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
-                b.type = [[prop objectForKey:@"type"] intValue];
-                b.hp   = [[prop objectForKey:@"hp"] intValue];
-                b.group_id = [[prop objectForKey:@"group_id"] intValue];
+                int type_id = [[prop objectForKey:@"type"] intValue];
+                b = [block_builder buildWithID:type_id];
             }
             
             [self _set:cdp(i, j) block:b];
