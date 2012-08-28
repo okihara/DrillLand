@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
-@class BlockModel;
+#import "BlockModel.h"
 
 @interface BlockBuilder : CCNode {
     NSMutableDictionary* builder_map;

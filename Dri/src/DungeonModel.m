@@ -371,7 +371,7 @@
     for (int j = 0; j < disp_h; j++) {
         for (int i = 0; i < disp_w; i++) {
             BlockModel* b = [[BlockModel alloc] init];
-            b.type = 1;
+            b.type = ID_NORMAL_BLOCK;
             [self set:ccp(i, j) block:b];
         }
     }

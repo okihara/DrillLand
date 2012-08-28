@@ -17,25 +17,25 @@
     // ブロック
     NSString *filename;
     switch (b.type) {
-        case 1:
+        case ID_NORMAL_BLOCK:
             filename = @"block01.png";
             break;
-        case 2:
+        case ID_GROUPED_BLOCK_1:
             filename = @"block02.png";
             break;
-        case 3:
+        case ID_GROUPED_BLOCK_2:
             filename = @"block03.png";
             break;
-        case 4:
+        case ID_GROUPED_BLOCK_3:
             filename = @"block04.png";
             break;
-        case 5:
+        case ID_ENEMY_BLOCK_0:
             filename = @"mon001.png";
             break;
-        case 6:
+        case ID_ENEMY_BLOCK_1:
             filename = @"mon002.png";
             break;
-        case 99:
+        case ID_UNBREAKABLE_BLOCK:
             filename = @"block99.png";
             break;
         default:

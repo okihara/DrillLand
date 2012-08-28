@@ -13,49 +13,49 @@
    <properties>
     <property name="group_id" value="0"/>
     <property name="hp" value="1"/>
-    <property name="type" value="1"/>
+    <property name="type" value="1000"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
     <property name="group_id" value="2"/>
     <property name="hp" value="1"/>
-    <property name="type" value="2"/>
+    <property name="type" value="1001"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
     <property name="group_id" value="3"/>
     <property name="hp" value="1"/>
-    <property name="type" value="3"/>
+    <property name="type" value="1002"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
     <property name="group_id" value="4"/>
     <property name="hp" value="1"/>
-    <property name="type" value="4"/>
+    <property name="type" value="1003"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
     <property name="group_id" value="0"/>
     <property name="hp" value="3"/>
-    <property name="type" value="5"/>
+    <property name="type" value="2000"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
     <property name="group_id" value="0"/>
     <property name="hp" value="10"/>
-    <property name="type" value="6"/>
+    <property name="type" value="2001"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
     <property name="group_id" value="0"/>
     <property name="hp" value="65535"/>
-    <property name="type" value="99"/>
+    <property name="type" value="1999"/>
    </properties>
   </tile>
  </tileset>

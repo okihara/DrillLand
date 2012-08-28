@@ -21,6 +21,21 @@
 @end
 
 
+enum ID_BLOCK {
+    ID_EMPTY  = 0,
+    ID_NORMAL_BLOCK    = 1000,
+    ID_GROUPED_BLOCK_1 = 1001,
+    ID_GROUPED_BLOCK_2 = 1002,
+    ID_GROUPED_BLOCK_3 = 1003,
+    ID_UNBREAKABLE_BLOCK = 1999,
+    
+    ID_ENEMY_BLOCK_0 = 2000, // BLUE SLIME
+    ID_ENEMY_BLOCK_1 = 2001, // RED  SLIME
+    
+    ID_PLAYER = INT16_MAX
+};
+
+
 @interface BlockModel : NSObject
 {
     int hp;

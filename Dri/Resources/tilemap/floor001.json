@@ -43,43 +43,43 @@
                 {
                  "group_id":"0",
                  "hp":"1",
-                 "type":"1"
+                 "type":"1000"
                 },
              "2":
                 {
                  "group_id":"2",
                  "hp":"1",
-                 "type":"2"
+                 "type":"1001"
                 },
              "3":
                 {
                  "group_id":"3",
                  "hp":"1",
-                 "type":"3"
+                 "type":"1002"
                 },
              "4":
                 {
                  "group_id":"4",
                  "hp":"1",
-                 "type":"4"
+                 "type":"1003"
                 },
              "5":
                 {
                  "group_id":"0",
                  "hp":"3",
-                 "type":"5"
+                 "type":"2000"
                 },
              "6":
                 {
                  "group_id":"0",
                  "hp":"10",
-                 "type":"6"
+                 "type":"2001"
                 },
              "7":
                 {
                  "group_id":"0",
                  "hp":"65535",
-                 "type":"99"
+                 "type":"1999"
                 }
             },
          "tilewidth":60
