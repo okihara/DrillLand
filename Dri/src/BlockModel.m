@@ -23,7 +23,6 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        self->behavior_list = [[NSMutableArray alloc] init];
         [self clear];
 	}
 	return self;
@@ -31,14 +30,18 @@
 
 -(void)clear
 {
-    hp = 1;
+    type = ID_EMPTY;
+    hp = 0;
     atk = 0;
     def = 0;
-    type = 0;
     group_id = 0;
     group_info = NULL;
     can_tap = NO;
-    pos = cdp(0, 0);
+    if (self->behavior_list) {
+        [self->behavior_list release];
+    }
+    self->behavior_list = [[NSMutableArray alloc] init];
+    //pos = cdp(0, 0);
 }
 
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_
@@ -50,6 +53,7 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_hit:self dungeon:dungeon];
+        if (self.type == ID_EMPTY) return;
     }    
 }
 
@@ -71,9 +75,11 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_break:self dungeon:dungeon];
+        if (self.type == ID_EMPTY) return;
     }
 }
 
+// これは武器/敵によってロジックが変わるので、ここに書くべきではない
 -(BOOL)is_attack_range:(DungeonModel*)dungeon
 {
     BlockModel* p = (BlockModel*)dungeon.player;

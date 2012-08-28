@@ -33,8 +33,7 @@
 {
     // implement behaivior
     // TODO: ここで behaivior リストも破棄しないといけない
-    context_.type = ID_EMPTY;
-    context_.hp = 0;
+    [context_ clear];
     
     // 2 == ON_DESTROY
     [dungeon_ notify:2 params:context_];

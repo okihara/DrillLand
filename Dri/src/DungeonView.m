@@ -58,6 +58,14 @@
     [self->effect_layer addChild:p];
 }
 
+-(void) make_particle04:(CGPoint)pos
+{
+    CCParticleSystem *p = [[[CCParticleSystemQuad alloc] initWithFile:@"blood.plist"] autorelease];
+    p.position = pos;
+    p.autoRemoveOnFinish = YES;
+    [self->effect_layer addChild:p];
+}
+
 -(void) make_particle:(BlockView*)block
 {
     [self make_particle01:block];
@@ -114,6 +122,7 @@
 - (void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params
 {
     // TODO: ここは、ひたすらQueにためるだけ
+    BlockModel* b = (BlockModel*)params;
     switch (type) {
         case 0:
             // 更新
@@ -126,8 +135,10 @@
         case 2:
             // ON_DESTROY
             // ブロックにも通知
-        {
-            BlockModel* b = (BlockModel*)params;
+        if (b.type == ID_PLAYER){
+            if(type != 1) break;
+            [self make_particle04:self->player.position];
+        } else {
             BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
             [block handle_event:self type:type];
         }
