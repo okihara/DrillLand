@@ -37,6 +37,7 @@
 -(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
+-(BOOL)is_attack_range:(DungeonModel*)dungeon;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
 
