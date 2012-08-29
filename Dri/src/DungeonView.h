@@ -28,5 +28,7 @@
 }
 
 @property (nonatomic, retain) id delegate;
+@property (nonatomic, assign) int curring_top;
+@property (nonatomic, assign) int curring_bottom;
 
 @end

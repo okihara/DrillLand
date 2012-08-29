@@ -16,6 +16,7 @@
 @implementation DungeonView
 
 @synthesize delegate;
+@synthesize curring_top, curring_bottom;
 
 -(void) make_particle02:(BlockView*)block
 {
@@ -94,26 +95,38 @@
 	return self;
 }
 
-- (void)update_view_line:(int)y _model:(DungeonModel *)_dungeon
+- (void)remove_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
     for (int x = 0; x < disp_w; x++) {
-        
-        BlockModel *block_base = [_dungeon get_x:x y:y];
-        BlockView *block = [BlockView create:block_base ctx:_dungeon];
+        BlockView *block = [self->view_map get_x:x y:y];
+        [self->block_layer removeChild:block cleanup:YES];
+        [view_map set_x:x y:y value:nil];
+    }
+}
+
+- (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
+{
+    for (int x = 0; x < disp_w; x++) {
+        BlockModel *block_model = [dungeon_ get_x:x y:y];
+        BlockView *block = [BlockView create:block_model ctx:dungeon_];
         block.position = ccp(30 + x * 60, 480 - (30 + y * 60));
-        [self->block_layer addChild:block];
         
+        [self->block_layer addChild:block];
         [view_map set_x:x y:y value:block];
     }
 }
 
 - (void)update_view:(DungeonModel *)_dungeon
 {
+    // clear
+    [self->block_layer removeAllChildrenWithCleanup:YES];
     [view_map clear];
-    for (int y = 0; y < disp_h; y++) {
+    
+    for (int y = self.curring_top; y < self.curring_bottom; y++) {
         [self update_view_line:y _model:_dungeon];
     }
     
+    // player の移動
     CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [self->player runAction:ease];
@@ -126,7 +139,6 @@
     switch (type) {
         case 0:
             // 更新
-            [self->block_layer removeAllChildrenWithCleanup:YES];
             [self update_view:_dungeon];
             break;
             

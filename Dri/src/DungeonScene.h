@@ -22,8 +22,11 @@
     DungeonModel *dungeon;
     
     int offset_y;
+    int curring_top;
+    int curring_bottom;
 }
 
 +(CCScene *) scene;
+- (void)update_curring_range;
 
 @end

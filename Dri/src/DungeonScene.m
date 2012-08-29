@@ -14,6 +14,8 @@
 
 #pragma mark - HelloWorldLayer
 
+#define DISP_H 9
+
 // HelloWorldLayer implementation
 @implementation DungeonScene
 
@@ -21,7 +23,7 @@
 +(CCScene *) scene
 {
 	CCScene *scene = [CCScene node];
-	DungeonScene *layer = [DungeonScene node];
+	CCLayer *layer = [DungeonScene node];
 	[scene addChild: layer];
 	return scene;
 }
@@ -30,27 +32,28 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
- 
-        offset_y = 0;
-            
+     
         // setup dungeon view
         dungeon_view = [DungeonView node];
         [dungeon_view setDelegate:self];
         [self addChild:dungeon_view];
+        
+        offset_y = 0;
+        [self update_curring_range];
         
         // setup dungeon model
         dungeon = [[DungeonModel alloc] init:NULL];
         //[dungeon _setup];
         [dungeon add_observer:dungeon_view];
         [dungeon load_from_file:@"floor001.json"];
-        
+
 		// enable touch
         self.isTouchEnabled = YES;
 	}
 	return self;
 }
 
--(void)scroll_to
+- (float)get_offset_y_by_player_pos
 {
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
@@ -64,9 +67,14 @@
     
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
-    int max_scroll = (HEIGHT - 9) * 60 + 30;
+    int max_scroll = (HEIGHT - DISP_H) * 60 + 30;
     if (offset_y > max_scroll) offset_y = max_scroll;
+    
+    return offset_y;
+}
 
+-(void)scroll_to
+{
     // 実際の処理
     CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
@@ -85,7 +93,16 @@
     // need implement
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)update_curring_range
+{
+    // カリング
+    int visible_y = (int)(self->offset_y / 60);
+    int curring_var = 2;
+    self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
+    self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
+}
+
+- (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     // スクリーン座標からビューの座標へ変換
     UITouch *touch =[touches anyObject];
@@ -93,10 +110,23 @@
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / 60);
     int y = (int)((480 - location.y + offset_y) / 60);
+    return cdp(x, y);
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+
+    DLPoint view_pos = [self screen_to_view_pos:touches];
     
     // モデルへ通知
-    [self->dungeon on_hit:ccp(x, y)];
+    [self->dungeon on_hit:view_pos];
 
+    // スクロールの offset 更新
+    self->offset_y = [self get_offset_y_by_player_pos];
+    
+    // カリングの幅を更新
+    [self update_curring_range];
+    
     // アニメーション開始
     [self render_and_animation];
 }

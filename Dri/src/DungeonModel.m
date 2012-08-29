@@ -63,7 +63,7 @@
     }
 }
 
--(void) on_hit:(CGPoint)pos
+-(void) on_hit:(DLPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
