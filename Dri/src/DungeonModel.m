@@ -34,16 +34,8 @@
     self->observer = _observer;
 }
 
--(void)update
+-(void)on_update
 {
-    // -- アップデートフェイズ
-    // ブロックのターン！
-    // 全ブロックに対して
-    // update 呼ぶ
-    // TODO: 可視範囲のブロックをターゲットに
-    // for (block in 可視範囲のブロック) {
-    //     block.update(context);
-    // }
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < WIDTH; i++) {
             BlockModel* b = [self get_x:i y:j];
@@ -81,7 +73,7 @@
         [b on_hit:self];
     }
     
-    [self update];
+    [self on_update];
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知

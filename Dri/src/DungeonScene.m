@@ -76,12 +76,13 @@
 - (void)render_and_animation
 {
     // タップ禁止に
-    
+    // need implement
     
     //[dungeon_view do_all_animation];
     [self scroll_to];
 
     // タップ禁止解除
+    // need implement
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

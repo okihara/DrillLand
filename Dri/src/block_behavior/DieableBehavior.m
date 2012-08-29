@@ -8,6 +8,7 @@
 
 #import "DieableBehavior.h"
 #import "DungeonModel.h"
+#import "DungeonResultScene.h"
 
 @implementation DieableBehavior
 
@@ -35,6 +36,8 @@
     // implement behaivior
     NSLog(@"PLAYER DIED P hp=%d", context_.hp);
     // イベント飛ばす
+    // TODO: ここで直接シーン切り替えするのではなく、もっと上位に情報を伝える
+    [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
 }
 
 @end
