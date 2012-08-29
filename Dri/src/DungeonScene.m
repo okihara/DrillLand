@@ -97,7 +97,7 @@
 {
     // カリング
     int visible_y = (int)(self->offset_y / 60);
-    int curring_var = 2;
+    int curring_var = -1;
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
 }
