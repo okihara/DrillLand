@@ -29,9 +29,9 @@
     return self;
 }
 
--(void) add_observer:(id<DungenModelObserver>)_observer
+-(void) add_observer:(id<DungenModelObserver>)observer_
 {
-    self->observer = _observer;
+    self->observer = observer_;
 }
 
 -(void)on_update
@@ -44,6 +44,25 @@
     }
 }
 
+- (void)on_hit_block:(int)y x:(int)x
+{
+    // -- ブロックのヒット処理フェイズ
+    BlockModel* b = [self get_x:x y:y];
+    if (b.can_tap == NO) {
+        // TODO: notify
+        // 「そこはタップできません」とかね
+        return;
+    }
+    
+    if (b.group_info) {
+        for (BlockModel* block in b.group_info) {
+            [block on_hit:self];
+        }
+    } else {
+        [b on_hit:self];
+    }
+}
+
 -(void) on_hit:(CGPoint)pos
 {
     int x = (int)pos.x;
@@ -53,39 +72,27 @@
     [self update_route_map:cdp(x, y) target:player.pos];
     DLPoint next_pos = [self get_player_pos:player.pos];
     self->player.pos = next_pos;
-    
-    // TODO: ここで notify すべき
-    NSLog(@"PLAYER MOVED %d %d", next_pos.x, next_pos.y);
-    
-    // -- ブロックのヒット処理フェイズ
-    BlockModel* b = [self get_x:x y:y];
-    if (b.can_tap == NO) {
-        // TODO: notify
-        // 「そこはタップできません」とかね
-        return;
-    }
 
-    if (b.group_info) {
-        for (BlockModel* block in b.group_info) {
-            [block on_hit:self];
-        }
-    } else {
-        [b on_hit:self];
-    }
+    // ブロックのヒットフェイズ
+    [self on_hit_block:y x:x];
     
+    // ブロックのアップデートフェイズ
     [self on_update];
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    // 0 == ON_UPDATE
-    [self->observer notify:0 dungeon:self params:self];
+    [self->observer notify:0 dungeon:self params:self]; // 0 == ON_UPDATE
 }
 
 -(void) notify:(int)type params:(id)params
 {
     [self->observer notify:type dungeon:self params:params];
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------
+
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
 -(void) _set:(DLPoint)pos block:(BlockModel*)block
@@ -117,10 +124,6 @@
     BlockModel* b = [self->map get_x:_x y:_y];
     return b.can_tap;
 }
-
-
-//-----------------------------------------------------------------------------------------------------------------
-
 
 -(void) update_can_tap:(CGPoint)pos
 {
