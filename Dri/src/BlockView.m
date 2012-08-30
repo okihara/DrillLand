@@ -66,7 +66,7 @@
 {
     switch (type) {
         case 1:
-            [ctx make_particle03:self];
+            [ctx launch_particle:@"hit2" position:self.position];
             break;
         case 2:
             [ctx make_particle:self];

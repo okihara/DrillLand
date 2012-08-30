@@ -15,4 +15,6 @@
 
 @property (nonatomic, readwrite, retain) CCLayer* target_layer;
 
+-(void)launch_particle:(NSString*)name position:(CGPoint)pos;
+
 @end

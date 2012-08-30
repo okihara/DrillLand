@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EffectLauncher.h"
 #import "DungeonModel.h"
 
 @class XDMap;
@@ -25,10 +26,14 @@
     CCLayer* block_layer;
     
     PlayerView* player;
+    
+    EffectLauncher* effect_launcher;
 }
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) int curring_top;
 @property (nonatomic, assign) int curring_bottom;
+
+-(void)launch_particle:(NSString*)name position:(CGPoint)pos;
 
 @end

@@ -7,16 +7,16 @@
 //
 
 #import "EffectLauncher.h"
-#import "XDMap.h"
 
 @implementation EffectLauncher
 
 @synthesize target_layer;
 
--(void)launch_particle:(NSString*)name position:(DLPoint)pos
+-(void)launch_particle:(NSString*)name position:(CGPoint)pos
 {
-    CCParticleSystem *particle = [[[CCParticleSystemQuad alloc] initWithFile:@"blood.plist"] autorelease];
-    particle.position = ccp(pos.x, pos.y);
+    NSString* plistname = [NSString stringWithFormat:@"%@.plist", name];
+    CCParticleSystem *particle = [[[CCParticleSystemQuad alloc] initWithFile:plistname] autorelease];
+    particle.position = pos;
     particle.autoRemoveOnFinish = YES;
     [self.target_layer addChild:particle];
 }

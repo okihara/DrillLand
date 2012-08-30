@@ -49,28 +49,15 @@
     [self->effect_layer addChild:fire];
 }
 
--(void) make_particle03:(BlockView*)block
-{
-    CGPoint pos = block.position;
-    
-    CCParticleSystem *p = [[[CCParticleSystemQuad alloc] initWithFile:@"hit2.plist"] autorelease];
-    p.position = pos;
-    p.autoRemoveOnFinish = YES;
-    [self->effect_layer addChild:p];
-}
-
--(void) make_particle04:(CGPoint)pos
-{
-    CCParticleSystem *p = [[[CCParticleSystemQuad alloc] initWithFile:@"blood.plist"] autorelease];
-    p.position = pos;
-    p.autoRemoveOnFinish = YES;
-    [self->effect_layer addChild:p];
-}
-
 -(void) make_particle:(BlockView*)block
 {
     [self make_particle01:block];
     [self make_particle02:block];
+}
+
+-(void)launch_particle:(NSString*)name position:(CGPoint)pos
+{
+    [self->effect_launcher launch_particle:name position:pos];
 }
 
 -(id) init
@@ -91,6 +78,9 @@
         
         self->player = [[PlayerView alloc] init];
         [self->effect_layer addChild:self->player];
+        
+        self->effect_launcher = [[EffectLauncher alloc] init];
+        self->effect_launcher.target_layer = self->effect_layer;
 	}
 	return self;
 }
@@ -149,7 +139,7 @@
             // ブロックにも通知
         if (b.type == ID_PLAYER){
             if(type != 1) break;
-            [self make_particle04:self->player.position];
+            [self launch_particle:@"blood" position:self->player.position];
         } else {
             BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
             [block handle_event:self type:type];
