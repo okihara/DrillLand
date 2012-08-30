@@ -15,6 +15,7 @@
 		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
 		C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */ = {isa = PBXBuildFile; fileRef = C11D62BA15ED7EBF00F7633D /* blood.plist */; };
 		C11D62BE15EDCB7000F7633D /* DungeonResultScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */; };
+		C11D62C115EF339300F7633D /* EffectLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62C015EF339200F7633D /* EffectLauncher.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -188,6 +189,8 @@
 		C11D62BA15ED7EBF00F7633D /* blood.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = blood.plist; sourceTree = "<group>"; };
 		C11D62BC15EDCB6E00F7633D /* DungeonResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonResultScene.h; path = src/DungeonResultScene.h; sourceTree = "<group>"; };
 		C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonResultScene.m; path = src/DungeonResultScene.m; sourceTree = "<group>"; };
+		C11D62BF15EF339200F7633D /* EffectLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectLauncher.h; path = src/view/EffectLauncher.h; sourceTree = "<group>"; };
+		C11D62C015EF339200F7633D /* EffectLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectLauncher.m; path = src/view/EffectLauncher.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1065,6 +1068,8 @@
 				C1EEBCB315E6F2DC007F1814 /* BlockView.m */,
 				C1EEBD0515E83BEC007F1814 /* PlayerView.h */,
 				C1EEBD0615E83BED007F1814 /* PlayerView.m */,
+				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
+				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1296,6 +1301,7 @@
 				C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */,
 				C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */,
 				C11D62BE15EDCB7000F7633D /* DungeonResultScene.m in Sources */,
+				C11D62C115EF339300F7633D /* EffectLauncher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
