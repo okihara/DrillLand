@@ -69,7 +69,7 @@
             [ctx launch_particle:@"hit2" position:self.position];
             break;
         case 2:
-            [ctx make_particle:self];
+            [ctx launch_particle:@"block" position:self.position];
             
         default:
             break;

@@ -18,42 +18,6 @@
 @synthesize delegate;
 @synthesize curring_top, curring_bottom;
 
--(void) make_particle02:(BlockView*)block
-{
-    CGPoint pos = block.position;
-    
-    CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
-    fire.totalParticles = 8;
-    fire.life = 1.0;
-    fire.speed = 100;
-    fire.position = pos;
-    fire.autoRemoveOnFinish = YES;
-    
-    [self->effect_layer addChild:fire];
-}
-
--(void) make_particle01:(BlockView*)block
-{
-    CGPoint pos = block.position;
-    
-    CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
-    fire.totalParticles = 40;
-    fire.speed = 200;
-    fire.gravity = ccp(0.0, -500.0);
-    fire.position = pos;
-    fire.life = 0.7;
-    fire.autoRemoveOnFinish = YES;
-        
-    [self->effect_layer addChild:fire];
-}
-
--(void) make_particle:(BlockView*)block
-{
-    [self make_particle01:block];
-    [self make_particle02:block];
-}
 
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos
 {
