@@ -52,7 +52,7 @@
     label.visible = b.can_tap; // タップ出来ないときは数字を見せない
     [block addChild:label];
     
-//    // 数字
+//    // 経路探索の結果を数字で表示
 //    int c = [ctx.route_map get:cdp(b.x, b.y)];
 //    CCLabelTTF *cost = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", c] fontName:@"AppleGothic" fontSize:20];
 //    cost.position =  ccp(40, 30);
