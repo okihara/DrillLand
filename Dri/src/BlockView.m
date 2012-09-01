@@ -12,6 +12,95 @@
 
 @implementation BlockView
 
+
+-(void)setup
+{
+    self->events = [[NSMutableArray array] retain];
+}
+
+-(id) init
+{
+	if (self=[super init]) {
+        [self setup];
+	}
+	return self;
+}
+
+-(void)dealloc
+{
+    [self->events release];
+    [super dealloc];
+}
+
+
+// TODO: プレゼンテーションにそのまま渡す
+-(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
+{
+    for (NSDictionary* event in self->events) {
+        int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
+        BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
+
+        if (b.type == ID_PLAYER){
+            
+            switch (type) {
+                    
+                case 0:
+                    break;
+                case 1:
+                    [ctx launch_particle:@"blood" position:self.position];
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+            
+        } else {
+            
+            switch (type) {
+                case 0:
+                    break;
+                case 1:
+                    [ctx launch_particle:@"hit2" position:self.position];
+                    break;
+                case 2:
+                    [ctx launch_particle:@"block" position:self.position];
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+        
+    }
+    
+    [self->events removeAllObjects];
+}
+
+-(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
+{
+    NSDictionary* event = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:type], @"type", b, @"model", nil];
+    [self->events addObject:event];
+    return YES;
+}
+
+//----------------------------------------------------------------
+// animation
+
+-(void)play_anime:(NSString*)name
+{
+    CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
+    CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
+    [self runAction:act];   
+}
+
+
+//===============================================================
+//
+// どちらかというと builder
+//
+//===============================================================
+
 + (void)add_route_num:(BlockModel *)b ctx:(DungeonModel *)ctx block:(BlockView *)block
 {
     // 経路探索の結果を数字で表示
@@ -64,58 +153,12 @@
     }
     
     BlockView* block = [BlockView spriteWithFile:filename];
+    [block setup];
     
     [self add_can_destroy_num:b block:block];
 //    [self add_route_num:b ctx:ctx block:block];
     
     return block;
-}
-
--(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
-{
-    if (b.type == ID_PLAYER){
-        
-        switch (type) {
-                
-            case 0:
-                break;
-            case 1:
-                [ctx launch_particle:@"blood" position:self.position];
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
-
-    } else {
-        
-        switch (type) {
-            case 0:
-                break;
-            case 1:
-                [ctx launch_particle:@"hit2" position:self.position];
-                break;
-            case 2:
-                [ctx launch_particle:@"block" position:self.position];
-                break;
-            default:
-                break;
-        }
-        
-    }
-
-    return YES;
-}
-
-//----------------------------------------------------------------
-// animation
-
--(void)play_anime:(NSString*)name
-{
-    CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
-    CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
-    [self runAction:act];   
 }
 
 @end

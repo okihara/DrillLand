@@ -55,7 +55,7 @@
 {
     NSString* plistname = [NSString stringWithFormat:@"%@.plist", name];
     CCParticleSystem *particle = [[[CCParticleSystemQuad alloc] initWithFile:plistname] autorelease];
-    // particle no plist がない場合 落ちる
+    // particle no plist がない場合、落ちるよ
     particle.position = pos;
     particle.autoRemoveOnFinish = YES;
     [self.target_layer addChild:particle];

@@ -96,7 +96,7 @@
     // タップ禁止に
     // need implement
     
-    //[dungeon_view do_all_animation];
+    [dungeon_view update_presentation:self->dungeon];
     [self scroll_to];
 
     // タップ禁止解除
@@ -139,6 +139,9 @@
     
     // アニメーション開始
     [self render_and_animation];
+    
+    // 更新
+    [self->dungeon_view update_view:self->dungeon];
 }
 
 // on "dealloc" you need to release all your retained objects

@@ -23,9 +23,16 @@
     [self->effect_launcher launch_particle:name position:pos];
 }
 
+-(void)launch_effect:(NSString *)name
+{
+    // color flash
+    // shake
+    return;
+}
+
 -(id) init
 {
-	if( (self=[super init]) ) {
+	if(self=[super init]) {
         
         disp_w = WIDTH;
         disp_h = HEIGHT;
@@ -41,6 +48,7 @@
              
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
+        
 	}
 	return self;
 }
@@ -71,29 +79,47 @@
     }
 }
 
+- (void)update_player_pos:(DungeonModel *)_dungeon
+{
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
+    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [self->player runAction:ease];
+}
+
 - (void)update_view:(DungeonModel *)_dungeon
 {
     // clear
     [self->block_layer removeAllChildrenWithCleanup:YES];
     [view_map clear];
     
+    // curring を考慮して更新
     for (int y = self.curring_top; y < self.curring_bottom; y++) {
         [self update_view_line:y _model:_dungeon];
     }
     
     // player の移動
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
-    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
-    [self->player runAction:ease];
+    [self update_player_pos:_dungeon];
 }
 
-- (void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params
+-(void)update_presentation:(DungeonModel *)dungeon_
+{
+    // curring を考慮して更新
+    for (int y = self.curring_top; y < self.curring_bottom; y++) {
+        for (int x = 0; x < disp_w; x++) {
+            BlockModel *block_model = [dungeon_ get_x:x y:y];
+            BlockView  *block_view  = [self->view_map get_x:x y:y];
+            [block_view update_presentation:self model:block_model];
+        }
+    }   
+}
+
+- (void) notify:(int)type dungeon:(DungeonModel*)dungeon_ params:(id)params
 {
     // TODO: ここは、ひたすらQueにためるだけ
     BlockModel* b = (BlockModel*)params;
     switch (type) {
         case 0:
-            [self update_view:_dungeon]; // 画面更新
+            //[self update_view:dungeon_]; // 画面更新
             break;
         default:
         {

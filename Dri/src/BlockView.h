@@ -14,12 +14,12 @@
 
 @interface BlockView : CCSprite
 {
-    
+    NSMutableArray* events;
 }
 
 +(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
 -(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b;
 -(void)play_anime:(NSString*)name;
-
+-(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b;
 
 @end

@@ -34,6 +34,7 @@
 @property (nonatomic, readwrite, retain) BlockView* player;
 
 - (void)update_view:(DungeonModel *)_dungeon;
+- (void)update_presentation:(DungeonModel *)dungeon_;
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
 - (void)add_block:(BlockView*)block;
 
