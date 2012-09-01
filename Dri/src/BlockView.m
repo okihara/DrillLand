@@ -71,20 +71,40 @@
     return block;
 }
 
--(BOOL)handle_event:(DungeonView*)ctx type:(int)type
+-(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
 {
-    switch (type) {
-        case 1:
-            [ctx launch_particle:@"hit2" position:self.position];
-            break;
-        case 2:
-            [ctx launch_particle:@"block" position:self.position];
-            
-        default:
-            break;
+    if (b.type == ID_PLAYER){
+        
+        switch (type) {
+                
+            case 0:
+                break;
+            case 1:
+                [ctx launch_particle:@"blood" position:self.position];
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+
+    } else {
+        
+        switch (type) {
+            case 0:
+                break;
+            case 1:
+                [ctx launch_particle:@"hit2" position:self.position];
+                break;
+            case 2:
+                [ctx launch_particle:@"block" position:self.position];
+                break;
+            default:
+                break;
+        }
+        
     }
 
-    // ここでパーティクル作る
     return YES;
 }
 

@@ -18,7 +18,8 @@
 }
 
 +(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
--(BOOL)handle_event:(DungeonView*)ctx type:(int)type;
+-(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b;
 -(void)play_anime:(NSString*)name;
+
 
 @end

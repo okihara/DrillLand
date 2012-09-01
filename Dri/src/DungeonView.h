@@ -33,7 +33,8 @@
 @property (nonatomic, assign) int curring_bottom;
 @property (nonatomic, readwrite, retain) BlockView* player;
 
--(void)launch_particle:(NSString*)name position:(CGPoint)pos;
--(void)add_block:(BlockView*)block;
+- (void)update_view:(DungeonModel *)_dungeon;
+- (void)launch_particle:(NSString*)name position:(CGPoint)pos;
+- (void)add_block:(BlockView*)block;
 
 @end

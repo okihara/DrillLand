@@ -545,6 +545,13 @@
 			name = block_behaivior;
 			sourceTree = "<group>";
 		};
+		C11D62C215F19BCD00F7633D /* block_appearance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = block_appearance;
+			sourceTree = "<group>";
+		};
 		C195462A15D7F485002119CC = {
 			isa = PBXGroup;
 			children = (
@@ -961,8 +968,9 @@
 		C1EEBCC515E6F31B007F1814 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C1EEBD0915E84329007F1814 /* view */,
+				C11D62C215F19BCD00F7633D /* block_appearance */,
 				C11D62B015EC3B1800F7633D /* block_behaivior */,
+				C1EEBD0915E84329007F1814 /* view */,
 				C1EEBD0815E8431E007F1814 /* model */,
 				C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */,
 				C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */,

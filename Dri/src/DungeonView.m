@@ -93,24 +93,13 @@
     BlockModel* b = (BlockModel*)params;
     switch (type) {
         case 0:
-            // 更新
-            [self update_view:_dungeon];
+            [self update_view:_dungeon]; // 画面更新
             break;
-            
-        case 1:
-            // ON_TAP
-        case 2:
-            // ON_DESTROY
-            // ブロックにも通知
-        if (b.type == ID_PLAYER){
-            if(type != 1) break;
-            [self launch_particle:@"blood" position:self->player.position];
-        } else {
-            BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
-            [block handle_event:self type:type];
-        }
-            break;            
         default:
+        {
+            BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
+            [block handle_event:self type:type model:b];
+        }
             break;
     }
 }
