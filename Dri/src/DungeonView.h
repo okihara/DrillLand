@@ -11,7 +11,7 @@
 #import "DungeonModel.h"
 
 @class XDMap;
-@class PlayerView;
+@class BlockView;
 
 @interface DungeonView : CCLayer<DungenModelObserver>
 {
@@ -25,15 +25,15 @@
     CCLayer* effect_layer;
     CCLayer* block_layer;
     
-    PlayerView* player;
-    
     EffectLauncher* effect_launcher;
 }
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) int curring_top;
 @property (nonatomic, assign) int curring_bottom;
+@property (nonatomic, readwrite, retain) BlockView* player;
 
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos;
+-(void)add_block:(BlockView*)block;
 
 @end

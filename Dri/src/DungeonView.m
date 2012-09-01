@@ -11,13 +11,12 @@
 #import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
-#import "PlayerView.h"
 
 @implementation DungeonView
 
 @synthesize delegate;
 @synthesize curring_top, curring_bottom;
-
+@synthesize player;
 
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos
 {
@@ -39,14 +38,16 @@
         
         self->effect_layer = [[CCLayer alloc]init];
         [self addChild:self->effect_layer];
-        
-        self->player = [[PlayerView alloc] init];
-        [self->effect_layer addChild:self->player];
-        
+             
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
 	}
 	return self;
+}
+
+-(void)add_block:(BlockView*)block
+{
+    [self->effect_layer addChild:block];    
 }
 
 - (void)remove_view_line:(int)y _model:(DungeonModel *)_dungeon

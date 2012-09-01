@@ -170,7 +170,6 @@
 		C1EEBD0015E79485007F1814 /* link.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBCFF15E79485007F1814 /* link.json */; };
 		C1EEBD0215E7B995007F1814 /* link_f.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0115E7B995007F1814 /* link_f.json */; };
 		C1EEBD0415E839CF007F1814 /* link_f.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0315E839CF007F1814 /* link_f.png */; };
-		C1EEBD0715E83BED007F1814 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD0615E83BED007F1814 /* PlayerView.m */; };
 		C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0B15E86D25007F1814 /* hit1.plist */; };
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 /* End PBXBuildFile section */
@@ -499,8 +498,6 @@
 		C1EEBCFF15E79485007F1814 /* link.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = link.json; path = Resources/animation/link.json; sourceTree = "<group>"; };
 		C1EEBD0115E7B995007F1814 /* link_f.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = link_f.json; path = Resources/spritesheet/link_f.json; sourceTree = "<group>"; };
 		C1EEBD0315E839CF007F1814 /* link_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = link_f.png; path = Resources/spritesheet/link_f.png; sourceTree = "<group>"; };
-		C1EEBD0515E83BEC007F1814 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerView.h; path = src/PlayerView.h; sourceTree = "<group>"; };
-		C1EEBD0615E83BED007F1814 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerView.m; path = src/PlayerView.m; sourceTree = "<group>"; };
 		C1EEBD0B15E86D25007F1814 /* hit1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit1.plist; sourceTree = "<group>"; };
 		C1EEBD0D15E870BB007F1814 /* hit2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit2.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1066,8 +1063,6 @@
 				C1EEBCB915E6F2DC007F1814 /* DungeonView.m */,
 				C1EEBCB215E6F2DC007F1814 /* BlockView.h */,
 				C1EEBCB315E6F2DC007F1814 /* BlockView.m */,
-				C1EEBD0515E83BEC007F1814 /* PlayerView.h */,
-				C1EEBD0615E83BED007F1814 /* PlayerView.m */,
 				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
 				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 			);
@@ -1295,7 +1290,6 @@
 				C1EEBCF115E6F50E007F1814 /* SBJsonUTF8Stream.m in Sources */,
 				C1EEBCF215E6F50E007F1814 /* SBJsonWriter.m in Sources */,
 				C1EEBCF815E6F74C007F1814 /* DungeonPreloadScene.m in Sources */,
-				C1EEBD0715E83BED007F1814 /* PlayerView.m in Sources */,
 				C11D62AE15EBB37700F7633D /* BlockBuilder.m in Sources */,
 				C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */,
 				C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */,

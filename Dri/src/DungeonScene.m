@@ -11,6 +11,7 @@
 #import "DungeonScene.h"
 #import "DungeonModel.h"
 #import "DungeonView.h"
+#import "BlockView.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -46,6 +47,15 @@
         //[dungeon _setup];
         [dungeon add_observer:dungeon_view];
         [dungeon load_from_file:@"floor001.json"];
+        
+        BlockView* player = [BlockView create:dungeon.player ctx:dungeon];  
+        player.scale = 2.0;
+        [player play_anime:@"walk"];
+        [dungeon_view add_block:player];
+        dungeon_view.player = player;
+        [player release];
+        
+        [dungeon_view update_view:dungeon];
 
 		// enable touch
         self.isTouchEnabled = YES;
