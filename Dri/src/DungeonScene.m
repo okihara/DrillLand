@@ -43,19 +43,19 @@
         [self update_curring_range];
         
         // setup dungeon model
-        dungeon = [[DungeonModel alloc] init:NULL];
+        dungeon_model = [[DungeonModel alloc] init:NULL];
         //[dungeon _setup];
-        [dungeon add_observer:dungeon_view];
-        [dungeon load_from_file:@"floor001.json"];
+        [dungeon_model add_observer:dungeon_view];
+        [dungeon_model load_from_file:@"floor001.json"];
         
-        BlockView* player = [BlockView create:dungeon.player ctx:dungeon];  
+        BlockView* player = [BlockView create:dungeon_model.player ctx:dungeon_model];  
         player.scale = 2.0;
         [player play_anime:@"walk"];
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
         
-        [dungeon_view update_view:dungeon];
+        [dungeon_view update_view:dungeon_model];
 
 		// enable touch
         self.isTouchEnabled = YES;
@@ -63,13 +63,70 @@
 	return self;
 }
 
+- (void) dealloc
+{
+    [dungeon_model release];
+    [super dealloc];
+}
+
+- (void)render_and_animation
+{
+    // タップ禁止に
+    // need implement
+    
+    [dungeon_view update_presentation:self->dungeon_model];
+    // TODO: スクロールも一連のアクションシーケンスのひとつ
+    [self scroll_to];
+
+    // タップ禁止解除
+    // need implement
+}
+
+- (DLPoint)screen_to_view_pos:(NSSet *)touches
+{
+    // スクリーン座標からビューの座標へ変換
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    location =[[CCDirector sharedDirector] convertToGL:location];
+    int x = (int)(location.x / 60);
+    int y = (int)((480 - location.y + offset_y) / 60);
+    return cdp(x, y);
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+
+    DLPoint view_pos = [self screen_to_view_pos:touches];
+    
+    // モデルへ通知
+    [self->dungeon_model on_hit:view_pos];
+
+    // スクロールの offset 更新
+    self->offset_y = [self get_offset_y_by_player_pos];
+    
+    // カリングの幅を更新
+    [self update_curring_range];
+    
+    // アニメーション開始
+    [self render_and_animation];
+    
+    // 更新
+    [self->dungeon_view update_view:self->dungeon_model];
+}
+
+//===============================================================
+//
+// スクロール関係
+//
+//===============================================================
+
 - (float)get_offset_y_by_player_pos
 {
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
     int by = (int)(offset_y / 60);
-    int diff = self->dungeon.player.pos.y - by;
+    int diff = self->dungeon_model.player.pos.y - by;
     int hoge = 3;
     if (diff - hoge > 0) {
         offset_y += 60 * (diff - hoge);
@@ -91,18 +148,6 @@
     [dungeon_view runAction:ease];
 }
 
-- (void)render_and_animation
-{
-    // タップ禁止に
-    // need implement
-    
-    [dungeon_view update_presentation:self->dungeon];
-    [self scroll_to];
-
-    // タップ禁止解除
-    // need implement
-}
-
 - (void)update_curring_range
 {
     // カリング
@@ -110,44 +155,6 @@
     int curring_var = -1;
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
-}
-
-- (DLPoint)screen_to_view_pos:(NSSet *)touches
-{
-    // スクリーン座標からビューの座標へ変換
-    UITouch *touch =[touches anyObject];
-    CGPoint location =[touch locationInView:[touch view]];
-    location =[[CCDirector sharedDirector] convertToGL:location];
-    int x = (int)(location.x / 60);
-    int y = (int)((480 - location.y + offset_y) / 60);
-    return cdp(x, y);
-}
-
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-{
-
-    DLPoint view_pos = [self screen_to_view_pos:touches];
-    
-    // モデルへ通知
-    [self->dungeon on_hit:view_pos];
-
-    // スクロールの offset 更新
-    self->offset_y = [self get_offset_y_by_player_pos];
-    
-    // カリングの幅を更新
-    [self update_curring_range];
-    
-    // アニメーション開始
-    [self render_and_animation];
-    
-    // 更新
-    [self->dungeon_view update_view:self->dungeon];
-}
-
-// on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
-    [super dealloc];
 }
 
 @end

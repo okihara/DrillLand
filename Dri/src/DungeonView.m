@@ -113,6 +113,7 @@
     }
     
     // PLAYER の分 TODO: 同じように扱いたい。。。
+    // TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     [self.player update_presentation:self model:dungeon_.player];
 }
 

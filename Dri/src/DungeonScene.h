@@ -19,7 +19,7 @@
 @interface DungeonScene : CCLayer
 {
     DungeonView *dungeon_view;
-    DungeonModel *dungeon;
+    DungeonModel *dungeon_model;
     
     int offset_y;
     int curring_top;
@@ -27,6 +27,10 @@
 }
 
 +(CCScene *) scene;
-- (void)update_curring_range;
+-(void)update_curring_range;
+
+// TODO: スクロール関係は別クラスに
+-(float)get_offset_y_by_player_pos;
+-(void)scroll_to;
 
 @end
