@@ -110,7 +110,10 @@
             BlockView  *block_view  = [self->view_map get_x:x y:y];
             [block_view update_presentation:self model:block_model];
         }
-    }   
+    }
+    
+    // PLAYER の分 TODO: 同じように扱いたい。。。
+    [self.player update_presentation:self model:dungeon_.player];
 }
 
 - (void) notify:(int)type dungeon:(DungeonModel*)dungeon_ params:(id)params
@@ -122,10 +125,15 @@
             //[self update_view:dungeon_]; // 画面更新
             break;
         default:
-        {
-            BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
-            [block handle_event:self type:type model:b];
-        }
+            
+            if(b.type == ID_PLAYER) {
+                BlockView* block = self.player;
+                [block handle_event:self type:type model:b];
+            } else {
+                BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
+                [block handle_event:self type:type model:b];
+            }
+
             break;
     }
 }

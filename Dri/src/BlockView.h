@@ -11,10 +11,18 @@
 #import "DungeonModel.h"
 
 @class BlockModel, DungeonView;
+@class BlockView;
+
+@protocol BlockPresentation <NSObject>
+
+-(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockView *)me;
+
+@end
 
 @interface BlockView : CCSprite
 {
     NSMutableArray* events;
+    NSMutableArray* presentation_list;
 }
 
 +(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;

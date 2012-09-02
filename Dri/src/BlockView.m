@@ -9,13 +9,15 @@
 #import "BlockView.h"
 #import "BlockModel.h"
 #import "DungeonView.h"
+#import "BreakablePresentation.h"
+#import "BloodyPresentation.h"
 
 @implementation BlockView
-
 
 -(void)setup
 {
     self->events = [[NSMutableArray array] retain];
+    self->presentation_list = [[NSMutableArray array] retain];
 }
 
 -(id) init
@@ -28,50 +30,43 @@
 
 -(void)dealloc
 {
+    [self->presentation_list release];
     [self->events release];
     [super dealloc];
 }
 
+- (void)add_presentation:(NSObject<BlockPresentation>*)presentation
+{
+    [self->presentation_list addObject:presentation];
+}
+
+- (void)_update_presentation:(DungeonView *)ctx type:(int)type b:(BlockModel *)b
+{
+    if (b.type == ID_PLAYER){
+        
+        for (NSObject<BlockPresentation>* p in self->presentation_list) {
+            [p handle_event:ctx event:type model:ctx.player];
+        }
+        
+    } else {
+        
+        for (NSObject<BlockPresentation>* p in self->presentation_list) {
+            [p handle_event:ctx event:type model:self];
+        }
+        
+    }
+}
 
 // TODO: プレゼンテーションにそのまま渡す
 -(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
 {
     for (NSDictionary* event in self->events) {
+        
         int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
         BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
 
-        if (b.type == ID_PLAYER){
-            
-            switch (type) {
-                    
-                case 0:
-                    break;
-                case 1:
-                    [ctx launch_particle:@"blood" position:self.position];
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
-            }
-            
-        } else {
-            
-            switch (type) {
-                case 0:
-                    break;
-                case 1:
-                    [ctx launch_particle:@"hit2" position:self.position];
-                    break;
-                case 2:
-                    [ctx launch_particle:@"block" position:self.position];
-                    break;
-                default:
-                    break;
-            }
-            
-        }
-        
+        [self _update_presentation:ctx type:type b:b];
+
     }
     
     [self->events removeAllObjects];
@@ -155,9 +150,49 @@
     BlockView* block = [BlockView spriteWithFile:filename];
     [block setup];
     
-    [self add_can_destroy_num:b block:block];
-//    [self add_route_num:b ctx:ctx block:block];
-    
+    switch (b.type) {
+        case ID_EMPTY:
+        {
+            [self add_route_num:b ctx:ctx block:block];
+        }
+            break;
+        case ID_PLAYER:
+        {
+            NSObject<BlockPresentation>* p;
+            p = [[BloodyPresentation alloc] init];
+            [block add_presentation:p];
+            [p release];
+        }
+            break;
+        case ID_ENEMY_BLOCK_0:
+        case ID_ENEMY_BLOCK_1:
+        {
+            [self add_can_destroy_num:b block:block];
+            
+            NSObject<BlockPresentation>* p;
+            
+            p = [[BreakablePresentation alloc] init];
+            [block add_presentation:p];
+            [p release];
+            
+            p = [[BloodyPresentation alloc] init];
+            [block add_presentation:p];
+            [p release];
+        }            
+            break;
+        default:
+        {
+            [self add_can_destroy_num:b block:block];
+            
+            NSObject<BlockPresentation>* p;
+            
+            p = [[BreakablePresentation alloc] init];
+            [block add_presentation:p];
+            [p release];
+        }
+            break;
+    }
+
     return block;
 }
 

@@ -16,6 +16,8 @@
 		C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */ = {isa = PBXBuildFile; fileRef = C11D62BA15ED7EBF00F7633D /* blood.plist */; };
 		C11D62BE15EDCB7000F7633D /* DungeonResultScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */; };
 		C11D62C115EF339300F7633D /* EffectLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62C015EF339200F7633D /* EffectLauncher.m */; };
+		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
+		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -190,6 +192,10 @@
 		C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonResultScene.m; path = src/DungeonResultScene.m; sourceTree = "<group>"; };
 		C11D62BF15EF339200F7633D /* EffectLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectLauncher.h; path = src/view/EffectLauncher.h; sourceTree = "<group>"; };
 		C11D62C015EF339200F7633D /* EffectLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectLauncher.m; path = src/view/EffectLauncher.m; sourceTree = "<group>"; };
+		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
+		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
+		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
+		C16009F515F2D94100A4616C /* BloodyPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BloodyPresentation.m; path = src/block_presentation/BloodyPresentation.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -545,11 +551,15 @@
 			name = block_behaivior;
 			sourceTree = "<group>";
 		};
-		C11D62C215F19BCD00F7633D /* block_appearance */ = {
+		C11D62C215F19BCD00F7633D /* block_presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C16009F415F2D94100A4616C /* BloodyPresentation.h */,
+				C16009F515F2D94100A4616C /* BloodyPresentation.m */,
+				C16009F115F2D49100A4616C /* BreakablePresentation.h */,
+				C16009F215F2D49100A4616C /* BreakablePresentation.m */,
 			);
-			name = block_appearance;
+			name = block_presentation;
 			sourceTree = "<group>";
 		};
 		C195462A15D7F485002119CC = {
@@ -968,7 +978,7 @@
 		C1EEBCC515E6F31B007F1814 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C11D62C215F19BCD00F7633D /* block_appearance */,
+				C11D62C215F19BCD00F7633D /* block_presentation */,
 				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1EEBD0915E84329007F1814 /* view */,
 				C1EEBD0815E8431E007F1814 /* model */,
@@ -1304,6 +1314,8 @@
 				C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */,
 				C11D62BE15EDCB7000F7633D /* DungeonResultScene.m in Sources */,
 				C11D62C115EF339300F7633D /* EffectLauncher.m in Sources */,
+				C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */,
+				C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
