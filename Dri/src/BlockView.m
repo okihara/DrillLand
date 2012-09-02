@@ -57,7 +57,6 @@
     }
 }
 
-// TODO: プレゼンテーションにそのまま渡す
 -(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
 {
     for (NSDictionary* event in self->events) {
@@ -81,6 +80,7 @@
 
 //----------------------------------------------------------------
 // animation
+// helper
 
 -(void)play_anime:(NSString*)name
 {

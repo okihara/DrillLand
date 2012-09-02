@@ -112,7 +112,7 @@
         }
     }
     
-    // PLAYER の分 TODO: 同じように扱いたい。。。
+    // TODO: PLAYER も同じように扱いたい。。。
     // TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     [self.player update_presentation:self model:dungeon_.player];
 }
@@ -127,6 +127,7 @@
             break;
         default:
             
+            // TODO: PLAYER も同じように扱いたい。。。
             if(b.type == ID_PLAYER) {
                 BlockView* block = self.player;
                 [block handle_event:self type:type model:b];
