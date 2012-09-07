@@ -18,6 +18,9 @@
 @synthesize curring_top, curring_bottom;
 @synthesize player;
 
+// ========================================================================
+// エフェクト用のヘルパー
+// ========================================================================
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos
 {
     [self->effect_launcher launch_particle:name position:pos];
@@ -29,6 +32,8 @@
     // shake
     return;
 }
+
+// ========================================================================
 
 -(id) init
 {
@@ -72,18 +77,18 @@
     for (int x = 0; x < disp_w; x++) {
         BlockModel *block_model = [dungeon_ get_x:x y:y];
         BlockView *block = [BlockView create:block_model ctx:dungeon_];
-        block.position = ccp(30 + x * 60, 480 - (30 + y * 60));
+        block.position = [self model_to_local:cdp(x, y)];
         
         [self->block_layer addChild:block];
         [view_map set_x:x y:y value:block];
     }
 }
 
-- (void)update_player_pos:(DungeonModel *)_dungeon
+- (void)update_view_rows:(DungeonModel *)_dungeon
 {
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.07 position:ccp(30 + _dungeon.player.pos.x * 60, 480 - (30 + _dungeon.player.pos.y * 60))];
-    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
-    [self->player runAction:ease];
+    for (int y = self.curring_top; y < self.curring_bottom; y++) {
+        [self update_view_line:y _model:_dungeon];
+    }
 }
 
 - (void)update_view:(DungeonModel *)_dungeon
@@ -91,17 +96,12 @@
     // clear
     [self->block_layer removeAllChildrenWithCleanup:YES];
     [view_map clear];
-    
+
     // curring を考慮して更新
-    for (int y = self.curring_top; y < self.curring_bottom; y++) {
-        [self update_view_line:y _model:_dungeon];
-    }
-    
-    // player の移動
-    [self update_player_pos:_dungeon];
+    [self update_view_rows:_dungeon];
 }
 
--(void)update_presentation:(DungeonModel *)dungeon_
+- (void)update_presentation_all:(DungeonModel *)dungeon_
 {
     // curring を考慮して更新
     for (int y = self.curring_top; y < self.curring_bottom; y++) {
@@ -111,9 +111,12 @@
             [block_view update_presentation:self model:block_model];
         }
     }
-    
+}
+
+-(void)update_presentation:(DungeonModel *)dungeon_
+{
     // TODO: PLAYER も同じように扱いたい。。。
-    // TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    [self update_presentation_all:dungeon_];
     [self.player update_presentation:self model:dungeon_.player];
 }
 
@@ -138,6 +141,34 @@
 
             break;
     }
+}
+
+- (CGPoint)model_to_local:(DLPoint)pos
+{
+    return ccp(30 + pos.x * 60, 480 - (30 + pos.y * 60));
+}
+
+// =================================================================================
+
+- (void)update_player_pos:(DungeonModel *)_dungeon
+{
+    int length = [_dungeon.route_list count];
+    if (length == 0) return;
+    
+    float duration = 0.3 / length;
+    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
+    for (NSValue* v in _dungeon.route_list) {
+        DLPoint pos;
+        [v getValue:&pos];
+        
+        CGPoint cgpos = [self model_to_local:pos];
+        CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
+        [action_list addObject:act_move];
+    }
+    
+    CCSequence* action = [CCSequence actionWithArray:action_list];
+    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [self->player runAction:action];
 }
 
 @end

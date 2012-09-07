@@ -31,6 +31,7 @@
     ObjectXDMap *map;
     XDMap *done_map;
     XDMap *route_map;
+    NSMutableArray *route_list;
     id<DungenModelObserver> observer;
 }
 
@@ -55,5 +56,6 @@
 
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) BlockModel *player;
+@property (nonatomic, retain) NSMutableArray* route_list;
 
 @end

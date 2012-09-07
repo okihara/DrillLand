@@ -51,12 +51,18 @@
         BlockView* player = [BlockView create:dungeon_model.player ctx:dungeon_model];  
         player.scale = 2.0;
         [player play_anime:@"walk"];
+        
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
-        
-        [dungeon_view update_view:dungeon_model];
 
+        
+        // ブロック描画
+        [dungeon_view update_view:dungeon_model];
+        CGPoint p_pos = [dungeon_view model_to_local:dungeon_model.player.pos];
+        player.position = p_pos;
+
+        
 		// enable touch
         self.isTouchEnabled = YES;
 	}
@@ -109,6 +115,9 @@
     
     // アニメーション開始
     [self render_and_animation];
+    
+    // player の移動
+    [self->dungeon_view update_player_pos:self->dungeon_model];
     
     // 更新
     [self->dungeon_view update_view:self->dungeon_model];

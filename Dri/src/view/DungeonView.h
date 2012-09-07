@@ -37,5 +37,7 @@
 - (void)update_presentation:(DungeonModel *)dungeon_;
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
 - (void)add_block:(BlockView*)block;
+- (void)update_player_pos:(DungeonModel *)_dungeon;
+- (CGPoint)model_to_local:(DLPoint)pos;
 
 @end

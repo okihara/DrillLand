@@ -15,6 +15,7 @@
 
 @synthesize route_map;
 @synthesize player;
+@synthesize route_list;
 
 -(id) init:(NSArray*)initial
 {
@@ -23,6 +24,7 @@
         self->player = [block_builder buildWithID:ID_PLAYER];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
+        self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
         [self _fill_blocks];
     }
@@ -78,15 +80,20 @@
     }
 }
 
+- (void)move_player:(int)y x:(int)x
+{
+    // -- プレイヤーの移動フェイズ
+    [self update_route_map:cdp(x, y) target:player.pos];
+    DLPoint next_pos = [self get_player_pos:player.pos];
+    self->player.pos = next_pos;
+}
+
 -(void) on_hit:(DLPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
     
-    // -- プレイヤーの移動フェイズ
-    [self update_route_map:cdp(x, y) target:player.pos];
-    DLPoint next_pos = [self get_player_pos:player.pos];
-    self->player.pos = next_pos;
+    [self move_player:y x:x];
 
     // ブロックのヒットフェイズ
     [self on_hit_block:y x:x];
@@ -336,7 +343,7 @@
 
 // かならず 1 に辿り着けることを期待してるね
 // TODO: ここの実装ひどい
--(DLPoint) get_player_pos:(DLPoint)pos
+-(DLPoint) _get_player_pos:(DLPoint)pos
 {
     //# ゴールなので座標を返す
     int cost = [self->route_map get:pos];
@@ -393,7 +400,15 @@
             break;
     }
     
-    return [self get_player_pos:out_pos];
+    [self->route_list addObject:[NSValue valueWithBytes:&out_pos objCType:@encode(DLPoint)]];
+    
+    return [self _get_player_pos:out_pos];
+}
+
+-(DLPoint) get_player_pos:(DLPoint)pos
+{
+    [self->route_list removeAllObjects];
+    return [self _get_player_pos:pos];
 }
 
 
