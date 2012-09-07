@@ -150,12 +150,12 @@
 
 // =================================================================================
 
-- (void)update_player_pos:(DungeonModel *)_dungeon
+- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon
 {
     int length = [_dungeon.route_list count];
-    if (length == 0) return;
+    if (length == 0) return nil;
     
-    float duration = 0.3 / length;
+    float duration = 0.15 / length;
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
     for (NSValue* v in _dungeon.route_list) {
         DLPoint pos;
@@ -166,8 +166,18 @@
         [action_list addObject:act_move];
     }
     
-    CCSequence* action = [CCSequence actionWithArray:action_list];
-    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    CCAction* action = [CCSequence actionWithArray:action_list];
+    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:acttion rate:2];
+    [action retain];
+    return action;
+}
+
+- (void)update_player_pos:(DungeonModel *)_dungeon {
+
+    CCAction* action = [self get_action_update_player_pos:_dungeon];
+    if (!action) {
+        return;
+    }
     [self->player runAction:action];
 }
 

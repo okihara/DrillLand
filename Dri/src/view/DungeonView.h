@@ -39,5 +39,6 @@
 - (void)add_block:(BlockView*)block;
 - (void)update_player_pos:(DungeonModel *)_dungeon;
 - (CGPoint)model_to_local:(DLPoint)pos;
+- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon;
 
 @end

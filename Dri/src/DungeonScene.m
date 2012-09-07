@@ -99,6 +99,15 @@
     return cdp(x, y);
 }
 
+- (void)update_dungeon_view
+{
+    // アニメーション開始
+    [self render_and_animation];
+    
+    // 更新
+    [self->dungeon_view update_view:self->dungeon_model];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
 
@@ -112,15 +121,25 @@
     
     // カリングの幅を更新
     [self update_curring_range];
+
     
-    // アニメーション開始
-    [self render_and_animation];
     
-    // player の移動
-    [self->dungeon_view update_player_pos:self->dungeon_model];
+    // TODO: ここをシーケンスにしたい
+    // TODO: ここからタップ禁止
+    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:5];
+  
+    CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
+    if (player_action) {
+        [action_list addObject:player_action];
+    }
     
-    // 更新
-    [self->dungeon_view update_view:self->dungeon_model];
+    CCAction* next_action = [CCCallBlockO actionWithBlock:^(DungeonScene* scene) {
+        [scene update_dungeon_view];
+    } object:self];
+    [action_list addObject:next_action];
+
+    
+    [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
 
 //===============================================================
