@@ -8,11 +8,12 @@
 
 
 // Import the interfaces
+#import "DL.h"
 #import "DungeonScene.h"
 #import "DungeonModel.h"
 #import "DungeonView.h"
 #import "BlockView.h"
-#import "DL.h"
+#import "BasicNotifierView.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -172,6 +173,9 @@
 
     // タップ後のシーケンス再生
     [self run_sequence];
+    
+    CCNode* notifier = [[BasicNotifierView alloc] init];
+    [self addChild:notifier];
 }
 
 //===============================================================
