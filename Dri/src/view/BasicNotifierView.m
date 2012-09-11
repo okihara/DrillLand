@@ -14,8 +14,11 @@
 -(id) init
 {
     if(self=[super init]) {
-                
-        self.position = ccp(160, 480 + 60);
+        
+        CGPoint start_pos = ccp(160, 480 + 60);
+        CGPoint end_pos = ccp(160, 280);
+        
+        self.position = start_pos;
 
         self->base_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 255, 255) width:280 height:60];
         self->base_layer.position = ccp(-140, -30);
@@ -25,9 +28,9 @@
         self->content_text.color = ccc3(255, 255, 255);
         [self addChild:self->content_text];
 
-        CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.3 position:ccp(160, 240)];
-        CCActionInterval* nl = [CCActionInterval actionWithDuration:1.2];
-        CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.3 position:ccp(160, 480 + 60)];
+        CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.1 position:end_pos];
+        CCActionInterval* nl = [CCActionInterval actionWithDuration:1.0];
+        CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.1 position:start_pos];
         CCSequence* seq = [CCSequence actions:enter, nl, exit, nil];
         [self runAction:seq];
     }

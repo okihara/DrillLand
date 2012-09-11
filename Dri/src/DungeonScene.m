@@ -143,6 +143,10 @@
     CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
     if (player_action) {
         [action_list addObject:player_action];
+        
+        // ---------------  
+        CCNode* notifier = [[BasicNotifierView alloc] init];
+        [self addChild:notifier];
     }
     
     CCAction* next_action = [CCCallBlockO actionWithBlock:^(DungeonScene* scene) {
@@ -173,9 +177,6 @@
 
     // タップ後のシーケンス再生
     [self run_sequence];
-    
-    CCNode* notifier = [[BasicNotifierView alloc] init];
-    [self addChild:notifier];
 }
 
 //===============================================================
