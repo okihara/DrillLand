@@ -11,16 +11,20 @@
 
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
+#import "LargeNotifierView.h"
 
 @class DungeonModel;
 @class DungeonView;
 
 // HelloWorldLayer
-@interface DungeonScene : CCLayer
+@interface DungeonScene : CCLayerColor
 {
+    CCLayerColor* fade_layer;
+    
     DungeonView *dungeon_view;
     DungeonModel *dungeon_model;
     
+    LargeNotifierView* large_notify;
     int offset_y;
     int curring_top;
     int curring_bottom;

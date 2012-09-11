@@ -7,6 +7,7 @@
 //
 
 #import "cocos2d.h"
+#import "../DL.h"
 #import "DungeonView.h"
 #import "XDMap.h"
 #import "BlockModel.h"
@@ -47,6 +48,10 @@
         
         self->block_layer = [[CCLayer alloc]init];
         [self addChild:self->block_layer];
+        
+        CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
+        sky.position = ccp(160, 480 - 120 + 53);
+        [self addChild:sky];
         
         self->effect_layer = [[CCLayer alloc]init];
         [self addChild:self->effect_layer];
@@ -145,7 +150,7 @@
 
 - (CGPoint)model_to_local:(DLPoint)pos
 {
-    return ccp(30 + pos.x * 60, 480 - (30 + pos.y * 60));
+    return ccp(30 + pos.x * BLOCK_WIDTH, 480 - (30 + pos.y * BLOCK_WIDTH));
 }
 
 // =================================================================================

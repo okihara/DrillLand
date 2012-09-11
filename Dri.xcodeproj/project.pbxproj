@@ -145,6 +145,8 @@
 		C19547BB15D7F48B002119CC /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BA15D7F48B002119CC /* vec3.c */; };
 		C19547BD15D7F48B002119CC /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BC15D7F48B002119CC /* vec4.c */; };
 		C19547C215D7F48B002119CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C115D7F48B002119CC /* main.m */; };
+		C1A5E6FA15FC825800CD1F6C /* sky00.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A5E6F915FC825800CD1F6C /* sky00.png */; };
+		C1A5E6FE15FDC5B800CD1F6C /* LargeNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */; };
 		C1B1789B15DF669300014FD2 /* block00.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789A15DF669300014FD2 /* block00.png */; };
 		C1B1789E15DF686500014FD2 /* block01.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789D15DF686500014FD2 /* block01.png */; };
 		C1B178A015DF695D00014FD2 /* block02.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B1789F15DF695D00014FD2 /* block02.png */; };
@@ -460,6 +462,9 @@
 		C19547BE15D7F48B002119CC /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		C19547C015D7F48B002119CC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C19547C115D7F48B002119CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C1A5E6F915FC825800CD1F6C /* sky00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky00.png; path = Resources/spritesheet/sky00.png; sourceTree = "<group>"; };
+		C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LargeNotifierView.h; path = src/view/LargeNotifierView.h; sourceTree = "<group>"; };
+		C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LargeNotifierView.m; path = src/view/LargeNotifierView.m; sourceTree = "<group>"; };
 		C1B1789A15DF669300014FD2 /* block00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block00.png; path = Resources/block00.png; sourceTree = "<group>"; };
 		C1B1789D15DF686500014FD2 /* block01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block01.png; path = Resources/block01.png; sourceTree = "<group>"; };
 		C1B1789F15DF695D00014FD2 /* block02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block02.png; path = Resources/block02.png; sourceTree = "<group>"; };
@@ -468,6 +473,7 @@
 		C1B178AC15DF995400014FD2 /* block04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block04.png; path = Resources/block04.png; sourceTree = "<group>"; };
 		C1B178B115DFBB1600014FD2 /* mon001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon001.png; path = Resources/mon001.png; sourceTree = "<group>"; };
 		C1B178B315DFC5B700014FD2 /* mon002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon002.png; path = Resources/mon002.png; sourceTree = "<group>"; };
+		C1CCAA6415FF8FE400A0EB1C /* DL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DL.h; path = src/DL.h; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -988,6 +994,7 @@
 				C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */,
 				C1EEBCF615E6F74C007F1814 /* DungeonPreloadScene.h */,
 				C1EEBCF715E6F74C007F1814 /* DungeonPreloadScene.m */,
+				C1CCAA6415FF8FE400A0EB1C /* DL.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1036,6 +1043,7 @@
 		C1EEBCFB15E793F3007F1814 /* spritesheet */ = {
 			isa = PBXGroup;
 			children = (
+				C1A5E6F915FC825800CD1F6C /* sky00.png */,
 				C1EEBD0315E839CF007F1814 /* link_f.png */,
 				C1EEBD0115E7B995007F1814 /* link_f.json */,
 				C1B1789F15DF695D00014FD2 /* block02.png */,
@@ -1077,6 +1085,8 @@
 		C1EEBD0915E84329007F1814 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */,
+				C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */,
 				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
 				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 				C1600A0115F3451900A4616C /* DungeonView.h */,
@@ -1177,6 +1187,7 @@
 				C102EAC615E8E2A5000E8366 /* floor001.json in Resources */,
 				C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */,
 				C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */,
+				C1A5E6FA15FC825800CD1F6C /* sky00.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1316,6 +1327,7 @@
 				C16009FC15F344FA00A4616C /* BlockModel.m in Sources */,
 				C16009FF15F3450F00A4616C /* DungeonView.m in Sources */,
 				C1600A0015F3450F00A4616C /* BlockView.m in Sources */,
+				C1A5E6FE15FDC5B800CD1F6C /* LargeNotifierView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

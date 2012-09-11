@@ -7,7 +7,7 @@
 //
 
 #import "DungeonResultScene.h"
-
+#import "DungeonScene.h"
 
 @implementation DungeonResultScene
 
@@ -23,11 +23,20 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
+        
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"GAMEOVER" fontName:@"AppleGothic" fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];
+        
+		// enable touch
+        self.isTouchEnabled = YES;
 	}
 	return self;
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
 }
 
 @end

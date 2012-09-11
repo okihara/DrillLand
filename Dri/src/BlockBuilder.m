@@ -63,7 +63,7 @@
     b.type = ID_PLAYER;
     b.hp = 7;
     b.atk = 5;
-    b.pos = cdp(2, 2);
+    b.pos = cdp(2, 1);
     
     // attach Behavior
     [b attach_behaivior:[[[DieableBehavior alloc] init] autorelease]];
