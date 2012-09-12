@@ -70,9 +70,6 @@
         // fade 用のレイヤー
         self->fade_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [self addChild:self->fade_layer z:10];
-        
-		// enable touch
-        self.isTouchEnabled = YES;
 	}
 	return self;
 }
@@ -87,6 +84,10 @@
 {
     [super onEnter];
     
+    // enable touch
+    self.isTouchEnabled = YES;
+    
+    // シーン遷移後のアニメーション
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
 
@@ -101,19 +102,12 @@
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, nil]];
 }
 
-- (void)render_and_animation
-{
-    // タップ禁止に
-    // need implement
-    
-    [dungeon_view update_presentation:self->dungeon_model];
-    
-    // TODO: スクロールも一連のアクションシーケンスのひとつ
-    [self scroll_to];
 
-    // タップ禁止解除
-    // need implement
-}
+//===============================================================
+//
+// タップ後のアニメーション
+//
+//===============================================================
 
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
@@ -124,6 +118,27 @@
     int x = (int)(location.x / BLOCK_WIDTH);
     int y = (int)((480 - location.y + offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
+}
+
+- (void)render_and_animation
+{
+    // タップ禁止に
+    // need implement
+    
+    [dungeon_view update_presentation:self->dungeon_model];
+    
+    // TODO: スクロールも一連のアクションシーケンスのひとつ
+    DLPoint ppos = self->dungeon_model.player.pos;
+    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
+    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
+    if (b.type == ID_EMPTY) {
+        // スクロールの offset 更新
+        self->offset_y = [self get_offset_y_by_player_pos];
+        [self scroll_to];
+    }
+
+    // タップ禁止解除
+    // need implement
 }
 
 - (void)update_dungeon_view
@@ -137,24 +152,28 @@
 
 - (void)run_sequence
 {
-    // TODO: ここをシーケンスにしたい
+    // アクションのシーケンスを作成
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:5];
     
     CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
     if (player_action) {
         [action_list addObject:player_action];
     }
-    
-    CCAction* next_action = [CCCallBlockO actionWithBlock:^(DungeonScene* scene) {
-        [scene update_dungeon_view];
-    } object:self];
+
+    CCAction* next_action = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
     [action_list addObject:next_action];
     
-    
+
+    // 実行
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
-    
-    // TODO: ここからタップ許可
 }
+
+
+//===============================================================
+//
+// タッチのハンドラ
+//
+//===============================================================
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
@@ -164,19 +183,16 @@
     
     // モデルへ通知
     [self->dungeon_model on_hit:view_pos];
-
-    // スクロールの offset 更新
-    self->offset_y = [self get_offset_y_by_player_pos];
     
     // カリングの幅を更新
     [self update_curring_range];
 
     // タップ後のシーケンス再生
     [self run_sequence];
-    
-    CCNode* notifier = [[BasicNotifierView alloc] init];
-    [self addChild:notifier];
+
+    [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
 }
+
 
 //===============================================================
 //

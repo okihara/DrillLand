@@ -8,29 +8,43 @@
 
 #import "BasicNotifierView.h"
 
-
 @implementation BasicNotifierView
 
--(id) init
++(void)notify:(NSString*)message target:(CCNode*)node;
+{
+    CCNode* notifier = [[BasicNotifierView alloc] initWithMessage:message];
+    [node addChild:notifier];
+}
+
+-(void) suicide
+{
+    [self removeFromParentAndCleanup:YES];
+}
+
+-(id) initWithMessage:(NSString*)message
 {
     if(self=[super init]) {
                 
-        self.position = ccp(160, 480 + 60);
+        CGPoint start_pos = ccp(160, 480 + 60); 
+        CGPoint end_pos   = ccp(160, 280); 
+        self.position = start_pos;
 
         self->base_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 255, 255) width:280 height:60];
         self->base_layer.position = ccp(-140, -30);
         [self addChild:self->base_layer];
 
-        self->content_text = [[CCLabelTTF labelWithString:@"XXX is level up now!" fontName:@"AppleGothic" fontSize:20] retain];
+        self->content_text = [[CCLabelTTF labelWithString:message fontName:@"AppleGothic" fontSize:20] retain];
         self->content_text.color = ccc3(255, 255, 255);
         [self addChild:self->content_text];
 
-        CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.3 position:ccp(160, 240)];
+        CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.3 position:end_pos];
         CCActionInterval* nl = [CCActionInterval actionWithDuration:1.2];
-        CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.3 position:ccp(160, 480 + 60)];
-        CCSequence* seq = [CCSequence actions:enter, nl, exit, nil];
+        CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.3 position:start_pos];
+        CCCallFuncO *suicide = [CCCallFuncO actionWithTarget:self selector:@selector(suicide)];
+        CCSequence* seq = [CCSequence actions:enter, nl, exit, suicide, nil];
         [self runAction:seq];
     }
     return self;
 }
+
 @end

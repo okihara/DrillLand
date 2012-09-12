@@ -16,4 +16,8 @@
     CCLabelTTF* content_text;
 }
 
++(void)notify:(NSString*)message target:(CCNode*)node;
+
+-(id) initWithMessage:(NSString*)message;
+
 @end

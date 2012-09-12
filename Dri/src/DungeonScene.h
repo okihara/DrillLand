@@ -16,18 +16,15 @@
 @class DungeonModel;
 @class DungeonView;
 
-// HelloWorldLayer
 @interface DungeonScene : CCLayerColor
 {
-    CCLayerColor* fade_layer;
-    
-    DungeonView *dungeon_view;
+    int offset_y;
+
     DungeonModel *dungeon_model;
     
-    LargeNotifierView* large_notify;
-    int offset_y;
-    int curring_top;
-    int curring_bottom;
+    CCLayerColor      *fade_layer;
+    DungeonView       *dungeon_view;
+    LargeNotifierView *large_notify;
 }
 
 +(CCScene *) scene;

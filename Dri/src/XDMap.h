@@ -7,13 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-struct DLPoint {
-    int x;
-    int y;
-};
-typedef struct DLPoint DLPoint;
-DLPoint cdp(int x, int y);
+#import "DL.h"
 
 #define CAP_W 20
 #define CAP_H 100

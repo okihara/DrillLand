@@ -11,4 +11,13 @@
 
 #define BLOCK_WIDTH 64
 
+struct DLPoint {
+    int x;
+    int y;
+};
+typedef struct DLPoint DLPoint;
+
+DLPoint cdp(int x, int y);
+
+
 #endif
