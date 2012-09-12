@@ -90,6 +90,7 @@
         
         BlockView *block = [view_map get_x:x y:y];
         
+        // 既に描画済みなら描画しない
         if (block) {
             continue;
         }
@@ -110,6 +111,8 @@
     }
 }
 
+// 最初に一回しか呼ばないかも
+// update_view -> update_view_lines -> update_view_line
 - (void)update_view:(DungeonModel *)_dungeon
 {
     // clear
@@ -120,7 +123,10 @@
     [self update_view_lines:_dungeon];
 }
 
+
+//--------------------------------------------
 // remove
+
 - (void)remove_block_view:(DLPoint)pos
 {
     BlockView *block = [self->view_map get_x:pos.x y:pos.y];

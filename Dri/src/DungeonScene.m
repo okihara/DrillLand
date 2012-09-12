@@ -150,8 +150,9 @@
     
     // 更新
     //[self->dungeon_view update_view:self->dungeon_model];
-
-    [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom _model:self->dungeon_model];
+    // TODO: これって DungeonView 側に書くべきじゃない？
+    [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
+    [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom-1 _model:self->dungeon_model];
 }
 
 - (void)run_sequence
