@@ -8,6 +8,7 @@
 
 #import "BloodyPresentation.h"
 #import "DungeonView.h"
+#import "DamageNumView.h"
 
 @implementation BloodyPresentation
 
@@ -19,6 +20,9 @@
             break;
         case 1:
             [ctx launch_particle:@"blood" position:me.position];
+            
+            // aho
+            [DamageNumView spawn:10 target:me];
             break;
         default:
             break;

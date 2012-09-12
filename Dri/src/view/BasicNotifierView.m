@@ -26,7 +26,7 @@
     if(self=[super init]) {
                 
         CGPoint start_pos = ccp(160, 480 + 60); 
-        CGPoint end_pos   = ccp(160, 280); 
+        CGPoint end_pos   = ccp(160, 300); 
 
         self.position = start_pos;
 
@@ -39,7 +39,7 @@
         [self addChild:self->content_text];
 
         CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.1 position:end_pos];
-        CCActionInterval* nl = [CCActionInterval actionWithDuration:1.0];
+        CCActionInterval* nl = [CCDelayTime actionWithDuration:1.0];
         CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.1 position:start_pos];
         CCCallFuncO *suicide = [CCCallFuncO actionWithTarget:self selector:@selector(suicide)];
         CCSequence* seq = [CCSequence actions:enter, nl, exit, suicide, nil];

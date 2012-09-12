@@ -9,6 +9,7 @@
 #import "DungeonPreloadScene.h"
 #import "SBJson.h"
 #import "DungeonScene.h"
+#import "DL.h"
 
 @implementation DungeonPreloadScene
 
@@ -89,7 +90,7 @@
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:@"AppleGothic" fontSize:20];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];
 	}

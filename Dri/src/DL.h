@@ -10,6 +10,7 @@
 #define Dri_DL_h
 
 #define BLOCK_WIDTH 64
+#define DL_FONT @"Arial-BoldItalicMT"
 
 struct DLPoint {
     int x;

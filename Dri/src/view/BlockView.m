@@ -162,6 +162,8 @@
             p = [[BloodyPresentation alloc] init];
             [block add_presentation:p];
             [p release];
+            
+            [block play_anime:@"walk"];
         }
             break;
         case ID_ENEMY_BLOCK_0:

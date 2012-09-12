@@ -29,7 +29,8 @@
 
         CCFiniteTimeAction* fi = [CCFadeIn actionWithDuration:1.0];
         CCFiniteTimeAction* fo= [CCFadeOut actionWithDuration:1.0];
-        CCActionInterval* nl = [CCActionInterval actionWithDuration:2.0];
+        CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
+//        CCCallFuncO *suicide = [CCCallFuncO actionWithTarget:self selector:@selector(suicide)];
         CCSequence* seq = [CCSequence actions:fi, nl, fo, nil];
         [self->content_text runAction:seq];
         [self->base_layer runAction:[seq copy]];

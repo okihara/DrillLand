@@ -14,6 +14,7 @@
 #import "DungeonView.h"
 #import "BlockView.h"
 #import "BasicNotifierView.h"
+#import "DamageNumView.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -56,7 +57,6 @@
         // setup player
         BlockView* player = [BlockView create:dungeon_model.player ctx:dungeon_model];  
         player.scale = 2.0;
-        [player play_anime:@"walk"];
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
@@ -94,7 +94,7 @@
     self->large_notify = [[LargeNotifierView alloc] init];
     [self addChild:self->large_notify];
     
-    CCActionInterval* nl = [CCActionInterval actionWithDuration:2.5];
+    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.5];
 
     CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];

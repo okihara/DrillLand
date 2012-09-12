@@ -140,7 +140,7 @@
     // attach Behavior
     [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
     [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
-    
+
     return b;
 }
 
