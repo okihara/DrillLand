@@ -11,9 +11,10 @@
 
 @implementation DamageNumView
 
-+(void)spawn:(int)num target:(CCNode*)parent;
++(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos;
 {
     CCNode* num_view = [[DamageNumView alloc] initWithString:[NSString stringWithFormat:@"%d", num]];
+    num_view.position = pos;
     [parent addChild:num_view];
 }
 
@@ -26,7 +27,9 @@
 {
      if(self=[super init]) {
         
-         self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:15] retain];
+         self.position = ccp(0, 0);
+         
+         self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:40] retain];
          [self addChild:self->content_text];
          
          CCJumpBy *j1 = [CCJumpBy actionWithDuration:0.3   position:ccp(0, 0) height:30.0 jumps:1];

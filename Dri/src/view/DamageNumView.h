@@ -13,7 +13,7 @@
     CCNode<CCLabelProtocol>* content_text;
 }
 
-+(void)spawn:(int)num target:(CCNode*)parent;
++(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos;
 -(id) initWithString:(NSString*)str;
 
 @end

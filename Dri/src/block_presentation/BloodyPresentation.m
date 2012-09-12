@@ -12,17 +12,17 @@
 
 @implementation BloodyPresentation
 
--(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockView *)me
+-(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockModel*)model_ view:(BlockView *)view_
 {
     switch (event) {
             
         case 0:
             break;
         case 1:
-            [ctx launch_particle:@"blood" position:me.position];
+            [ctx launch_particle:@"blood"  position:view_.position];
             
-            // aho
-            [DamageNumView spawn:10 target:me];
+            CGPoint pos = [ctx model_to_local:model_.pos];
+            [ctx launch_effect:@"damage" position:pos];
             break;
         default:
             break;

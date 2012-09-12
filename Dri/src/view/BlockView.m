@@ -14,10 +14,13 @@
 
 @implementation BlockView
 
+@synthesize is_alive;
+
 -(void)setup
 {
     self->events = [[NSMutableArray array] retain];
     self->presentation_list = [[NSMutableArray array] retain];
+    is_alive = YES;
 }
 
 -(id) init
@@ -40,18 +43,25 @@
     [self->presentation_list addObject:presentation];
 }
 
+
+//===============================================================
+//
+//
+//
+//===============================================================
+
 - (void)_update_presentation:(DungeonView *)ctx type:(int)type b:(BlockModel *)b
 {
     if (b.type == ID_PLAYER){
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:type model:ctx.player];
+            [p handle_event:ctx event:type model:b view:ctx.player];
         }
         
     } else {
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:type model:self];
+            [p handle_event:ctx event:type model:b view:self];
         }
         
     }
@@ -65,10 +75,13 @@
         BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
 
         [self _update_presentation:ctx type:type b:b];
-
     }
     
     [self->events removeAllObjects];
+    
+    if (self.is_alive == NO) {
+        [ctx remove_block_view:b.pos];
+    }
 }
 
 -(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b

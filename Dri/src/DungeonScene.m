@@ -100,6 +100,8 @@
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
     
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, nil]];
+    
+    [dungeon_view update_view:self->dungeon_model];
 }
 
 
@@ -147,7 +149,9 @@
     [self render_and_animation];
     
     // 更新
-    [self->dungeon_view update_view:self->dungeon_model];
+    //[self->dungeon_view update_view:self->dungeon_model];
+
+    [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom _model:self->dungeon_model];
 }
 
 - (void)run_sequence

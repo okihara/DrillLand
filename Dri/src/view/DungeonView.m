@@ -12,6 +12,7 @@
 #import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
+#import "DamageNumView.h"
 
 @implementation DungeonView
 
@@ -29,10 +30,12 @@
     [self->effect_launcher launch_particle:name position:pos];
 }
 
--(void)launch_effect:(NSString *)name
+-(void)launch_effect:(NSString *)name position:(CGPoint)pos
 {
     // color flash
     // shake
+    
+    [DamageNumView spawn:10 target:self->effect_layer position:pos];
     return;
 }
 
@@ -80,11 +83,19 @@
 //
 //===============================================================
 
+// update
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
 {
     for (int x = 0; x < disp_w; x++) {
+        
+        BlockView *block = [view_map get_x:x y:y];
+        
+        if (block) {
+            continue;
+        }
+        
         BlockModel *block_model = [dungeon_ get_x:x y:y];
-        BlockView *block = [BlockView create:block_model ctx:dungeon_];
+        block = [BlockView create:block_model ctx:dungeon_];
         block.position = [self model_to_local:cdp(x, y)];
         
         [self->block_layer addChild:block];
@@ -109,12 +120,18 @@
     [self update_view_lines:_dungeon];
 }
 
-- (void)remove_view_line:(int)y _model:(DungeonModel *)_dungeon
+// remove
+- (void)remove_block_view:(DLPoint)pos
+{
+    BlockView *block = [self->view_map get_x:pos.x y:pos.y];
+    [self->block_layer removeChild:block cleanup:NO];
+    [view_map set_x:pos.x y:pos.y value:nil];
+}
+
+- (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
     for (int x = 0; x < disp_w; x++) {
-        BlockView *block = [self->view_map get_x:x y:y];
-        [self->block_layer removeChild:block cleanup:YES];
-        [view_map set_x:x y:y value:nil];
+        [self remove_block_view:cdp(x, y)];
     }
 }
 
@@ -166,7 +183,7 @@
                 BlockView* block = self.player;
                 [block handle_event:self type:type model:b];
             } else {
-                BlockView* block = [view_map get_x:b.pos.x y:b.pos.y];
+                BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
                 [block handle_event:self type:type model:b];
             }
 

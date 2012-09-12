@@ -33,12 +33,17 @@
 @property (nonatomic, assign) int curring_bottom;
 @property (nonatomic, readwrite, retain) BlockView* player;
 
+- (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_;
 - (void)update_view:(DungeonModel *)_dungeon;
 - (void)update_presentation:(DungeonModel *)dungeon_;
+
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
+- (void)launch_effect:(NSString *)name position:(CGPoint)pos;
+
 - (void)add_block:(BlockView*)block;
 - (void)update_player_pos:(DungeonModel *)_dungeon;
 - (CGPoint)model_to_local:(DLPoint)pos;
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon;
+- (void)remove_block_view:(DLPoint)pos;
 
 @end
