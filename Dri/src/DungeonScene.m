@@ -160,6 +160,7 @@
     // アクションのシーケンスを作成
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:5];
     
+    // プレイヤーの移動
     CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
     if (player_action) {
         [action_list addObject:player_action];
@@ -167,6 +168,7 @@
         [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
     }
 
+    // 画面の描画/アニメーション
     CCAction* next_action = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
     [action_list addObject:next_action];
     

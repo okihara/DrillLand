@@ -28,7 +28,6 @@
 -(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     // implement behavior
-
 }
 
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_

@@ -19,10 +19,12 @@
         case 0:
             break;
         case 1:
+            
             [ctx launch_particle:@"blood"  position:view_.position];
             
             CGPoint pos = [ctx model_to_local:model_.pos];
             [ctx launch_effect:@"damage" position:pos];
+            
             break;
         default:
             break;
