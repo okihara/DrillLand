@@ -27,8 +27,6 @@
 {
      if(self=[super init]) {
         
-         self.position = ccp(0, 0);
-         
          self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:40] retain];
          [self addChild:self->content_text];
          

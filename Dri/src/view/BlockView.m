@@ -16,14 +16,14 @@
 
 @synthesize is_alive;
 
--(void)setup
+- (void)setup
 {
     self->events = [[NSMutableArray array] retain];
     self->presentation_list = [[NSMutableArray array] retain];
     is_alive = YES;
 }
 
--(id) init
+- (id)init
 {
 	if (self=[super init]) {
         [self setup];
@@ -31,7 +31,7 @@
 	return self;
 }
 
--(void)dealloc
+- (void)dealloc
 {
     [self->presentation_list release];
     [self->events release];
@@ -67,7 +67,7 @@
     }
 }
 
--(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
+- (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
 {
     for (NSDictionary* event in self->events) {
         
@@ -79,23 +79,27 @@
     
     [self->events removeAllObjects];
     
+    // 描画イベント全部処理して、死んでたら
     if (self.is_alive == NO) {
         [ctx remove_block_view:b.pos];
     }
 }
 
--(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
+
+//----------------------------------------------------------------
+
+- (BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
 {
     NSDictionary* event = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:type], @"type", b, @"model", nil];
     [self->events addObject:event];
     return YES;
 }
 
-//----------------------------------------------------------------
-// animation
-// helper
 
--(void)play_anime:(NSString*)name
+//----------------------------------------------------------------
+// animation helper
+
+- (void)play_anime:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
     CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
@@ -129,7 +133,7 @@
     [block addChild:label];
 }
 
-+(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx
++ (BlockView *)create:(BlockModel*)b ctx:(DungeonModel*)ctx
 {
     // ブロック
     NSString *filename;
