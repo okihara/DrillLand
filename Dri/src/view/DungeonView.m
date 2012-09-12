@@ -19,9 +19,11 @@
 @synthesize curring_top, curring_bottom;
 @synthesize player;
 
+
 // ========================================================================
 // エフェクト用のヘルパー
 // ========================================================================
+
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos
 {
     [self->effect_launcher launch_particle:name position:pos];
@@ -63,19 +65,20 @@
 	return self;
 }
 
+
+// ========================================================================
+
 -(void)add_block:(BlockView*)block
 {
     [self->effect_layer addChild:block];    
 }
 
-- (void)remove_view_line:(int)y _model:(DungeonModel *)_dungeon
-{
-    for (int x = 0; x < disp_w; x++) {
-        BlockView *block = [self->view_map get_x:x y:y];
-        [self->block_layer removeChild:block cleanup:YES];
-        [view_map set_x:x y:y value:nil];
-    }
-}
+
+//===============================================================
+//
+// ブロックの描画
+//
+//===============================================================
 
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
 {
@@ -89,7 +92,7 @@
     }
 }
 
-- (void)update_view_rows:(DungeonModel *)_dungeon
+- (void)update_view_lines:(DungeonModel *)_dungeon
 {
     for (int y = self.curring_top; y < self.curring_bottom; y++) {
         [self update_view_line:y _model:_dungeon];
@@ -103,8 +106,24 @@
     [view_map clear];
 
     // curring を考慮して更新
-    [self update_view_rows:_dungeon];
+    [self update_view_lines:_dungeon];
 }
+
+- (void)remove_view_line:(int)y _model:(DungeonModel *)_dungeon
+{
+    for (int x = 0; x < disp_w; x++) {
+        BlockView *block = [self->view_map get_x:x y:y];
+        [self->block_layer removeChild:block cleanup:YES];
+        [view_map set_x:x y:y value:nil];
+    }
+}
+
+
+//===============================================================
+//
+// プレゼンテーションの更新
+//
+//===============================================================
 
 - (void)update_presentation_all:(DungeonModel *)dungeon_
 {
@@ -124,6 +143,13 @@
     [self update_presentation_all:dungeon_];
     [self.player update_presentation:self model:dungeon_.player];
 }
+
+
+//===============================================================
+//
+// notify
+//
+//===============================================================
 
 - (void) notify:(int)type dungeon:(DungeonModel*)dungeon_ params:(id)params
 {
@@ -148,12 +174,27 @@
     }
 }
 
+
+//===============================================================
+//
+// HELPER
+//
+//===============================================================
+
 - (CGPoint)model_to_local:(DLPoint)pos
 {
     return ccp(30 + pos.x * BLOCK_WIDTH, 480 - (30 + pos.y * BLOCK_WIDTH));
 }
 
-// =================================================================================
+
+//===============================================================
+//
+// プレイヤーの移動系
+//
+//===============================================================
+
+// CCAction を返す
+// ルートにそって移動する CCAction を返す
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon
 {
