@@ -50,18 +50,22 @@
 //
 //===============================================================
 
-- (void)_update_presentation:(DungeonView *)ctx type:(int)type b:(BlockModel *)b
+- (void)_update_presentation:(DungeonView *)ctx event:(DLEvent*)e
 {
+    // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
+    
+    BlockModel *b = (BlockModel*)e.target;
+    
     if (b.type == ID_PLAYER){
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:type model:b view:ctx.player];
+            [p handle_event:ctx event:e view:ctx.player];
         }
         
     } else {
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:type model:b view:self];
+            [p handle_event:ctx event:e view:self];
         }
         
     }
@@ -69,12 +73,11 @@
 
 - (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
 {
-    for (NSDictionary* event in self->events) {
+    for (DLEvent *e in self->events) {
         
-        int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
-        BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
-
-        [self _update_presentation:ctx type:type b:b];
+        //int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
+        //BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
+        [self _update_presentation:ctx event:e];
     }
     
     [self->events removeAllObjects];
@@ -88,10 +91,9 @@
 
 //----------------------------------------------------------------
 
-- (BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b
+- (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-    NSDictionary* event = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:type], @"type", b, @"model", nil];
-    [self->events addObject:event];
+    [self->events addObject:e];
     return YES;
 }
 

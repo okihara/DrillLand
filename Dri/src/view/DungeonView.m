@@ -174,29 +174,22 @@
 //
 //===============================================================
 
-- (void) notify:(int)type dungeon:(DungeonModel*)dungeon_ params:(id)params
-{
-    // TODO: ここは、ひたすらQueにためるだけ
-    BlockModel* b = (BlockModel*)params;
-    switch (type) {
-        case 0:
-            //[self update_view:dungeon_]; // 画面更新
-            break;
-        default:
-            
-            // TODO: PLAYER も同じように扱いたい。。。
-            if(b.type == ID_PLAYER) {
-                BlockView* block = self.player;
-                [block handle_event:self type:type model:b];
-            } else {
-                BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
-                [block handle_event:self type:type model:b];
-            }
+// TODO: DungeonScene においてもいいような。。。
 
-            break;
+-(void) notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
+{
+    // TODO: PLAYER も同じように扱いたい。。。
+    
+    BlockModel *b = (BlockModel*)e.target;
+    
+    if(b.type == ID_PLAYER) {
+        BlockView* block = self.player;
+        [block handle_event:self event:e];
+    } else {
+        BlockView *block_view = [view_map get_x:b.pos.x y:b.pos.y];
+        [block_view handle_event:self event:e];
     }
 }
-
 
 //===============================================================
 //
@@ -241,13 +234,13 @@
     return action;
 }
 
-- (void)update_player_pos:(DungeonModel *)_dungeon {
-
-    CCAction* action = [self get_action_update_player_pos:_dungeon];
-    if (!action) {
-        return;
-    }
-    [self->player runAction:action];
-}
+//- (void)update_player_pos:(DungeonModel *)_dungeon {
+//
+//    CCAction* action = [self get_action_update_player_pos:_dungeon];
+//    if (!action) {
+//        return;
+//    }
+//    [self->player runAction:action];
+//}
 
 @end

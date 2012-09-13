@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EffectLauncher.h"
 #import "DungeonModel.h"
+#import "DLEvent.h"
 
 @class XDMap;
 @class BlockView;
@@ -42,12 +43,11 @@
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
 - (void)launch_effect:(NSString *)name position:(CGPoint)pos;
 
-- (void)update_player_pos:(DungeonModel *)_dungeon;
-
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon;
 
 - (void)remove_block_view:(DLPoint)pos;
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
+
 
 - (CGPoint)model_to_local:(DLPoint)pos;
 

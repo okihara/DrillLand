@@ -14,8 +14,11 @@
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     // implement behaivior
-    [dungeon_ notify:1 params:context_]; // 1 == ON_HIT
     
+    DLEvent *e = [DLEvent eventWithType:DL_ON_HIT target:context_];
+    [dungeon_ dispatchEvent:e];
+
+    // ---
     [dungeon_.player attack:context_ dungeon:dungeon_];
 }
 
@@ -26,17 +29,18 @@
 
 -(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behavior
+    DLEvent *e = [DLEvent eventWithType:DL_ON_DAMAGE target:context_];
+    [dungeon_ dispatchEvent:e];
 }
 
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behaivior
     // TODO: ここで behaivior リストも破棄しないといけない
     [context_ clear];
     
     // 2 == ON_DESTROY
-    [dungeon_ notify:2 params:context_];
+    DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:context_];
+    [dungeon_ dispatchEvent:e];
 }
 
 @end

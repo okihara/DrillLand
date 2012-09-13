@@ -9,6 +9,7 @@
 #import "DieableBehavior.h"
 #import "DungeonModel.h"
 #import "DungeonResultScene.h"
+#import "DLEvent.h"
 
 @implementation DieableBehavior
 
@@ -25,19 +26,22 @@
 
 -(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behavior
-    [dungeon_ notify:1 params:context_]; // 1 == ON_HIT
+    DLEvent *e = [DLEvent eventWithType:DL_ON_DAMAGE target:context_];
+    [e.params setObject:[NSNumber numberWithInt:9] forKey:@"damage"];
+    [dungeon_ dispatchEvent:e];
+    
     NSLog(@"PLAYER DAMAGED P hp=%d", context_.hp);
-    // イベント飛ばす
 }
 
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behaivior
-    NSLog(@"PLAYER DIED P hp=%d", context_.hp);
-    // イベント飛ばす
     // TODO: ここで直接シーン切り替えするのではなく、もっと上位に情報を伝える
-    [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
+    DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:context_];
+    [dungeon_ dispatchEvent:e];
+    
+    //[[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
+    
+    NSLog(@"PLAYER DIED P hp=%d", context_.hp);
 }
 
 @end

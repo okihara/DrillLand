@@ -111,6 +111,7 @@
 //
 //===============================================================
 
+// helper
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     // スクリーン座標からビューの座標へ変換
@@ -122,14 +123,9 @@
     return cdp(x, y);
 }
 
-- (void)render_and_animation
+- (void)do_scroll
 {
-    // タップ禁止に
-    // need implement
-    
-    [dungeon_view update_presentation:self->dungeon_model];
-    
-    // TODO: スクロールも一連のアクションシーケンスのひとつ
+    // TODO: スクロールも一連のアクションシーケンスのひとつにしたい
     DLPoint ppos = self->dungeon_model.player.pos;
     DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
     BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
@@ -138,45 +134,85 @@
         self->offset_y = [self get_offset_y_by_player_pos];
         [self scroll_to];
     }
+}
 
-    // タップ禁止解除
-    // need implement
+- (void)animate
+{
+    [dungeon_view update_presentation:self->dungeon_model];
 }
 
 - (void)update_dungeon_view
 {
-    // アニメーション開始
-    [self render_and_animation];
-    
     // 更新
+    // スクロール後
+    // 画面外を削って
+    // 次に必要なブロックを描画
     //[self->dungeon_view update_view:self->dungeon_model];
     // TODO: これって DungeonView 側に書くべきじゃない？
     [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
     [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom-1 _model:self->dungeon_model];
 }
 
+//===============================================================
+//
+// タッチ後のシーケンス
+//
+//===============================================================
+
 - (void)run_sequence
 {
     // アクションのシーケンスを作成
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:5];
     
-    // プレイヤーの移動
+    // 
+    self.isTouchEnabled = NO;
+
+    
+    // -------------------------------------------------------------------------------
+    // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
     CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
     if (player_action) {
         [action_list addObject:player_action];
                 
         [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
     }
+    
+    // -------------------------------------------------------------------------------    
+    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
+    
+    // -------------------------------------------------------------------------------
+    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
 
-    // 画面の描画/アニメーション
+    // -------------------------------------------------------------------------------
+    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
+
+    
+    
+    // アニメーション開始
+    CCAction *act_animate = [CCCallFuncO actionWithTarget:self selector:@selector(animate)];
+    [action_list addObject:act_animate];
+
+    // -------------------------------------------------------------------------------
+    // スクロールフェイズ
+    [self do_scroll];
+
+    // -------------------------------------------------------------------------------
+    // 画面の描画
     CCAction* next_action = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
     [action_list addObject:next_action];
-    
+
+
+    // -------------------------------------------------------------------------------
+    // タッチをオンに
+    CCAction* act_to_touchable = [CCCallBlockO actionWithBlock:^(DungeonScene* this) {
+        this.isTouchEnabled = YES;
+    } object:self];
+    [action_list addObject:act_to_touchable];
 
     // 実行
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
-
+    
 
 //===============================================================
 //
@@ -186,7 +222,8 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    // TODO: ここからタップ禁止
+    // TODO: ここからタップ禁止 タップ禁止というかブロックのタップ禁止
+    // アイテムとか討伐終了のボタンは押せないといけないから
 
     DLPoint view_pos = [self screen_to_view_pos:touches];
     

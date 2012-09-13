@@ -12,20 +12,20 @@
 
 @implementation BloodyPresentation
 
--(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockModel*)model_ view:(BlockView *)view_
+-(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    switch (event) {
+    BlockModel *b = (BlockModel*)e.target;
+    switch (e.type) {
             
-        case 0:
-            break;
-        case 1:
+        case DL_ON_DAMAGE:
             
-            [ctx launch_particle:@"blood"  position:view_.position];
+            [ctx launch_particle:@"blood" position:view_.position];
             
-            CGPoint pos = [ctx model_to_local:model_.pos];
+            CGPoint pos = [ctx model_to_local:b.pos];
             [ctx launch_effect:@"damage" position:pos];
             
             break;
+            
         default:
             break;
     }

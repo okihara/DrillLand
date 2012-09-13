@@ -11,6 +11,7 @@
 #import "SBJson.h"
 #import "BlockBuilder.h"
 
+
 @implementation DungeonModel
 
 @synthesize route_map;
@@ -109,14 +110,13 @@
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    [self->observer notify:0 dungeon:self params:self]; // 0 == ON_UPDATE
+    //[self->observer notify:0 dungeon:self params:self]; // 0 == ON_UPDATE
 }
 
--(void) notify:(int)type params:(id)params
+-(void) dispatchEvent:(DLEvent*)e
 {
-    [self->observer notify:type dungeon:self params:params];
+    [self->observer notify:self event:e];
 }
-
 
 //-----------------------------------------------------------------------------------------------------------------
 //
@@ -141,7 +141,7 @@
     
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
     
-    [self->observer notify:0 dungeon:self params:self];
+    //[self->observer notify:0 dungeon:self params:self];
 }
 
 -(BlockModel*)get_x:(int)_x y:(int)_y
@@ -190,7 +190,7 @@
     }
  
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    [self->observer notify:0 dungeon:self params:self];
+    //[self->observer notify:0 dungeon:self params:self];
 }
 
 -(void)_fill_blocks

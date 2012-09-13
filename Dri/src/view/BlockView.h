@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "DungeonModel.h"
+#import "DLEvent.h"
+
 
 @class BlockModel, DungeonView;
 @class BlockView;
 
 @protocol BlockPresentation <NSObject>
 
--(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockModel*)model_ view:(BlockView *)view_;
+-(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
 
 @end
 
@@ -26,11 +28,17 @@
     BOOL is_alive;
 }
 
-+(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
--(BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b;
--(void)play_anime:(NSString*)name;
--(void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b;
-
 @property (readwrite, assign) BOOL is_alive;
+
++(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
+
+//- (BOOL)handle_event:(DungeonView*)ctx type:(int)type model:(BlockModel*)b;
+- (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e;
+
+- (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b;
+
+- (void)play_anime:(NSString*)name;
+
+
 
 @end

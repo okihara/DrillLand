@@ -10,17 +10,19 @@
 #import "cocos2d.h"
 #import "XDMap.h"
 #import "BlockModel.h"
+#import "DLEvent.h"
+
 
 #define WIDTH 5
 #define HEIGHT 48
 
 @class DungeonModel;
 
+
 @protocol DungenModelObserver <NSObject>
-
--(void) notify:(int)type dungeon:(DungeonModel*)_dungeon params:(id)params;
-
+- (void) notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 @end
+
 
 @class BlockBuilder;
 
@@ -37,7 +39,6 @@
 
 -(id) init:(NSArray*)initial;
 -(void) load_from_file:(NSString*)filename;
--(void) add_observer:(id<DungenModelObserver>)observer;
 -(void) update_can_tap:(CGPoint)pos;
 -(void) update_can_tap_r:(CGPoint)pos;
 -(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id;
@@ -52,7 +53,9 @@
 -(void) _fill_blocks;
 -(void) _clear_can_tap;
 
--(void) notify:(int)type params:(id)params;
+// Observer
+-(void) add_observer:(id<DungenModelObserver>)observer;
+-(void) dispatchEvent:(DLEvent*)e;
 
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) BlockModel *player;

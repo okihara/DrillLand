@@ -11,18 +11,20 @@
 
 @implementation BreakablePresentation
 
--(void)handle_event:(DungeonView *)ctx event:(int)event model:(BlockModel*)model_ view:(BlockView *)view_
+-(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    switch (event) {
-        case 0:
-            break;
-        case 1:
+    //BlockModel *b = e.target;
+    switch (e.type) {
+            
+        case DL_ON_HIT:
             [ctx launch_particle:@"hit2" position:view_.position];
             break;
-        case 2:
+            
+        case DL_ON_DESTROY:
             [ctx launch_particle:@"block" position:view_.position];
             view_.is_alive = NO;
             break;
+            
         default:
             break;
     }

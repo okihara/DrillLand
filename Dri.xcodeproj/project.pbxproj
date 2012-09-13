@@ -158,6 +158,7 @@
 		C1CCAA6715FF922F00A0EB1C /* BasicNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */; };
 		C1CCAA69160010CB00A0EB1C /* DL.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA68160010CA00A0EB1C /* DL.m */; };
 		C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */; };
+		C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA71160219E600A0EB1C /* DLEvent.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -482,6 +483,8 @@
 		C1CCAA68160010CA00A0EB1C /* DL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DL.m; path = src/DL.m; sourceTree = "<group>"; };
 		C1CCAA6D16009ACD00A0EB1C /* DamageNumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageNumView.h; path = src/view/DamageNumView.h; sourceTree = "<group>"; };
 		C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DamageNumView.m; path = src/view/DamageNumView.m; sourceTree = "<group>"; };
+		C1CCAA70160219E600A0EB1C /* DLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLEvent.h; path = src/model/DLEvent.h; sourceTree = "<group>"; };
+		C1CCAA71160219E600A0EB1C /* DLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLEvent.m; path = src/model/DLEvent.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1079,6 +1082,8 @@
 		C1EEBD0815E8431E007F1814 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA70160219E600A0EB1C /* DLEvent.h */,
+				C1CCAA71160219E600A0EB1C /* DLEvent.m */,
 				C16009F915F344F900A4616C /* DungeonModel.h */,
 				C16009F715F344F900A4616C /* DungeonModel.m */,
 				C16009FA15F344FA00A4616C /* BlockModel.h */,
@@ -1344,6 +1349,7 @@
 				C1CCAA6715FF922F00A0EB1C /* BasicNotifierView.m in Sources */,
 				C1CCAA69160010CB00A0EB1C /* DL.m in Sources */,
 				C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */,
+				C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

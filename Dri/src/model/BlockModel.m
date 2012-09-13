@@ -82,6 +82,7 @@
 // これは武器/敵によってロジックが変わるので、ここに書くべきではない
 -(BOOL)is_attack_range:(DungeonModel*)dungeon
 {
+    // 上下左右
     BlockModel* p = (BlockModel*)dungeon.player;
     if((p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y - 1) ||
        (p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y + 1) ||
