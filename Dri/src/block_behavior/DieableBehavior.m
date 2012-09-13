@@ -27,7 +27,7 @@
 -(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     DLEvent *e = [DLEvent eventWithType:DL_ON_DAMAGE target:context_];
-    [e.params setObject:[NSNumber numberWithInt:9] forKey:@"damage"];
+    [e.params setObject:[NSNumber numberWithInt:8] forKey:@"damage"];
     [dungeon_ dispatchEvent:e];
     
     NSLog(@"PLAYER DAMAGED P hp=%d", context_.hp);

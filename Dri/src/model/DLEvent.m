@@ -19,11 +19,16 @@
     if (self = [super init]) {
         self->type   = type_;
         self->target = target_;
-        self->params = [NSMutableDictionary dictionary];
+        self->params = [[NSMutableDictionary dictionary] retain];
     }
     return self;
 }
 
+-(void)dealloc
+{
+    [self->params release];
+    [super dealloc];
+}
 
 +(DLEvent*)eventWithType:(enum DL_EVENT_TYPE)type target:(id)target;
 {

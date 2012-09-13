@@ -30,12 +30,12 @@
     [self->effect_launcher launch_particle:name position:pos];
 }
 
--(void)launch_effect:(NSString *)name position:(CGPoint)pos
+-(void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1
 {
     // color flash
     // shake
     
-    [DamageNumView spawn:10 target:self->effect_layer position:pos];
+    [DamageNumView spawn:p1 target:self->effect_layer position:pos];
     return;
 }
 

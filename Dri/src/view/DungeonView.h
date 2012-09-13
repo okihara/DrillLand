@@ -41,7 +41,7 @@
 - (void)update_presentation:(DungeonModel *)dungeon_;
 
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
-- (void)launch_effect:(NSString *)name position:(CGPoint)pos;
+-(void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1;
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon;
 

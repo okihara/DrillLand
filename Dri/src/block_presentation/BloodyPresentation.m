@@ -21,8 +21,10 @@
             
             [ctx launch_particle:@"blood" position:view_.position];
             
+            NSNumber *num = (NSNumber*)[e.params objectForKey:@"damage"];
+            int damage = num ? [num intValue] : 0;
             CGPoint pos = [ctx model_to_local:b.pos];
-            [ctx launch_effect:@"damage" position:pos];
+            [ctx launch_effect:@"damage" position:pos param1:damage];
             
             break;
             
