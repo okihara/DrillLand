@@ -138,7 +138,12 @@
 
 - (void)animate
 {
-    [dungeon_view update_presentation:self->dungeon_model];
+    [dungeon_view update_presentation:self->dungeon_model phase:DL_ETC];
+}
+
+- (void)animate_defense
+{
+    [dungeon_view update_presentation:self->dungeon_model phase:DL_DEFENSE];
 }
 
 - (void)update_dungeon_view
@@ -162,7 +167,7 @@
 - (void)run_sequence
 {
     // アクションのシーケンスを作成
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:5];
+    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
     
     // 
     self.isTouchEnabled = NO;
@@ -170,27 +175,31 @@
     
     // -------------------------------------------------------------------------------
     // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
-    CCAction* player_action = [self->dungeon_view get_action_update_player_pos:self->dungeon_model];
+    CCAction* player_action = [self->dungeon_view.player get_action_update_player_pos:self->dungeon_model view:self->dungeon_view];
     if (player_action) {
         [action_list addObject:player_action];
                 
         [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
     }
-    
-    // -------------------------------------------------------------------------------    
-    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
-    
-    // -------------------------------------------------------------------------------
-    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
 
-    // -------------------------------------------------------------------------------
-    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
-
-    
-    
     // アニメーション開始
     CCAction *act_animate = [CCCallFuncO actionWithTarget:self selector:@selector(animate)];
     [action_list addObject:act_animate];
+    
+    // -------------------------------------------------------------------------------    
+    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
+    // アニメーション開始
+    
+    // -------------------------------------------------------------------------------
+    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
+//    CCDelayTime *act_delay = [CCDelayTime actionWithDuration:1.0];
+//    [action_list addObject:act_delay];
+    CCAction *act_defense = [CCCallFuncO actionWithTarget:self selector:@selector(animate_defense)];
+    [action_list addObject:act_defense];
+    
+    // -------------------------------------------------------------------------------
+    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
+
 
     // -------------------------------------------------------------------------------
     // スクロールフェイズ

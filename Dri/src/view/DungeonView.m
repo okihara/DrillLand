@@ -148,23 +148,23 @@
 //
 //===============================================================
 
-- (void)update_presentation_all:(DungeonModel *)dungeon_
+- (void)update_presentation_all:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
 {
     // curring を考慮して更新
     for (int y = self.curring_top; y < self.curring_bottom; y++) {
         for (int x = 0; x < disp_w; x++) {
             BlockModel *block_model = [dungeon_ get_x:x y:y];
             BlockView  *block_view  = [self->view_map get_x:x y:y];
-            [block_view update_presentation:self model:block_model];
+            [block_view update_presentation:self model:block_model phase:phase];
         }
     }
 }
 
--(void)update_presentation:(DungeonModel *)dungeon_
+-(void)update_presentation:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
 {
     // TODO: PLAYER も同じように扱いたい。。。
-    [self update_presentation_all:dungeon_];
-    [self.player update_presentation:self model:dungeon_.player];
+    [self update_presentation_all:dungeon_ phase:phase];
+    [self.player update_presentation:self model:dungeon_.player phase:phase];
 }
 
 
@@ -202,45 +202,5 @@
     return ccp(30 + pos.x * BLOCK_WIDTH, 480 - (30 + pos.y * BLOCK_WIDTH));
 }
 
-
-//===============================================================
-//
-// プレイヤーの移動系
-//
-//===============================================================
-
-// CCAction を返す
-// ルートにそって移動する CCAction を返す
-
-- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon
-{
-    int length = [_dungeon.route_list count];
-    if (length == 0) return nil;
-    
-    float duration = 0.15 / length;
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
-    for (NSValue* v in _dungeon.route_list) {
-        DLPoint pos;
-        [v getValue:&pos];
-        
-        CGPoint cgpos = [self model_to_local:pos];
-        CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
-        [action_list addObject:act_move];
-    }
-    
-    CCAction* action = [CCSequence actionWithArray:action_list];
-    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:acttion rate:2];
-    [action retain];
-    return action;
-}
-
-//- (void)update_player_pos:(DungeonModel *)_dungeon {
-//
-//    CCAction* action = [self get_action_update_player_pos:_dungeon];
-//    if (!action) {
-//        return;
-//    }
-//    [self->player runAction:action];
-//}
 
 @end

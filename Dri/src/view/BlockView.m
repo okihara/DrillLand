@@ -19,6 +19,11 @@
 - (void)setup
 {
     self->events = [[NSMutableArray array] retain];
+    self->events_move = [[NSMutableArray array] retain];
+    self->events_attack = [[NSMutableArray array] retain];
+    self->events_defense = [[NSMutableArray array] retain];
+    self->events_destroy = [[NSMutableArray array] retain];
+
     self->presentation_list = [[NSMutableArray array] retain];
     is_alive = YES;
 }
@@ -34,6 +39,10 @@
 - (void)dealloc
 {
     [self->presentation_list release];
+    [self->events_destroy release];
+    [self->events_defense release];
+    [self->events_attack release];
+    [self->events_move release];
     [self->events release];
     [super dealloc];
 }
@@ -71,16 +80,29 @@
     }
 }
 
-- (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b
+- (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b phase:(enum DL_PHASE)phase
 {
-    for (DLEvent *e in self->events) {
+    
+    NSMutableArray *event_list;
+    if (phase == DL_DEFENSE) {
+        event_list = self->events_defense;
+    } else {
+        event_list = self->events;       
+    }
+    
+    for (DLEvent *e in event_list) {
         
         //int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
         //BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
         [self _update_presentation:ctx event:e];
     }
-    
-    [self->events removeAllObjects];
+
+    if (phase == DL_DEFENSE) {
+        [self->events_defense removeAllObjects];
+    } else {
+        [self->events removeAllObjects];
+    }
+
     
     // 描画イベント全部処理して、死んでたら
     if (self.is_alive == NO) {
@@ -93,7 +115,19 @@
 
 - (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-    [self->events addObject:e];
+    switch (e.type) {
+        case DL_ON_HIT:
+            [self->events_defense addObject:e];
+            break;
+            
+        case DL_ON_DAMAGE:
+            [self->events_defense addObject:e];
+            break;
+            
+        default:
+            [self->events addObject:e];
+            break;
+    }
     return YES;
 }
 
@@ -108,6 +142,37 @@
     [self runAction:act];   
 }
 
+
+//===============================================================
+//
+// プレイヤーの移動系
+//
+//===============================================================
+
+// CCAction を返す
+// ルートにそって移動する CCAction を返す
+
+- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view
+{
+    int length = [_dungeon.route_list count];
+    if (length == 0) return nil;
+    
+    float duration = 0.15 / length;
+    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
+    for (NSValue* v in _dungeon.route_list) {
+        DLPoint pos;
+        [v getValue:&pos];
+        
+        CGPoint cgpos = [view model_to_local:pos];
+        CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
+        [action_list addObject:act_move];
+    }
+    
+    CCAction* action = [CCSequence actionWithArray:action_list];
+    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:acttion rate:2];
+    [action retain];
+    return action;
+}
 
 //===============================================================
 //
