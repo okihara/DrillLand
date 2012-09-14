@@ -38,7 +38,19 @@
 }
 
 -(id) init:(NSArray*)initial;
+
+// ---
+-(void) set:(DLPoint)pos block:(BlockModel*)block;
+-(void) on_hit:(DLPoint)pos;
+-(BlockModel*) get_x:(int)_x y:(int)_y;
+-(int) can_tap_x:(int)_x y:(int)_y;
+-(void) _fill_blocks;
+-(void) _clear_can_tap;
+
+// loader json
 -(void) load_from_file:(NSString*)filename;
+
+// calc route and grouping
 -(void) update_can_tap:(CGPoint)pos;
 -(void) update_can_tap_r:(CGPoint)pos;
 -(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id;
@@ -46,12 +58,6 @@
 -(void) update_route_map:(DLPoint)pos target:(DLPoint)target;
 -(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint) get_player_pos:(DLPoint)pos;
--(void) on_hit:(DLPoint)pos;
--(void) set:(CGPoint)pos block:(BlockModel*)block;
--(BlockModel*) get_x:(int)_x y:(int)_y;
--(int) can_tap_x:(int)_x y:(int)_y;
--(void) _fill_blocks;
--(void) _clear_can_tap;
 
 // Observer
 -(void) add_observer:(id<DungenModelObserver>)observer;

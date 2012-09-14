@@ -132,7 +132,7 @@
     [self update_group_info:ccp(pos.x, pos.y) group_id:block.group_id];
 }
 
--(void) set:(CGPoint)pos block:(BlockModel*)block
+-(void) set:(DLPoint)pos block:(BlockModel*)block
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -140,8 +140,6 @@
     [self _set:cdp(x, y) block:block];
     
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    
-    //[self->observer notify:0 dungeon:self params:self];
 }
 
 -(BlockModel*)get_x:(int)_x y:(int)_y
@@ -174,6 +172,7 @@
 
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < width; i++) {
+            
             BlockModel* b;
             int b_ind = [[data objectAtIndex:i + j * width] integerValue];
             if (b_ind == 0 || b_ind == 1) {
@@ -184,39 +183,35 @@
                 int type_id = [[prop objectForKey:@"type"] intValue];
                 b = [block_builder buildWithID:type_id];
             }
-            
             [self _set:cdp(i, j) block:b];
+            
         }
     }
  
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    //[self->observer notify:0 dungeon:self params:self];
 }
 
 -(void)_fill_blocks
 {
-    int disp_w = WIDTH;
-    int disp_h = HEIGHT;
-    for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
             BlockModel* b = [[BlockModel alloc] init];
             b.type = ID_NORMAL_BLOCK;
-            [self set:ccp(i, j) block:b];
+            [self set:cdp(i, j) block:b];
         }
     }
 }
 
 -(void)_clear_can_tap
 {
-    int disp_w = WIDTH;
-    int disp_h = HEIGHT;
-    for (int j = 0; j < disp_h; j++) {
-        for (int i = 0; i < disp_w; i++) {
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
             BlockModel* b = [self->map get_x:i y:j];
             b.can_tap = NO;
         }
-    }   
+    }
 }
+
 
 //===========================================================================================
 // ダンジョンのブロックの状態や経路探索の結果を更新するメソッド群
