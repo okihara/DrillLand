@@ -260,7 +260,8 @@
     }
     
     // アニメーション開始
-    CCAction *act_animate = [CCCallFuncO actionWithTarget:self selector:@selector(animate)];
+    CCAction *act_animate = [self animate];
+    NSLog(@"act_animate %@", act_animate);
     [action_list addObject:act_animate];
     
     // -------------------------------------------------------------------------------    
@@ -300,44 +301,64 @@
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
 
-- (void)_animate
+- (CCAction*)_animate
 {
     // ガード
     if (![self->events count]) {
-        return;
+        return nil;
     }
     
+    NSMutableArray *actions = [NSMutableArray array];
     DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
     while (e) {
+        
         NSLog(@"[EVENT_N] type:%d", e.type);
-        [self->dungeon_view notify:self->dungeon_model event:e];
+        CCAction *act = [self->dungeon_view notify:self->dungeon_model event:e];
+        if (!act) {
+            break;
+        }
+        [actions addObject:act];
         [self->events removeObjectAtIndex:0];
-
+        
         if (![self->events count]) {
-            return;
+            break;
         }
         e = (DLEvent*)[self->events objectAtIndex:0];
         if( e.type == DL_ON_HIT ) {
-            return;
+            break;
         }
     }
+    if ([actions count]) {
+        CCAction *delay = [CCDelayTime actionWithDuration:1.0];
+        [actions addObject:delay];
+    }
+    return [CCSpawn actionWithArray:actions];
 }
 
-- (void)animate
+- (CCAction*)animate
 {
     // ガード
     if (![self->events count]) {
-        return;
+        return nil;
     }
     
+    NSMutableArray *actions = [NSMutableArray array];
+
     DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
     while (e) {
-        [self _animate];
+        
+        CCAction *action = [self _animate];
+        if (!action) {
+            break;
+        }
+        [actions addObject:action];
+        
         if (![self->events count]) {
-            return;
+            break;
         }
         e = (DLEvent*)[self->events objectAtIndex:0];
     }
+    return [CCSequence actionWithArray:actions];
 }
 
 //- (void)animate

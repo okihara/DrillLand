@@ -38,7 +38,8 @@
 - (void)scroll_to;
 
 // animate
-- (void)animate;
+//- (void)animate;
+- (CCAction*)animate;
 - (void)animate_defense;
 
 @end

@@ -176,7 +176,7 @@
 
 // TODO: DungeonScene においてもいいような。。。
 
--(void) notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
+- (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
 {
     // TODO: PLAYER も同じように扱いたい。。。
     
@@ -184,10 +184,14 @@
     
     if(b.type == ID_PLAYER) {
         BlockView* block = self.player;
-        [block handle_event:self event:e];
+        return [CCCallBlock actionWithBlock:^(void){
+            [block handle_event:self event:e];
+        }];
     } else {
         BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
-        [block handle_event:self event:e];
+        return [CCCallBlock actionWithBlock:^(void){
+            [block handle_event:self event:e];
+        }];
     }
 }
 

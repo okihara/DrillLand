@@ -16,6 +16,8 @@
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     // implement behaivior
+//    DLEvent *e = [DLEvent eventWithType:DL_ON_HIT target:context_];
+//    [dungeon_ dispatchEvent:e];
 }
 
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_

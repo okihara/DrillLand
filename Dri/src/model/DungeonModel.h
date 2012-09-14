@@ -20,7 +20,7 @@
 
 
 @protocol DungenModelObserver <NSObject>
-- (void) notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
+- (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 @end
 
 

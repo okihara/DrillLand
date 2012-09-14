@@ -15,7 +15,7 @@
 @class XDMap;
 @class BlockView;
 
-@interface DungeonView : CCLayer<DungenModelObserver>
+@interface DungeonView : CCLayer
 {
     id  delegate;
     int offset_y;
@@ -47,7 +47,7 @@
 
 - (void)remove_block_view:(DLPoint)pos;
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
-
+- (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 
 - (CGPoint)model_to_local:(DLPoint)pos;
 

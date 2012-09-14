@@ -90,21 +90,6 @@
 
 - (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-//    switch (e.type) {
-//        case DL_ON_HIT:
-//            [self->events_defense addObject:e];
-//            break;
-//            
-//        case DL_ON_DAMAGE:
-//            [self->events_defense addObject:e];
-//            break;
-//            
-//        default:
-//            [self->events addObject:e];
-//            break;
-//    }
-//    return YES;
-
     [self _update_presentation:ctx event:e];
     
     // 描画イベント全部処理して、死んでたら
