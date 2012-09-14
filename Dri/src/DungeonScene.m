@@ -39,6 +39,9 @@
         
         // initialize variables
         offset_y = 0;
+        
+        //
+        self->events = [[NSMutableArray array] retain];
      
         // setup dungeon view
         dungeon_view = [DungeonView node];
@@ -50,8 +53,8 @@
         
         // setup dungeon model
         dungeon_model = [[DungeonModel alloc] init:NULL];
-        //[dungeon _setup];
-        [dungeon_model add_observer:dungeon_view];
+        //[dungeon_model add_observer:dungeon_view];
+        [dungeon_model add_observer:self];
         [dungeon_model load_from_file:@"floor001.json"];
 
         // setup player
@@ -136,16 +139,6 @@
     }
 }
 
-- (void)animate
-{
-    [dungeon_view update_presentation:self->dungeon_model phase:DL_ETC];
-}
-
-- (void)animate_defense
-{
-    [dungeon_view update_presentation:self->dungeon_model phase:DL_DEFENSE];
-}
-
 - (void)update_dungeon_view
 {
     // 更新
@@ -156,70 +149,6 @@
     // TODO: これって DungeonView 側に書くべきじゃない？
     [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
     [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom-1 _model:self->dungeon_model];
-}
-
-//===============================================================
-//
-// タッチ後のシーケンス
-//
-//===============================================================
-
-- (void)run_sequence
-{
-    // アクションのシーケンスを作成
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
-    
-    // 
-    self.isTouchEnabled = NO;
-
-    
-    // -------------------------------------------------------------------------------
-    // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
-    CCAction* player_action = [self->dungeon_view.player get_action_update_player_pos:self->dungeon_model view:self->dungeon_view];
-    if (player_action) {
-        [action_list addObject:player_action];
-                
-        [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
-    }
-
-    // アニメーション開始
-    CCAction *act_animate = [CCCallFuncO actionWithTarget:self selector:@selector(animate)];
-    [action_list addObject:act_animate];
-    
-    // -------------------------------------------------------------------------------    
-    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
-    // アニメーション開始
-    
-    // -------------------------------------------------------------------------------
-    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
-//    CCDelayTime *act_delay = [CCDelayTime actionWithDuration:1.0];
-//    [action_list addObject:act_delay];
-    CCAction *act_defense = [CCCallFuncO actionWithTarget:self selector:@selector(animate_defense)];
-    [action_list addObject:act_defense];
-    
-    // -------------------------------------------------------------------------------
-    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
-
-
-    // -------------------------------------------------------------------------------
-    // スクロールフェイズ
-    [self do_scroll];
-
-    // -------------------------------------------------------------------------------
-    // 画面の描画
-    CCAction* next_action = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
-    [action_list addObject:next_action];
-
-
-    // -------------------------------------------------------------------------------
-    // タッチをオンに
-    CCAction* act_to_touchable = [CCCallBlockO actionWithBlock:^(DungeonScene* this) {
-        this.isTouchEnabled = YES;
-    } object:self];
-    [action_list addObject:act_to_touchable];
-
-    // 実行
-    [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
     
 
@@ -290,6 +219,135 @@
     int curring_var = -1;
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
+}
+
+
+//===============================================================
+//
+// イベントハンドラ
+//
+//===============================================================
+
+-(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
+{
+    NSLog(@"[EVENT] type:%d", event.type);
+    [self->events addObject:event];
+}
+
+
+//===============================================================
+//
+// タッチ後のシーケンス
+//
+//===============================================================
+
+- (void)run_sequence
+{
+    // アクションのシーケンスを作成
+    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
+    
+    // 
+    self.isTouchEnabled = NO;
+    
+    
+    // -------------------------------------------------------------------------------
+    // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
+    CCAction* act_player_move = [self->dungeon_view.player get_action_update_player_pos:self->dungeon_model view:self->dungeon_view];
+    if (act_player_move) {
+        [action_list addObject:act_player_move];
+        
+        [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
+    }
+    
+    // アニメーション開始
+    CCAction *act_animate = [CCCallFuncO actionWithTarget:self selector:@selector(animate)];
+    [action_list addObject:act_animate];
+    
+    // -------------------------------------------------------------------------------    
+    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
+    // アニメーション開始
+    
+    // -------------------------------------------------------------------------------
+    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
+    //    CCDelayTime *act_delay = [CCDelayTime actionWithDuration:1.0];
+    //    [action_list addObject:act_delay];
+//    CCAction *act_defense = [CCCallFuncO actionWithTarget:self selector:@selector(animate_defense)];
+//    [action_list addObject:act_defense];
+    
+    // -------------------------------------------------------------------------------
+    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
+    
+    
+    // -------------------------------------------------------------------------------
+    // スクロールフェイズ
+    CCAction *act_scroll = [CCCallFuncO actionWithTarget:self selector:@selector(do_scroll)];
+    [action_list addObject:act_scroll];
+    
+    // -------------------------------------------------------------------------------
+    // 画面の描画
+    CCAction* act_update_view = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
+    [action_list addObject:act_update_view];
+    
+    
+    // -------------------------------------------------------------------------------
+    // タッチをオンに
+    CCAction* act_to_touchable = [CCCallBlockO actionWithBlock:^(DungeonScene* this) {
+        this.isTouchEnabled = YES;
+    } object:self];
+    [action_list addObject:act_to_touchable];
+    
+    // 実行
+    [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
+}
+
+- (void)_animate
+{
+    // ガード
+    if (![self->events count]) {
+        return;
+    }
+    
+    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
+    while (e) {
+        NSLog(@"[EVENT_N] type:%d", e.type);
+        [self->dungeon_view notify:self->dungeon_model event:e];
+        [self->events removeObjectAtIndex:0];
+
+        if (![self->events count]) {
+            return;
+        }
+        e = (DLEvent*)[self->events objectAtIndex:0];
+        if( e.type == DL_ON_HIT ) {
+            return;
+        }
+    }
+}
+
+- (void)animate
+{
+    // ガード
+    if (![self->events count]) {
+        return;
+    }
+    
+    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
+    while (e) {
+        [self _animate];
+        if (![self->events count]) {
+            return;
+        }
+        e = (DLEvent*)[self->events objectAtIndex:0];
+    }
+}
+
+//- (void)animate
+//{
+//    [dungeon_view update_presentation:self->dungeon_model phase:DL_ETC];
+//}
+
+- (void)animate_defense
+{
+    [dungeon_view update_presentation:self->dungeon_model phase:DL_DEFENSE];
 }
 
 @end

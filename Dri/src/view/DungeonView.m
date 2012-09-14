@@ -186,8 +186,8 @@
         BlockView* block = self.player;
         [block handle_event:self event:e];
     } else {
-        BlockView *block_view = [view_map get_x:b.pos.x y:b.pos.y];
-        [block_view handle_event:self event:e];
+        BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
+        [block handle_event:self event:e];
     }
 }
 

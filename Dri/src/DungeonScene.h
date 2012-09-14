@@ -12,11 +12,11 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "LargeNotifierView.h"
+#import "DungeonModel.h"
 
-@class DungeonModel;
 @class DungeonView;
 
-@interface DungeonScene : CCLayerColor
+@interface DungeonScene : CCLayerColor<DungenModelObserver>
 {
     int offset_y;
 
@@ -25,13 +25,20 @@
     CCLayerColor      *fade_layer;
     DungeonView       *dungeon_view;
     LargeNotifierView *large_notify;
+    
+    NSMutableArray *events;
 }
 
-+(CCScene *) scene;
--(void)update_curring_range;
++ (CCScene *)scene;
+- (void)run_sequence;
+- (void)update_curring_range;
 
 // TODO: スクロール関係は別クラスに
--(float)get_offset_y_by_player_pos;
--(void)scroll_to;
+- (float)get_offset_y_by_player_pos;
+- (void)scroll_to;
+
+// animate
+- (void)animate;
+- (void)animate_defense;
 
 @end

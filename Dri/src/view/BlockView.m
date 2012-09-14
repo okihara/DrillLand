@@ -19,11 +19,6 @@
 - (void)setup
 {
     self->events = [[NSMutableArray array] retain];
-    self->events_move = [[NSMutableArray array] retain];
-    self->events_attack = [[NSMutableArray array] retain];
-    self->events_defense = [[NSMutableArray array] retain];
-    self->events_destroy = [[NSMutableArray array] retain];
-
     self->presentation_list = [[NSMutableArray array] retain];
     is_alive = YES;
 }
@@ -39,10 +34,6 @@
 - (void)dealloc
 {
     [self->presentation_list release];
-    [self->events_destroy release];
-    [self->events_defense release];
-    [self->events_attack release];
-    [self->events_move release];
     [self->events release];
     [super dealloc];
 }
@@ -82,51 +73,44 @@
 
 - (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b phase:(enum DL_PHASE)phase
 {
-    
-    NSMutableArray *event_list;
-    if (phase == DL_DEFENSE) {
-        event_list = self->events_defense;
-    } else {
-        event_list = self->events;       
-    }
-    
-    for (DLEvent *e in event_list) {
-        
-        //int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
-        //BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
-        [self _update_presentation:ctx event:e];
-    }
-
-    if (phase == DL_DEFENSE) {
-        [self->events_defense removeAllObjects];
-    } else {
-        [self->events removeAllObjects];
-    }
-
-    
-    // 描画イベント全部処理して、死んでたら
-    if (self.is_alive == NO) {
-        [ctx remove_block_view:b.pos];
-    }
+//    for (DLEvent *e in self->events) {
+//        
+//        //int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
+//        //BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
+//        [self _update_presentation:ctx event:e];
+//    }
+//
+//    // 描画イベント全部処理して、死んでたら
+//    if (self.is_alive == NO) {
+//        [ctx remove_block_view:b.pos];
+//    }
 }
-
 
 //----------------------------------------------------------------
 
 - (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-    switch (e.type) {
-        case DL_ON_HIT:
-            [self->events_defense addObject:e];
-            break;
-            
-        case DL_ON_DAMAGE:
-            [self->events_defense addObject:e];
-            break;
-            
-        default:
-            [self->events addObject:e];
-            break;
+//    switch (e.type) {
+//        case DL_ON_HIT:
+//            [self->events_defense addObject:e];
+//            break;
+//            
+//        case DL_ON_DAMAGE:
+//            [self->events_defense addObject:e];
+//            break;
+//            
+//        default:
+//            [self->events addObject:e];
+//            break;
+//    }
+//    return YES;
+
+    [self _update_presentation:ctx event:e];
+    
+    // 描画イベント全部処理して、死んでたら
+    BlockModel *b = (BlockModel*)e.target;
+    if (self.is_alive == NO) {
+        [ctx remove_block_view:b.pos];
     }
     return YES;
 }
