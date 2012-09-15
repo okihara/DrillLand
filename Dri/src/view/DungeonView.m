@@ -184,14 +184,18 @@
     
     if(b.type == ID_PLAYER) {
         BlockView* block = self.player;
+        
         return [CCCallBlock actionWithBlock:^(void){
             [block handle_event:self event:e];
         }];
+        
     } else {
         BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
+        
         return [CCCallBlock actionWithBlock:^(void){
             [block handle_event:self event:e];
         }];
+        
     }
 }
 

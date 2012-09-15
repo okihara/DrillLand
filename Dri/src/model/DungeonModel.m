@@ -69,6 +69,8 @@
     if (b.can_tap == NO) {
         // TODO: notify
         // 「そこはタップできません」とかね
+        DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:b];
+        [self->observer notify:self event:event];
         return;
     }
     
@@ -110,7 +112,6 @@
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
     [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
-    //[self->observer notify:0 dungeon:self params:self]; // 0 == ON_UPDATE
 }
 
 -(void) dispatchEvent:(DLEvent*)e

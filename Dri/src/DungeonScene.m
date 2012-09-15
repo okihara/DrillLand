@@ -73,6 +73,7 @@
         // fade 用のレイヤー
         self->fade_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [self addChild:self->fade_layer z:10];
+        
 	}
 	return self;
 }
@@ -232,6 +233,10 @@
 {
     NSLog(@"[EVENT] type:%d", event.type);
     [self->events addObject:event];
+    
+    if (event.type == DL_ON_CANNOT_TAP) {
+        [BasicNotifierView notify:@"CAN NOT TAP" target:self];
+    }
 }
 
 
@@ -257,6 +262,8 @@
         [action_list addObject:act_player_move];
     }
     
+    // -------------------------------------------------------------------------------    
+    // ブロック毎のターン処理
     // アニメーション開始
     CCAction *act_animate = [self animate];
     NSLog(@"act_animate %@", act_animate);
@@ -264,20 +271,8 @@
         [action_list addObject:act_animate];
     }
     
-    // -------------------------------------------------------------------------------    
-    // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
-    // アニメーション開始
-    
-    // -------------------------------------------------------------------------------
-    // エネミー被アタックフェイズ(相手のブロックアタックフェイズ)
-    //    CCDelayTime *act_delay = [CCDelayTime actionWithDuration:1.0];
-    //    [action_list addObject:act_delay];
-//    CCAction *act_defense = [CCCallFuncO actionWithTarget:self selector:@selector(animate_defense)];
-//    [action_list addObject:act_defense];
-    
     // -------------------------------------------------------------------------------
     // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
-    
     
     // -------------------------------------------------------------------------------
     // スクロールフェイズ
@@ -301,6 +296,7 @@
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
 
+// ブロック毎の１ターンのアクションを返す
 - (CCAction*)_animate
 {
     // ガード
@@ -340,6 +336,7 @@
     return [CCSequence actionWithArray:actions];
 }
 
+// 全部の今回起こったアクション全てをシーケンスにしたアクションを返す
 - (CCAction*)animate
 {
     // ガード
