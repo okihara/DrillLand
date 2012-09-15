@@ -15,7 +15,7 @@
 }
 
 -(void)setupBuilders;
--(void)setBuilderWithID:(enum ID_BLOCK)name builder:(SEL)builder_method;
+-(void)registerBuilderWithID:(enum ID_BLOCK)name builder:(SEL)builder_method;
 -(BlockModel*)buildWithID:(enum ID_BLOCK)name;
 
 @end

@@ -25,17 +25,17 @@
 
 -(void)setupBuilders
 {
-    [self setBuilderWithID:ID_PLAYER builder:@selector(build_player)];
-    [self setBuilderWithID:ID_NORMAL_BLOCK builder:@selector(build_normal)];
-    [self setBuilderWithID:ID_GROUPED_BLOCK_1 builder:@selector(build_grouped_1)];
-    [self setBuilderWithID:ID_GROUPED_BLOCK_2 builder:@selector(build_grouped_2)];
-    [self setBuilderWithID:ID_GROUPED_BLOCK_3 builder:@selector(build_grouped_3)];
-    [self setBuilderWithID:ID_UNBREAKABLE_BLOCK builder:@selector(build_unbreakable)];
-    [self setBuilderWithID:ID_ENEMY_BLOCK_0 builder:@selector(build_enemy_0)];
-    [self setBuilderWithID:ID_ENEMY_BLOCK_1 builder:@selector(build_enemy_1)];
+    [self registerBuilderWithID:ID_PLAYER builder:@selector(build_player)];
+    [self registerBuilderWithID:ID_NORMAL_BLOCK builder:@selector(build_normal)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_1 builder:@selector(build_grouped_1)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_2 builder:@selector(build_grouped_2)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_3 builder:@selector(build_grouped_3)];
+    [self registerBuilderWithID:ID_UNBREAKABLE_BLOCK builder:@selector(build_unbreakable)];
+    [self registerBuilderWithID:ID_ENEMY_BLOCK_0 builder:@selector(build_enemy_0)];
+    [self registerBuilderWithID:ID_ENEMY_BLOCK_1 builder:@selector(build_enemy_1)];
 }
 
--(void)setBuilderWithID:(enum ID_BLOCK)id_ builder:(SEL)builder_method
+-(void)registerBuilderWithID:(enum ID_BLOCK)id_ builder:(SEL)builder_method
 {
     [builder_map setObject:[NSValue valueWithPointer:builder_method] forKey:[NSNumber numberWithInt:id_]];
 }
