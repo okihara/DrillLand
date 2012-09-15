@@ -255,14 +255,14 @@
     CCAction* act_player_move = [self->dungeon_view.player get_action_update_player_pos:self->dungeon_model view:self->dungeon_view];
     if (act_player_move) {
         [action_list addObject:act_player_move];
-        
-        [BasicNotifierView notify:@"MESSAGE MESSAGE" target:self];
     }
     
     // アニメーション開始
     CCAction *act_animate = [self animate];
     NSLog(@"act_animate %@", act_animate);
-    [action_list addObject:act_animate];
+    if (act_animate) {
+        [action_list addObject:act_animate];
+    }
     
     // -------------------------------------------------------------------------------    
     // プレイヤーアタックフェイズ(ブロックアタックフェイズ)
@@ -318,6 +318,10 @@
             break;
         }
         [actions addObject:act];
+        if (e.type == DL_ON_DAMAGE) {
+//            CCAction *delay = [CCDelayTime actionWithDuration:0.5];
+//            [actions addObject:delay];
+        }
         [self->events removeObjectAtIndex:0];
         
         if (![self->events count]) {
@@ -327,12 +331,13 @@
         if( e.type == DL_ON_HIT ) {
             break;
         }
+        
     }
-    if ([actions count]) {
-        CCAction *delay = [CCDelayTime actionWithDuration:1.0];
-        [actions addObject:delay];
-    }
-    return [CCSpawn actionWithArray:actions];
+//    if ([actions count]) {
+//        CCAction *delay = [CCDelayTime actionWithDuration:0.05];
+//        [actions addObject:delay];
+//    }
+    return [CCSequence actionWithArray:actions];
 }
 
 - (CCAction*)animate
@@ -357,14 +362,10 @@
             break;
         }
         e = (DLEvent*)[self->events objectAtIndex:0];
+        
     }
     return [CCSequence actionWithArray:actions];
 }
-
-//- (void)animate
-//{
-//    [dungeon_view update_presentation:self->dungeon_model phase:DL_ETC];
-//}
 
 - (void)animate_defense
 {
