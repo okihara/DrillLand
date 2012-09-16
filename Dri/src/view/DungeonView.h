@@ -40,11 +40,6 @@
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_;
 - (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;
-//- (void)update_presentation:(DungeonModel *)dungeon_;
-- (void)update_presentation:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase;
-
-- (void)launch_particle:(NSString*)name position:(CGPoint)pos;
--(void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1;
 
 - (void)remove_block_view:(DLPoint)pos;
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
@@ -53,5 +48,9 @@
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 
 - (CGPoint)model_to_local:(DLPoint)pos;
+
+// helper
+- (void)launch_particle:(NSString*)name position:(CGPoint)pos;
+- (void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1;
 
 @end

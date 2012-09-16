@@ -24,10 +24,12 @@
     DungeonModel *dungeon_model;
     
     CCLayerColor      *fade_layer;
-    DungeonView       *dungeon_view;
     LargeNotifierView *large_notify;
     StatusBarView     *statusbar;
     
+    DungeonView       *dungeon_view;
+    int latest_remove_y;
+
     NSMutableArray *events;
 }
 

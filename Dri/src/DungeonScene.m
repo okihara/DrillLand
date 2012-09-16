@@ -18,7 +18,7 @@
 #import "DungeonResultScene.h"
 
 
-#define DISP_H 9
+#define DISP_H 8
 
 // HelloWorldLayer implementation
 @implementation DungeonScene
@@ -49,13 +49,13 @@
         dungeon_view = [DungeonView node];
         [dungeon_view setDelegate:self];
         [self addChild:dungeon_view];
+        self->latest_remove_y = -1;
         
         // calc curring
         [self update_curring_range];
         
         // setup dungeon model
         dungeon_model = [[DungeonModel alloc] init:NULL];
-        //[dungeon_model add_observer:dungeon_view];
         [dungeon_model add_observer:self];
         [dungeon_model load_from_file:@"floor001.json"];
 
@@ -114,14 +114,39 @@
     // enable touch
     //self.isTouchEnabled = YES;
     
-    [dungeon_view update_view:self->dungeon_model];
+    // TODO: なんでここ必要ないの？？
+    //[dungeon_view update_view:self->dungeon_model];
 }
 
 
 
 //===============================================================
 //
-// タップ後のアニメーション
+// 描画
+//
+//===============================================================
+
+- (void)update_dungeon_view
+{
+    // 更新
+    // スクロール後
+    // 画面外を削って
+    // 次に必要なブロックを描画
+    //[self->dungeon_view update_view:self->dungeon_model];
+    // TODO: これって DungeonView 側に書くべきじゃない？
+    for (int y = self->latest_remove_y + 1; y < self->dungeon_view.curring_top; y++) {
+        [self->dungeon_view remove_block_view_line:y _model:self->dungeon_model];
+        self->latest_remove_y = y;
+    }
+
+    // curring_top から curring_bottom まで描画
+    [self->dungeon_view update_view_lines:self->dungeon_model];
+}
+    
+
+//===============================================================
+//
+// タッチのハンドラ
 //
 //===============================================================
 
@@ -139,28 +164,6 @@
     int y = (int)((480 - location.y + offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
 }
-
-- (void)update_dungeon_view
-{
-    // 更新
-    // スクロール後
-    // 画面外を削って
-    // 次に必要なブロックを描画
-    //[self->dungeon_view update_view:self->dungeon_model];
-    // TODO: これって DungeonView 側に書くべきじゃない？
-    
-    [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
-
-    // このままだと１行以上スクロールすると、スキップされる行がある
-    [self->dungeon_view update_view_lines:self->dungeon_model];
-}
-    
-
-//===============================================================
-//
-// タッチのハンドラ
-//
-//===============================================================
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
@@ -239,7 +242,7 @@
 - (void)update_curring_range
 {
     // debug 用
-    int curring_var = 1;
+    int curring_var = 0;
     
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);

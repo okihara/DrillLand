@@ -90,6 +90,7 @@
                 
         BlockView *block = [view_map get_x:x y:y];
         BlockModel *block_model = [dungeon_ get_x:x y:y];
+
         
         if (block.is_change) {
             [self remove_block_view:block_model.pos];
@@ -98,7 +99,9 @@
         if (block && !block.is_change) {
             continue;
         }
-
+        block.is_change = NO;
+        
+        
         block = [BlockView create:block_model ctx:dungeon_];
         block.position = [self model_to_local:cdp(x, y)];
         
@@ -109,9 +112,12 @@
 
 - (void)update_view_lines:(DungeonModel *)_dungeon
 {
+    NSLog(@"[update_view_lines] START top:%d bottom:%d", self.curring_top, self.curring_bottom);
     for (int y = self.curring_top; y < self.curring_bottom; y++) {
+        NSLog(@"[update_view_lines] update_view y:%d", y);
         [self update_view_line:y _model:_dungeon];
     }
+    NSLog(@"[update_view_lines] END");
 }
 
 // 最初に一回しか呼ばないかも
@@ -139,6 +145,7 @@
 
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
+    NSLog(@"[remove_block_view_line] y:%d", y);
     for (int x = 0; x < disp_w; x++) {
         [self remove_block_view:cdp(x, y)];
     }
@@ -150,32 +157,6 @@
     if (block.is_alive == NO) {
         [self remove_block_view:pos];
     }
-}
-
-
-//===============================================================
-//
-// プレゼンテーションの更新
-//
-//===============================================================
-
-- (void)update_presentation_all:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
-{
-//    // curring を考慮して更新
-//    for (int y = self.curring_top; y < self.curring_bottom; y++) {
-//        for (int x = 0; x < disp_w; x++) {
-//            BlockModel *block_model = [dungeon_ get_x:x y:y];
-//            BlockView  *block_view  = [self->view_map get_x:x y:y];
-//            [block_view update_presentation:self model:block_model phase:phase];
-//        }
-//    }
-}
-
--(void)update_presentation:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
-{
-//    // TODO: PLAYER も同じように扱いたい。。。
-//    [self update_presentation_all:dungeon_ phase:phase];
-//    [self.player update_presentation:self model:dungeon_.player phase:phase];
 }
 
 
