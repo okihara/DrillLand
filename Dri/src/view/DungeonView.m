@@ -158,21 +158,21 @@
 
 - (void)update_presentation_all:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
 {
-    // curring を考慮して更新
-    for (int y = self.curring_top; y < self.curring_bottom; y++) {
-        for (int x = 0; x < disp_w; x++) {
-            BlockModel *block_model = [dungeon_ get_x:x y:y];
-            BlockView  *block_view  = [self->view_map get_x:x y:y];
-            [block_view update_presentation:self model:block_model phase:phase];
-        }
-    }
+//    // curring を考慮して更新
+//    for (int y = self.curring_top; y < self.curring_bottom; y++) {
+//        for (int x = 0; x < disp_w; x++) {
+//            BlockModel *block_model = [dungeon_ get_x:x y:y];
+//            BlockView  *block_view  = [self->view_map get_x:x y:y];
+//            [block_view update_presentation:self model:block_model phase:phase];
+//        }
+//    }
 }
 
 -(void)update_presentation:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase
 {
-    // TODO: PLAYER も同じように扱いたい。。。
-    [self update_presentation_all:dungeon_ phase:phase];
-    [self.player update_presentation:self model:dungeon_.player phase:phase];
+//    // TODO: PLAYER も同じように扱いたい。。。
+//    [self update_presentation_all:dungeon_ phase:phase];
+//    [self.player update_presentation:self model:dungeon_.player phase:phase];
 }
 
 
@@ -187,29 +187,22 @@
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
 {
     // TODO: PLAYER も同じように扱いたい。。。
-    // TODO: handle_event の返り値が CCAction になっていれば良い？
     
     BlockModel *b = (BlockModel*)e.target;
     
     if(b.type == ID_PLAYER) {
+        
         BlockView* block = self.player;
-//        
-//        return [CCCallBlock actionWithBlock:^(void){
-//            [block handle_event:self event:e];
-//        }];
         return [block handle_event:self event:e];
         
     } else {
+        
         BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
-        
-//        return [CCCallBlock actionWithBlock:^(void){
-//            [block handle_event:self event:e];
-//        }];
-        
         return [block handle_event:self event:e];
         
     }
 }
+
 
 //===============================================================
 //

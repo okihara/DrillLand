@@ -84,28 +84,12 @@
 
 }
 
-- (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b phase:(enum DL_PHASE)phase
-{
-//    for (DLEvent *e in self->events) {
-//        
-//        //int type = [(NSNumber*)[event objectForKey:@"type"] intValue];
-//        //BlockModel* b = (BlockModel*)[event objectForKey:@"model"];
-//        [self _update_presentation:ctx event:e];
-//    }
-//
-//    // 描画イベント全部処理して、死んでたら
-//    if (self.is_alive == NO) {
-//        [ctx remove_block_view:b.pos];
-//    }
-}
 
 //----------------------------------------------------------------
 
 - (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-    CCAction *action = [self _update_presentation:ctx event:e];
-    
-    return action;
+    return [self _update_presentation:ctx event:e];
 }
 
 
