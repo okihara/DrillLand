@@ -38,6 +38,7 @@
 - (void)add_block:(BlockView*)block;
 
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_;
+- (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;
 //- (void)update_presentation:(DungeonModel *)dungeon_;
 - (void)update_presentation:(DungeonModel *)dungeon_ phase:(enum DL_PHASE)phase;

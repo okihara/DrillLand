@@ -39,7 +39,7 @@
 - (void)update_curring_range;
 
 // TODO: スクロール関係は別クラスに
-- (float)get_offset_y_by_player_pos;
+- (void)update_offset_y;
 - (void)scroll_to;
 
 @end

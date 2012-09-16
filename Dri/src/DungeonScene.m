@@ -142,8 +142,8 @@
     
     [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
 
-    // この -1 なに？？？
-    [self->dungeon_view update_view_line:(self->dungeon_view.curring_bottom - 1) _model:self->dungeon_model];
+    // このままだたお１行以上スクロールすると、スキップされる行がある
+    [self->dungeon_view update_view_lines:self->dungeon_model];
 }
     
 
@@ -163,9 +163,6 @@
     // モデルへ通知
     [self->dungeon_model on_hit:view_pos];
     
-    // カリングの幅を更新
-    [self update_curring_range];
-    
     // タップ後のシーケンス再生
     [self run_sequence];
 }
@@ -181,56 +178,64 @@
 
 - (void)do_scroll
 {
+    // プレイヤーの一個下のブロックが空なら
+    // スクロールする
     DLPoint ppos = self->dungeon_model.player.pos;
     DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
     BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
     if (b.type == ID_EMPTY) {
         
         // スクロールの offset 更新
-        self->offset_y = [self get_offset_y_by_player_pos];
+        [self update_offset_y];
         
         // 実際にスクロールさせる
         [self scroll_to];
     }
 }
 
-- (float)get_offset_y_by_player_pos
+- (void)update_offset_y
 {
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
-    int by = (int)(offset_y / BLOCK_WIDTH);
+    int threshold = 2;
+    
+    int by = (int)(self->offset_y / BLOCK_WIDTH);
     int diff = self->dungeon_model.player.pos.y - by;
-    int threshold = 3;
     if (diff - threshold > 0) {
-        offset_y += BLOCK_WIDTH * (diff - threshold);
+        self->offset_y += BLOCK_WIDTH * (diff - threshold);
     }
     
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
     int max_scroll = (HEIGHT - DISP_H) * BLOCK_WIDTH + 30;
-    if (offset_y > max_scroll) offset_y = max_scroll;
-    
-    return offset_y;
+    if (offset_y > max_scroll) self->offset_y = max_scroll;
+
 }
 
 // 実際の処理
 -(void)scroll_to
 {
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
+    // カリングの幅を更新
+    [self update_curring_range];
+    
+    // アクションを実行
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, self->offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [dungeon_view runAction:ease];
 }
 
+// カリングの計算
 - (void)update_curring_range
 {
     // debug 用
-    int curring_var = -1;
+    int curring_var = 1;
     
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
-    self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
+    int num_draw = DISP_H + curring_var;
+    self->dungeon_view.curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
 }
 
 //===============================================================
