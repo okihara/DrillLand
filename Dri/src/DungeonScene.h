@@ -30,16 +30,16 @@
 }
 
 + (CCScene *)scene;
+
+// --
 - (void)run_sequence;
+- (CCAction*)animate;
+
+// --
 - (void)update_curring_range;
 
 // TODO: スクロール関係は別クラスに
 - (float)get_offset_y_by_player_pos;
 - (void)scroll_to;
-
-// animate
-//- (void)animate;
-- (CCAction*)animate;
-- (void)animate_defense;
 
 @end

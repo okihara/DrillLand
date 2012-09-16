@@ -171,7 +171,7 @@
     
     // カリングの幅を更新
     [self update_curring_range];
-
+    
     // タップ後のシーケンス再生
     [self run_sequence];
 }
@@ -192,9 +192,9 @@
     // 一度いった時は引き返せない
     int by = (int)(offset_y / BLOCK_WIDTH);
     int diff = self->dungeon_model.player.pos.y - by;
-    int hoge = 3;
-    if (diff - hoge > 0) {
-        offset_y += BLOCK_WIDTH * (diff - hoge);
+    int threshold = 3;
+    if (diff - threshold > 0) {
+        offset_y += BLOCK_WIDTH * (diff - threshold);
     }
     
     // ここらへんはフロアの情報によって決まる
@@ -215,9 +215,11 @@
 
 - (void)update_curring_range
 {
+    // debug 用
+    int curring_var = -1;
+    
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
-    int curring_var = -1;
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
 }
@@ -295,6 +297,14 @@
     // 実行
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
+
+
+//===============================================================
+//
+// １ブロックの１ターン毎のアクションを生成
+// TODO: 別クラス化
+//
+//===============================================================
 
 // ブロック毎の１ターンのアクションを返す
 - (CCAction*)_animate
@@ -377,9 +387,5 @@
 
 }
 
-- (void)animate_defense
-{
-    [dungeon_view update_presentation:self->dungeon_model phase:DL_DEFENSE];
-}
 
 @end
