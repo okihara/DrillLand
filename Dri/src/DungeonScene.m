@@ -417,6 +417,11 @@
             [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
             break;
             
+        case DL_ON_HEAL:
+            [BasicNotifierView notify:@"HP GA 10 KAIFUKU!" target:self];
+            [self->events addObject:event];
+            break;
+            
         default:
             [self->events addObject:event];
             break;
