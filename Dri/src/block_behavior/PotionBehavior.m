@@ -30,6 +30,10 @@
 {
     // implement behavior
     [dungeon_.player heal:10];
+    
+    DLEvent *e = [DLEvent eventWithType:DL_ON_HEAL target:dungeon_.player];
+    [e.params setObject:[NSNumber numberWithInt:10] forKey:@"damage"];
+    [dungeon_ dispatchEvent:e];
 }
 
 @end

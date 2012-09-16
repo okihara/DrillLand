@@ -240,6 +240,18 @@
             [p release];
         }            
             break;
+        case ID_ITEM_BLOCK_0:
+        {
+            
+            [self add_can_destroy_num:b block:block];
+            {
+                NSObject<BlockPresentation>* p;
+                p = [[BreakablePresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
+        }
+            break;
         default:
         {
             [self add_can_destroy_num:b block:block];

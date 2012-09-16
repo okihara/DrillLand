@@ -12,7 +12,8 @@ enum DL_EVENT_TYPE {
     DL_ON_CANNOT_TAP,
     DL_ON_HIT,
     DL_ON_DAMAGE,
-    DL_ON_DESTROY
+    DL_ON_DESTROY,
+    DL_ON_HEAL
 };
 
 @interface DLEvent : NSObject
