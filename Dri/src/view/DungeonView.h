@@ -47,6 +47,8 @@
 
 - (void)remove_block_view:(DLPoint)pos;
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
+- (void)remove_block_view_if_dead:(DLPoint)pos;
+
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 
 - (CGPoint)model_to_local:(DLPoint)pos;

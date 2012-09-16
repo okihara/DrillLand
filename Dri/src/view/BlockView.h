@@ -17,7 +17,8 @@
 
 @protocol BlockPresentation <NSObject>
 
--(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
+//-(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
+-(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
 
 @end
 
@@ -39,8 +40,8 @@ enum DL_PHASE {
 
 @property (readwrite, assign) BOOL is_alive;
 
-+(BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
-- (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e;
++ (BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
+- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e;
 - (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b phase:(enum DL_PHASE)phase;
 - (void)play_anime:(NSString*)name;
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;

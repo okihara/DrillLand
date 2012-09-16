@@ -306,19 +306,19 @@
     
     NSMutableArray *actions = [NSMutableArray array];
     DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
+
+    BlockModel *b = (BlockModel*)e.target;
+    
     while (e) {
         
         NSLog(@"[EVENT_N] type:%d", e.type);
         CCAction *act = [self->dungeon_view notify:self->dungeon_model event:e];
-        if (!act) {
-            break;
+        if (act) {
+            [actions addObject:act];
         }
-        [actions addObject:act];
-        if (e.type == DL_ON_DAMAGE) {
-//            CCAction *delay = [CCDelayTime actionWithDuration:0.5];
-//            [actions addObject:delay];
-        }
+
         [self->events removeObjectAtIndex:0];
+        
         
         if (![self->events count]) {
             break;
@@ -329,11 +329,20 @@
         }
         
     }
-//    if ([actions count]) {
-//        CCAction *delay = [CCDelayTime actionWithDuration:0.05];
-//        [actions addObject:delay];
-//    }
-    return [CCSequence actionWithArray:actions];
+
+    // 描画イベント全部処理して、死んでたら
+    CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
+        NSLog(@"[SUICIDE] %d %d", b.pos.x, b.pos.y);
+        [self->dungeon_view remove_block_view_if_dead:b.pos];
+    }];
+    [actions addObject:act_suicide];
+    
+    if ([actions count]) {
+        return [CCSequence actionWithArray:actions];
+    } else {
+        return nil;
+    }
+
 }
 
 // 全部の今回起こったアクション全てをシーケンスにしたアクションを返す
@@ -350,10 +359,9 @@
     while (e) {
         
         CCAction *action = [self _animate];
-        if (!action) {
-            break;
+        if (action) {
+            [actions addObject:action];
         }
-        [actions addObject:action];
         
         if (![self->events count]) {
             break;
@@ -361,7 +369,12 @@
         e = (DLEvent*)[self->events objectAtIndex:0];
         
     }
-    return [CCSequence actionWithArray:actions];
+    if (actions) {
+        return [CCSequence actionWithArray:actions];
+    } else {
+        return nil;
+    }
+
 }
 
 - (void)animate_defense

@@ -50,25 +50,38 @@
 //
 //===============================================================
 
-- (void)_update_presentation:(DungeonView *)ctx event:(DLEvent*)e
+- (CCAction*)_update_presentation:(DungeonView *)ctx event:(DLEvent*)e
 {
     // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
     
     BlockModel *b = (BlockModel*)e.target;
+    NSMutableArray *actions = [NSMutableArray array];
     
     if (b.type == ID_PLAYER){
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:e view:ctx.player];
+            CCAction *action = [p handle_event:ctx event:e view:ctx.player];
+            if (action) {
+                [actions addObject:action];
+            }
         }
         
     } else {
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            [p handle_event:ctx event:e view:self];
+            CCAction *action = [p handle_event:ctx event:e view:self];
+            if (action) {
+                [actions addObject:action];
+            }
         }
         
     }
+    if ([actions count]) {
+        return [CCSequence actionWithArray:actions];
+    } else {
+        return nil;
+    }
+
 }
 
 - (void)update_presentation:(DungeonView*)ctx model:(BlockModel*)b phase:(enum DL_PHASE)phase
@@ -88,16 +101,11 @@
 
 //----------------------------------------------------------------
 
-- (BOOL)handle_event:(DungeonView*)ctx event:(DLEvent*)e
+- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e
 {
-    [self _update_presentation:ctx event:e];
+    CCAction *action = [self _update_presentation:ctx event:e];
     
-    // 描画イベント全部処理して、死んでたら
-    BlockModel *b = (BlockModel*)e.target;
-    if (self.is_alive == NO) {
-        [ctx remove_block_view:b.pos];
-    }
-    return YES;
+    return action;
 }
 
 

@@ -141,6 +141,14 @@
     }
 }
 
+- (void)remove_block_view_if_dead:(DLPoint)pos
+{
+    BlockView *block = [self->view_map get_x:pos.x y:pos.y];
+    if (block.is_alive == NO) {
+        [self remove_block_view:pos];
+    }
+}
+
 
 //===============================================================
 //
@@ -179,22 +187,26 @@
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
 {
     // TODO: PLAYER も同じように扱いたい。。。
+    // TODO: handle_event の返り値が CCAction になっていれば良い？
     
     BlockModel *b = (BlockModel*)e.target;
     
     if(b.type == ID_PLAYER) {
         BlockView* block = self.player;
-        
-        return [CCCallBlock actionWithBlock:^(void){
-            [block handle_event:self event:e];
-        }];
+//        
+//        return [CCCallBlock actionWithBlock:^(void){
+//            [block handle_event:self event:e];
+//        }];
+        return [block handle_event:self event:e];
         
     } else {
         BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
         
-        return [CCCallBlock actionWithBlock:^(void){
-            [block handle_event:self event:e];
-        }];
+//        return [CCCallBlock actionWithBlock:^(void){
+//            [block handle_event:self event:e];
+//        }];
+        
+        return [block handle_event:self event:e];
         
     }
 }
