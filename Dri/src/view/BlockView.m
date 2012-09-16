@@ -11,6 +11,8 @@
 #import "DungeonView.h"
 #import "BreakablePresentation.h"
 #import "BloodyPresentation.h"
+#import "PlayerPresentation.h"
+
 
 @implementation BlockView
 
@@ -203,10 +205,18 @@
             break;
         case ID_PLAYER:
         {
-            NSObject<BlockPresentation>* p;
-            p = [[BloodyPresentation alloc] init];
-            [block add_presentation:p];
-            [p release];
+            {
+                NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
+            
+            {
+                NSObject<BlockPresentation>* p = [[PlayerPresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
+            
             
             [block play_anime:@"walk"];
         }

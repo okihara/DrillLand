@@ -37,6 +37,8 @@
 {
 	if( (self=[super init]) ) {
         
+        srand(time(nil)); //乱数初期化
+        
         // initialize variables
         offset_y = 0;
         
@@ -92,9 +94,6 @@
 {
     [super onEnter];
     
-    // enable touch
-    self.isTouchEnabled = YES;
-    
     // シーン遷移後のアニメーション
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
@@ -102,13 +101,18 @@
     self->large_notify = [[LargeNotifierView alloc] init];
     [self addChild:self->large_notify];
     
-    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.5];
+    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
 
     CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
 
     // 勇者がてくてく歩く
-    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, nil]];
+    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
+        self.isTouchEnabled = YES;
+    }], nil]];
+    
+    // enable touch
+    //self.isTouchEnabled = YES;
     
     [dungeon_view update_view:self->dungeon_model];
 }

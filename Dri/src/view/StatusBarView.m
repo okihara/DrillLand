@@ -11,6 +11,12 @@
 
 @implementation StatusBarView
 
+-(void)update_hp:(NSNotification *)aNotification
+{
+    NSNumber *value = (NSNumber*)[aNotification object];
+    [self->hp setString:[NSString stringWithFormat:@"HP: %d", [value intValue]]];
+}
+
 - (id)init
 {
     if(self=[super init]) {
@@ -25,6 +31,9 @@
         
         self->hp = [[CCLabelTTF labelWithString:@"HP: 10" fontName:DL_FONT fontSize:20] retain];
         [self addChild:self->hp];
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(update_hp:) name:@"UpdateHP" object:nil];
     }
     return self;
 }

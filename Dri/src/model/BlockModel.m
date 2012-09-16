@@ -64,10 +64,10 @@
     }
 }
 
--(void)on_damage:(DungeonModel*)dungeon
+-(void)on_damage:(DungeonModel*)dungeon damage:(int)damage_
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
-        [b on_damage:self dungeon:dungeon];
+        [b on_damage:self dungeon:dungeon damage:damage_];
     }
 }
 
@@ -96,11 +96,19 @@
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
     int damage = self.atk - target.def;
+    damage += rand() % 3 - 1;
+    
+    // ---
     target.hp -= damage;
-    
-    [target on_damage:dungeon];
-    
     if (target.hp <= 0) {
+        target.hp = 0;
+    }
+    
+    // ---
+    [target on_damage:dungeon damage:damage];
+    
+    // ---
+    if (target.hp == 0) {
         [target on_break:dungeon];
     }
 }

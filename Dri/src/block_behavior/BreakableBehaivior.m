@@ -27,10 +27,10 @@
     // implement behaivior
 }
 
--(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
+-(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_
 {
     DLEvent *e = [DLEvent eventWithType:DL_ON_DAMAGE target:context_];
-    [e.params setObject:[NSNumber numberWithInt:12] forKey:@"damage"];
+    [e.params setObject:[NSNumber numberWithInt:damage_] forKey:@"damage"];
     [dungeon_ dispatchEvent:e];
 }
 

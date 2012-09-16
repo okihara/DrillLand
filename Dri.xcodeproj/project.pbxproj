@@ -160,6 +160,7 @@
 		C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */; };
 		C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA71160219E600A0EB1C /* DLEvent.m */; };
 		C1CCAA751605A42800A0EB1C /* StatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA741605A42600A0EB1C /* StatusBarView.m */; };
+		C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -488,6 +489,8 @@
 		C1CCAA71160219E600A0EB1C /* DLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLEvent.m; path = src/model/DLEvent.m; sourceTree = "<group>"; };
 		C1CCAA731605A42400A0EB1C /* StatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBarView.h; path = src/view/StatusBarView.h; sourceTree = "<group>"; };
 		C1CCAA741605A42600A0EB1C /* StatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBarView.m; path = src/view/StatusBarView.m; sourceTree = "<group>"; };
+		C1CCAA761605B6AF00A0EB1C /* PlayerPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerPresentation.h; sourceTree = "<group>"; };
+		C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPresentation.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -574,6 +577,8 @@
 		C11D62C215F19BCD00F7633D /* block_presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA761605B6AF00A0EB1C /* PlayerPresentation.h */,
+				C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */,
 				C16009F415F2D94100A4616C /* BloodyPresentation.h */,
 				C16009F515F2D94100A4616C /* BloodyPresentation.m */,
 				C16009F115F2D49100A4616C /* BreakablePresentation.h */,
@@ -1356,6 +1361,7 @@
 				C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */,
 				C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */,
 				C1CCAA751605A42800A0EB1C /* StatusBarView.m in Sources */,
+				C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

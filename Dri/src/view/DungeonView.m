@@ -87,7 +87,7 @@
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
 {
     for (int x = 0; x < disp_w; x++) {
-        
+                
         BlockView *block = [view_map get_x:x y:y];
         
         // 既に描画済みなら描画しない

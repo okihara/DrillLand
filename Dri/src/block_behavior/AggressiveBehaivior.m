@@ -25,7 +25,7 @@
     }
 }
 
--(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
+-(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_
 {
     // implement behavior
 }
