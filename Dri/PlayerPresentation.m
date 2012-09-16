@@ -18,6 +18,7 @@
             
         case DL_ON_DESTROY:
         {
+            // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ
             return [CCCallBlock actionWithBlock:^(){
                 [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
             }];
