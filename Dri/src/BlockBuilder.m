@@ -11,6 +11,7 @@
 #import "BreakableBehaivior.h"
 #import "AggressiveBehaivior.h"
 #import "DieableBehavior.h"
+#import "PotionBehavior.h"
 
 @implementation BlockBuilder
 
@@ -33,6 +34,7 @@
     [self registerBuilderWithID:ID_UNBREAKABLE_BLOCK builder:@selector(build_unbreakable)];
     [self registerBuilderWithID:ID_ENEMY_BLOCK_0 builder:@selector(build_enemy_0)];
     [self registerBuilderWithID:ID_ENEMY_BLOCK_1 builder:@selector(build_enemy_1)];
+    [self registerBuilderWithID:ID_ITEM_BLOCK_0 builder:@selector(build_item_0)];
 }
 
 -(void)registerBuilderWithID:(enum ID_BLOCK)id_ builder:(SEL)builder_method
@@ -156,6 +158,22 @@
     // attach Behavior
     [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
     [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
+    
+    return b;
+}
+
+-(BlockModel*)build_item_0
+{
+    // 生成
+    BlockModel* b = [[BlockModel alloc] init];
+    b.type = ID_ITEM_BLOCK_0;
+    b.hp =  1;
+    b.atk = 0;
+    b.def = 0;
+    
+    // attach Behavior
+    [b attach_behaivior:[[[PotionBehavior  alloc] init] autorelease]];
+    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
     
     return b;
 }

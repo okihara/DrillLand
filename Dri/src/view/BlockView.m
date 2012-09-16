@@ -189,6 +189,9 @@
         case ID_UNBREAKABLE_BLOCK:
             filename = @"block99.png";
             break;
+        case ID_ITEM_BLOCK_0:
+            filename = @"block201.png";
+            break;
         default:
             filename = @"block00.png";
             break;

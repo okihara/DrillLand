@@ -113,6 +113,13 @@
     }
 }
 
+-(void)heal:(int)value
+{
+    self.hp += value;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:self.hp]];
+}
+
 -(void)dealloc
 {
     [self->behavior_list release];

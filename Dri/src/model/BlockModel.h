@@ -34,6 +34,8 @@ enum ID_BLOCK {
     ID_ENEMY_BLOCK_0 = 2000, // BLUE SLIME
     ID_ENEMY_BLOCK_1 = 2001, // RED  SLIME
     
+    ID_ITEM_BLOCK_0 = 3000, // POTION
+    
     ID_PLAYER = INT16_MAX
 };
 
@@ -57,6 +59,8 @@ enum ID_BLOCK {
 -(BOOL)is_attack_range:(DungeonModel*)dungeon;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
+
+-(void)heal:(int)value;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int type;

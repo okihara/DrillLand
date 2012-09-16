@@ -58,10 +58,17 @@
     <property name="type" value="1999"/>
    </properties>
   </tile>
+  <tile id="8">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="3000"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="main" width="5" height="100">
   <data encoding="base64" compression="zlib">
-   eJztklEKwCAMQ0U7t/ufePuwEEIcVfY1Gnhog61aLSWma4Bzpwa89tDH6N4BuGcA5rYPc6NnXvH6Zq66R9Tjeo0wEZuITcRGezrs8/pZvdm53t4I41Xt5nBPq4D7pPqF3ik81T9E7ct/aeeOqVTqv7oBhZ4EWA==
+   eJztkuEKgCAQg6W0uvd/4f44GGPaEf3LwaD7yrOblpLT1c3P8JZkh9SNDFbJYDv5i7XZf47O4sVs2T3cHFmm/XhW5DBj9YE1Y+X6Pfdz/XepZ2fEtZNynBm/i5KXyxR3AA6Za5QXs9Mwlx/b7at3aZTL0tLSP3UDAzgEog==
   </data>
  </layer>
 </map>

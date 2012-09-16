@@ -161,6 +161,8 @@
 		C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA71160219E600A0EB1C /* DLEvent.m */; };
 		C1CCAA751605A42800A0EB1C /* StatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA741605A42600A0EB1C /* StatusBarView.m */; };
 		C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */; };
+		C1CCAA7A1605C3D700A0EB1C /* block201.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA791605C3D700A0EB1C /* block201.png */; };
+		C1CCAA7D1605C62000A0EB1C /* PotionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -491,6 +493,9 @@
 		C1CCAA741605A42600A0EB1C /* StatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBarView.m; path = src/view/StatusBarView.m; sourceTree = "<group>"; };
 		C1CCAA761605B6AF00A0EB1C /* PlayerPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerPresentation.h; sourceTree = "<group>"; };
 		C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPresentation.m; sourceTree = "<group>"; };
+		C1CCAA791605C3D700A0EB1C /* block201.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block201.png; path = Resources/spritesheet/block201.png; sourceTree = "<group>"; };
+		C1CCAA7B1605C61F00A0EB1C /* PotionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PotionBehavior.h; path = src/block_behavior/PotionBehavior.h; sourceTree = "<group>"; };
+		C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PotionBehavior.m; path = src/block_behavior/PotionBehavior.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -564,6 +569,8 @@
 		C11D62B015EC3B1800F7633D /* block_behaivior */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA7B1605C61F00A0EB1C /* PotionBehavior.h */,
+				C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */,
 				C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */,
 				C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */,
 				C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */,
@@ -1070,6 +1077,7 @@
 				C1B178B115DFBB1600014FD2 /* mon001.png */,
 				C1B178AC15DF995400014FD2 /* block04.png */,
 				C195465115D7F485002119CC /* fps_images.png */,
+				C1CCAA791605C3D700A0EB1C /* block201.png */,
 				C1B1789D15DF686500014FD2 /* block01.png */,
 				C1B178A715DF871700014FD2 /* block99.png */,
 				C1B178B315DFC5B700014FD2 /* mon002.png */,
@@ -1216,6 +1224,7 @@
 				C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */,
 				C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */,
 				C1A5E6FA15FC825800CD1F6C /* sky00.png in Resources */,
+				C1CCAA7A1605C3D700A0EB1C /* block201.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1362,6 +1371,7 @@
 				C1CCAA72160219E700A0EB1C /* DLEvent.m in Sources */,
 				C1CCAA751605A42800A0EB1C /* StatusBarView.m in Sources */,
 				C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */,
+				C1CCAA7D1605C62000A0EB1C /* PotionBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
