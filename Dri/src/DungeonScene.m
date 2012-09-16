@@ -66,7 +66,6 @@
 
         // 勇者を初期位置に
         [dungeon_view update_view:dungeon_model];
-        //CGPoint p_pos = [dungeon_view model_to_local:dungeon_model.player.pos];
         CGPoint p_pos = [dungeon_view model_to_local:cdp(5,1)];
         player.position = p_pos;
 
@@ -102,11 +101,13 @@
 
     CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
-    
+
+    // 勇者がてくてく歩く
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, nil]];
     
     [dungeon_view update_view:self->dungeon_model];
 }
+
 
 
 //===============================================================
@@ -115,29 +116,19 @@
 //
 //===============================================================
 
-// helper
+//
+// HELPER
+//
+// スクリーン座標からビューの座標へ変換
+//
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
-    // スクリーン座標からビューの座標へ変換
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / BLOCK_WIDTH);
     int y = (int)((480 - location.y + offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
-}
-
-- (void)do_scroll
-{
-    // TODO: スクロールも一連のアクションシーケンスのひとつにしたい
-    DLPoint ppos = self->dungeon_model.player.pos;
-    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
-    if (b.type == ID_EMPTY) {
-        // スクロールの offset 更新
-        self->offset_y = [self get_offset_y_by_player_pos];
-        [self scroll_to];
-    }
 }
 
 - (void)update_dungeon_view
@@ -148,8 +139,11 @@
     // 次に必要なブロックを描画
     //[self->dungeon_view update_view:self->dungeon_model];
     // TODO: これって DungeonView 側に書くべきじゃない？
+    
     [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
-    [self->dungeon_view update_view_line:self->dungeon_view.curring_bottom-1 _model:self->dungeon_model];
+
+    // この -1 なに？？？
+    [self->dungeon_view update_view_line:(self->dungeon_view.curring_bottom - 1) _model:self->dungeon_model];
 }
     
 
@@ -185,6 +179,21 @@
 //
 //===============================================================
 
+- (void)do_scroll
+{
+    DLPoint ppos = self->dungeon_model.player.pos;
+    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
+    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
+    if (b.type == ID_EMPTY) {
+        
+        // スクロールの offset 更新
+        self->offset_y = [self get_offset_y_by_player_pos];
+        
+        // 実際にスクロールさせる
+        [self scroll_to];
+    }
+}
+
 - (float)get_offset_y_by_player_pos
 {
     // 一番現在移動できるポイントが中央にくるまでスクロール？
@@ -205,9 +214,9 @@
     return offset_y;
 }
 
+// 実際の処理
 -(void)scroll_to
 {
-    // 実際の処理
     CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [dungeon_view runAction:ease];
@@ -223,24 +232,6 @@
     self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     self->dungeon_view.curring_bottom = visible_y + DISP_H + curring_var > HEIGHT ? HEIGHT : visible_y + DISP_H + curring_var;
 }
-
-
-//===============================================================
-//
-// イベントハンドラ
-//
-//===============================================================
-
--(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
-{
-    NSLog(@"[EVENT] type:%d", event.type);
-    [self->events addObject:event];
-    
-    if (event.type == DL_ON_CANNOT_TAP) {
-        [BasicNotifierView notify:@"CAN NOT TAP" target:self];
-    }
-}
-
 
 //===============================================================
 //
@@ -379,13 +370,29 @@
         e = (DLEvent*)[self->events objectAtIndex:0];
         
     }
+    
     if (actions) {
         return [CCSequence actionWithArray:actions];
     } else {
         return nil;
     }
-
 }
 
+
+//===============================================================
+//
+// イベントハンドラ
+//
+//===============================================================
+
+-(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
+{
+    NSLog(@"[EVENT] type:%d", event.type);
+    [self->events addObject:event];
+    
+    if (event.type == DL_ON_CANNOT_TAP) {
+        [BasicNotifierView notify:@"CAN NOT TAP" target:self];
+    }
+}
 
 @end
