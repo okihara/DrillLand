@@ -161,7 +161,7 @@
     // 破壊できるか表示
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"1" fontName:@"AppleGothic" fontSize:20];
     label.position =  ccp(30, 30);
-    label.color = ccc3(0, 0, 0);
+    label.color = ccc3(120, 0, 0);
     label.visible = b.can_tap; // タップ出来ないときは数字を見せない
     [block addChild:label];
 }
@@ -206,7 +206,7 @@
     switch (b.type) {
         case ID_EMPTY:
         {
-            [self add_route_num:b ctx:ctx block:block];
+            //[self add_route_num:b ctx:ctx block:block];
         }
             break;
         case ID_PLAYER:
