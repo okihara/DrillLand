@@ -68,11 +68,16 @@
         [dungeon_view update_view:dungeon_model];
         CGPoint p_pos = [dungeon_view model_to_local:cdp(5,1)];
         player.position = p_pos;
-
+        
         // fade 用のレイヤー
         self->fade_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [self addChild:self->fade_layer z:10];
         
+        
+        // status bar
+        self->statusbar = [[StatusBarView alloc]init];
+        self->statusbar.position = ccp(320 / 2, 480 - 40 / 2);
+        [self addChild:self->statusbar];
 	}
 	return self;
 }
@@ -142,7 +147,7 @@
     
     [self->dungeon_view remove_block_view_line:self->dungeon_view.curring_top _model:self->dungeon_model];
 
-    // このままだたお１行以上スクロールすると、スキップされる行がある
+    // このままだと１行以上スクロールすると、スキップされる行がある
     [self->dungeon_view update_view_lines:self->dungeon_model];
 }
     
@@ -202,8 +207,9 @@
     
     int by = (int)(self->offset_y / BLOCK_WIDTH);
     int diff = self->dungeon_model.player.pos.y - by;
-    if (diff - threshold > 0) {
-        self->offset_y += BLOCK_WIDTH * (diff - threshold);
+    int num_scroll = diff - threshold; 
+    if (num_scroll > 0) {
+        self->offset_y += BLOCK_WIDTH * num_scroll;
     }
     
     // ここらへんはフロアの情報によって決まる
@@ -237,6 +243,7 @@
     int num_draw = DISP_H + curring_var;
     self->dungeon_view.curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
 }
+
 
 //===============================================================
 //

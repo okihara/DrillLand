@@ -9,10 +9,11 @@
 
 #import <GameKit/GameKit.h>
 
-// When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "LargeNotifierView.h"
 #import "DungeonModel.h"
+#import "StatusBarView.h"
+
 
 @class DungeonView;
 
@@ -25,6 +26,7 @@
     CCLayerColor      *fade_layer;
     DungeonView       *dungeon_view;
     LargeNotifierView *large_notify;
+    StatusBarView     *statusbar;
     
     NSMutableArray *events;
 }
