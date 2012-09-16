@@ -8,7 +8,7 @@
 
 #import "PlayerPresentation.h"
 #import "DungeonView.h"
-#import "DungeonResultScene.h"
+#import "DungeonOverScene.h"
 
 @implementation PlayerPresentation
 
@@ -20,7 +20,7 @@
         {
             // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ
             return [CCCallBlock actionWithBlock:^(){
-                [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
+                [[CCDirector sharedDirector] replaceScene:[DungeonOverScene scene]];
             }];
         }   
             break;

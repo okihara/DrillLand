@@ -166,6 +166,9 @@
 		C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA7E1605CC4200A0EB1C /* heal.plist */; };
 		C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA801605D2EE00A0EB1C /* heal.png */; };
 		C1CCAA841605D37800A0EB1C /* BasicPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA831605D37600A0EB1C /* BasicPresentation.m */; };
+		C1CCAA861605D63D00A0EB1C /* blood.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA851605D63C00A0EB1C /* blood.png */; };
+		C1CCAA891605D6F300A0EB1C /* DungeonOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */; };
+		C1CCAA8C1605D89200A0EB1C /* BossBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -503,6 +506,11 @@
 		C1CCAA801605D2EE00A0EB1C /* heal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heal.png; sourceTree = "<group>"; };
 		C1CCAA821605D37500A0EB1C /* BasicPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicPresentation.h; path = src/block_presentation/BasicPresentation.h; sourceTree = "<group>"; };
 		C1CCAA831605D37600A0EB1C /* BasicPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicPresentation.m; path = src/block_presentation/BasicPresentation.m; sourceTree = "<group>"; };
+		C1CCAA851605D63C00A0EB1C /* blood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blood.png; sourceTree = "<group>"; };
+		C1CCAA871605D6DE00A0EB1C /* DungeonOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonOverScene.h; path = src/DungeonOverScene.h; sourceTree = "<group>"; };
+		C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonOverScene.m; path = src/DungeonOverScene.m; sourceTree = "<group>"; };
+		C1CCAA8A1605D88F00A0EB1C /* BossBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossBehavior.h; path = src/block_behavior/BossBehavior.h; sourceTree = "<group>"; };
+		C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossBehavior.m; path = src/block_behavior/BossBehavior.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -576,6 +584,8 @@
 		C11D62B015EC3B1800F7633D /* block_behaivior */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA8A1605D88F00A0EB1C /* BossBehavior.h */,
+				C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */,
 				C1CCAA7B1605C61F00A0EB1C /* PotionBehavior.h */,
 				C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */,
 				C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */,
@@ -1025,6 +1035,8 @@
 				C1EEBD0815E8431E007F1814 /* model */,
 				C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */,
 				C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */,
+				C1CCAA871605D6DE00A0EB1C /* DungeonOverScene.h */,
+				C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */,
 				C11D62BC15EDCB6E00F7633D /* DungeonResultScene.h */,
 				C11D62BD15EDCB6F00F7633D /* DungeonResultScene.m */,
 				C1EEBCF615E6F74C007F1814 /* DungeonPreloadScene.h */,
@@ -1147,6 +1159,7 @@
 			children = (
 				C1CCAA801605D2EE00A0EB1C /* heal.png */,
 				C11D62BA15ED7EBF00F7633D /* blood.plist */,
+				C1CCAA851605D63C00A0EB1C /* blood.png */,
 				C1CCAA7E1605CC4200A0EB1C /* heal.plist */,
 				C1EEBD0D15E870BB007F1814 /* hit2.plist */,
 				C1EEBD0B15E86D25007F1814 /* hit1.plist */,
@@ -1238,6 +1251,7 @@
 				C1CCAA7A1605C3D700A0EB1C /* block201.png in Resources */,
 				C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */,
 				C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */,
+				C1CCAA861605D63D00A0EB1C /* blood.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1386,6 +1400,8 @@
 				C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */,
 				C1CCAA7D1605C62000A0EB1C /* PotionBehavior.m in Sources */,
 				C1CCAA841605D37800A0EB1C /* BasicPresentation.m in Sources */,
+				C1CCAA891605D6F300A0EB1C /* DungeonOverScene.m in Sources */,
+				C1CCAA8C1605D89200A0EB1C /* BossBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

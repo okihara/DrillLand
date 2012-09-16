@@ -33,12 +33,14 @@ enum DL_PHASE {
 @interface BlockView : CCSprite
 {
     BOOL is_alive;
+    BOOL is_change;
     
     NSMutableArray* events;
     NSMutableArray* presentation_list;
 }
 
 @property (readwrite, assign) BOOL is_alive;
+@property (readwrite, assign) BOOL is_change;
 
 + (BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
 - (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e;

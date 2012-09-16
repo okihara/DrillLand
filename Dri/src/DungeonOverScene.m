@@ -6,15 +6,15 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "DungeonResultScene.h"
+#import "DungeonOverScene.h"
 #import "DungeonScene.h"
 
-@implementation DungeonResultScene
+@implementation DungeonOverScene
 
 +(CCScene *) scene
 {
 	CCScene *scene = [CCScene node];
-	CCLayer *layer = [DungeonResultScene node];
+	CCLayer *layer = [DungeonOverScene node];
 	[scene addChild:layer];
 	return scene;
 }
@@ -24,7 +24,7 @@
 {
 	if( (self=[super init]) ) {
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"DUNGEON CLEAR!" fontName:@"AppleGothic" fontSize:20];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"GAMEOVER" fontName:@"AppleGothic" fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];
         
@@ -36,7 +36,7 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    //[[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
 }
 
 @end

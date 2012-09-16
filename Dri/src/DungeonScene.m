@@ -15,8 +15,8 @@
 #import "BlockView.h"
 #import "BasicNotifierView.h"
 #import "DamageNumView.h"
+#import "DungeonResultScene.h"
 
-#pragma mark - HelloWorldLayer
 
 #define DISP_H 9
 
@@ -282,6 +282,8 @@
     
     // -------------------------------------------------------------------------------
     // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
+    // エネミーチェンジフェイズ
+    
     
     // -------------------------------------------------------------------------------
     // スクロールフェイズ
@@ -404,10 +406,20 @@
 -(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
     NSLog(@"[EVENT] type:%d", event.type);
-    [self->events addObject:event];
     
-    if (event.type == DL_ON_CANNOT_TAP) {
-        [BasicNotifierView notify:@"CAN NOT TAP" target:self];
+    switch (event.type) {
+            
+        case DL_ON_CANNOT_TAP:
+            [BasicNotifierView notify:@"CAN NOT TAP" target:self];
+            break;
+            
+        case DL_ON_CLEAR:
+            [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
+            break;
+            
+        default:
+            [self->events addObject:event];
+            break;
     }
 }
 

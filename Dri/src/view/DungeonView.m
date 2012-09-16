@@ -89,13 +89,16 @@
     for (int x = 0; x < disp_w; x++) {
                 
         BlockView *block = [view_map get_x:x y:y];
+        BlockModel *block_model = [dungeon_ get_x:x y:y];
         
+        if (block.is_change) {
+            [self remove_block_view:block_model.pos];
+        }
         // 既に描画済みなら描画しない
-        if (block) {
+        if (block && !block.is_change) {
             continue;
         }
-        
-        BlockModel *block_model = [dungeon_ get_x:x y:y];
+
         block = [BlockView create:block_model ctx:dungeon_];
         block.position = [self model_to_local:cdp(x, y)];
         

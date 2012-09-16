@@ -7,7 +7,8 @@
 //
 
 #import "BreakableBehaivior.h"
-#import "DungeonModel.h" // TODO:ここは protocol で解決したい
+#import "DungeonModel.h"
+#import "BlockBuilder.h"
 
 @implementation BreakableBehaivior
 
@@ -34,14 +35,27 @@
     [dungeon_ dispatchEvent:e];
 }
 
--(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
+-(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
 {
     // TODO: ここで behaivior リストも破棄しないといけない
-    [context_ clear];
+
+    DLPoint pos = block.pos;
     
-    // 2 == ON_DESTROY
-    DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:context_];
-    [dungeon_ dispatchEvent:e];
+    [block clear];
+    
+    if (rand() % 30 == 0) {
+
+        BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
+        block = [builder buildWithID:ID_ITEM_BLOCK_0];
+        [dungeon_ _set:pos block:block];
+        DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
+        [dungeon_ dispatchEvent:e];
+        
+    } else {
+        // 2 == ON_DESTROY
+        DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
+        [dungeon_ dispatchEvent:e];
+    }
 }
 
 @end

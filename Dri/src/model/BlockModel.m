@@ -41,7 +41,6 @@
         [self->behavior_list release];
     }
     self->behavior_list = [[NSMutableArray alloc] init];
-    //pos = cdp(0, 0);
 }
 
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_

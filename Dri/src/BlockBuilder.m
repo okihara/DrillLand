@@ -12,6 +12,7 @@
 #import "AggressiveBehaivior.h"
 #import "DieableBehavior.h"
 #import "PotionBehavior.h"
+#import "BossBehavior.h"
 
 @implementation BlockBuilder
 
@@ -152,10 +153,11 @@
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_ENEMY_BLOCK_1;
     b.hp =  20;
-    b.atk = 3;
+    b.atk = 4;
     b.def = 3;
     
     // attach Behavior
+    [b attach_behaivior:[[[BossBehavior alloc] init] autorelease]];
     [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
     [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
     

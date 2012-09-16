@@ -32,6 +32,13 @@
         }
             break;
             
+        case DL_ON_CHANGE:
+        {
+            view_.is_change = YES;
+            return nil;
+        }
+            break;
+            
         default:
             break;
     }
