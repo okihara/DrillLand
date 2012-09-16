@@ -12,6 +12,7 @@
 #import "BreakablePresentation.h"
 #import "BloodyPresentation.h"
 #import "PlayerPresentation.h"
+#import "BasicPresentation.h"
 
 
 @implementation BlockView
@@ -246,7 +247,7 @@
             [self add_can_destroy_num:b block:block];
             {
                 NSObject<BlockPresentation>* p;
-                p = [[BreakablePresentation alloc] init];
+                p = [[BasicPresentation alloc] init];
                 [block add_presentation:p];
                 [p release];
             }

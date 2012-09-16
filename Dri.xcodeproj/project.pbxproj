@@ -164,6 +164,8 @@
 		C1CCAA7A1605C3D700A0EB1C /* block201.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA791605C3D700A0EB1C /* block201.png */; };
 		C1CCAA7D1605C62000A0EB1C /* PotionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */; };
 		C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA7E1605CC4200A0EB1C /* heal.plist */; };
+		C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA801605D2EE00A0EB1C /* heal.png */; };
+		C1CCAA841605D37800A0EB1C /* BasicPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA831605D37600A0EB1C /* BasicPresentation.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -498,6 +500,9 @@
 		C1CCAA7B1605C61F00A0EB1C /* PotionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PotionBehavior.h; path = src/block_behavior/PotionBehavior.h; sourceTree = "<group>"; };
 		C1CCAA7C1605C61F00A0EB1C /* PotionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PotionBehavior.m; path = src/block_behavior/PotionBehavior.m; sourceTree = "<group>"; };
 		C1CCAA7E1605CC4200A0EB1C /* heal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = heal.plist; sourceTree = "<group>"; };
+		C1CCAA801605D2EE00A0EB1C /* heal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heal.png; sourceTree = "<group>"; };
+		C1CCAA821605D37500A0EB1C /* BasicPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicPresentation.h; path = src/block_presentation/BasicPresentation.h; sourceTree = "<group>"; };
+		C1CCAA831605D37600A0EB1C /* BasicPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicPresentation.m; path = src/block_presentation/BasicPresentation.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -586,6 +591,8 @@
 		C11D62C215F19BCD00F7633D /* block_presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA821605D37500A0EB1C /* BasicPresentation.h */,
+				C1CCAA831605D37600A0EB1C /* BasicPresentation.m */,
 				C1CCAA761605B6AF00A0EB1C /* PlayerPresentation.h */,
 				C1CCAA771605B6B000A0EB1C /* PlayerPresentation.m */,
 				C16009F415F2D94100A4616C /* BloodyPresentation.h */,
@@ -1138,6 +1145,7 @@
 		C1EEBD0A15E86D25007F1814 /* particle */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAA801605D2EE00A0EB1C /* heal.png */,
 				C11D62BA15ED7EBF00F7633D /* blood.plist */,
 				C1CCAA7E1605CC4200A0EB1C /* heal.plist */,
 				C1EEBD0D15E870BB007F1814 /* hit2.plist */,
@@ -1229,6 +1237,7 @@
 				C1A5E6FA15FC825800CD1F6C /* sky00.png in Resources */,
 				C1CCAA7A1605C3D700A0EB1C /* block201.png in Resources */,
 				C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */,
+				C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,6 +1385,7 @@
 				C1CCAA751605A42800A0EB1C /* StatusBarView.m in Sources */,
 				C1CCAA781605B6B100A0EB1C /* PlayerPresentation.m in Sources */,
 				C1CCAA7D1605C62000A0EB1C /* PotionBehavior.m in Sources */,
+				C1CCAA841605D37800A0EB1C /* BasicPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
