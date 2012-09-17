@@ -192,6 +192,8 @@
 		C1EEBD0415E839CF007F1814 /* link_f.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0315E839CF007F1814 /* link_f.png */; };
 		C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0B15E86D25007F1814 /* hit1.plist */; };
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
+		DB419B0A1607431000B30495 /* ebit.png in Resources */ = {isa = PBXBuildFile; fileRef = DB419B081607431000B30495 /* ebit.png */; };
+		DB419B0B1607431000B30495 /* ebit.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DB419B091607431000B30495 /* ebit.fnt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -554,6 +556,8 @@
 		C1EEBD0315E839CF007F1814 /* link_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = link_f.png; path = Resources/spritesheet/link_f.png; sourceTree = "<group>"; };
 		C1EEBD0B15E86D25007F1814 /* hit1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit1.plist; sourceTree = "<group>"; };
 		C1EEBD0D15E870BB007F1814 /* hit2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit2.plist; sourceTree = "<group>"; };
+		DB419B081607431000B30495 /* ebit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ebit.png; path = Resources/font/ebit.png; sourceTree = "<group>"; };
+		DB419B091607431000B30495 /* ebit.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ebit.fnt; path = Resources/font/ebit.fnt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -666,6 +670,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DB419B06160742DC00B30495 /* font */,
 				C102EAC315E8E2A5000E8366 /* tilemap */,
 				C1EEBD0A15E86D25007F1814 /* particle */,
 				C1EEBCFC15E79423007F1814 /* animation */,
@@ -1176,6 +1181,15 @@
 			path = Resources/particle;
 			sourceTree = "<group>";
 		};
+		DB419B06160742DC00B30495 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				DB419B081607431000B30495 /* ebit.png */,
+				DB419B091607431000B30495 /* ebit.fnt */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1261,6 +1275,8 @@
 				C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */,
 				C1CCAA861605D63D00A0EB1C /* blood.png in Resources */,
 				C1CCAA8E1606A17500A0EB1C /* fire.png in Resources */,
+				DB419B0A1607431000B30495 /* ebit.png in Resources */,
+				DB419B0B1607431000B30495 /* ebit.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

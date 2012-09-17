@@ -27,7 +27,9 @@
 {
      if(self=[super init]) {
         
-         self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:40] retain];
+         //self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:40] retain];
+         self->content_text = [CCLabelBMFont labelWithString:str fntFile:@"ebit.fnt"];
+         self->content_text.color = ccc3(0, 200, 20);
          [self addChild:self->content_text];
          
          CCJumpBy *j1 = [CCJumpBy actionWithDuration:0.3   position:ccp(0, 0) height:30.0 jumps:1];

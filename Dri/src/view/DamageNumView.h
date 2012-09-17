@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 
 @interface DamageNumView : CCNode {
-    CCNode<CCLabelProtocol>* content_text;
+    CCLabelBMFont *content_text;
 }
 
 +(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos;

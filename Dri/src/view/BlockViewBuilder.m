@@ -74,7 +74,7 @@
     
     BlockView* block = [BlockView spriteWithFile:filename];
     [block setup];
-    //[[block texture] setAliasTexParameters];
+    [[block texture] setAliasTexParameters];
     
     switch (b.type) {
         case ID_EMPTY:
@@ -104,6 +104,8 @@
         case ID_ENEMY_BLOCK_0:
         case ID_ENEMY_BLOCK_1:
         {
+            block.scale = 2.0;
+
             [self add_can_destroy_num:b block:block];
             
             NSObject<BlockPresentation>* p;

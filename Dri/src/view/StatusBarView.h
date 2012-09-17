@@ -13,7 +13,7 @@
     CCLayerColor *bg;
     CCLabelTTF *hp;
     CCLabelTTF *exp;
-    CCLabelTTF *name;
+    CCLabelBMFont *name;
     CCLabelTTF *level;
 }
 
