@@ -8,12 +8,18 @@
 
 #import "DamageNumView.h"
 #import "DL.h"
+#import "FontFactory.h"
 
 @implementation DamageNumView
 
 +(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos;
 {
-    CCNode* num_view = [[DamageNumView alloc] initWithString:[NSString stringWithFormat:@"%d", num]];
+    [DamageNumView spawn:num target:parent position:pos color:ccc3(255, 255, 255)];
+}
+
++(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos color:(ccColor3B)color
+{
+    CCNode* num_view = [[DamageNumView alloc] initWithString:[NSString stringWithFormat:@"%d", num] color:color];
     num_view.position = pos;
     [parent addChild:num_view];
 }
@@ -23,13 +29,12 @@
     [self removeFromParentAndCleanup:YES];
 }
 
--(id) initWithString:(NSString*)str
+-(id) initWithString:(NSString*)str color:(ccColor3B)color
 {
      if(self=[super init]) {
         
-         //self->content_text = [[CCLabelTTF labelWithString:str fontName:DL_FONT fontSize:40] retain];
-         self->content_text = [CCLabelBMFont labelWithString:str fntFile:@"ebit.fnt"];
-         self->content_text.color = ccc3(0, 200, 20);
+         self->content_text = [FontFactory makeLabel:str color:color];
+         self->content_text.scale = 1.0;
          [self addChild:self->content_text];
          
          CCJumpBy *j1 = [CCJumpBy actionWithDuration:0.3   position:ccp(0, 0) height:30.0 jumps:1];

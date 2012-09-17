@@ -174,6 +174,7 @@
 		C1CCAAAA1607557400A0EB1C /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA61607557400A0EB1C /* DungeonScene.m */; };
 		C1CCAAAD1607559200A0EB1C /* DL.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAC1607559200A0EB1C /* DL.m */; };
 		C1CCAAB0160755CB00A0EB1C /* BlockBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */; };
+		C1EE3B8C160757DA00DE62CD /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EE3B8B160757DA00DE62CD /* FontFactory.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCE715E6F50E007F1814 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCF15E6F50E007F1814 /* NSObject+SBJson.m */; };
 		C1EEBCE815E6F50E007F1814 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCD215E6F50E007F1814 /* SBJsonParser.m */; };
@@ -524,6 +525,8 @@
 		C1CCAAAC1607559200A0EB1C /* DL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DL.m; path = src/misc/DL.m; sourceTree = "<group>"; };
 		C1CCAAAE160755CB00A0EB1C /* BlockBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockBuilder.h; path = src/model/BlockBuilder.h; sourceTree = "<group>"; };
 		C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockBuilder.m; path = src/model/BlockBuilder.m; sourceTree = "<group>"; };
+		C1EE3B8A160757DA00DE62CD /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontFactory.h; path = src/misc/FontFactory.h; sourceTree = "<group>"; };
+		C1EE3B8B160757DA00DE62CD /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontFactory.m; path = src/misc/FontFactory.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C1EEBCC715E6F354007F1814 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1EEBCCE15E6F50E007F1814 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -1039,6 +1042,8 @@
 		C1CCAA9A1607550A00A0EB1C /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				C1EE3B8A160757DA00DE62CD /* FontFactory.h */,
+				C1EE3B8B160757DA00DE62CD /* FontFactory.m */,
 				C1CCAAAB1607559200A0EB1C /* DL.h */,
 				C1CCAAAC1607559200A0EB1C /* DL.m */,
 				C1CCAA9B1607551C00A0EB1C /* XDMap.h */,
@@ -1444,6 +1449,7 @@
 				C1CCAAAA1607557400A0EB1C /* DungeonScene.m in Sources */,
 				C1CCAAAD1607559200A0EB1C /* DL.m in Sources */,
 				C1CCAAB0160755CB00A0EB1C /* BlockBuilder.m in Sources */,
+				C1EE3B8C160757DA00DE62CD /* FontFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

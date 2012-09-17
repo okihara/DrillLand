@@ -14,6 +14,7 @@
 }
 
 +(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos;
--(id) initWithString:(NSString*)str;
++(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos color:(ccColor3B)color;
+-(id) initWithString:(NSString*)str color:(ccColor3B)color;
 
 @end

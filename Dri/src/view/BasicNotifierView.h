@@ -10,10 +10,10 @@
 #import "cocos2d.h"
 
 @interface BasicNotifierView : CCNode {
-    CCLayerColor* base_layer;
-    CCSprite*   base_view;
-    CCSprite*   content_view;
-    CCLabelTTF* content_text;
+    CCLayerColor *base_layer;
+    CCSprite     *base_view;
+    CCSprite     *content_view;
+    CCLabelBMFont *content_text;
 }
 
 +(void)notify:(NSString*)message target:(CCNode*)node;

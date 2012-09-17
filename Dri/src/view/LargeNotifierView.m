@@ -7,6 +7,7 @@
 //
 
 #import "LargeNotifierView.h"
+#import "FontFactory.h"
 
 
 @implementation LargeNotifierView
@@ -28,9 +29,9 @@
         [self addChild:self->base_layer];
         
         // make text
-        self->content_text = [[CCLabelTTF labelWithString:@"The Beginning Cave" fontName:@"AppleGothic" fontSize:30] retain];
-        self->content_text.color = ccc3(255, 255, 255);
-        self->content_text.opacity = 0.0;
+        self->content_text = [FontFactory makeLabel:@"Beginning Cave"];
+        self->content_text.scale = 0.9;
+        //self->content_text.opacity = 0.0;
         [self addChild:self->content_text];
 
         // make action

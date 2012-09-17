@@ -11,10 +11,10 @@
 
 @interface StatusBarView : CCNode {
     CCLayerColor *bg;
-    CCLabelTTF *hp;
-    CCLabelTTF *exp;
+    CCLabelBMFont *hp;
+    CCLabelBMFont *exp;
     CCLabelBMFont *name;
-    CCLabelTTF *level;
+    CCLabelBMFont *level;
 }
 
 @end

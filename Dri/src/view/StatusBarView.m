@@ -8,6 +8,7 @@
 
 #import "StatusBarView.h"
 #import "DL.h"
+#import "FontFactory.h"
 
 @implementation StatusBarView
 
@@ -25,15 +26,11 @@
         self->bg.position = ccp(-320 / 2, - 40 / 2);
         [self addChild:self->bg];
         
-        //self->name = [[CCLabelTTF labelWithString:@"OKIHARA " fontName:DL_FONT fontSize:20] retain];
-        self->name = [CCLabelBMFont labelWithString:@"okihara lv.8" fntFile:@"ebit.fnt"];
-        self->name.scale = 0.5;
+        self->name = [FontFactory makeLabel:@"okihara lv.8"];//[CCLabelBMFont labelWithString:@"okihara lv.8" fntFile:@"ebit.fnt"];
         self->name.position = ccp(-80, 0);
         [self addChild:self->name];
         
-        //self->hp = [[CCLabelTTF labelWithString:@"HP: 10" fontName:DL_FONT fontSize:20] retain];
-        self->hp = [CCLabelBMFont labelWithString:@"HP: 10" fntFile:@"ebit.fnt"];
-        self->hp.scale = 0.5;
+        self->hp = [FontFactory makeLabel:@"HP: 10"];
         self->hp.position = ccp(40, 0);
         [self addChild:self->hp];
         

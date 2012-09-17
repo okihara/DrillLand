@@ -7,6 +7,8 @@
 //
 
 #import "BasicNotifierView.h"
+#import "FontFactory.h"
+
 
 @implementation BasicNotifierView
 
@@ -34,8 +36,7 @@
         self->base_layer.position = ccp(-140, -30);
         [self addChild:self->base_layer];
 
-        self->content_text = [[CCLabelTTF labelWithString:message fontName:@"AppleGothic" fontSize:20] retain];
-        self->content_text.color = ccc3(255, 255, 255);
+        self->content_text = [FontFactory makeLabel:message]; 
         [self addChild:self->content_text];
 
         CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.1 position:end_pos];
