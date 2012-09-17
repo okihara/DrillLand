@@ -90,6 +90,9 @@
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
         
+        // -- texture
+        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
+        
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];

@@ -48,6 +48,7 @@
         disp_w = WIDTH;
         disp_h = HEIGHT;
         offset_y = 0;
+        latest_remove_y = -1;
         
         self->view_map = [[ObjectXDMap alloc] init];
         
@@ -130,6 +131,29 @@
 
     // curring を考慮して更新
     [self update_view_lines:_dungeon];
+}
+
+//===============================================================
+//
+// 描画
+//
+//===============================================================
+
+- (void)update_dungeon_view:(DungeonModel*)dungeon_model
+{
+    // 更新
+    // スクロール後
+    // 画面外を削って
+    // 次に必要なブロックを描画
+    //[self->dungeon_view update_view:self->dungeon_model];
+    // TODO: これって DungeonView 側に書くべきじゃない？
+    for (int y = self->latest_remove_y + 1; y < self.curring_top; y++) {
+        [self remove_block_view_line:y _model:dungeon_model];
+        self->latest_remove_y = y;
+    }
+    
+    // curring_top から curring_bottom まで描画
+    [self update_view_lines:dungeon_model];
 }
 
 

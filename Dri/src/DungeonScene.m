@@ -37,7 +37,8 @@
 {
 	if( (self=[super init]) ) {
         
-        srand(time(nil)); //乱数初期化
+         // 乱数初期化
+        srand(time(nil));
         
         // initialize variables
         offset_y = 0;
@@ -95,54 +96,27 @@
     [super onEnter];
     
     // シーン遷移後のアニメーション
+    
+    // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
 
+    // ダンジョン名表示
     self->large_notify = [[LargeNotifierView alloc] init];
     [self addChild:self->large_notify];
-    
-    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
-
-    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
-    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
 
     // 勇者がてくてく歩く
+    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
+    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
+    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;
     }], nil]];
     
     // enable touch
     //self.isTouchEnabled = YES;
-    
-    // TODO: なんでここ必要ないの？？
-    //[dungeon_view update_view:self->dungeon_model];
 }
 
-
-
-//===============================================================
-//
-// 描画
-//
-//===============================================================
-
-- (void)update_dungeon_view
-{
-    // 更新
-    // スクロール後
-    // 画面外を削って
-    // 次に必要なブロックを描画
-    //[self->dungeon_view update_view:self->dungeon_model];
-    // TODO: これって DungeonView 側に書くべきじゃない？
-    for (int y = self->latest_remove_y + 1; y < self->dungeon_view.curring_top; y++) {
-        [self->dungeon_view remove_block_view_line:y _model:self->dungeon_model];
-        self->latest_remove_y = y;
-    }
-
-    // curring_top から curring_bottom まで描画
-    [self->dungeon_view update_view_lines:self->dungeon_model];
-}
-    
 
 //===============================================================
 //
@@ -150,11 +124,7 @@
 //
 //===============================================================
 
-//
-// HELPER
-//
-// スクリーン座標からビューの座標へ変換
-//
+// HELPER: スクリーン座標からビューの座標へ変換
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     UITouch *touch =[touches anyObject];
@@ -167,13 +137,8 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    // TODO: ここからタップ禁止 タップ禁止というかブロックのタップ禁止
-    // アイテムとか討伐終了のボタンは押せないといけないから
-
-    DLPoint view_pos = [self screen_to_view_pos:touches];
-    
     // モデルへ通知
-    [self->dungeon_model on_hit:view_pos];
+    [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
     
     // タップ後のシーケンス再生
     [self run_sequence];
@@ -222,8 +187,9 @@
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
     int max_scroll = (HEIGHT - DISP_H) * BLOCK_WIDTH + 30;
-    if (offset_y > max_scroll) self->offset_y = max_scroll;
-
+    if (offset_y > max_scroll) {
+        self->offset_y = max_scroll;   
+    }
 }
 
 // 実際の処理
@@ -241,7 +207,8 @@
 // カリングの計算
 - (void)update_curring_range
 {
-    // debug 用
+    // 通常は 0
+    // debug 用に -2 とかすると描画領域が狭くなる
     int curring_var = 0;
     
     // カリング
@@ -295,9 +262,8 @@
     
     // -------------------------------------------------------------------------------
     // 画面の描画
-    CCAction* act_update_view = [CCCallFuncO actionWithTarget:self selector:@selector(update_dungeon_view)];
+    CCAction* act_update_view = [CCCallFuncO actionWithTarget:self->dungeon_view selector:@selector(update_dungeon_view:) object:self->dungeon_model];
     [action_list addObject:act_update_view];
-    
     
     // -------------------------------------------------------------------------------
     // タッチをオンに

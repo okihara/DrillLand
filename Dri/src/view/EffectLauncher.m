@@ -16,8 +16,7 @@
 -(void) make_particle02:(CGPoint)pos
 {
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
-    fire.totalParticles = 8;
+    fire.totalParticles = 4;
     fire.life = 1.0;
     fire.speed = 100;
     fire.position = pos;
@@ -29,8 +28,7 @@
 -(void) make_particle01:(CGPoint)pos
 {
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    [fire setTexture:[[CCTextureCache sharedTextureCache] addImage:@"block01.png"] ];
-    fire.totalParticles = 40;
+    fire.totalParticles = 14;
     fire.speed = 200;
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;

@@ -22,6 +22,8 @@
     int disp_w;
     int disp_h;
     
+    int latest_remove_y;
+    
     ObjectXDMap* view_map;
     
     CCLayer* effect_layer;
@@ -40,6 +42,7 @@
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_;
 - (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;
+- (void)update_dungeon_view:(DungeonModel*)dungeon_model;
 
 - (void)remove_block_view:(DLPoint)pos;
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;

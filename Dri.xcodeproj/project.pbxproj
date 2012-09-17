@@ -169,6 +169,7 @@
 		C1CCAA861605D63D00A0EB1C /* blood.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA851605D63C00A0EB1C /* blood.png */; };
 		C1CCAA891605D6F300A0EB1C /* DungeonOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */; };
 		C1CCAA8C1605D89200A0EB1C /* BossBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */; };
+		C1CCAA8E1606A17500A0EB1C /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA8D1606A17400A0EB1C /* fire.png */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -511,6 +512,7 @@
 		C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonOverScene.m; path = src/DungeonOverScene.m; sourceTree = "<group>"; };
 		C1CCAA8A1605D88F00A0EB1C /* BossBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossBehavior.h; path = src/block_behavior/BossBehavior.h; sourceTree = "<group>"; };
 		C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossBehavior.m; path = src/block_behavior/BossBehavior.m; sourceTree = "<group>"; };
+		C1CCAA8D1606A17400A0EB1C /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1163,6 +1165,7 @@
 				C1CCAA7E1605CC4200A0EB1C /* heal.plist */,
 				C1EEBD0D15E870BB007F1814 /* hit2.plist */,
 				C1EEBD0B15E86D25007F1814 /* hit1.plist */,
+				C1CCAA8D1606A17400A0EB1C /* fire.png */,
 			);
 			name = particle;
 			path = Resources/particle;
@@ -1252,6 +1255,7 @@
 				C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */,
 				C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */,
 				C1CCAA861605D63D00A0EB1C /* blood.png in Resources */,
+				C1CCAA8E1606A17500A0EB1C /* fire.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
