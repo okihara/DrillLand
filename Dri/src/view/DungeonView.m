@@ -41,6 +41,11 @@
     return;
 }
 
+-(void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1
+{
+    [DamageNumView spawn:p1 target:self->effect_layer position:pos color:ccc3(0, 240, 20)];
+}
+
 // ========================================================================
 
 -(id) init
