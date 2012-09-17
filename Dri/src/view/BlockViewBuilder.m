@@ -74,6 +74,7 @@
     
     BlockView* block = [BlockView spriteWithFile:filename];
     [block setup];
+    //[[block texture] setAliasTexParameters];
     
     switch (b.type) {
         case ID_EMPTY:
@@ -83,6 +84,8 @@
             break;
         case ID_PLAYER:
         {
+            block.scale = 2.0;
+
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
                 [block add_presentation:p];

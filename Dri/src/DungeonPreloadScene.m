@@ -78,7 +78,9 @@
         float h = [(NSNumber*)[fr objectForKey:@"h"] floatValue];
         CGRect rect = CGRectMake(x, y, w, h);
         
-        [frame_cache addSpriteFrame:[CCSpriteFrame frameWithTextureFilename:sheet_name rect:rect] name:key];
+        CCSpriteFrame * sprite_frame = [CCSpriteFrame frameWithTextureFilename:sheet_name rect:rect];
+        [[sprite_frame texture] setAliasTexParameters];
+        [frame_cache addSpriteFrame:sprite_frame name:key];
     }
 }
 

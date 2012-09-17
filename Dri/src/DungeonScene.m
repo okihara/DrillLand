@@ -63,7 +63,6 @@
 
         // setup player
         BlockView* player = [BlockViewBuilder create:dungeon_model.player ctx:dungeon_model];  
-        player.scale = 2.0;
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
