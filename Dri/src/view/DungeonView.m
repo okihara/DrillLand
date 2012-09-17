@@ -7,7 +7,7 @@
 //
 
 #import "cocos2d.h"
-#import "../DL.h"
+#import "DL.h"
 #import "DungeonView.h"
 #import "XDMap.h"
 #import "BlockModel.h"

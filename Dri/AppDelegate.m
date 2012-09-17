@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "./src/DungeonPreloadScene.h"
+#import "./src/scene/DungeonPreloadScene.h"
 
 
 @implementation AppController
