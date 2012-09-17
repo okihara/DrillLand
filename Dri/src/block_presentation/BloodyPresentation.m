@@ -33,7 +33,7 @@
         }   
             break;
             
-            // TODO: BloodyPresentation なのか？？
+        // TODO: BloodyPresentation に書くものなのか？？
         case DL_ON_HEAL:
         {
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{

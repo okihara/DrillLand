@@ -42,8 +42,13 @@ enum DL_PHASE {
 @property (readwrite, assign) BOOL is_alive;
 @property (readwrite, assign) BOOL is_change;
 
-+ (BlockView *) create:(BlockModel*)b ctx:(DungeonModel*)ctx;
+- (void)setup;
+- (void)add_presentation:(NSObject<BlockPresentation>*)presentation;
+
+// event
 - (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e;
+
+// helper
 - (void)play_anime:(NSString*)name;
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;
 

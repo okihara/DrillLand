@@ -170,6 +170,7 @@
 		C1CCAA891605D6F300A0EB1C /* DungeonOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA881605D6E500A0EB1C /* DungeonOverScene.m */; };
 		C1CCAA8C1605D89200A0EB1C /* BossBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */; };
 		C1CCAA8E1606A17500A0EB1C /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CCAA8D1606A17400A0EB1C /* fire.png */; };
+		C1CCAA911606AE6C00A0EB1C /* BlockViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA901606AE6900A0EB1C /* BlockViewBuilder.m */; };
 		C1EEBCC115E6F2DC007F1814 /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCCB15E6F425007F1814 /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCA15E6F425007F1814 /* XDMap.m */; };
@@ -513,6 +514,8 @@
 		C1CCAA8A1605D88F00A0EB1C /* BossBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossBehavior.h; path = src/block_behavior/BossBehavior.h; sourceTree = "<group>"; };
 		C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossBehavior.m; path = src/block_behavior/BossBehavior.m; sourceTree = "<group>"; };
 		C1CCAA8D1606A17400A0EB1C /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		C1CCAA8F1606AE6600A0EB1C /* BlockViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockViewBuilder.h; path = src/view/BlockViewBuilder.h; sourceTree = "<group>"; };
+		C1CCAA901606AE6900A0EB1C /* BlockViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockViewBuilder.m; path = src/view/BlockViewBuilder.m; sourceTree = "<group>"; };
 		C1EEBCB615E6F2DC007F1814 /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/DungeonScene.h; sourceTree = "<group>"; };
 		C1EEBCB715E6F2DC007F1814 /* DungeonScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonScene.m; path = src/DungeonScene.m; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1152,6 +1155,8 @@
 				C16009FD15F3450F00A4616C /* DungeonView.m */,
 				C1600A0215F3451900A4616C /* BlockView.h */,
 				C16009FE15F3450F00A4616C /* BlockView.m */,
+				C1CCAA8F1606AE6600A0EB1C /* BlockViewBuilder.h */,
+				C1CCAA901606AE6900A0EB1C /* BlockViewBuilder.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1406,6 +1411,7 @@
 				C1CCAA841605D37800A0EB1C /* BasicPresentation.m in Sources */,
 				C1CCAA891605D6F300A0EB1C /* DungeonOverScene.m in Sources */,
 				C1CCAA8C1605D89200A0EB1C /* BossBehavior.m in Sources */,
+				C1CCAA911606AE6C00A0EB1C /* BlockViewBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,8 @@
 #import "BlockModel.h"
 #import "BlockView.h"
 #import "DamageNumView.h"
+#import "BlockViewBuilder.h"
+
 
 @implementation DungeonView
 
@@ -102,7 +104,7 @@
         block.is_change = NO;
         
         
-        block = [BlockView create:block_model ctx:dungeon_];
+        block = [BlockViewBuilder create:block_model ctx:dungeon_];
         block.position = [self model_to_local:cdp(x, y)];
         
         [self->block_layer addChild:block];

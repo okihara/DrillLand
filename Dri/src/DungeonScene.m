@@ -13,6 +13,7 @@
 #import "DungeonModel.h"
 #import "DungeonView.h"
 #import "BlockView.h"
+#import "BlockViewBuilder.h"
 #import "BasicNotifierView.h"
 #import "DamageNumView.h"
 #import "DungeonResultScene.h"
@@ -61,7 +62,7 @@
         [dungeon_model load_from_file:@"floor001.json"];
 
         // setup player
-        BlockView* player = [BlockView create:dungeon_model.player ctx:dungeon_model];  
+        BlockView* player = [BlockViewBuilder create:dungeon_model.player ctx:dungeon_model];  
         player.scale = 2.0;
         [dungeon_view add_block:player];
         dungeon_view.player = player;
