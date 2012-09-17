@@ -28,22 +28,23 @@
 
 -(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_
 {
+    NSLog(@"PLAYER DAMAGED P hp=%d", context_.hp);
+    
     DLEvent *e = [DLEvent eventWithType:DL_ON_DAMAGE target:context_];
     [e.params setObject:[NSNumber numberWithInt:damage_] forKey:@"damage"];
     [dungeon_ dispatchEvent:e];
-    
-    NSLog(@"PLAYER DAMAGED P hp=%d", context_.hp);
+
+    // TODO: Dieable は PLAYER しか装備しないと決めつけてるよね。。。
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:context_.hp]];
 }
 
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // TODO: ここで直接シーン切り替えするのではなく、もっと上位に情報を伝える
+    NSLog(@"PLAYER DIED P hp=%d", context_.hp);
+    
     DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:context_];
     [dungeon_ dispatchEvent:e];
-        
-    NSLog(@"PLAYER DIED P hp=%d", context_.hp);
 }
 
 @end

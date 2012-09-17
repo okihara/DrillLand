@@ -84,7 +84,6 @@
 //
 //===============================================================
 
-// update
 - (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
 {
     for (int x = 0; x < disp_w; x++) {
@@ -133,11 +132,10 @@
     [self update_view_lines:_dungeon];
 }
 
-//===============================================================
+
 //
-// 描画
+// カリングを考慮して描画
 //
-//===============================================================
 
 - (void)update_dungeon_view:(DungeonModel*)dungeon_model
 {
@@ -170,6 +168,7 @@
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
     NSLog(@"[remove_block_view_line] y:%d", y);
+    
     for (int x = 0; x < disp_w; x++) {
         [self remove_block_view:cdp(x, y)];
     }
@@ -215,7 +214,7 @@
 //===============================================================
 //
 // HELPER
-//
+// TODO: 別のクラスに移動
 //===============================================================
 
 - (CGPoint)model_to_local:(DLPoint)pos

@@ -29,8 +29,6 @@
 
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behavior
-    
     DLEvent *e = [DLEvent eventWithType:DL_ON_CLEAR target:nil];
     [dungeon_ dispatchEvent:e];
 }

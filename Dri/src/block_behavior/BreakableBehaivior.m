@@ -14,12 +14,9 @@
 
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    // implement behaivior
-    
     DLEvent *e = [DLEvent eventWithType:DL_ON_HIT target:context_];
     [dungeon_ dispatchEvent:e];
 
-    // ---
     [dungeon_.player attack:context_ dungeon:dungeon_];
 }
 
@@ -38,6 +35,7 @@
 -(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
 {
     // TODO: ここで behaivior リストも破棄しないといけない
+    // どういう意味？？
 
     DLPoint pos = block.pos;
     
@@ -45,16 +43,19 @@
     
     if (rand() % 30 == 0) {
 
+        // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_0];
         [dungeon_ _set:pos block:block];
+        
         DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
         [dungeon_ dispatchEvent:e];
         
     } else {
-        // 2 == ON_DESTROY
+        
         DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
         [dungeon_ dispatchEvent:e];
+        
     }
 }
 
