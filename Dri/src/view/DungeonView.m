@@ -54,7 +54,7 @@
         
         self->view_map = [[ObjectXDMap alloc] init];
         
-        self->block_layer = [[CCLayer alloc]init];
+        self->block_layer = [[CCLayer alloc] init];
         [self addChild:self->block_layer];
         
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
@@ -71,6 +71,13 @@
 	return self;
 }
 
+-(void)dealloc
+{
+    [self->effect_launcher release];
+    [self->view_map release];
+    
+    [super dealloc];
+}
 
 // ========================================================================
 

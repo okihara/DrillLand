@@ -16,20 +16,20 @@
 @synthesize is_alive;
 @synthesize is_change; // TODO: カプセル化違反
 
-- (void)setup
-{
-    self->events = [[NSMutableArray array] retain];
-    self->presentation_list = [[NSMutableArray array] retain];
-    is_alive = YES;
-    is_change = NO;
-}
-
 - (id)init
 {
 	if (self=[super init]) {
         [self setup];
 	}
 	return self;
+}
+
+- (void)setup
+{
+    self->events = [[NSMutableArray array] retain];
+    self->presentation_list = [[NSMutableArray array] retain];
+    is_alive = YES;
+    is_change = NO;
 }
 
 - (void)dealloc
@@ -77,12 +77,12 @@
         }
         
     }
+    
     if ([actions count]) {
         return [CCSequence actionWithArray:actions];
     } else {
         return nil;
     }
-
 }
 
 
@@ -113,6 +113,7 @@
 
 // CCAction を返す
 // ルートにそって移動する CCAction を返す
+// TODO: 若干浮いてるね
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view
 {

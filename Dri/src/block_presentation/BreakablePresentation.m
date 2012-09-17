@@ -18,7 +18,7 @@
             
         case DL_ON_HIT:
             return [CCCallBlock actionWithBlock:^{
-                [ctx launch_particle:@"hit1" position:view_.position];
+                [ctx launch_particle:@"hit2" position:view_.position];
             }];
             break;
             

@@ -16,7 +16,7 @@
 -(void) make_particle02:(CGPoint)pos
 {
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    fire.totalParticles = 4;
+    fire.totalParticles = 6;
     fire.life = 1.0;
     fire.speed = 100;
     fire.position = pos;
@@ -28,7 +28,7 @@
 -(void) make_particle01:(CGPoint)pos
 {
     CCParticleSystem *fire = [[[CCParticleExplosion alloc] init] autorelease];
-    fire.totalParticles = 14;
+    fire.totalParticles = 16;
     fire.speed = 200;
     fire.gravity = ccp(0.0, -500.0);
     fire.position = pos;
@@ -53,7 +53,7 @@
 {
     NSString* plistname = [NSString stringWithFormat:@"%@.plist", name];
     CCParticleSystem *particle = [[[CCParticleSystemQuad alloc] initWithFile:plistname] autorelease];
-    // particle no plist がない場合、落ちるよ
+    // TODO: particle no plist がない場合、落ちるよ
     particle.position = pos;
     particle.autoRemoveOnFinish = YES;
     [self.target_layer addChild:particle];
