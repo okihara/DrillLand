@@ -92,6 +92,9 @@
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
         
+        [self load_sprite:@"mon.json"];
+        [self load_animation:@"mon001.json"];
+        
         // -- texture
         [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
         

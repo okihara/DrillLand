@@ -102,6 +102,7 @@
         }
             break;
         case ID_ENEMY_BLOCK_0:
+            [block play_anime:@"action0"];
         case ID_ENEMY_BLOCK_1:
         {
             block.scale = 2.0;

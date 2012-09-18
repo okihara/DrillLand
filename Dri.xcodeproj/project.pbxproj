@@ -179,6 +179,9 @@
 		C1EE3BD916083B7800DE62CD /* link_f.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BD616083B7800DE62CD /* link_f.json */; };
 		C1EE3BDA16083B7800DE62CD /* link_f.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BD716083B7800DE62CD /* link_f.png */; };
 		C1EE3BDB16083B7800DE62CD /* sky00.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BD816083B7800DE62CD /* sky00.png */; };
+		C1EE3BDE1608443500DE62CD /* mon.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BDC1608443500DE62CD /* mon.json */; };
+		C1EE3BDF1608443500DE62CD /* mon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BDD1608443500DE62CD /* mon.png */; };
+		C1EE3BE116084C8900DE62CD /* mon001.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BE016084C8900DE62CD /* mon001.json */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCE715E6F50E007F1814 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCF15E6F50E007F1814 /* NSObject+SBJson.m */; };
 		C1EEBCE815E6F50E007F1814 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCD215E6F50E007F1814 /* SBJsonParser.m */; };
@@ -533,6 +536,9 @@
 		C1EE3BD616083B7800DE62CD /* link_f.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = link_f.json; path = Resources/spritesheet/common/link_f.json; sourceTree = "<group>"; };
 		C1EE3BD716083B7800DE62CD /* link_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = link_f.png; path = Resources/spritesheet/common/link_f.png; sourceTree = "<group>"; };
 		C1EE3BD816083B7800DE62CD /* sky00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky00.png; path = Resources/spritesheet/common/sky00.png; sourceTree = "<group>"; };
+		C1EE3BDC1608443500DE62CD /* mon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mon.json; path = Resources/spritesheet/cave000/mon.json; sourceTree = "<group>"; };
+		C1EE3BDD1608443500DE62CD /* mon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon.png; path = Resources/spritesheet/cave000/mon.png; sourceTree = "<group>"; };
+		C1EE3BE016084C8900DE62CD /* mon001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mon001.json; path = Resources/animation/mon001.json; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C1EEBCC715E6F354007F1814 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1EEBCCE15E6F50E007F1814 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -1083,6 +1089,8 @@
 		C1EE3BBE16083B0100DE62CD /* cave000 */ = {
 			isa = PBXGroup;
 			children = (
+				C1EE3BDC1608443500DE62CD /* mon.json */,
+				C1EE3BDD1608443500DE62CD /* mon.png */,
 				C1EE3BBF16083B2F00DE62CD /* block00.png */,
 				C1EE3BC016083B2F00DE62CD /* block01.png */,
 				C1EE3BC116083B2F00DE62CD /* block02.png */,
@@ -1174,6 +1182,7 @@
 		C1EEBCFC15E79423007F1814 /* animation */ = {
 			isa = PBXGroup;
 			children = (
+				C1EE3BE016084C8900DE62CD /* mon001.json */,
 				C1EEBCFF15E79485007F1814 /* link.json */,
 			);
 			name = animation;
@@ -1330,6 +1339,9 @@
 				C1EE3BD916083B7800DE62CD /* link_f.json in Resources */,
 				C1EE3BDA16083B7800DE62CD /* link_f.png in Resources */,
 				C1EE3BDB16083B7800DE62CD /* sky00.png in Resources */,
+				C1EE3BDE1608443500DE62CD /* mon.json in Resources */,
+				C1EE3BDF1608443500DE62CD /* mon.png in Resources */,
+				C1EE3BE116084C8900DE62CD /* mon001.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
