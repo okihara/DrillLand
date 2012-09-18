@@ -104,6 +104,7 @@
     [self runAction:act];   
 }
 
+// TODO: ないわーこれはないわー
 - (CCFiniteTimeAction*)play_anime_one:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];

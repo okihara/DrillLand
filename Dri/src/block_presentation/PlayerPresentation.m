@@ -28,6 +28,7 @@
         {
             
             // TODO: とりあえずすぎる
+            // TODO: Attackable Presentation 作り、移動する
             CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
             [view_ stopAllActions];
             CCCallBlock *action_walk = [CCCallBlock actionWithBlock:^(){

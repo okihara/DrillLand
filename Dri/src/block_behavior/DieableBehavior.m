@@ -34,6 +34,7 @@
     [e.params setObject:[NSNumber numberWithInt:damage_] forKey:@"damage"];
     [dungeon_ dispatchEvent:e];
 
+    // HP 減ったことをオブザーバに通知
     // TODO: Dieable は PLAYER しか装備しないと決めつけてるよね。。。
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:context_.hp]];

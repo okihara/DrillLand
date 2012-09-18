@@ -17,6 +17,8 @@
 
 @implementation BlockViewBuilder
 
+// TODO: なんていうか、switch でやるのはいけてないよねー
+// Command パターン
 
 + (void)add_route_num:(BlockModel *)b ctx:(DungeonModel *)ctx block:(BlockView *)block
 {

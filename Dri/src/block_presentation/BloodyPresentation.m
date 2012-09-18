@@ -39,6 +39,7 @@
             break;
             
         // TODO: BloodyPresentation に書くものなのか？？
+        // Healable Presentation 作る？
         case DL_ON_HEAL:
         {
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
