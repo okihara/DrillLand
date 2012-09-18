@@ -17,22 +17,19 @@
 
 @interface DungeonView : CCLayer
 {
-    id  delegate;
-    int offset_y;
     int disp_w;
     int disp_h;
-    
+    int offset_y;
     int latest_remove_y;
     
-    ObjectXDMap* view_map;
+    ObjectXDMap *view_map;
     
-    CCLayer* effect_layer;
-    CCLayer* block_layer;
+    CCLayer *effect_layer;
+    CCLayer *block_layer;
     
-    EffectLauncher* effect_launcher;
+    EffectLauncher *effect_launcher;
 }
 
-@property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) int curring_top;
 @property (nonatomic, assign) int curring_bottom;
 @property (nonatomic, readwrite, retain) BlockView* player;
@@ -52,21 +49,20 @@
 
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 
-- (CGPoint)model_to_local:(DLPoint)pos;
+// スクロール関係
+// カリングの計算
+- (void)update_offset_y:(int)target_y;
+- (void)update_curring_range;
+- (void)scroll_to;
 
 // helper
+- (CGPoint)model_to_local:(DLPoint)pos;
+
+// TODO: ガチで別クラスへ
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
 - (void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1;
 - (void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1;
-
 - (CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
 
-
-// ----
-- (void)update_offset_y:(int)target_y;
-// カリングの計算
-- (void)update_curring_range;
-// 実際の処理
--(void)scroll_to;
 
 @end

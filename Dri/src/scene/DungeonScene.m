@@ -44,7 +44,6 @@
      
         // setup dungeon view
         dungeon_view = [DungeonView node];
-        [dungeon_view setDelegate:self];
         [self addChild:dungeon_view];
         
         // calc curring

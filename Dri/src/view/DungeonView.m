@@ -15,18 +15,17 @@
 #import "DamageNumView.h"
 #import "BlockViewBuilder.h"
 
+#define DISP_H 8
 
 @implementation DungeonView
 
-@synthesize delegate;
 @synthesize curring_top, curring_bottom;
 @synthesize player;
 @synthesize offset_y;
 
-#define DISP_H 8
-
 // ========================================================================
 // エフェクト用のヘルパー
+// TODO: 別クラスへ
 // ========================================================================
 
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos
@@ -51,14 +50,6 @@
 // shake
 -(CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
 {
-//    CGPoint origin = target.position;
-//    CGPoint rpos = ccpAdd(origin, ccp(8, 0));
-//    CGPoint lpos = ccpAdd(origin, ccp(-8, 0));
-//    
-//    CCFiniteTimeAction *r = [CCMoveTo actionWithDuration:0.033 position:rpos];
-//    CCFiniteTimeAction *l = [CCMoveTo actionWithDuration:0.033 position:lpos];
-//    CCFiniteTimeAction *o = [CCMoveTo actionWithDuration:0.016 position:origin];
-    
     int amp = 6;
     int times = 4;
     
@@ -116,6 +107,7 @@
 
 -(void)add_block:(BlockView*)block
 {
+    // TODO: プレイヤーを一番上にするために。。。
     [self->effect_layer addChild:block];    
 }
 
@@ -282,7 +274,6 @@
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [self runAction:ease];
 }
-
 
 
 //===============================================================

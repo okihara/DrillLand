@@ -19,6 +19,7 @@
         case DL_ON_DAMAGE:
         {
             CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
+//            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
 
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
 
