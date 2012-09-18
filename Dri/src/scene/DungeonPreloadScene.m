@@ -57,7 +57,7 @@
         
         // TODO: とりあえずすぎる
         if ([key isEqualToString:@"attack"]) {
-            anim.delayPerUnit = 0.4f;
+            anim.delayPerUnit = 0.12f;
         }
         
         
