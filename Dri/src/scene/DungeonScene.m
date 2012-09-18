@@ -19,8 +19,6 @@
 #import "DungeonResultScene.h"
 
 
-#define DISP_H 8
-
 // HelloWorldLayer implementation
 @implementation DungeonScene
 
@@ -38,11 +36,8 @@
 {
 	if( (self=[super init]) ) {
         
-         // 乱数初期化
+        // 乱数初期化
         srand(time(nil));
-        
-        // initialize variables
-        offset_y = 0;
         
         //
         self->events = [[NSMutableArray array] retain];
@@ -51,10 +46,9 @@
         dungeon_view = [DungeonView node];
         [dungeon_view setDelegate:self];
         [self addChild:dungeon_view];
-        self->latest_remove_y = -1;
         
         // calc curring
-        [self update_curring_range];
+        [self->dungeon_view update_curring_range];
         
         // setup dungeon model
         dungeon_model = [[DungeonModel alloc] init:NULL];
@@ -76,7 +70,6 @@
         self->fade_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [self addChild:self->fade_layer z:10];
         
-        
         // status bar
         self->statusbar = [[StatusBarView alloc]init];
         self->statusbar.position = ccp(320 / 2, 480 - 40 / 2);
@@ -91,11 +84,10 @@
     [super dealloc];
 }
 
+// シーン遷移後のアニメーション
 - (void)onEnter
 {
     [super onEnter];
-    
-    // シーン遷移後のアニメーション
     
     // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
@@ -112,8 +104,7 @@
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;
     }], nil]];
-    
-    // enable touch
+
     //self.isTouchEnabled = YES;
 }
 
@@ -131,7 +122,7 @@
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     int x = (int)(location.x / BLOCK_WIDTH);
-    int y = (int)((480 - location.y + offset_y) / BLOCK_WIDTH);
+    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
 }
 
@@ -142,83 +133,6 @@
     
     // タップ後のシーケンス再生
     [self run_sequence];
-}
-
-
-//===============================================================
-//
-// スクロール関係
-// TODO: dungeon_view 移動
-// カリングの機能は view が持つべき
-//
-//===============================================================
-
-- (void)do_scroll
-{
-    // プレイヤーの一個下のブロックが空なら
-    // スクロールする
-    DLPoint ppos = self->dungeon_model.player.pos;
-    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
-    if (b.type == ID_EMPTY) {
-        
-        // スクロールの offset 更新
-        [self update_offset_y:self->dungeon_model.player.pos.y];
-        
-        // 実際にスクロールさせる
-        [self scroll_to];
-    }
-}
-
-- (void)update_offset_y:(int)target_y
-{
-    // 一番現在移動できるポイントが中央にくるまでスクロール？
-    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
-    // 一度いった時は引き返せない
-    
-    // self->offset_y に依存
-    
-    int threshold = 2;
-    
-    int by = (int)(self->offset_y / BLOCK_WIDTH);
-    int diff = target_y - by;
-    int num_scroll = diff - threshold; 
-    if (num_scroll > 0) {
-        self->offset_y += BLOCK_WIDTH * num_scroll;
-    }
-    
-    // ここらへんはフロアの情報によって決まる
-    // current_floor_max_rows * block_height + margin
-    int max_scroll = (HEIGHT - DISP_H) * BLOCK_WIDTH + 30;
-    if (offset_y > max_scroll) {
-        self->offset_y = max_scroll;   
-    }
-}
-
-// 実際の処理
--(void)scroll_to
-{
-    // カリングの幅を更新
-    [self update_curring_range];
-    
-    // アクションを実行
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, self->offset_y)];
-    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
-    [dungeon_view runAction:ease];
-}
-
-// カリングの計算
-- (void)update_curring_range
-{
-    // 通常は 0
-    // debug 用に -2 とかすると描画領域が狭くなる
-    int curring_var = 0;
-    
-    // カリング
-    int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
-    self->dungeon_view.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
-    int num_draw = DISP_H + curring_var;
-    self->dungeon_view.curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
 }
 
 
@@ -235,7 +149,6 @@
     
     // 
     self.isTouchEnabled = NO;
-    
     
     // -------------------------------------------------------------------------------
     // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
@@ -256,7 +169,6 @@
     // -------------------------------------------------------------------------------
     // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
     // エネミーチェンジフェイズ
-    
     
     // -------------------------------------------------------------------------------
     // スクロールフェイズ
@@ -365,6 +277,28 @@
         return [CCSequence actionWithArray:actions];
     } else {
         return nil;
+    }
+}
+
+
+//===============================================================
+//
+// スクロール関係
+//
+//===============================================================
+
+- (void)do_scroll
+{
+    // プレイヤーの一個下のブロックが空なら
+    // スクロールする
+    DLPoint ppos = self->dungeon_model.player.pos;
+    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
+    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
+    if (b.type == ID_EMPTY) {
+        // スクロールの offset 更新
+        [self->dungeon_view update_offset_y: self->dungeon_model.player.pos.y];
+        // 実際にスクロールさせる
+        [self->dungeon_view scroll_to];
     }
 }
 

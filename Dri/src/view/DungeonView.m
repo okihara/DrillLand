@@ -21,7 +21,9 @@
 @synthesize delegate;
 @synthesize curring_top, curring_bottom;
 @synthesize player;
+@synthesize offset_y;
 
+#define DISP_H 8
 
 // ========================================================================
 // エフェクト用のヘルパー
@@ -221,6 +223,66 @@
         [self remove_block_view:pos];
     }
 }
+
+//===============================================================
+//
+// スクロール関係
+// TODO: dungeon_view 移動
+// カリングの機能は view が持つべき
+//
+//===============================================================
+
+- (void)update_offset_y:(int)target_y
+{
+    // 一番現在移動できるポイントが中央にくるまでスクロール？
+    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
+    // 一度いった時は引き返せない
+    
+    // self->offset_y に依存
+    
+    int threshold = 2;
+    
+    int by = (int)(self->offset_y / BLOCK_WIDTH);
+    int diff = target_y - by;
+    int num_scroll = diff - threshold; 
+    if (num_scroll > 0) {
+        self->offset_y += BLOCK_WIDTH * num_scroll;
+    }
+    
+    // ここらへんはフロアの情報によって決まる
+    // current_floor_max_rows * block_height + margin
+    int max_scroll = (HEIGHT - DISP_H) * BLOCK_WIDTH + 30;
+    if (offset_y > max_scroll) {
+        self->offset_y = max_scroll;   
+    }
+}
+
+// カリングの計算
+- (void)update_curring_range
+{
+    // 通常は 0
+    // debug 用に -2 とかすると描画領域が狭くなる
+    int curring_var = 0;
+    
+    // カリング
+    int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
+    self.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
+    int num_draw = DISP_H + curring_var;
+    self.curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
+}
+
+// 実際の処理
+-(void)scroll_to
+{
+    // カリングの幅を更新
+    [self update_curring_range];
+    
+    // アクションを実行
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, self->offset_y)];
+    CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
+    [self runAction:ease];
+}
+
 
 
 //===============================================================

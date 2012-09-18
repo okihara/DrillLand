@@ -36,6 +36,8 @@
 @property (nonatomic, assign) int curring_top;
 @property (nonatomic, assign) int curring_bottom;
 @property (nonatomic, readwrite, retain) BlockView* player;
+@property (readonly) int offset_y;
+
 
 - (void)add_block:(BlockView*)block;
 
@@ -58,5 +60,13 @@
 - (void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1;
 
 - (CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
+
+
+// ----
+- (void)update_offset_y:(int)target_y;
+// カリングの計算
+- (void)update_curring_range;
+// 実際の処理
+-(void)scroll_to;
 
 @end
