@@ -79,7 +79,7 @@
 }
 
 // これは武器/敵によってロジックが変わるので、ここに書くべきではない
--(BOOL)is_attack_range:(DungeonModel*)dungeon
+-(BOOL)in_attack_range:(DungeonModel*)dungeon
 {
     // 上下左右
     BlockModel* p = (BlockModel*)dungeon.player;

@@ -19,7 +19,7 @@
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     BlockModel* p = (BlockModel*)dungeon_.player;
-    if ([context_ is_attack_range:dungeon_]) {
+    if ([context_ in_attack_range:dungeon_]) {
         [context_ attack:p dungeon:dungeon_];
     }
 }
