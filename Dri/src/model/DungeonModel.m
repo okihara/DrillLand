@@ -34,10 +34,12 @@
 
 -(void) dealloc
 {
-    [self->player release];
-    [self->route_map release];
     [self->map release];
+    [self->route_map release];
+    [self->route_list release];
     [self->done_map release];
+    [self->player release];
+    [self->block_builder release];
     [super dealloc];
 }
 
