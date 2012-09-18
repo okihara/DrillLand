@@ -51,10 +51,10 @@
 -(void) load_from_file:(NSString*)filename;
 
 // calc route and grouping
--(void) update_can_tap:(CGPoint)pos;
--(void) update_can_tap_r:(CGPoint)pos;
--(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id;
--(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
+-(void) update_can_tap:(DLPoint)pos;
+-(void) update_can_tap_r:(DLPoint)pos;
+-(void) update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
+-(void) update_group_info_r:(DLPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
 -(void) update_route_map:(DLPoint)pos target:(DLPoint)target;
 -(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint) get_player_pos:(DLPoint)pos;

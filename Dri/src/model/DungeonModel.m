@@ -111,7 +111,7 @@
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
-    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
 -(void) dispatchEvent:(DLEvent*)e
@@ -130,17 +130,13 @@
 {
     block.pos = pos;
     [self->map set_x:pos.x y:pos.y value:block];
-    [self update_group_info:ccp(pos.x, pos.y) group_id:block.group_id];
+    [self update_group_info:pos group_id:block.group_id];
 }
 
 -(void) set:(DLPoint)pos block:(BlockModel*)block
 {
-    int x = (int)pos.x;
-    int y = (int)pos.y;
-    
-    [self _set:cdp(x, y) block:block];
-    
-    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self _set:pos block:block];
+    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
 -(BlockModel*)get_x:(int)_x y:(int)_y
@@ -189,7 +185,7 @@
         }
     }
  
-    [self update_can_tap:ccp(self->player.pos.x, self->player.pos.y)]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
 -(void)_fill_blocks
@@ -220,7 +216,7 @@
 // 高速化くらいはやる
 //===========================================================================================
 
--(void) update_can_tap:(CGPoint)pos
+-(void) update_can_tap:(DLPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -239,7 +235,7 @@
     [self update_can_tap_r:pos];
 }
 
--(void) update_can_tap_r:(CGPoint)pos
+-(void) update_can_tap_r:(DLPoint)pos
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -254,16 +250,16 @@
         b.can_tap = YES;
     } else if (b.type == 0) {
         b.can_tap = NO;
-        [self update_can_tap_r:ccp(x + 0, y + 1)];
-        [self update_can_tap_r:ccp(x + 0, y - 1)];
-        [self update_can_tap_r:ccp(x + 1, y + 0)];
-        [self update_can_tap_r:ccp(x - 1, y + 0)];
+        [self update_can_tap_r:cdp(x + 0, y + 1)];
+        [self update_can_tap_r:cdp(x + 0, y - 1)];
+        [self update_can_tap_r:cdp(x + 1, y + 0)];
+        [self update_can_tap_r:cdp(x - 1, y + 0)];
     } else {
         // マイナスの時は？？
     }
 }
 
--(void) update_group_info:(CGPoint)pos group_id:(unsigned int)_group_id
+-(void) update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id
 {
     // group_id=0 の時はグループ化しない
     if (_group_id == 0) return;
@@ -274,7 +270,7 @@
     //NSLog(@"group_info %d %@", _group_id, group_info);
 }
 
--(void) update_group_info_r:(CGPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info
+-(void) update_group_info_r:(DLPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info
 {
     int x = (int)pos.x;
     int y = (int)pos.y;
@@ -300,10 +296,10 @@
     [_group_info addObject:b];
     b.group_info = _group_info;
     
-    [self update_group_info_r:ccp(x + 0, y + 1) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:ccp(x + 0, y - 1) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:ccp(x + 1, y + 0) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:ccp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:cdp(x + 0, y + 1) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:cdp(x + 0, y - 1) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:cdp(x + 1, y + 0) group_id:_group_id group_info:_group_info];
+    [self update_group_info_r:cdp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
 }
 
 -(void) update_route_map:(DLPoint)pos target:(DLPoint)target
