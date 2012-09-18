@@ -46,6 +46,23 @@
     [DamageNumView spawn:p1 target:self->effect_layer position:pos color:ccc3(0, 240, 20)];
 }
 
+// shake
+-(CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
+{
+    CGPoint origin = target.position;
+    CGPoint rpos = ccpAdd(origin, ccp(8, 0));
+    CGPoint lpos = ccpAdd(origin, ccp(-8, 0));
+    CCFiniteTimeAction *r = [CCMoveTo actionWithDuration:0.033 position:rpos];
+    CCFiniteTimeAction *l = [CCMoveTo actionWithDuration:0.033 position:lpos];
+    CCFiniteTimeAction *o = [CCMoveTo actionWithDuration:0.016 position:origin];
+
+    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:[CCSequence actions:r, l, nil] times:4];
+    
+    CCFiniteTimeAction *shake = [CCSequence actions:repeat, o, nil];
+    return [CCTargetedAction actionWithTarget:target action:shake];
+}
+
+
 // ========================================================================
 
 -(id) init

@@ -64,7 +64,7 @@
 {
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_PLAYER;
-    b.hp = 10;
+    b.hp = 1000;
     b.atk = 5;
     b.pos = cdp(2, 1);
     

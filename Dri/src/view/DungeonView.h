@@ -55,5 +55,8 @@
 // helper
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;
 - (void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1;
+- (void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1;
+
+- (CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
 
 @end

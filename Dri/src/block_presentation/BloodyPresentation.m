@@ -19,8 +19,10 @@
         case DL_ON_DAMAGE:
         {
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
-                // effect
+
                 BlockModel *b = (BlockModel*)e.target;
+
+                // effect
                 [ctx launch_particle:@"blood" position:view_.position];
                 
                 // damage num
@@ -29,7 +31,10 @@
                 CGPoint pos = [ctx model_to_local:b.pos];
                 [ctx launch_effect:@"damage" position:pos param1:damage];
             }];
-            return [CCSequence actions:act, [CCDelayTime actionWithDuration:0.5], nil];
+            
+            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
+            
+            return [CCSequence actions:shake, act, [CCDelayTime actionWithDuration:0.5], nil];
         }   
             break;
             
