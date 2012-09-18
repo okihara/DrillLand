@@ -49,16 +49,25 @@
 // shake
 -(CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
 {
-    CGPoint origin = target.position;
-    CGPoint rpos = ccpAdd(origin, ccp(8, 0));
-    CGPoint lpos = ccpAdd(origin, ccp(-8, 0));
-    CCFiniteTimeAction *r = [CCMoveTo actionWithDuration:0.033 position:rpos];
-    CCFiniteTimeAction *l = [CCMoveTo actionWithDuration:0.033 position:lpos];
-    CCFiniteTimeAction *o = [CCMoveTo actionWithDuration:0.016 position:origin];
-
-    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:[CCSequence actions:r, l, nil] times:4];
+//    CGPoint origin = target.position;
+//    CGPoint rpos = ccpAdd(origin, ccp(8, 0));
+//    CGPoint lpos = ccpAdd(origin, ccp(-8, 0));
+//    
+//    CCFiniteTimeAction *r = [CCMoveTo actionWithDuration:0.033 position:rpos];
+//    CCFiniteTimeAction *l = [CCMoveTo actionWithDuration:0.033 position:lpos];
+//    CCFiniteTimeAction *o = [CCMoveTo actionWithDuration:0.016 position:origin];
     
-    CCFiniteTimeAction *shake = [CCSequence actions:repeat, o, nil];
+    int amp = 6;
+    int times = 4;
+    
+    CCFiniteTimeAction *r  = [CCMoveBy actionWithDuration:0.016 position:ccp(amp,0)];
+    CCFiniteTimeAction *l  = [CCMoveBy actionWithDuration:0.033 position:ccp(-amp*2,0)];
+    CCFiniteTimeAction *r2 = [CCMoveBy actionWithDuration:0.033 position:ccp(amp*2,0)];
+    CCFiniteTimeAction *o  = [CCMoveBy actionWithDuration:0.016 position:ccp(-amp,0)];
+    
+    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:[CCSequence actions:l, r2, nil] times:times];
+    CCFiniteTimeAction *shake = [CCSequence actions:r, repeat, o, nil];
+    
     return [CCTargetedAction actionWithTarget:target action:shake];
 }
 

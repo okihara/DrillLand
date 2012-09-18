@@ -104,6 +104,13 @@
     [self runAction:act];   
 }
 
+- (CCFiniteTimeAction*)play_anime_one:(NSString*)name
+{
+    CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
+    CCFiniteTimeAction* act = [CCAnimate actionWithAnimation:anim];
+    return act;
+}
+
 
 //===============================================================
 //

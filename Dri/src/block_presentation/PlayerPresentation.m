@@ -24,6 +24,18 @@
             }];
         }   
             break;
+        case DL_ON_ATTACK:
+        {
+            
+            // TODO: とりあえずすぎる
+            CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
+            [view_ stopAllActions];
+            CCCallBlock *action_walk = [CCCallBlock actionWithBlock:^(){
+                [view_ play_anime:@"walk"];
+            }];
+            return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], action_walk, nil];
+        }
+            break;
             
         default:
             return nil;

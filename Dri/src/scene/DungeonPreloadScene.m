@@ -53,6 +53,14 @@
     
     for (NSString *key in [action keyEnumerator]) {
         CCAnimation* anim = [self load_action:[action objectForKey:key]];
+        
+        
+        // TODO: とりあえずすぎる
+        if ([key isEqualToString:@"attack"]) {
+            anim.delayPerUnit = 0.4f;
+        }
+        
+        
         [anim_cache addAnimation:anim name:key];
     }
 }

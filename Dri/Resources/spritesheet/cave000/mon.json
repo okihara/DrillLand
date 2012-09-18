@@ -2,7 +2,7 @@
 
 "mon001000.png":
 {
-	"frame": {"x":2,"y":104,"w":32,"h":32},
+	"frame": {"x":2,"y":206,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
@@ -10,7 +10,7 @@
 },
 "mon001001.png":
 {
-	"frame": {"x":2,"y":70,"w":32,"h":32},
+	"frame": {"x":2,"y":172,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
@@ -18,13 +18,37 @@
 },
 "mon001002.png":
 {
-	"frame": {"x":2,"y":36,"w":32,"h":32},
+	"frame": {"x":2,"y":138,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32}
 },
 "mon001003.png":
+{
+	"frame": {"x":2,"y":104,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"mon001100.png":
+{
+	"frame": {"x":2,"y":70,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"mon001101.png":
+{
+	"frame": {"x":2,"y":36,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"mon001102.png":
 {
 	"frame": {"x":2,"y":2,"w":32,"h":32},
 	"rotated": false,
@@ -39,6 +63,6 @@
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f49b81631db711a7c4d1200d26773d38$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e05c8a4878fdadaea4959cfcdd7e141f$"
 }
 }

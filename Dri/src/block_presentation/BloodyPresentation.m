@@ -18,6 +18,8 @@
             
         case DL_ON_DAMAGE:
         {
+            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
+
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
 
                 BlockModel *b = (BlockModel*)e.target;
@@ -31,9 +33,7 @@
                 CGPoint pos = [ctx model_to_local:b.pos];
                 [ctx launch_effect:@"damage" position:pos param1:damage];
             }];
-            
-            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
-            
+          
             return [CCSequence actions:shake, act, [CCDelayTime actionWithDuration:0.5], nil];
         }   
             break;
