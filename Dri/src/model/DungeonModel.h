@@ -28,22 +28,27 @@
 
 @interface DungeonModel : NSObject
 {
-    BlockBuilder *block_builder;
-    BlockModel* player;
     ObjectXDMap *map;
     XDMap *done_map;
     XDMap *route_map;
     NSMutableArray *route_list;
     id<DungenModelObserver> observer;
+
+    BlockBuilder *block_builder;
+    BlockModel *player;
 }
 
 -(id) init:(NSArray*)initial;
 
 // ---
 -(void) set:(DLPoint)pos block:(BlockModel*)block;
--(void) on_hit:(DLPoint)pos;
 -(BlockModel*)get:(DLPoint)pos;
 -(int) can_tap:(DLPoint)pos;
+
+// ---
+-(void) on_hit:(DLPoint)pos;
+
+// ---
 -(void) _fill_blocks;
 -(void) _clear_can_tap;
 
