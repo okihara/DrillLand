@@ -46,7 +46,8 @@
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_0];
-        [dungeon_ _set:pos block:block];
+        // TODO: set でOK?
+        [dungeon_ set:pos block:block];
         
         DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
         [dungeon_ dispatchEvent:e];

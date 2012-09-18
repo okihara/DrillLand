@@ -292,7 +292,7 @@
     // スクロールする
     DLPoint ppos = self->dungeon_model.player.pos;
     DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-    BlockModel* b = [self->dungeon_model get_x:under_pos.x y:under_pos.y];
+    BlockModel* b = [self->dungeon_model get:under_pos];
     if (b.type == ID_EMPTY) {
         // スクロールの offset 更新
         [self->dungeon_view update_offset_y: self->dungeon_model.player.pos.y];

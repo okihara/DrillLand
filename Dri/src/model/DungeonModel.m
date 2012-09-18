@@ -56,16 +56,16 @@
 {
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < WIDTH; i++) {
-            BlockModel* b = [self get_x:i y:j];
+            BlockModel* b = [self get:cdp(i, j)];
             [b on_update:self];
         }
     }
 }
 
-- (void)on_hit_block:(int)y x:(int)x
+- (void)on_hit_block:(DLPoint)pos
 {
     // -- ブロックのヒット処理フェイズ
-    BlockModel* b = [self get_x:x y:y];
+    BlockModel* b = [self get:pos];
     if (b.can_tap == NO) {
         // TODO: notify
         // 「そこはタップできません」とかね
@@ -83,28 +83,25 @@
     }
 }
 
-- (void)move_player:(int)y x:(int)x
+- (void)move_player:(DLPoint)pos
 {
     // -- プレイヤーの移動フェイズ
-    [self update_route_map:cdp(x, y) target:player.pos];
+    [self update_route_map:pos target:player.pos];
     DLPoint next_pos = [self get_player_pos:player.pos];
     self->player.pos = next_pos;
 }
 
 -(void) on_hit:(DLPoint)pos
 {
-    int x = (int)pos.x;
-    int y = (int)pos.y;
-    
-    BlockModel* target = [self get_x:x y:y];
+    BlockModel* target = [self get:pos];
     if (target.type == ID_EMPTY) {
         return;
     }
     
-    [self move_player:y x:x];
+    [self move_player:pos];
 
     // ブロックのヒットフェイズ
-    [self on_hit_block:y x:x];
+    [self on_hit_block:pos];
     
     // ブロックのアップデートフェイズ
     [self on_update];
@@ -139,14 +136,14 @@
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
--(BlockModel*)get_x:(int)_x y:(int)_y
+-(BlockModel*)get:(DLPoint)pos
 {
-    return [self->map get_x:_x y:_y];
+    return [self->map get_x:pos.x y:pos.y];
 }
 
--(int)can_tap_x:(int)_x y:(int)_y
+-(int)can_tap:(DLPoint)pos
 {
-    BlockModel* b = [self->map get_x:_x y:_y];
+    BlockModel* b = [self->map get_x:pos.x y:pos.y];
     return b.can_tap;
 }
 

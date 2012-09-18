@@ -123,7 +123,7 @@
     for (int x = 0; x < disp_w; x++) {
                 
         BlockView *block = [view_map get_x:x y:y];
-        BlockModel *block_model = [dungeon_ get_x:x y:y];
+        BlockModel *block_model = [dungeon_ get:cdp(x, y)];
 
         
         if (block.is_change) {

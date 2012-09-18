@@ -42,8 +42,8 @@
 // ---
 -(void) set:(DLPoint)pos block:(BlockModel*)block;
 -(void) on_hit:(DLPoint)pos;
--(BlockModel*) get_x:(int)_x y:(int)_y;
--(int) can_tap_x:(int)_x y:(int)_y;
+-(BlockModel*)get:(DLPoint)pos;
+-(int) can_tap:(DLPoint)pos;
 -(void) _fill_blocks;
 -(void) _clear_can_tap;
 
