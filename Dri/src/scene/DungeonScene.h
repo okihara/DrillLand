@@ -43,7 +43,7 @@
 - (void)update_curring_range;
 
 // TODO: スクロール関係は別クラスに
-- (void)update_offset_y;
+- (void)update_offset_y:(int)target_y;
 - (void)scroll_to;
 
 @end

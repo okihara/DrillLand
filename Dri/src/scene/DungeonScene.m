@@ -163,22 +163,25 @@
     if (b.type == ID_EMPTY) {
         
         // スクロールの offset 更新
-        [self update_offset_y];
+        [self update_offset_y:self->dungeon_model.player.pos.y];
         
         // 実際にスクロールさせる
         [self scroll_to];
     }
 }
 
-- (void)update_offset_y
+- (void)update_offset_y:(int)target_y
 {
     // 一番現在移動できるポイントが中央にくるまでスクロール？
     // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
     // 一度いった時は引き返せない
+    
+    // self->offset_y に依存
+    
     int threshold = 2;
     
     int by = (int)(self->offset_y / BLOCK_WIDTH);
-    int diff = self->dungeon_model.player.pos.y - by;
+    int diff = target_y - by;
     int num_scroll = diff - threshold; 
     if (num_scroll > 0) {
         self->offset_y += BLOCK_WIDTH * num_scroll;
