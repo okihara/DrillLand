@@ -22,7 +22,7 @@
 {
     if(self=[super init]) {
         
-        self->bg = [CCLayerColor layerWithColor:ccc4(0, 40, 0, 255)];
+        self->bg = [CCLayerColor layerWithColor:ccc4(0, 25, 0, 255)];
         self->bg.position = ccp(-320 / 2, - 40 / 2);
         [self addChild:self->bg];
         

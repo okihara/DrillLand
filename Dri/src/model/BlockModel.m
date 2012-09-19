@@ -94,9 +94,11 @@
 
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
-    DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self];
-    [dungeon dispatchEvent:e];
-    
+    [self _attack:target dungeon:dungeon];
+}
+
+-(void)_attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
+{
     int damage = self.atk - target.def;
     damage += rand() % 3 - 1;
     

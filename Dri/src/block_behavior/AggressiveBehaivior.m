@@ -20,6 +20,10 @@
 {
     BlockModel* p = (BlockModel*)dungeon_.player;
     if ([context_ in_attack_range:dungeon_]) {
+        // TODO: 
+        DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:context_];
+        [dungeon_ dispatchEvent:e];
+        // TODO:
         [context_ attack:p dungeon:dungeon_];
     }
 }

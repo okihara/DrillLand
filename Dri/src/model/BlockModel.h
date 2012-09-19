@@ -58,6 +58,7 @@ enum ID_BLOCK {
 -(void)on_update:(DungeonModel*)dungeon;
 -(BOOL)in_attack_range:(DungeonModel*)dungeon;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
+-(void)_attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
 
 -(void)heal:(int)value;

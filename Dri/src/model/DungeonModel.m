@@ -75,6 +75,12 @@
         [self->observer notify:self event:event];
         return;
     }
+
+    // TODO: 
+    DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self->player];
+    [self dispatchEvent:e];
+    // TODO:
+    
     
     if (b.group_info) {
         for (BlockModel* block in b.group_info) {
@@ -100,6 +106,7 @@
         return;
     }
     
+    // PLAYER の移動
     [self move_player:pos];
 
     // ブロックのヒットフェイズ

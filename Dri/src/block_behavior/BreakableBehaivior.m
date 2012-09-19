@@ -17,6 +17,7 @@
     DLEvent *e = [DLEvent eventWithType:DL_ON_HIT target:context_];
     [dungeon_ dispatchEvent:e];
 
+    // TODO: ここプレイヤー固定になってるなあ。。。
     [dungeon_.player attack:context_ dungeon:dungeon_];
 }
 
