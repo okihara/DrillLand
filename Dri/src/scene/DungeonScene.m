@@ -71,7 +71,7 @@
         
         // status bar
         self->statusbar = [[StatusBarView alloc]init];
-        self->statusbar.position = ccp(320 / 2, 480 - 40 / 2);
+        self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
 	}
 	return self;
@@ -294,6 +294,7 @@
     DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
     BlockModel* b = [self->dungeon_model get:under_pos];
     if (b.type == ID_EMPTY) {
+//    if (YES) {
         // スクロールの offset 更新
         [self->dungeon_view update_offset_y: self->dungeon_model.player.pos.y];
         // 実際にスクロールさせる

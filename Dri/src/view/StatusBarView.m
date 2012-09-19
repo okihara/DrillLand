@@ -22,16 +22,18 @@
 {
     if(self=[super init]) {
         
-        self->bg = [CCLayerColor layerWithColor:ccc4(0, 64, 0, 255)];
+        self->bg = [CCLayerColor layerWithColor:ccc4(0, 40, 0, 255)];
         self->bg.position = ccp(-320 / 2, - 40 / 2);
         [self addChild:self->bg];
         
         self->name = [FontFactory makeLabel:@"okihara lv.8"];//[CCLabelBMFont labelWithString:@"okihara lv.8" fntFile:@"ebit.fnt"];
-        self->name.position = ccp(-80, 0);
+        self->name.anchorPoint = ccp(0,0);
+        self->name.position = ccp(-150, 6);
         [self addChild:self->name];
         
-        self->hp = [FontFactory makeLabel:@"HP: 10"];
-        self->hp.position = ccp(40, 0);
+        self->hp = [FontFactory makeLabel:@"HP: 10  EXP: 0"];
+        self->hp.anchorPoint = ccp(0, 0);
+        self->hp.position = ccp(-150, -14);
         [self addChild:self->hp];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

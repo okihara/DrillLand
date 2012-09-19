@@ -232,7 +232,7 @@
     
     // self->offset_y に依存
     
-    int threshold = 2;
+    int threshold = 4;
     
     int by = (int)(self->offset_y / BLOCK_WIDTH);
     int diff = target_y - by;
