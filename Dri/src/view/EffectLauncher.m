@@ -55,6 +55,7 @@
     CCParticleSystem *particle = [[[CCParticleSystemQuad alloc] initWithFile:plistname] autorelease];
     // TODO: particle no plist がない場合、落ちるよ
     particle.position = pos;
+    particle.scale = 0.7;
     particle.autoRemoveOnFinish = YES;
     [self.target_layer addChild:particle];
 }

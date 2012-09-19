@@ -14,16 +14,20 @@
 
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
+    BlockModel *b = (BlockModel*)e.target;
+    
     switch (e.type) {
             
         case DL_ON_DAMAGE:
         {
-            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
-//            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
+            CCFiniteTimeAction *shake;
+            if (b.type == ID_PLAYER) {
+                shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
+            } else {
+                shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
+            }
 
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
-
-                BlockModel *b = (BlockModel*)e.target;
 
                 // effect
                 [ctx launch_particle:@"blood" position:view_.position];
@@ -62,7 +66,6 @@
             
         case DL_ON_ATTACK:
         {
-            
             // TODO: とりあえずすぎる
             // TODO: Attackable Presentation 作り、移動する
             CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
