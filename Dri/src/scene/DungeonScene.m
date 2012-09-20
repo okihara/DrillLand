@@ -305,10 +305,10 @@
 {
     // プレイヤーの一個下のブロックが空なら
     // スクロールする
-    DLPoint ppos = self->dungeon_model.player.pos;
-    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-    
+//    DLPoint ppos = self->dungeon_model.player.pos;
+//    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
 //    BlockModel* b = [self->dungeon_model get:under_pos];
+    
 //    if (b.type == ID_EMPTY) {
     if (YES) {
         
