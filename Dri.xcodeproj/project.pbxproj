@@ -14,6 +14,9 @@
 		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
 		C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */ = {isa = PBXBuildFile; fileRef = C11D62BA15ED7EBF00F7633D /* blood.plist */; };
 		C11D62C115EF339300F7633D /* EffectLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62C015EF339200F7633D /* EffectLauncher.m */; };
+		C13FBDF1160B313E00B4AF35 /* link2.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDEF160B313E00B4AF35 /* link2.json */; };
+		C13FBDF2160B313E00B4AF35 /* link2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF0160B313E00B4AF35 /* link2.png */; };
+		C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF4160B31F300B4AF35 /* linkatk.json */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -214,6 +217,9 @@
 		C11D62BA15ED7EBF00F7633D /* blood.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = blood.plist; sourceTree = "<group>"; };
 		C11D62BF15EF339200F7633D /* EffectLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectLauncher.h; path = src/view/EffectLauncher.h; sourceTree = "<group>"; };
 		C11D62C015EF339200F7633D /* EffectLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectLauncher.m; path = src/view/EffectLauncher.m; sourceTree = "<group>"; };
+		C13FBDEF160B313E00B4AF35 /* link2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = link2.json; sourceTree = "<group>"; };
+		C13FBDF0160B313E00B4AF35 /* link2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link2.png; sourceTree = "<group>"; };
+		C13FBDF4160B31F300B4AF35 /* linkatk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = linkatk.json; path = Resources/animation/linkatk.json; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -1109,6 +1115,8 @@
 		C1EE3BD516083B4500DE62CD /* common */ = {
 			isa = PBXGroup;
 			children = (
+				C13FBDEF160B313E00B4AF35 /* link2.json */,
+				C13FBDF0160B313E00B4AF35 /* link2.png */,
 				C1EE3BD616083B7800DE62CD /* link_f.json */,
 				C1EE3BD716083B7800DE62CD /* link_f.png */,
 				C1EE3BD816083B7800DE62CD /* sky00.png */,
@@ -1183,6 +1191,7 @@
 			isa = PBXGroup;
 			children = (
 				C1EE3BE016084C8900DE62CD /* mon001.json */,
+				C13FBDF4160B31F300B4AF35 /* linkatk.json */,
 				C1EEBCFF15E79485007F1814 /* link.json */,
 			);
 			name = animation;
@@ -1342,6 +1351,9 @@
 				C1EE3BDE1608443500DE62CD /* mon.json in Resources */,
 				C1EE3BDF1608443500DE62CD /* mon.png in Resources */,
 				C1EE3BE116084C8900DE62CD /* mon001.json in Resources */,
+				C13FBDF1160B313E00B4AF35 /* link2.json in Resources */,
+				C13FBDF2160B313E00B4AF35 /* link2.png in Resources */,
+				C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

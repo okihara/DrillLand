@@ -18,13 +18,14 @@
 
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
-    BlockModel* p = (BlockModel*)dungeon_.player;
+    BlockModel* player = (BlockModel*)dungeon_.player;
     if ([context_ in_attack_range:dungeon_]) {
+        
         // TODO: 
         DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:context_];
         [dungeon_ dispatchEvent:e];
-        // TODO:
-        [context_ attack:p dungeon:dungeon_];
+        
+        [context_ attack:player dungeon:dungeon_];
     }
 }
 

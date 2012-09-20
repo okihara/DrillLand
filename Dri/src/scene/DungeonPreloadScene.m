@@ -30,7 +30,7 @@
     return [frame_cache spriteFrameByName:name];
 }
 
--(CCAnimation*)load_action:(NSDictionary*)jsonItem
+-(CCAnimation*)load_action:(NSDictionary*)jsonItem delay:(float)delay
 {
     NSArray* frame_list = [jsonItem objectForKey:@"frame"];
     NSUInteger count = [frame_list count];
@@ -39,7 +39,7 @@
         CCSpriteFrame* sprite_frame = [self load_frame:frame];
         [sprite_frame_list addObject:sprite_frame];
     }
-    return [CCAnimation animationWithSpriteFrames:sprite_frame_list delay:0.08f];
+    return [CCAnimation animationWithSpriteFrames:sprite_frame_list delay:delay];
 }
 
 -(void)load_animation:(NSString*)filename
@@ -52,14 +52,14 @@
     CCAnimationCache* anim_cache = [CCAnimationCache sharedAnimationCache];
     
     for (NSString *key in [action keyEnumerator]) {
-        CCAnimation* anim = [self load_action:[action objectForKey:key]];
-        
-        
-//        // TODO: とりあえずすぎる
-//        if ([key isEqualToString:@"attack"]) {
-//            anim.delayPerUnit = 0.07f;
-//        }
-        
+        // TODO: とりあえずすぎる
+        float delay;
+        if ([key isEqualToString:@"atk000"]) {
+            delay = 0.033f;
+        } else {
+            delay = 0.072f;
+        }
+        CCAnimation *anim = [self load_action:[action objectForKey:key] delay:delay];
         
         [anim_cache addAnimation:anim name:key];
     }
@@ -96,6 +96,10 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
+        
+        [self load_sprite:@"link2.json"];
+        [self load_animation:@"linkatk.json"];
+
         
         [self load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];

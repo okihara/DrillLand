@@ -24,7 +24,8 @@
             if (b.type == ID_PLAYER) {
                 shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
             } else {
-                shake = [CCDelayTime actionWithDuration:0];
+                shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
+                //shake = [CCDelayTime actionWithDuration:0];
             }
 
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
@@ -68,12 +69,18 @@
         {
             // TODO: とりあえずすぎる
             // TODO: Attackable Presentation 作り、移動する
-            CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
             [view_ stopAllActions];
-            CCCallBlock *action_walk = [CCCallBlock actionWithBlock:^(){
-                [view_ play_anime:@"walk"];
-            }];
-            return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], action_walk, nil];
+            
+            // TODO: ないわー
+            if (b.type == ID_PLAYER) {
+                CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"atk000"];
+                CCCallBlock *act_walk = [CCCallFuncO actionWithTarget:view_ selector:@selector(play_anime:) object:@"walk"];
+                return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], act_walk, nil];
+            } else {
+                CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
+                CCCallFuncO *act_walk = [CCCallFuncO actionWithTarget:view_ selector:@selector(play_anime:) object:@"action0"];
+                return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], act_walk, nil];
+            }
         }
             break;
             

@@ -136,7 +136,7 @@
     // 生成
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_ENEMY_BLOCK_0;
-    b.hp =  6;
+    b.hp =  4;
     b.atk = 3;
     b.def = 3;
     
@@ -152,7 +152,7 @@
     // 生成
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_ENEMY_BLOCK_1;
-    b.hp =  20;
+    b.hp =  17;
     b.atk = 4;
     b.def = 3;
     
