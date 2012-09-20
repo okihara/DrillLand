@@ -28,7 +28,7 @@
     if(self=[super init]) {
                 
         CGPoint start_pos = ccp(160, 480 + 60); 
-        CGPoint end_pos   = ccp(160, 160); 
+        CGPoint end_pos   = ccp(160, 480 - 150); 
 
         self.position = start_pos;
 

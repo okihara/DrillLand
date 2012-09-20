@@ -24,7 +24,7 @@
             if (b.type == ID_PLAYER) {
                 shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
             } else {
-                shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
+                shake = [CCDelayTime actionWithDuration:0];
             }
 
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
