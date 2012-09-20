@@ -71,5 +71,6 @@
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) BlockModel *player;
 @property (nonatomic, retain) NSMutableArray* route_list;
+@property (nonatomic, readwrite) int lowest_empty_y;
 
 @end

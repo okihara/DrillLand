@@ -17,7 +17,7 @@
 #import "BasicNotifierView.h"
 #import "DamageNumView.h"
 #import "DungeonResultScene.h"
-
+#import "DungeonMenuScene.h"
 
 // HelloWorldLayer implementation
 @implementation DungeonScene
@@ -73,8 +73,26 @@
         self->statusbar = [[StatusBarView alloc]init];
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
+        
+        // menu
+        //CCSprite *spr_menu = [CCSprite spriteWithFile:@"block01.png"];
+        //CCMenuItemSprite *item = [CCMenuItemSprite itemWithNormalSprite:spr_menu selectedSprite:spr_menu target:self selector:@selector(didPressButton:)];
+        CCMenuItemFont *item = [CCMenuItemFont itemWithString:@"open item" target:self selector:@selector(didPressButton:)];
+        CCMenu *menu = [CCMenu menuWithItems:item, nil];
+        menu.position = ccp(240, 450);
+        [menu alignItemsVertically];        
+
+        [self addChild:menu];
+        
+        [self first];
 	}
 	return self;
+}
+
+- (void)didPressButton:(CCMenuItem *)sender
+{
+    CCScene *scene = [DungeonMenuScene scene];
+    [[CCDirector sharedDirector] pushScene:scene];
 }
 
 - (void) dealloc
@@ -83,11 +101,8 @@
     [super dealloc];
 }
 
-// シーン遷移後のアニメーション
-- (void)onEnter
-{
-    [super onEnter];
-    
+- (void)first {
+
     // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
@@ -292,11 +307,15 @@
     // スクロールする
     DLPoint ppos = self->dungeon_model.player.pos;
     DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-    BlockModel* b = [self->dungeon_model get:under_pos];
-    if (b.type == ID_EMPTY) {
-//    if (YES) {
+    
+//    BlockModel* b = [self->dungeon_model get:under_pos];
+//    if (b.type == ID_EMPTY) {
+    if (YES) {
+        
         // スクロールの offset 更新
-        [self->dungeon_view update_offset_y: self->dungeon_model.player.pos.y];
+        //[self->dungeon_view update_offset_y:self->dungeon_model.player.pos.y];
+        [self->dungeon_view update_offset_y:self->dungeon_model.lowest_empty_y - 1];
+        
         // 実際にスクロールさせる
         [self->dungeon_view scroll_to];
     }

@@ -17,6 +17,7 @@
 @synthesize route_map;
 @synthesize player;
 @synthesize route_list;
+@synthesize lowest_empty_y;
 
 -(id) init:(NSArray*)initial
 {
@@ -28,6 +29,8 @@
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
         [self _fill_blocks];
+        
+        self->lowest_empty_y = 5;
     }
     return self;
 }
@@ -252,14 +255,22 @@
     if (!b) return;
     
     [done_map set_x:x y:y value:1];
-    if (b.type > 0) {
+    if (b.type != ID_EMPTY) {
         b.can_tap = YES;
-    } else if (b.type == 0) {
+    } else if (b.type == ID_EMPTY) {
         b.can_tap = NO;
         [self update_can_tap_r:cdp(x + 0, y + 1)];
         [self update_can_tap_r:cdp(x + 0, y - 1)];
         [self update_can_tap_r:cdp(x + 1, y + 0)];
         [self update_can_tap_r:cdp(x - 1, y + 0)];
+        
+
+        // スクロール用に 一番下の 空ブロックを記録しておく
+        if (b.pos.y > self->lowest_empty_y) {
+            self->lowest_empty_y = b.pos.y;
+        }
+        
+        
     } else {
         // マイナスの時は？？
     }
@@ -325,7 +336,7 @@
     // ブロックの場合はそれ以上探索しない
     // ただし level = 0 （最初の一回目は）例外
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
-    if (b.type != 0 && level != 0) return;
+    if (b.type != ID_EMPTY && level != 0) return;
     
     int cost = [self->route_map get_x:pos.x y:pos.y];
     
