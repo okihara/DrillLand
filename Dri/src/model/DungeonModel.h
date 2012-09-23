@@ -46,7 +46,7 @@
 -(int) can_tap:(DLPoint)pos;
 
 // ---
--(void) on_hit:(DLPoint)pos;
+-(BOOL) on_hit:(DLPoint)pos;
 
 // ---
 -(void) _fill_blocks;

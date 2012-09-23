@@ -71,13 +71,6 @@
 {
     // -- ブロックのヒット処理フェイズ
     BlockModel* b = [self get:pos];
-    if (b.can_tap == NO) {
-        // TODO: notify
-        // 「そこはタップできません」とかね
-        DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:b];
-        [self->observer notify:self event:event];
-        return;
-    }
 
     // TODO: 
     DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self->player];
@@ -102,11 +95,18 @@
     self->player.pos = next_pos;
 }
 
--(void) on_hit:(DLPoint)pos
+-(BOOL) on_hit:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
+    
+    // タップできない（ターン消費無し）
     if (target.type == ID_EMPTY) {
-        return;
+        return NO;
+    }
+    if (target.can_tap == NO) {
+        DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
+        [self->observer notify:self event:event];
+        return NO;
     }
     
     // PLAYER の移動
@@ -121,6 +121,8 @@
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
+    
+    return YES;
 }
 
 -(void) dispatchEvent:(DLEvent*)e

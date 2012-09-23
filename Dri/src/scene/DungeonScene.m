@@ -143,7 +143,8 @@
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     // モデルへ通知
-    [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+    BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+    if (!changed) { return; }
     
     // タップ後のシーケンス再生
     [self run_sequence];
