@@ -28,12 +28,19 @@
 
 @interface DungeonModel : NSObject
 {
+    // TODO: インスタンス変数 ２つに絞るなら？？
+    
     ObjectXDMap *map;
     XDMap *done_map;
     XDMap *route_map;
+
+    // TODO: クラス化
     NSMutableArray *route_list;
+
     id<DungenModelObserver> observer;
 
+    // ファイルから読む部分で使ってる
+    // load_from_file 別クラス化できそう
     BlockBuilder *block_builder;
     BlockModel *player;
 }
