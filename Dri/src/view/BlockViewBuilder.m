@@ -13,7 +13,7 @@
 #import "BloodyPresentation.h"
 #import "PlayerPresentation.h"
 #import "BasicPresentation.h"
-
+#import "AttackablePresentation.h"
 
 @implementation BlockViewBuilder
 
@@ -100,6 +100,12 @@
                 [p release];
             }
             
+            {
+                NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
+            
             [block play_anime:@"walk"];
         }
             break;
@@ -120,6 +126,12 @@
             p = [[BloodyPresentation alloc] init];
             [block add_presentation:p];
             [p release];
+            
+            {
+                NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
         }            
             break;
         case ID_ITEM_BLOCK_0:

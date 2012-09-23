@@ -65,25 +65,6 @@
         }
             break;
             
-        case DL_ON_ATTACK:
-        {
-            // TODO: とりあえずすぎる
-            // TODO: Attackable Presentation 作り、移動する
-            [view_ stopAllActions];
-            
-            // TODO: ないわー
-            if (b.type == ID_PLAYER) {
-                CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"atk000"];
-                CCCallBlock *act_walk = [CCCallFuncO actionWithTarget:view_ selector:@selector(play_anime:) object:@"walk"];
-                return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], act_walk, nil];
-            } else {
-                CCFiniteTimeAction *anim_attack = [view_ play_anime_one:@"attack"];
-                CCCallFuncO *act_walk = [CCCallFuncO actionWithTarget:view_ selector:@selector(play_anime:) object:@"action0"];
-                return [CCSequence actions:[CCTargetedAction actionWithTarget:view_ action:anim_attack], act_walk, nil];
-            }
-        }
-            break;
-            
         default:
             return nil;
             break;
