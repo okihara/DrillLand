@@ -22,6 +22,9 @@
             // TODO: Attackable Presentation 作り、移動する
             [block_view stopAllActions];
             
+            // 俺のターンエフェクト
+            // いるならここに
+            
             // TODO: ないわー
             if (block_model.type == ID_PLAYER) {
                 CCFiniteTimeAction *anim_attack = [block_view play_anime_one:@"atk000"];
