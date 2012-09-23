@@ -64,7 +64,7 @@
 {
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_PLAYER;
-    b.hp = 1000;
+    b.hp = b.max_hp = 10;
     b.atk = 5;
     b.pos = cdp(2, 1);
     
@@ -127,7 +127,7 @@
 -(BlockModel*)build_grouped_3
 {
     BlockModel* b = [self build_grouped:ID_GROUPED_BLOCK_3];
-    b.hp = 1;
+    b.hp = b.max_hp = 1;
     return b;
 }
 
@@ -136,7 +136,7 @@
     // 生成
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_ENEMY_BLOCK_0;
-    b.hp =  4;
+    b.hp = b.max_hp = 4;
     b.atk = 3;
     b.def = 3;
     
@@ -152,7 +152,7 @@
     // 生成
     BlockModel* b = [[BlockModel alloc] init];
     b.type = ID_ENEMY_BLOCK_1;
-    b.hp =  17;
+    b.hp = b.max_hp = 17;
     b.atk = 4;
     b.def = 3;
     

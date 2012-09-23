@@ -11,6 +11,7 @@
 
 @implementation BlockModel
 
+@synthesize max_hp;
 @synthesize hp;
 @synthesize type;
 @synthesize atk;
@@ -120,6 +121,9 @@
 -(void)heal:(int)value
 {
     self.hp += value;
+    if (self.hp > self.max_hp) {
+        self.hp = self.max_hp;
+    }
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:self.hp]];
 }

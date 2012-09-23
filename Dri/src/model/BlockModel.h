@@ -43,6 +43,7 @@ enum ID_BLOCK {
 @interface BlockModel : NSObject
 {
     int hp;
+    int max_hp;
     int type;
     int exp;
     int atk;
@@ -64,6 +65,7 @@ enum ID_BLOCK {
 -(void)heal:(int)value;
 
 @property (nonatomic, assign) int hp;
+@property (nonatomic, assign) int max_hp;
 @property (nonatomic, assign) int type;
 @property (nonatomic, assign) int atk;
 @property (nonatomic, assign) int def;
