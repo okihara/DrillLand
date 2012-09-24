@@ -28,6 +28,7 @@
 		C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13A160FFB7000FE672F /* ItemMaster.m */; };
 		C183A13E161115E500FE672F /* UserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13D161115E500FE672F /* UserItem.m */; };
 		C183A1411611191200FE672F /* SpriteFrameLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A1401611191200FE672F /* SpriteFrameLoader.m */; };
+		C183A14416111A3000FE672F /* AnimationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A14316111A3000FE672F /* AnimationLoader.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -247,6 +248,8 @@
 		C183A13D161115E500FE672F /* UserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserItem.m; path = src/model/item/UserItem.m; sourceTree = "<group>"; };
 		C183A13F1611191200FE672F /* SpriteFrameLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteFrameLoader.h; path = src/misc/SpriteFrameLoader.h; sourceTree = "<group>"; };
 		C183A1401611191200FE672F /* SpriteFrameLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteFrameLoader.m; path = src/misc/SpriteFrameLoader.m; sourceTree = "<group>"; };
+		C183A14216111A3000FE672F /* AnimationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationLoader.h; path = src/misc/AnimationLoader.h; sourceTree = "<group>"; };
+		C183A14316111A3000FE672F /* AnimationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationLoader.m; path = src/misc/AnimationLoader.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1077,6 +1080,8 @@
 		C1CCAA9A1607550A00A0EB1C /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				C183A14216111A3000FE672F /* AnimationLoader.h */,
+				C183A14316111A3000FE672F /* AnimationLoader.m */,
 				C183A13F1611191200FE672F /* SpriteFrameLoader.h */,
 				C183A1401611191200FE672F /* SpriteFrameLoader.m */,
 				C1EE3B8A160757DA00DE62CD /* FontFactory.h */,
@@ -1544,6 +1549,7 @@
 				C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */,
 				C183A13E161115E500FE672F /* UserItem.m in Sources */,
 				C183A1411611191200FE672F /* SpriteFrameLoader.m in Sources */,
+				C183A14416111A3000FE672F /* AnimationLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
