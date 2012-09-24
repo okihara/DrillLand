@@ -10,6 +10,7 @@
 #import "SBJson.h"
 #import "DungeonScene.h"
 #import "DL.h"
+#import "SpriteFrameLoader.h"
 
 @implementation DungeonPreloadScene
 
@@ -65,46 +66,23 @@
     }
 }
 
-//----------------------------------------------------------------------------------------
 
--(void)load_sprite:(NSString*)filename
-{
-    CCSpriteFrameCache* frame_cache = [CCSpriteFrameCache sharedSpriteFrameCache];
-
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
-    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    id jsonItem = [jsonData JSONValue];
-    NSDictionary *frames = [(NSDictionary*)jsonItem objectForKey:@"frames"];
-    NSDictionary *meta = [(NSDictionary*)jsonItem objectForKey:@"meta"];
-    NSString* sheet_name = [meta objectForKey:@"image"];
-
-    for (NSString* key in [frames keyEnumerator]) {
-        NSDictionary* fr = [[frames objectForKey:key] objectForKey:@"frame"];
-        float x = [(NSNumber*)[fr objectForKey:@"x"] floatValue];
-        float y = [(NSNumber*)[fr objectForKey:@"y"] floatValue];
-        float w = [(NSNumber*)[fr objectForKey:@"w"] floatValue];
-        float h = [(NSNumber*)[fr objectForKey:@"h"] floatValue];
-        CGRect rect = CGRectMake(x, y, w, h);
-        
-        CCSpriteFrame * sprite_frame = [CCSpriteFrame frameWithTextureFilename:sheet_name rect:rect];
-        [[sprite_frame texture] setAliasTexParameters];
-        [frame_cache addSpriteFrame:sprite_frame name:key];
-    }
-}
 
 // on "init" you need to initialize your instance
 -(id) init
 {
 	if( (self=[super init]) ) {
         
-        [self load_sprite:@"link2.json"];
+        SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
+        
+        [frame_loader load_sprite:@"link2.json"];
         [self load_animation:@"linkatk.json"];
 
         
-        [self load_sprite:@"link_f.json"];
+        [frame_loader load_sprite:@"link_f.json"];
         [self load_animation:@"link.json"];
         
-        [self load_sprite:@"mon.json"];
+        [frame_loader load_sprite:@"mon.json"];
         [self load_animation:@"mon001.json"];
         
         // -- texture

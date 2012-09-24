@@ -1,5 +1,5 @@
 //
-//  UserItem.h
+//  SpriteFrameLoader.h
 //  Dri
 //
 //  Created by  on 12/09/25.
@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserItem : NSObject
-{
-    uint master_id;
-    UInt16 type;
-}
+@interface SpriteFrameLoader : NSObject
+
+-(void)load_sprite:(NSString*)filename;
 
 @end
