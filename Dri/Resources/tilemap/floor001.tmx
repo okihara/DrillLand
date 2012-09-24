@@ -68,7 +68,7 @@
  </tileset>
  <layer name="main" width="5" height="100">
   <data encoding="base64" compression="zlib">
-   eJztk0sKwCAQQ8Vf6/0vXAQHXkMWFro0ENDofB1T+hf3ItfBZvZd9Lq0Cq2AtG3Gtm7YTmaTn2pjaWPDtm/4c5qrY1dTf1FnRh+07i9aM3S5REyNyzXzztD4PhXn9NVEd7EZq+AOzzJi6571s6fz7YmR3nNGsi/ULqPpPWXMXlBnkP/s4ODgYOIBmDkEqA==
+   eJztk+EKgCAMhGVq5fu/cAgOvg4zrH56cKDn9OacIfyLo5Fjp73UIjjSEjjSvuRyp20yLy2uPOzN4Kym53k9DHeOEj+j5Q57ubin+nLMvA0a3zFhnWdl0Xve9IqI4ZrBW+e8P2ta348o4dpTJOtCbe9oGqf0/nFqH/GfLSwsLFScl3EEqA==
   </data>
  </layer>
 </map>
