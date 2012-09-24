@@ -135,6 +135,9 @@
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
+    
+    // TODO: ここから先 DungeonView に移動するべき
+    // model_to_local の反対
     int x = (int)(location.x / BLOCK_WIDTH);
     int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
