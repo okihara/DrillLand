@@ -19,7 +19,6 @@
 
 @implementation DungeonView
 
-@synthesize curring_top, curring_bottom;
 @synthesize player;
 @synthesize offset_y;
 
@@ -146,8 +145,8 @@
 
 - (void)update_view_lines:(DungeonModel *)_dungeon
 {
-    NSLog(@"[update_view_lines] START top:%d bottom:%d", self.curring_top, self.curring_bottom);
-    for (int y = self.curring_top; y < self.curring_bottom; y++) {
+    NSLog(@"[update_view_lines] START top:%d bottom:%d", self->curring_top, self->curring_bottom);
+    for (int y = self->curring_top; y < self->curring_bottom; y++) {
         NSLog(@"[update_view_lines] update_view y:%d", y);
         [self update_view_line:y _model:_dungeon];
     }
@@ -179,7 +178,7 @@
     // 次に必要なブロックを描画
     //[self->dungeon_view update_view:self->dungeon_model];
     // TODO: これって DungeonView 側に書くべきじゃない？
-    for (int y = self->latest_remove_y + 1; y < self.curring_top; y++) {
+    for (int y = self->latest_remove_y + 1; y < self->curring_top; y++) {
         [self remove_block_view_line:y _model:dungeon_model];
         self->latest_remove_y = y;
     }
@@ -258,9 +257,9 @@
     
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
-    self.curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
+    self->curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
     int num_draw = DISP_H + curring_var;
-    self.curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
+    self->curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
 }
 
 // 実際の処理
