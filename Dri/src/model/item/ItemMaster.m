@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Item.h"
+#import "ItemMaster.h"
 
-@implementation Item
+@implementation ItemMaster
 
 @end

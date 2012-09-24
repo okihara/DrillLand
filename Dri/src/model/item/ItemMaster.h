@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Item : NSObject
+@interface ItemMaster : NSObject
 {
     int atk;
     int def;
-    BOOL is_equipment;
+    uint type;
 }
 
 @end

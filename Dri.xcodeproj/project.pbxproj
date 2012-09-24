@@ -25,7 +25,8 @@
 		C16009FF15F3450F00A4616C /* DungeonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009FD15F3450F00A4616C /* DungeonView.m */; };
 		C1600A0015F3450F00A4616C /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009FE15F3450F00A4616C /* BlockView.m */; };
 		C183A136160EA7FE00FE672F /* AttackablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A135160EA7FD00FE672F /* AttackablePresentation.m */; };
-		C183A13B160FFB7000FE672F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13A160FFB7000FE672F /* Item.m */; };
+		C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13A160FFB7000FE672F /* ItemMaster.m */; };
+		C183A13E161115E500FE672F /* UserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13D161115E500FE672F /* UserItem.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -239,8 +240,10 @@
 		C1600A0215F3451900A4616C /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockView.h; path = src/view/BlockView.h; sourceTree = "<group>"; };
 		C183A134160EA7FD00FE672F /* AttackablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttackablePresentation.h; path = src/block_presentation/AttackablePresentation.h; sourceTree = "<group>"; };
 		C183A135160EA7FD00FE672F /* AttackablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttackablePresentation.m; path = src/block_presentation/AttackablePresentation.m; sourceTree = "<group>"; };
-		C183A139160FFB7000FE672F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = src/model/item/Item.h; sourceTree = "<group>"; };
-		C183A13A160FFB7000FE672F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = src/model/item/Item.m; sourceTree = "<group>"; };
+		C183A139160FFB7000FE672F /* ItemMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemMaster.h; path = src/model/item/ItemMaster.h; sourceTree = "<group>"; };
+		C183A13A160FFB7000FE672F /* ItemMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemMaster.m; path = src/model/item/ItemMaster.m; sourceTree = "<group>"; };
+		C183A13C161115E500FE672F /* UserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserItem.h; path = src/model/item/UserItem.h; sourceTree = "<group>"; };
+		C183A13D161115E500FE672F /* UserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserItem.m; path = src/model/item/UserItem.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -655,8 +658,10 @@
 		C183A138160FFB1100FE672F /* item */ = {
 			isa = PBXGroup;
 			children = (
-				C183A139160FFB7000FE672F /* Item.h */,
-				C183A13A160FFB7000FE672F /* Item.m */,
+				C183A13C161115E500FE672F /* UserItem.h */,
+				C183A13D161115E500FE672F /* UserItem.m */,
+				C183A139160FFB7000FE672F /* ItemMaster.h */,
+				C183A13A160FFB7000FE672F /* ItemMaster.m */,
 			);
 			name = item;
 			sourceTree = "<group>";
@@ -1531,7 +1536,8 @@
 				C1EE3B8C160757DA00DE62CD /* FontFactory.m in Sources */,
 				C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */,
 				C183A136160EA7FE00FE672F /* AttackablePresentation.m in Sources */,
-				C183A13B160FFB7000FE672F /* Item.m in Sources */,
+				C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */,
+				C183A13E161115E500FE672F /* UserItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
