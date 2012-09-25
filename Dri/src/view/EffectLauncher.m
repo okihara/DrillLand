@@ -7,12 +7,36 @@
 //
 
 #import "EffectLauncher.h"
-#import "DamageNumView.h"
+#import "EffectShake.h"
+#import "EffectDamageNum.h"
+#import "EffectColorFlash.h"
+
 
 @implementation EffectLauncher
 
 @synthesize target_layer;
 
+- (void)setup {
+    [EffectShake register_me:self];
+    [EffectDamageNum register_me:self];
+    [EffectColorFlash register_me:self];
+}
+
+- (id)init {
+    
+    if(self=[super init]) {
+        self->effect_map = [[NSMutableDictionary alloc] init];
+        
+        [self setup];
+    }
+    return self;
+}
+
+- (BOOL)register_effect:(NSObject<EffectProtocol>*)effect name:(NSString*)name
+{
+    [self->effect_map setObject:effect forKey:name];
+    return YES;
+}
 
 -(void) make_particle02:(CGPoint)pos
 {
@@ -70,30 +94,8 @@
     }
 }
 
--(void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1
-{
-    [DamageNumView spawn:p1 target:self.target_layer position:pos color:ccc3(0, 240, 20)];
-}
-
 
 // effect -----------------------------------------------------------------------------
-
-// shake
--(CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
-{
-    int amp = 6;
-    int times = 4;
-    
-    CCFiniteTimeAction *r  = [CCMoveBy actionWithDuration:0.016 position:ccp(amp,0)];
-    CCFiniteTimeAction *l  = [CCMoveBy actionWithDuration:0.033 position:ccp(-amp*2,0)];
-    CCFiniteTimeAction *r2 = [CCMoveBy actionWithDuration:0.033 position:ccp(amp*2,0)];
-    CCFiniteTimeAction *o  = [CCMoveBy actionWithDuration:0.016 position:ccp(-amp,0)];
-    
-    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:[CCSequence actions:l, r2, nil] times:times];
-    CCFiniteTimeAction *shake = [CCSequence actions:r, repeat, o, nil];
-    
-    return [CCTargetedAction actionWithTarget:target action:shake];
-}
 
 // color flash
 -(CCFiniteTimeAction*)launch_effect_flash:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
@@ -103,14 +105,9 @@
 
 -(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
 {
-    if ([name isEqualToString:@"shake"]) {
-        return [self launch_effect_shake:@"shake" target:target params:params];
-    } else {
-        NSNumber *num = (NSNumber*)[params objectForKey:@"damage"];
-        int damage = num ? [num intValue] : 0;
-        [DamageNumView spawn:damage target:self.target_layer position:target.position];
-        return nil;
-    }
+    NSObject<EffectProtocol> *effect = [self->effect_map objectForKey:name];
+    if (!effect) return nil;
+    return [effect launch:target params:params effect_layer:self.target_layer];
 }
 
 @end

@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Effect.h"
 
 
-
-@interface EffectLauncher : NSObject
+@interface EffectLauncher : NSObject<EffectLauncherProtocol>
+{
+    NSMutableDictionary *effect_map;
+}
 
 @property (nonatomic, readwrite, retain) CCLayer* target_layer;
 

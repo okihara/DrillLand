@@ -12,7 +12,6 @@
 #import "XDMap.h"
 #import "BlockModel.h"
 #import "BlockView.h"
-#import "DamageNumView.h"
 #import "BlockViewBuilder.h"
 
 #define DISP_H 8

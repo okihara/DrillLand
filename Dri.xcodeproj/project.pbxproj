@@ -29,6 +29,9 @@
 		C183A13E161115E500FE672F /* UserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13D161115E500FE672F /* UserItem.m */; };
 		C183A1411611191200FE672F /* SpriteFrameLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A1401611191200FE672F /* SpriteFrameLoader.m */; };
 		C183A14416111A3000FE672F /* AnimationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A14316111A3000FE672F /* AnimationLoader.m */; };
+		C183A149161197F600FE672F /* EffectShake.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A148161197F500FE672F /* EffectShake.m */; };
+		C183A14C1611A34000FE672F /* EffectDamageNum.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A14B1611A33F00FE672F /* EffectDamageNum.m */; };
+		C183A14F1611AEC100FE672F /* EffectColorFlash.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A14E1611AEC000FE672F /* EffectColorFlash.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -250,6 +253,13 @@
 		C183A1401611191200FE672F /* SpriteFrameLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteFrameLoader.m; path = src/misc/SpriteFrameLoader.m; sourceTree = "<group>"; };
 		C183A14216111A3000FE672F /* AnimationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationLoader.h; path = src/misc/AnimationLoader.h; sourceTree = "<group>"; };
 		C183A14316111A3000FE672F /* AnimationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationLoader.m; path = src/misc/AnimationLoader.m; sourceTree = "<group>"; };
+		C183A1461611971800FE672F /* Effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Effect.h; path = src/view/effect/Effect.h; sourceTree = "<group>"; };
+		C183A147161197F500FE672F /* EffectShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectShake.h; path = src/view/effect/EffectShake.h; sourceTree = "<group>"; };
+		C183A148161197F500FE672F /* EffectShake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectShake.m; path = src/view/effect/EffectShake.m; sourceTree = "<group>"; };
+		C183A14A1611A33F00FE672F /* EffectDamageNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectDamageNum.h; path = src/view/effect/EffectDamageNum.h; sourceTree = "<group>"; };
+		C183A14B1611A33F00FE672F /* EffectDamageNum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectDamageNum.m; path = src/view/effect/EffectDamageNum.m; sourceTree = "<group>"; };
+		C183A14D1611AEBF00FE672F /* EffectColorFlash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectColorFlash.h; path = src/view/effect/EffectColorFlash.h; sourceTree = "<group>"; };
+		C183A14E1611AEC000FE672F /* EffectColorFlash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectColorFlash.m; path = src/view/effect/EffectColorFlash.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -670,6 +680,20 @@
 				C183A13A160FFB7000FE672F /* ItemMaster.m */,
 			);
 			name = item;
+			sourceTree = "<group>";
+		};
+		C183A145161196BF00FE672F /* effect */ = {
+			isa = PBXGroup;
+			children = (
+				C183A1461611971800FE672F /* Effect.h */,
+				C183A147161197F500FE672F /* EffectShake.h */,
+				C183A148161197F500FE672F /* EffectShake.m */,
+				C183A14A1611A33F00FE672F /* EffectDamageNum.h */,
+				C183A14B1611A33F00FE672F /* EffectDamageNum.m */,
+				C183A14D1611AEBF00FE672F /* EffectColorFlash.h */,
+				C183A14E1611AEC000FE672F /* EffectColorFlash.m */,
+			);
+			name = effect;
 			sourceTree = "<group>";
 		};
 		C195462A15D7F485002119CC = {
@@ -1253,6 +1277,7 @@
 		C1EEBD0915E84329007F1814 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				C183A145161196BF00FE672F /* effect */,
 				C1CCAA731605A42400A0EB1C /* StatusBarView.h */,
 				C1CCAA741605A42600A0EB1C /* StatusBarView.m */,
 				C1CCAA6D16009ACD00A0EB1C /* DamageNumView.h */,
@@ -1550,6 +1575,9 @@
 				C183A13E161115E500FE672F /* UserItem.m in Sources */,
 				C183A1411611191200FE672F /* SpriteFrameLoader.m in Sources */,
 				C183A14416111A3000FE672F /* AnimationLoader.m in Sources */,
+				C183A149161197F600FE672F /* EffectShake.m in Sources */,
+				C183A14C1611A34000FE672F /* EffectDamageNum.m in Sources */,
+				C183A14F1611AEC100FE672F /* EffectColorFlash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

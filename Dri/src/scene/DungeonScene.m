@@ -15,7 +15,6 @@
 #import "BlockView.h"
 #import "BlockViewBuilder.h"
 #import "BasicNotifierView.h"
-#import "DamageNumView.h"
 #import "DungeonResultScene.h"
 #import "DungeonMenuScene.h"
 
