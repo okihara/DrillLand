@@ -692,8 +692,25 @@
 				C183A14B1611A33F00FE672F /* EffectDamageNum.m */,
 				C183A14D1611AEBF00FE672F /* EffectColorFlash.h */,
 				C183A14E1611AEC000FE672F /* EffectColorFlash.m */,
+				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
+				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 			);
 			name = effect;
+			sourceTree = "<group>";
+		};
+		C183A1501611D64C00FE672F /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				C1CCAA731605A42400A0EB1C /* StatusBarView.h */,
+				C1CCAA741605A42600A0EB1C /* StatusBarView.m */,
+				C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */,
+				C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */,
+				C1CCAA6515FF922F00A0EB1C /* BasicNotifierView.h */,
+				C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */,
+				C1CCAA6D16009ACD00A0EB1C /* DamageNumView.h */,
+				C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */,
+			);
+			name = ui;
 			sourceTree = "<group>";
 		};
 		C195462A15D7F485002119CC = {
@@ -1277,17 +1294,8 @@
 		C1EEBD0915E84329007F1814 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				C183A1501611D64C00FE672F /* ui */,
 				C183A145161196BF00FE672F /* effect */,
-				C1CCAA731605A42400A0EB1C /* StatusBarView.h */,
-				C1CCAA741605A42600A0EB1C /* StatusBarView.m */,
-				C1CCAA6D16009ACD00A0EB1C /* DamageNumView.h */,
-				C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */,
-				C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */,
-				C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */,
-				C1CCAA6515FF922F00A0EB1C /* BasicNotifierView.h */,
-				C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */,
-				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
-				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 				C1600A0115F3451900A4616C /* DungeonView.h */,
 				C16009FD15F3450F00A4616C /* DungeonView.m */,
 				C1600A0215F3451900A4616C /* BlockView.h */,
