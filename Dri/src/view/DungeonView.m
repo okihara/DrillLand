@@ -22,50 +22,6 @@
 @synthesize player;
 @synthesize offset_y;
 
-// ========================================================================
-// エフェクト用のヘルパー
-// TODO: 別クラスへ
-// ========================================================================
-
--(void)launch_particle:(NSString*)name position:(CGPoint)pos
-{
-    [self->effect_launcher launch_particle:name position:pos];
-}
-
--(void)launch_effect:(NSString *)name position:(CGPoint)pos param1:(int)p1
-{
-    // color flash
-    // shake
-    
-    [DamageNumView spawn:p1 target:self->effect_layer position:pos];
-    return;
-}
-
--(void)launch_effect2:(NSString *)name position:(CGPoint)pos param1:(int)p1
-{
-    [DamageNumView spawn:p1 target:self->effect_layer position:pos color:ccc3(0, 240, 20)];
-}
-
-// shake
--(CCFiniteTimeAction*)launch_effect_shake:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
-{
-    int amp = 6;
-    int times = 4;
-    
-    CCFiniteTimeAction *r  = [CCMoveBy actionWithDuration:0.016 position:ccp(amp,0)];
-    CCFiniteTimeAction *l  = [CCMoveBy actionWithDuration:0.033 position:ccp(-amp*2,0)];
-    CCFiniteTimeAction *r2 = [CCMoveBy actionWithDuration:0.033 position:ccp(amp*2,0)];
-    CCFiniteTimeAction *o  = [CCMoveBy actionWithDuration:0.016 position:ccp(-amp,0)];
-    
-    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:[CCSequence actions:l, r2, nil] times:times];
-    CCFiniteTimeAction *shake = [CCSequence actions:r, repeat, o, nil];
-    
-    return [CCTargetedAction actionWithTarget:target action:shake];
-}
-
-
-// ========================================================================
-
 -(id) init
 {
 	if(self=[super init]) {
@@ -165,11 +121,7 @@
     [self update_view_lines:_dungeon];
 }
 
-
-//
 // カリングを考慮して描画
-//
-
 - (void)update_dungeon_view:(DungeonModel*)dungeon_model
 {
     // 更新
@@ -314,5 +266,20 @@
     return ccp(30 + pos.x * BLOCK_WIDTH, 480 - (30 + pos.y * BLOCK_WIDTH));
 }
 
+
+// ========================================================================
+// エフェクト用のヘルパー
+// TODO: 別クラスへ
+// ========================================================================
+
+-(void)launch_particle:(NSString*)name position:(CGPoint)pos
+{
+    [self->effect_launcher launch_particle:name position:pos];
+}
+
+-(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
+{
+    return [self->effect_launcher launch_effect:name target:target params:params];
+}
 
 @end

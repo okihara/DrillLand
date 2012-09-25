@@ -22,22 +22,16 @@
         {
             CCFiniteTimeAction *shake;
             if (b.type == ID_PLAYER) {
-                shake = [ctx launch_effect_shake:@"shake" target:ctx params:nil];
+                shake = [ctx launch_effect:@"shake" target:ctx   params:nil];
             } else {
-                shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
-                //shake = [CCDelayTime actionWithDuration:0];
+                shake = [ctx launch_effect:@"shake" target:view_ params:nil];
             }
 
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
-
                 // effect
                 [ctx launch_particle:@"blood" position:view_.position];
-                
                 // damage num
-                NSNumber *num = (NSNumber*)[e.params objectForKey:@"damage"];
-                int damage = num ? [num intValue] : 0;
-                CGPoint pos = [ctx model_to_local:b.pos];
-                [ctx launch_effect:@"damage" position:pos param1:damage];
+                [ctx launch_effect:@"damage" target:view_ params:e.params];
             }];
           
             return [CCSequence actions:shake, act, [CCDelayTime actionWithDuration:0.5], nil];
@@ -55,12 +49,9 @@
             
             CCCallBlock *act2 = [CCCallBlock actionWithBlock:^{
                 // damage num
-                BlockModel *b = (BlockModel*)e.target;
-                NSNumber *num = (NSNumber*)[e.params objectForKey:@"damage"];
-                int damage = num ? [num intValue] : 0;
-                CGPoint pos = [ctx model_to_local:b.pos];
-                [ctx launch_effect2:@"damage" position:pos param1:damage];
+                [ctx launch_effect:@"damage_num" target:view_ params:e.params];
             }];
+            
             return [CCSequence actions:act, [CCDelayTime actionWithDuration:1.0], act2, [CCDelayTime actionWithDuration:0.5], nil];
         }
             break;

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+
+
 @interface EffectLauncher : NSObject
-{
-}
 
 @property (nonatomic, readwrite, retain) CCLayer* target_layer;
 
 -(void)launch_particle:(NSString*)name position:(CGPoint)pos;
+-(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
 
 @end
