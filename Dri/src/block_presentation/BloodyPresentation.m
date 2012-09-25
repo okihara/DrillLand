@@ -48,7 +48,7 @@
             
             CCCallBlock *act2 = [CCCallBlock actionWithBlock:^{
                 // damage num
-                [ctx launch_effect:@"damage_num" target:view_ params:e.params];
+                [ctx launch_effect:@"damage" target:view_ params:e.params];
             }];
             
             return [CCSequence actions:act, [CCDelayTime actionWithDuration:1.0], act2, [CCDelayTime actionWithDuration:0.5], nil];
