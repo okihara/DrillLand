@@ -84,7 +84,7 @@
 
         [self addChild:menu];
         
-        [self first];
+        [self run_first_sequece];
 	}
 	return self;
 }
@@ -101,7 +101,10 @@
     [super dealloc];
 }
 
-- (void)first {
+
+//===============================================================
+
+- (void)run_first_sequece {
 
     // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
@@ -129,6 +132,16 @@
 //
 //===============================================================
 
+- (DLPoint)_screen_to_view_pos:(CGPoint)location
+{
+    // TODO: ここから先 DungeonView に移動するべき
+    // ↑ ほんとうか？
+    // model_to_local の反対
+    int x = (int)(location.x / BLOCK_WIDTH);
+    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
+    return cdp(x, y);
+}
+
 // HELPER: スクリーン座標からビューの座標へ変換
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
@@ -136,11 +149,7 @@
     CGPoint location =[touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     
-    // TODO: ここから先 DungeonView に移動するべき
-    // model_to_local の反対
-    int x = (int)(location.x / BLOCK_WIDTH);
-    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
-    return cdp(x, y);
+    return [self _screen_to_view_pos:location];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

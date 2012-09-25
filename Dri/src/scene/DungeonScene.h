@@ -33,6 +33,6 @@
 + (CCScene *)scene;
 - (void)run_sequence;
 - (CCAction*)animate;
-- (void)first;
+- (void)run_first_sequece;
 
 @end
