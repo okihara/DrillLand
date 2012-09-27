@@ -42,15 +42,18 @@
     
     [block clear];
     
+    // TODO: とりあえずすぎる
     if (rand() % 30 == 0) {
 
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_0];
-        // TODO: set でOK?
+        // TODO: set でOK? メモリリークしない？
         [dungeon_ set:pos block:block];
         
+        // イベント飛ばす
         DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
+        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_0] forKey:@"type"];
         [dungeon_ dispatchEvent:e];
         
     } else {

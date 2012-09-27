@@ -42,7 +42,7 @@
 - (void)add_block:(BlockView*)block;
 
 // 描画
-- (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_;
+- (void)update_view_line:(int)y dungeon_model:(DungeonModel *)dungeon_model;
 - (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;
 - (void)update_dungeon_view:(DungeonModel*)dungeon_model;

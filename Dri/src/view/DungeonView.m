@@ -65,47 +65,51 @@
     [self->effect_layer addChild:block];    
 }
 
-
 //===============================================================
 //
 // ブロックの描画
 //
 //===============================================================
 
-- (void)update_view_line:(int)y _model:(DungeonModel *)dungeon_
+- (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model
+{
+    BlockView *block = [view_map get_x:x y:y];
+    BlockModel *block_model = [dungeon_model get:cdp(x, y)];
+    
+    
+    // TODO: 何かしら変えるべき
+    // -----------------------------------------------------
+    if (block.is_change) {
+        [self remove_block_view:block_model.pos];
+    }
+    // 既に描画済みなら描画しない
+    if (block && !block.is_change) {
+        return;
+    }
+    block.is_change = NO;
+    // -----------------------------------------------------
+    
+    
+    block = [BlockViewBuilder create:block_model ctx:dungeon_model];
+    block.position = [self model_to_local:cdp(x, y)];
+    
+    [self->block_layer addChild:block];
+    [view_map set_x:x y:y value:block];
+}
+
+- (void)update_view_line:(int)y dungeon_model:(DungeonModel *)dungeon_model
 {
     for (int x = 0; x < disp_w; x++) {
-                
-        BlockView *block = [view_map get_x:x y:y];
-        BlockModel *block_model = [dungeon_ get:cdp(x, y)];
-
-        
-        if (block.is_change) {
-            [self remove_block_view:block_model.pos];
-        }
-        // 既に描画済みなら描画しない
-        if (block && !block.is_change) {
-            continue;
-        }
-        block.is_change = NO;
-        
-        
-        block = [BlockViewBuilder create:block_model ctx:dungeon_];
-        block.position = [self model_to_local:cdp(x, y)];
-        
-        [self->block_layer addChild:block];
-        [view_map set_x:x y:y value:block];
+        [self update_block:y x:x dungeon_model:dungeon_model];
     }
 }
 
-- (void)update_view_lines:(DungeonModel *)_dungeon
+// curring_top から curring_bottom まで描画
+- (void)update_view_lines:(DungeonModel *)dungeon_model
 {
-    NSLog(@"[update_view_lines] START top:%d bottom:%d", self->curring_top, self->curring_bottom);
     for (int y = self->curring_top; y < self->curring_bottom; y++) {
-        NSLog(@"[update_view_lines] update_view y:%d", y);
-        [self update_view_line:y _model:_dungeon];
+        [self update_view_line:y dungeon_model:dungeon_model];
     }
-    NSLog(@"[update_view_lines] END");
 }
 
 // 最初に一回しか呼ばないかも
@@ -120,21 +124,19 @@
     [self update_view_lines:_dungeon];
 }
 
-// カリングを考慮して描画
-- (void)update_dungeon_view:(DungeonModel*)dungeon_model
+- (void)remove_block_view_outside:(DungeonModel *)dungeon_model
 {
-    // 更新
-    // スクロール後
-    // 画面外を削って
-    // 次に必要なブロックを描画
-    //[self->dungeon_view update_view:self->dungeon_model];
-    // TODO: これって DungeonView 側に書くべきじゃない？
     for (int y = self->latest_remove_y + 1; y < self->curring_top; y++) {
         [self remove_block_view_line:y _model:dungeon_model];
         self->latest_remove_y = y;
     }
-    
-    // curring_top から curring_bottom まで描画
+}
+
+// カリングを考慮して描画
+// スクロール後、画面外を削って次に必要なブロックを描画
+- (void)update_dungeon_view:(DungeonModel*)dungeon_model
+{
+    [self remove_block_view_outside:dungeon_model];
     [self update_view_lines:dungeon_model];
 }
 
@@ -145,14 +147,13 @@
 - (void)remove_block_view:(DLPoint)pos
 {
     BlockView *block = [self->view_map get_x:pos.x y:pos.y];
+    // TODO: cleanup = NO なの？？
     [self->block_layer removeChild:block cleanup:NO];
     [view_map set_x:pos.x y:pos.y value:nil];
 }
 
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon
 {
-    NSLog(@"[remove_block_view_line] y:%d", y);
-    
     for (int x = 0; x < disp_w; x++) {
         [self remove_block_view:cdp(x, y)];
     }
