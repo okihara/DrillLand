@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/NSObjCRuntime.h>
 #import "EffectLauncher.h"
 #import "EffectShake.h"
 #import "EffectDamageNum.h"
@@ -30,12 +31,6 @@
         [self setup];
     }
     return self;
-}
-
-- (BOOL)register_effect:(NSObject<EffectProtocol>*)effect name:(NSString*)name
-{
-    [self->effect_map setObject:effect forKey:name];
-    return YES;
 }
 
 -(void) make_particle02:(CGPoint)pos
@@ -97,17 +92,19 @@
 
 // effect -----------------------------------------------------------------------------
 
-// color flash
--(CCFiniteTimeAction*)launch_effect_flash:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
+- (BOOL)register_effect:(Class)effect_class name:(NSString*)name;
 {
-    return nil;
+    // TODO: ここで validate すべき
+    [self->effect_map setObject:[NSValue valueWithPointer:effect_class] forKey:name];
+    return YES;
 }
 
 -(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
 {
-    NSObject<EffectProtocol> *effect = [self->effect_map objectForKey:name];
-    if (!effect) return nil;
-    return [effect launch:target params:params effect_layer:self.target_layer];
+    NSValue *value = [self->effect_map objectForKey:name];
+    if (!value) return nil;
+    Class effect = [value pointerValue];
+    return [(id)effect launch:target params:params effect_layer:self.target_layer];
 }
 
 @end

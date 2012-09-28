@@ -10,7 +10,7 @@
 
 @implementation EffectShake
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer *)effect_layer
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer *)effect_layer
 {    
     int amp = 6;
     int times = 4;
@@ -28,7 +28,7 @@
 
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher
 {
-    [launcher register_effect:[EffectShake new] name:@"shake"];
+    [launcher register_effect:[EffectShake class] name:@"shake"];
     return YES;
 }
 

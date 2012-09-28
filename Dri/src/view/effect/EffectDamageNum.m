@@ -12,7 +12,7 @@
 
 @implementation EffectDamageNum
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {    
     NSNumber *num = (NSNumber*)[params objectForKey:@"damage"];
     int damage = num ? [num intValue] : 0;
@@ -21,8 +21,7 @@
 }
 
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher {
-    [launcher register_effect:[EffectDamageNum new] name:@"damage"];
-    return YES;
+    return [launcher register_effect:[EffectDamageNum class] name:@"damage"];
 }
 
 @end

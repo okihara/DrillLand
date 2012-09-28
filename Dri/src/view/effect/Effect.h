@@ -14,7 +14,7 @@
 // -------------
 @protocol EffectLauncherProtocol <NSObject>
 
-- (BOOL)register_effect:(NSObject<EffectProtocol>*)effect name:(NSString*)name;
+- (BOOL)register_effect:(Class)effect_class name:(NSString*)name;
 
 @end
 
@@ -22,7 +22,7 @@
 // -------------
 @protocol EffectProtocol <NSObject>
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer;
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer;
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher;
 
 @end

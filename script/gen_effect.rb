@@ -47,15 +47,21 @@ template_impl = <<"TEMPLATE"
 
 @implementation Effect#{classname}
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
+- (id)init {
+    if(self=[super init]) {
+        // implement
+    }
+    return self;
+}
+
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {
     // implement
     return nil;
 }
 
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher {
-    [launcher register_effect:[Effect#{classname} new] name:@"#{classname.upcase}"];
-    return YES;
+    return [launcher register_effect:[Effect#{classname} class] name:@"#{classname.upcase}"];
 }
 
 @end

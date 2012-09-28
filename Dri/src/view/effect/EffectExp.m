@@ -10,7 +10,7 @@
 
 @implementation EffectExp
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {
     // implement
     return nil;
@@ -18,12 +18,7 @@
 
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher
 {
-    CCFiniteTimeAction*(^hoge)() = ^CCFiniteTimeAction*(){
-        NSLog(@"hoge");
-        return nil;
-    };
-    [launcher register_effect:[EffectExp new] name:@"EXP"];
-    return YES;
+    return [launcher register_effect:[EffectExp class] name:@"EXP"];
 }
 
 @end

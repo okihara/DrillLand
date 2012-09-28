@@ -18,7 +18,8 @@
 
 @property (nonatomic, readwrite, retain) CCLayer* target_layer;
 
--(void)launch_particle:(NSString*)name position:(CGPoint)pos;
--(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
+- (BOOL)register_effect:(Class)effect_class name:(NSString*)name;
+- (void)launch_particle:(NSString*)name position:(CGPoint)pos;
+- (CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
 
 @end

@@ -689,14 +689,14 @@
 			isa = PBXGroup;
 			children = (
 				C183A1461611971800FE672F /* Effect.h */,
+				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
+				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 				C183A147161197F500FE672F /* EffectShake.h */,
 				C183A148161197F500FE672F /* EffectShake.m */,
 				C183A14A1611A33F00FE672F /* EffectDamageNum.h */,
 				C183A14B1611A33F00FE672F /* EffectDamageNum.m */,
 				C183A14D1611AEBF00FE672F /* EffectColorFlash.h */,
 				C183A14E1611AEC000FE672F /* EffectColorFlash.m */,
-				C11D62BF15EF339200F7633D /* EffectLauncher.h */,
-				C11D62C015EF339200F7633D /* EffectLauncher.m */,
 				C183A15116126B7C00FE672F /* EffectExp.h */,
 				C183A15216126B7D00FE672F /* EffectExp.m */,
 			);

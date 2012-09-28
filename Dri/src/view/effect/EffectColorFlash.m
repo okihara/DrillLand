@@ -10,15 +10,14 @@
 
 @implementation EffectColorFlash
 
-- (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
++ (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {
     // implement
     return nil;
 }
 
 + (BOOL)register_me:(NSObject<EffectLauncherProtocol>*)launcher {
-    [launcher register_effect:[EffectColorFlash new] name:@"COLORFLASH"];
-    return YES;
+    return [launcher register_effect:[EffectColorFlash class] name:@"COLORFLASH"];
 }
 
 @end
