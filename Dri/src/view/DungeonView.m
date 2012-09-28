@@ -39,7 +39,7 @@
         sky.position = ccp(160, 480 - 64 - 11);
         [self addChild:sky];
         
-        self->effect_layer = [[CCLayer alloc]init];
+        self->effect_layer = [[CCLayer alloc] init];
         [self addChild:self->effect_layer];
              
         self->effect_launcher = [[EffectLauncher alloc] init];

@@ -16,7 +16,7 @@
     NSMutableDictionary *effect_map;
 }
 
-@property (nonatomic, readwrite, retain) CCLayer* target_layer;
+@property (nonatomic, readwrite, retain) CCLayer *target_layer;
 
 - (BOOL)register_effect:(Class)effect_class name:(NSString*)name;
 - (void)launch_particle:(NSString*)name position:(CGPoint)pos;

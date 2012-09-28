@@ -11,6 +11,7 @@
 #import "DungeonModel.h"
 #import "DLEvent.h"
 #import "BlockView.h"
+#import "cocos2d.h"
 
 @class XDMap;
 @class BlockView;
