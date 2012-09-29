@@ -12,7 +12,23 @@
 
 + (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {
-    // implement
+    CCNode<CCRGBAProtocol> *target_ = (CCNode<CCRGBAProtocol>*)target;
+
+    // 2秒で指定した色を減色するアニメーションを定義
+    NSValue *v = [params objectForKey:@"color"];
+    ccColor3B color;
+    if (v) {
+        [v getValue:&color];
+    } else {
+        color = ccc3(255, 255, 255);
+    }
+    target_.color = color;
+    target_.opacity = 0xFF;
+    CCFiniteTimeAction *action2 = [CCFadeTo actionWithDuration:1.0f opacity:0];
+    
+    // 定義したアニメーションをスプライトへセット
+    [target_ runAction:action2];
+    
     return nil;
 }
 

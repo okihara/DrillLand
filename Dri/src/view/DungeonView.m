@@ -20,6 +20,7 @@
 
 @synthesize player;
 @synthesize offset_y;
+@synthesize fade_layer;
 
 -(id) init
 {
@@ -32,19 +33,25 @@
         
         self->view_map = [[ObjectXDMap alloc] init];
         
+        self->base_layer = [[CCLayer alloc] init];
+        [self addChild:self->base_layer];
+        
         self->block_layer = [[CCLayer alloc] init];
-        [self addChild:self->block_layer];
+        [self->base_layer addChild:self->block_layer];
         
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
         sky.position = ccp(160, 480 - 64 - 11);
-        [self addChild:sky];
+        [self->base_layer addChild:sky];
         
         self->effect_layer = [[CCLayer alloc] init];
-        [self addChild:self->effect_layer];
+        [self->base_layer addChild:self->effect_layer];
              
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
         
+        // fade_layer
+        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 128)] retain];
+        [self addChild:self->fade_layer];
 	}
 	return self;
 }
@@ -223,7 +230,7 @@
     // アクションを実行
     CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, self->offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
-    [self runAction:ease];
+    [self->base_layer runAction:ease];
 }
 
 

@@ -30,12 +30,15 @@
     
     ObjectXDMap *view_map;
     
-    CCLayer *effect_layer;
+    CCLayer *base_layer;
     CCLayer *block_layer;
+    CCLayer *effect_layer;
+    CCLayerColor *fade_layer;
     
     EffectLauncher *effect_launcher;
 }
 
+@property (nonatomic, readonly, retain) CCLayerColor *fade_layer;
 @property (nonatomic, readwrite, retain) BlockView* player;
 @property (readonly) int offset_y;
 
