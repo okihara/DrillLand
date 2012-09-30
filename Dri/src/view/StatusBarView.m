@@ -26,7 +26,7 @@
         self->bg.position = ccp(-320 / 2, - 40 / 2);
         [self addChild:self->bg];
         
-        self->name = [FontFactory makeLabel:@"okihara lv.8"];//[CCLabelBMFont labelWithString:@"okihara lv.8" fntFile:@"ebit.fnt"];
+        self->name = [FontFactory makeLabel:@"okihara lv.8"];
         self->name.anchorPoint = ccp(0,0);
         self->name.position = ccp(-150, 6);
         [self addChild:self->name];
