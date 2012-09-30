@@ -7,7 +7,7 @@
 //
 
 #import "DungeonResultScene.h"
-#import "DungeonScene.h"
+#import "HomeScene.h"
 
 @implementation DungeonResultScene
 
@@ -36,7 +36,7 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    //[[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 
 @end

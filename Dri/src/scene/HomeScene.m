@@ -7,6 +7,7 @@
 
 #import "HomeScene.h"
 #import "DungeonScene.h"
+#import "SelectQuestScene.h"
 
 @implementation HomeScene
 
@@ -14,7 +15,7 @@
 {
     if( (self=[super init]) ) {
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"HOME" fontName:@"AppleGothic" fontSize:20];
-        label.position =  ccp(60, 440);
+        label.position =  ccp(160, 440);
         [self addChild:label];
 
         // enable touch
@@ -51,7 +52,7 @@
 
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    CCScene *scene = [DungeonScene scene];
+    CCScene *scene = [SelectQuestScene scene];
     [[CCDirector sharedDirector] replaceScene:scene];
 }
 
