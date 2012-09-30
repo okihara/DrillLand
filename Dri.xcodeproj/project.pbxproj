@@ -34,6 +34,7 @@
 		C183A14F1611AEC100FE672F /* EffectColorFlash.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A14E1611AEC000FE672F /* EffectColorFlash.m */; };
 		C183A15316126B7F00FE672F /* EffectExp.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A15216126B7D00FE672F /* EffectExp.m */; };
 		C1937C4A1617D05A007A8D05 /* HomeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1937C491617D05A007A8D05 /* HomeScene.m */; };
+		C1937C4E1617D126007A8D05 /* SelectQuestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1937C4D1617D125007A8D05 /* SelectQuestScene.m */; };
 		C195463A15D7F485002119CC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463915D7F485002119CC /* QuartzCore.framework */; };
 		C195463C15D7F485002119CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463B15D7F485002119CC /* OpenGLES.framework */; };
 		C195463E15D7F485002119CC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195463D15D7F485002119CC /* OpenAL.framework */; };
@@ -266,6 +267,8 @@
 		C183A15216126B7D00FE672F /* EffectExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectExp.m; path = src/view/effect/EffectExp.m; sourceTree = "<group>"; };
 		C1937C481617D05A007A8D05 /* HomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeScene.h; path = src/scene/HomeScene.h; sourceTree = "<group>"; };
 		C1937C491617D05A007A8D05 /* HomeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeScene.m; path = src/scene/HomeScene.m; sourceTree = "<group>"; };
+		C1937C4C1617D125007A8D05 /* SelectQuestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectQuestScene.h; path = src/scene/SelectQuestScene.h; sourceTree = "<group>"; };
+		C1937C4D1617D125007A8D05 /* SelectQuestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectQuestScene.m; path = src/scene/SelectQuestScene.m; sourceTree = "<group>"; };
 		C195463515D7F485002119CC /* Dri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195463915D7F485002119CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C195463B15D7F485002119CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1148,6 +1151,8 @@
 			children = (
 				C1937C481617D05A007A8D05 /* HomeScene.h */,
 				C1937C491617D05A007A8D05 /* HomeScene.m */,
+				C1937C4C1617D125007A8D05 /* SelectQuestScene.h */,
+				C1937C4D1617D125007A8D05 /* SelectQuestScene.m */,
 				C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */,
 				C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */,
 				C1CCAA9F1607557400A0EB1C /* DungeonOverScene.h */,
@@ -1598,6 +1603,7 @@
 				C183A14F1611AEC100FE672F /* EffectColorFlash.m in Sources */,
 				C183A15316126B7F00FE672F /* EffectExp.m in Sources */,
 				C1937C4A1617D05A007A8D05 /* HomeScene.m in Sources */,
+				C1937C4E1617D126007A8D05 /* SelectQuestScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
