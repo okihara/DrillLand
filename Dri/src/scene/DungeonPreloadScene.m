@@ -47,6 +47,8 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];
+        
+        [CCMenuItemFont setFontName:DL_FONT_NAME];
 	}
 	return self;
 }

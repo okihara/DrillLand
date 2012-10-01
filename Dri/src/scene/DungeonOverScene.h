@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "DL.h"
 
 @interface DungeonOverScene : CCLayer
 {

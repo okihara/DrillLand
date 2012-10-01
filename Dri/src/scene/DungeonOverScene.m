@@ -24,7 +24,7 @@
 {
 	if( (self=[super init]) ) {
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"GAMEOVER" fontName:@"AppleGothic" fontSize:20];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"GAMEOVER" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 240);
         [self addChild:label];
         

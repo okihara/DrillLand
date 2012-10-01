@@ -14,7 +14,7 @@
 - (id)init
 {
     if( (self=[super init]) ) {
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"HOME" fontName:@"AppleGothic" fontSize:20];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"HOME" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 440);
         [self addChild:label];
 

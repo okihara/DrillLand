@@ -76,7 +76,7 @@
         // menu
         //CCSprite *spr_menu = [CCSprite spriteWithFile:@"block01.png"];
         //CCMenuItemSprite *item = [CCMenuItemSprite itemWithNormalSprite:spr_menu selectedSprite:spr_menu target:self selector:@selector(didPressButton:)];
-        CCMenuItemFont *item = [CCMenuItemFont itemWithString:@"open item" target:self selector:@selector(didPressButton:)];
+        CCMenuItemFont *item = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
         menu.position = ccp(240, 450);
         [menu alignItemsVertically];        
