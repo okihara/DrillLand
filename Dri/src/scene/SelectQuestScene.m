@@ -54,7 +54,8 @@
 - (void)didPressButton:(CCMenuItem *)sender
 {
     CCScene *scene = [DungeonPreloadScene scene];
-    [[CCDirector sharedDirector] replaceScene:scene];
+    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
+    [[CCDirector sharedDirector] replaceScene:trans];
 }
 
 - (void)didPressButtonHome:(CCMenuItem *)sender

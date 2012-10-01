@@ -25,11 +25,25 @@
     return self;
 }
 
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
+//
+    CCCallBlock *cb = [CCCallBlock actionWithBlock:^(){
+        CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:[DungeonScene scene] withColor:ccc3(0, 0, 0)];
+        [[CCDirector sharedDirector] replaceScene:trans];        
+    }];
+    
+    CCSequence *seq = [CCSequence actions:[CCDelayTime actionWithDuration:0.01f], cb, nil];
+    [self runAction:seq];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     // IMPLEMENT:
     // EXAMPLE:
-    [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
+    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:1.0 scene:[DungeonScene scene] withColor:ccc3(0, 0, 0)];
+    [[CCDirector sharedDirector] replaceScene:trans];
 }
 
 + (CCScene *)scene
