@@ -8,6 +8,7 @@
 #import "SelectQuestScene.h"
 #import "DungeonScene.h"
 #import "HomeScene.h"
+#import "DungeonPreloadScene.h"
 
 @implementation SelectQuestScene
 
@@ -52,7 +53,7 @@
 
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    CCScene *scene = [DungeonScene scene];
+    CCScene *scene = [DungeonPreloadScene scene];
     [[CCDirector sharedDirector] replaceScene:scene];
 }
 
