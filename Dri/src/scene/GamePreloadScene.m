@@ -6,7 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "DungeonPreloadScene.h"
+#import "GamePreloadScene.h"
 #import "SBJson.h"
 #import "DungeonScene.h"
 #import "DL.h"
@@ -14,11 +14,11 @@
 #import "AnimationLoader.h"
 #import "HomeScene.h"
 
-@implementation DungeonPreloadScene
+@implementation GamePreloadScene
 
 +(CCScene*)scene {
 	CCScene *scene = [CCScene node];
-	DungeonPreloadScene *layer = [DungeonPreloadScene node];
+	GamePreloadScene *layer = [GamePreloadScene node];
 	[scene addChild: layer];
 	return scene;
 }

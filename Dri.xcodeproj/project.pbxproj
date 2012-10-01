@@ -165,7 +165,7 @@
 		C1CCAA99160754C800A0EB1C /* PlayerPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA98160754C800A0EB1C /* PlayerPresentation.m */; };
 		C1CCAA9D1607551C00A0EB1C /* XDMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA9C1607551C00A0EB1C /* XDMap.m */; };
 		C1CCAAA71607557400A0EB1C /* DungeonOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA01607557400A0EB1C /* DungeonOverScene.m */; };
-		C1CCAAA81607557400A0EB1C /* DungeonPreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA21607557400A0EB1C /* DungeonPreloadScene.m */; };
+		C1CCAAA81607557400A0EB1C /* GamePreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */; };
 		C1CCAAA91607557400A0EB1C /* DungeonResultScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA41607557400A0EB1C /* DungeonResultScene.m */; };
 		C1CCAAAA1607557400A0EB1C /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA61607557400A0EB1C /* DungeonScene.m */; };
 		C1CCAAAD1607559200A0EB1C /* DL.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAC1607559200A0EB1C /* DL.m */; };
@@ -546,8 +546,8 @@
 		C1CCAA9C1607551C00A0EB1C /* XDMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDMap.m; path = src/misc/XDMap.m; sourceTree = "<group>"; };
 		C1CCAA9F1607557400A0EB1C /* DungeonOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonOverScene.h; path = src/scene/DungeonOverScene.h; sourceTree = "<group>"; };
 		C1CCAAA01607557400A0EB1C /* DungeonOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonOverScene.m; path = src/scene/DungeonOverScene.m; sourceTree = "<group>"; };
-		C1CCAAA11607557400A0EB1C /* DungeonPreloadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonPreloadScene.h; path = src/scene/DungeonPreloadScene.h; sourceTree = "<group>"; };
-		C1CCAAA21607557400A0EB1C /* DungeonPreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonPreloadScene.m; path = src/scene/DungeonPreloadScene.m; sourceTree = "<group>"; };
+		C1CCAAA11607557400A0EB1C /* GamePreloadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; name = GamePreloadScene.h; path = src/scene/GamePreloadScene.h; sourceTree = "<group>"; };
+		C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePreloadScene.m; path = src/scene/GamePreloadScene.m; sourceTree = "<group>"; };
 		C1CCAAA31607557400A0EB1C /* DungeonResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonResultScene.h; path = src/scene/DungeonResultScene.h; sourceTree = "<group>"; };
 		C1CCAAA41607557400A0EB1C /* DungeonResultScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonResultScene.m; path = src/scene/DungeonResultScene.m; sourceTree = "<group>"; };
 		C1CCAAA51607557400A0EB1C /* DungeonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonScene.h; path = src/scene/DungeonScene.h; sourceTree = "<group>"; };
@@ -1178,8 +1178,8 @@
 				C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */,
 				C1CCAA9F1607557400A0EB1C /* DungeonOverScene.h */,
 				C1CCAAA01607557400A0EB1C /* DungeonOverScene.m */,
-				C1CCAAA11607557400A0EB1C /* DungeonPreloadScene.h */,
-				C1CCAAA21607557400A0EB1C /* DungeonPreloadScene.m */,
+				C1CCAAA11607557400A0EB1C /* GamePreloadScene.h */,
+				C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */,
 				C1CCAAA31607557400A0EB1C /* DungeonResultScene.h */,
 				C1CCAAA41607557400A0EB1C /* DungeonResultScene.m */,
 				C1CCAAA51607557400A0EB1C /* DungeonScene.h */,
@@ -1611,7 +1611,7 @@
 				C1CCAA99160754C800A0EB1C /* PlayerPresentation.m in Sources */,
 				C1CCAA9D1607551C00A0EB1C /* XDMap.m in Sources */,
 				C1CCAAA71607557400A0EB1C /* DungeonOverScene.m in Sources */,
-				C1CCAAA81607557400A0EB1C /* DungeonPreloadScene.m in Sources */,
+				C1CCAAA81607557400A0EB1C /* GamePreloadScene.m in Sources */,
 				C1CCAAA91607557400A0EB1C /* DungeonResultScene.m in Sources */,
 				C1CCAAAA1607557400A0EB1C /* DungeonScene.m in Sources */,
 				C1CCAAAD1607559200A0EB1C /* DL.m in Sources */,
