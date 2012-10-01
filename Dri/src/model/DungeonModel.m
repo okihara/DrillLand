@@ -19,7 +19,7 @@
 @synthesize route_list;
 @synthesize lowest_empty_y;
 
--(id) init:(NSArray*)initial
+- (id)init
 {
     if (self = [super init]) {
         self->block_builder = [[BlockBuilder alloc] init];

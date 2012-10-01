@@ -45,7 +45,7 @@
     BlockModel *player;
 }
 
--(id) init:(NSArray*)initial;
+-(id) init;
 
 // ---
 -(void) set:(DLPoint)pos block:(BlockModel*)block;

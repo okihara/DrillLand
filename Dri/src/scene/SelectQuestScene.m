@@ -7,6 +7,7 @@
 
 #import "SelectQuestScene.h"
 #import "DungeonScene.h"
+#import "HomeScene.h"
 
 @implementation SelectQuestScene
 
@@ -21,15 +22,21 @@
         self.isTouchEnabled = YES;
 
         // IMPLEMENT:
+        CCSprite *town_banner = [CCSprite spriteWithFile:@"guild000.png"];
+        town_banner.position = ccp(160, 390);
+        [self addChild:town_banner];
+        
         CCMenuItemFont *item_quest_1 = [CCMenuItemFont itemWithString:@"QUEST<1>" target:self selector:@selector(didPressButton:)];
         CCMenuItemFont *item_quest_2 = [CCMenuItemFont itemWithString:@"QUEST<2>" target:self selector:@selector(didPressButton:)];
         CCMenuItemFont *item_quest_3 = [CCMenuItemFont itemWithString:@"QUEST<3>" target:self selector:@selector(didPressButton:)];
+        CCMenuItemFont *item_home    = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
         CCMenu *menu = [CCMenu menuWithItems:
                         item_quest_1,
                         item_quest_2,
                         item_quest_3,
+                        item_home,
                         nil];
-        menu.position = ccp(160, 240);
+        menu.position = ccp(160, 200);
         [menu alignItemsVertically];
         [self addChild:menu];
     }
@@ -47,6 +54,12 @@
 {
     CCScene *scene = [DungeonScene scene];
     [[CCDirector sharedDirector] replaceScene:scene];
+}
+
+- (void)didPressButtonHome:(CCMenuItem *)sender
+{
+    CCScene *scene = [HomeScene scene];
+    [[CCDirector sharedDirector] replaceScene:scene];    
 }
 
 + (CCScene *)scene

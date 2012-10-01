@@ -27,7 +27,14 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        
+
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT_NAME fontSize:20];
+        label.position =  ccp(160, 440);
+        [self addChild:label];
+
+        // ---
+        [CCMenuItemFont setFontName:DL_FONT_NAME];
+
         SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
@@ -43,13 +50,7 @@
         
         // -- texture
         [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
-        
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT_NAME fontSize:20];
-        label.position =  ccp(160, 240);
-        [self addChild:label];
-        
-        [CCMenuItemFont setFontName:DL_FONT_NAME];
-	}
+    }
 	return self;
 }
 

@@ -25,7 +25,7 @@
 	if( (self=[super init]) ) {
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"GAMEOVER" fontName:DL_FONT_NAME fontSize:20];
-        label.position =  ccp(160, 240);
+        label.position =  ccp(160, 440);
         [self addChild:label];
         
 		// enable touch

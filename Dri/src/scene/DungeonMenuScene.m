@@ -24,8 +24,8 @@
 {
 	if( (self=[super init]) ) {
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"<ITEM MENU>" fontName:DL_FONT_NAME fontSize:20];
-        label.position =  ccp(160, 240);
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"ITEM MENU" fontName:DL_FONT_NAME fontSize:20];
+        label.position = ccp(160, 440);
         [self addChild:label];
         
 		// enable touch
