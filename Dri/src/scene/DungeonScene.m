@@ -49,8 +49,9 @@
         [self->dungeon_view update_curring_range];
         
         // setup dungeon model
-        dungeon_model = [[DungeonModel alloc] init:NULL];
+        dungeon_model = [[DungeonModel alloc] init];
         [dungeon_model add_observer:self];
+        // TODO: これを外から渡すようにする
         [dungeon_model load_from_file:@"floor001.json"];
 
         // setup player
