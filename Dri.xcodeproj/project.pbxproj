@@ -1221,11 +1221,11 @@
 			isa = PBXGroup;
 			children = (
 				C1CCAA9E1607556200A0EB1C /* scene */,
-				C1CCAA9A1607550A00A0EB1C /* misc */,
 				C11D62C215F19BCD00F7633D /* block_presentation */,
-				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1EEBD0915E84329007F1814 /* view */,
+				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1EEBD0815E8431E007F1814 /* model */,
+				C1CCAA9A1607550A00A0EB1C /* misc */,
 			);
 			name = src;
 			sourceTree = "<group>";
