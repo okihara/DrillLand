@@ -28,6 +28,10 @@
 		C1621D3C1619A03200AB73A0 /* DungeonPreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */; };
 		C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3D161A7D9200AB73A0 /* floor000.json */; };
 		C1621D40161A82E800AB73A0 /* floor002.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3F161A82E800AB73A0 /* floor002.json */; };
+		C1621D43161AC8CF00AB73A0 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D42161AC8CF00AB73A0 /* Quest.m */; };
+		C1621D4D161ACAFC00AB73A0 /* QuestCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D4C161ACAFC00AB73A0 /* QuestCondition.m */; };
+		C1621D50161ACB0600AB73A0 /* HuntingCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D4F161ACB0600AB73A0 /* HuntingCondition.m */; };
+		C1621D53161ACC0400AB73A0 /* PickCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D52161ACC0400AB73A0 /* PickCondition.m */; };
 		C183A136160EA7FE00FE672F /* AttackablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A135160EA7FD00FE672F /* AttackablePresentation.m */; };
 		C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13A160FFB7000FE672F /* ItemMaster.m */; };
 		C183A13E161115E500FE672F /* UserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13D161115E500FE672F /* UserItem.m */; };
@@ -255,6 +259,14 @@
 		C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonPreloadScene.m; path = src/scene/DungeonPreloadScene.m; sourceTree = "<group>"; };
 		C1621D3D161A7D9200AB73A0 /* floor000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor000.json; sourceTree = "<group>"; };
 		C1621D3F161A82E800AB73A0 /* floor002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor002.json; sourceTree = "<group>"; };
+		C1621D41161AC8CF00AB73A0 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quest.h; path = src/model/quest/Quest.h; sourceTree = "<group>"; };
+		C1621D42161AC8CF00AB73A0 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Quest.m; path = src/model/quest/Quest.m; sourceTree = "<group>"; };
+		C1621D4B161ACAFC00AB73A0 /* QuestCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestCondition.h; path = src/model/quest/QuestCondition.h; sourceTree = "<group>"; };
+		C1621D4C161ACAFC00AB73A0 /* QuestCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestCondition.m; path = src/model/quest/QuestCondition.m; sourceTree = "<group>"; };
+		C1621D4E161ACB0600AB73A0 /* HuntingCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HuntingCondition.h; path = src/model/quest/conditions/HuntingCondition.h; sourceTree = "<group>"; };
+		C1621D4F161ACB0600AB73A0 /* HuntingCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HuntingCondition.m; path = src/model/quest/conditions/HuntingCondition.m; sourceTree = "<group>"; };
+		C1621D51161ACC0400AB73A0 /* PickCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickCondition.h; path = src/model/quest/conditions/PickCondition.h; sourceTree = "<group>"; };
+		C1621D52161ACC0400AB73A0 /* PickCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickCondition.m; path = src/model/quest/conditions/PickCondition.m; sourceTree = "<group>"; };
 		C183A134160EA7FD00FE672F /* AttackablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttackablePresentation.h; path = src/block_presentation/AttackablePresentation.h; sourceTree = "<group>"; };
 		C183A135160EA7FD00FE672F /* AttackablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttackablePresentation.m; path = src/block_presentation/AttackablePresentation.m; sourceTree = "<group>"; };
 		C183A139160FFB7000FE672F /* ItemMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemMaster.h; path = src/model/item/ItemMaster.h; sourceTree = "<group>"; };
@@ -703,8 +715,24 @@
 		C1621D39161997CA00AB73A0 /* quest */ = {
 			isa = PBXGroup;
 			children = (
+				C1621D47161ACA1D00AB73A0 /* conditions */,
+				C1621D41161AC8CF00AB73A0 /* Quest.h */,
+				C1621D42161AC8CF00AB73A0 /* Quest.m */,
+				C1621D4B161ACAFC00AB73A0 /* QuestCondition.h */,
+				C1621D4C161ACAFC00AB73A0 /* QuestCondition.m */,
 			);
 			name = quest;
+			sourceTree = "<group>";
+		};
+		C1621D47161ACA1D00AB73A0 /* conditions */ = {
+			isa = PBXGroup;
+			children = (
+				C1621D4E161ACB0600AB73A0 /* HuntingCondition.h */,
+				C1621D4F161ACB0600AB73A0 /* HuntingCondition.m */,
+				C1621D51161ACC0400AB73A0 /* PickCondition.h */,
+				C1621D52161ACC0400AB73A0 /* PickCondition.m */,
+			);
+			name = conditions;
 			sourceTree = "<group>";
 		};
 		C183A138160FFB1100FE672F /* item */ = {
@@ -1639,6 +1667,10 @@
 				C1937C4A1617D05A007A8D05 /* HomeScene.m in Sources */,
 				C1937C4E1617D126007A8D05 /* SelectQuestScene.m in Sources */,
 				C1621D3C1619A03200AB73A0 /* DungeonPreloadScene.m in Sources */,
+				C1621D43161AC8CF00AB73A0 /* Quest.m in Sources */,
+				C1621D4D161ACAFC00AB73A0 /* QuestCondition.m in Sources */,
+				C1621D50161ACB0600AB73A0 /* HuntingCondition.m in Sources */,
+				C1621D53161ACC0400AB73A0 /* PickCondition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
