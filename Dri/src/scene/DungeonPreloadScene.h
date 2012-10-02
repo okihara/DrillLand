@@ -8,9 +8,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface DungeonPreloadScene : CCLayer
+@class DungeonModel;
 
-+(CCScene*)scene;
+@interface DungeonPreloadScene : CCLayer
+{
+    DungeonModel *dungeon_model;
+}
+
++ (CCScene *)sceneWithDungeonId:(uint)dungeon_id;
 
 @end
 

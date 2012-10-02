@@ -22,16 +22,16 @@
 @implementation DungeonScene
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
-+(CCScene *) scene
++ (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model
 {
 	CCScene *scene = [CCScene node];
-	CCLayer *layer = [DungeonScene node];
+	CCLayer *layer = [[[DungeonScene alloc] initWithDungeonModel:dungeon_model] autorelease];
 	[scene addChild: layer];
 	return scene;
 }
 
 // on "init" you need to initialize your instance
--(id) init
+- (id) initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
 	if( (self=[super init]) ) {
         
@@ -49,10 +49,10 @@
         [self->dungeon_view update_curring_range];
         
         // setup dungeon model
-        dungeon_model = [[DungeonModel alloc] init];
-        [dungeon_model add_observer:self];
-        // TODO: これを外から渡すようにする
-        [dungeon_model load_from_file:@"floor001.json"];
+        self->dungeon_model = dungeon_model_;
+        [self->dungeon_model add_observer:self];
+//        // TODO: これを外から渡すようにする
+//        [dungeon_model load_from_file:@"floor001.json"];
 
         // setup player
         BlockView* player = [BlockViewBuilder create:dungeon_model.player ctx:dungeon_model];  

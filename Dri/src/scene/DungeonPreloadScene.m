@@ -25,12 +25,21 @@
     return self;
 }
 
+- (void)start_load:(uint)dungeon_id
+{
+    // setup dungeon model
+    self->dungeon_model = [[DungeonModel alloc] init];
+    [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];
+}
+
 - (void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
 //
+    DungeonPreloadScene *this = self;
     CCCallBlock *cb = [CCCallBlock actionWithBlock:^(){
-        CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:[DungeonScene scene] withColor:ccc3(0, 0, 0)];
+        CCScene *next_scene = [DungeonScene sceneWithDungeonModel:this->dungeon_model];
+        CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:next_scene withColor:ccc3(0, 0, 0)];
         [[CCDirector sharedDirector] replaceScene:trans];        
     }];
     
@@ -42,17 +51,19 @@
 {
     // IMPLEMENT:
     // EXAMPLE:
-    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:1.0 scene:[DungeonScene scene] withColor:ccc3(0, 0, 0)];
-    [[CCDirector sharedDirector] replaceScene:trans];
+    //CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:1.0 scene:[DungeonScene scene] withColor:ccc3(0, 0, 0)];
+    //[[CCDirector sharedDirector] replaceScene:trans];
 }
 
-+ (CCScene *)scene
++ (CCScene *)sceneWithDungeonId:(uint)dungeon_id
 {
     CCScene *scene = [CCScene node];
-    CCLayer *layer = [DungeonPreloadScene node];
+    DungeonPreloadScene *layer = [DungeonPreloadScene node];
     [scene addChild:layer];
+    
+    [layer start_load:dungeon_id];
+    
     return scene;
 }
 
 @end
-

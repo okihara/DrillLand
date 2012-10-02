@@ -30,7 +30,8 @@
     StatusBarView     *statusbar;
 }
 
-+ (CCScene *)scene;
++ (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model;
+- (id) initWithDungeonModel:(DungeonModel*)dungeon_model;
 - (void)run_sequence;
 - (CCAction*)animate;
 - (void)run_first_sequece;

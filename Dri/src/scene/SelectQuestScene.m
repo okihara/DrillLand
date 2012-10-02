@@ -53,7 +53,9 @@
 
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    CCScene *scene = [DungeonPreloadScene scene];
+    uint dungeon_id = 0;
+    
+    CCScene *scene = [DungeonPreloadScene sceneWithDungeonId:dungeon_id];
     CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
     [[CCDirector sharedDirector] replaceScene:trans];
 }
