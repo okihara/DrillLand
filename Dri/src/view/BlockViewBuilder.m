@@ -17,9 +17,6 @@
 
 @implementation BlockViewBuilder
 
-// TODO: なんていうか、switch でやるのはいけてないよねー
-// Command パターン
-
 + (void)add_route_num:(BlockModel *)b ctx:(DungeonModel *)ctx block:(BlockView *)block
 {
     // 経路探索の結果を数字で表示
@@ -39,6 +36,10 @@
     label.visible = b.can_tap; // タップ出来ないときは数字を見せない
     [block addChild:label];
 }
+
+
+// TODO: なんていうか、switch でやるのはいけてないよねー
+// Command パターン
 
 + (BlockView *)create:(BlockModel*)b ctx:(DungeonModel*)ctx
 {
