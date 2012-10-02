@@ -79,11 +79,13 @@
     [[block texture] setAliasTexParameters];
     
     switch (b.type) {
+            
         case ID_EMPTY:
         {
             //[self add_route_num:b ctx:ctx block:block];
         }
             break;
+            
         case ID_PLAYER:
         {
             block.scale = 2.0;
@@ -109,6 +111,7 @@
             [block play_anime:@"walk"];
         }
             break;
+            
         case ID_ENEMY_BLOCK_0:
             [block play_anime:@"action0"];
         case ID_ENEMY_BLOCK_1:
@@ -134,9 +137,10 @@
             }
         }            
             break;
+            
         case ID_ITEM_BLOCK_0:
         {
-            
+            //block.scale = 2.0f;   
             [self add_can_destroy_num:b block:block];
             {
                 NSObject<BlockPresentation>* p;
@@ -146,6 +150,7 @@
             }
         }
             break;
+            
         default:
         {
             [self add_can_destroy_num:b block:block];

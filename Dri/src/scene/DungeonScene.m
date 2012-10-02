@@ -51,8 +51,6 @@
         // setup dungeon model
         self->dungeon_model = dungeon_model_;
         [self->dungeon_model add_observer:self];
-//        // TODO: これを外から渡すようにする
-//        [dungeon_model load_from_file:@"floor001.json"];
 
         // setup player
         BlockView* player = [BlockViewBuilder create:dungeon_model.player ctx:dungeon_model];  

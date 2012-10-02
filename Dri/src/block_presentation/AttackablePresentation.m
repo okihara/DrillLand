@@ -31,7 +31,7 @@
                 CCCallBlock *act_walk = [CCCallFuncO actionWithTarget:block_view selector:@selector(play_anime:) object:@"walk"];
                 return [CCSequence actions:
                         [CCTargetedAction actionWithTarget:block_view action:anim_attack],
-                        [CCDelayTime actionWithDuration:1.0f / 4],
+                        [CCDelayTime actionWithDuration:1.0f / 10],
                         act_walk,
                         nil];
             } else {
@@ -39,7 +39,7 @@
                 CCCallFuncO *act_walk = [CCCallFuncO actionWithTarget:block_view selector:@selector(play_anime:) object:@"action0"];
                 return [CCSequence actions:
                         [CCTargetedAction actionWithTarget:block_view action:anim_attack],
-                        [CCDelayTime actionWithDuration:1.0f / 4],
+                        [CCDelayTime actionWithDuration:1.0f / 10],
                         act_walk,
                         nil];
             }

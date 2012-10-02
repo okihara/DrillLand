@@ -13,6 +13,7 @@
 #import "SpriteFrameLoader.h"
 #import "AnimationLoader.h"
 #import "HomeScene.h"
+#import "DungeonPreloadScene.h"
 
 @implementation GamePreloadScene
 
@@ -54,10 +55,17 @@
 	return self;
 }
 
+-(void)goto_dungeon
+{
+    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:0];
+    [[CCDirector sharedDirector] replaceScene:next_scene];
+}
+
 -(void)onEnter
 {
     [super onEnter];
     
+    //[self goto_dungeon];
     [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 

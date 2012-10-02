@@ -50,7 +50,7 @@
         self->effect_launcher.target_layer = self->effect_layer;
         
         // fade_layer
-        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 128)] retain];
+        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
         [self addChild:self->fade_layer];
 	}
 	return self;
