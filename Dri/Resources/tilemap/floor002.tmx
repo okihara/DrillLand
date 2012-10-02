@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="5" height="100" tilewidth="60" tileheight="60">
+ <tileset firstgid="1" name="floor1" tilewidth="60" tileheight="60">
+  <image source="../spritesheet/floor1.png" width="512" height="512"/>
+  <tile id="0">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="0"/>
+    <property name="type" value="0"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="1000"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="group_id" value="2"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="1001"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="group_id" value="3"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="1002"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="group_id" value="4"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="1003"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="3"/>
+    <property name="type" value="2000"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="10"/>
+    <property name="type" value="2001"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="65535"/>
+    <property name="type" value="1999"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="group_id" value="0"/>
+    <property name="hp" value="1"/>
+    <property name="type" value="3000"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="main" width="5" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztkVEKwDAIQ6W2XXv/C4+Bwpv4MxgMhoGARjHWiryLZZyIPZ9B/0r7ExtiNV5aN2rof6KNhCvJ3TP6Mh5y39k1BTvqnDWCnnnTS9HDWoN3zPl+3nTLHRvzInkXakeixb7Ijf2a5dn/FwqFguMELooFCw==
+  </data>
+ </layer>
+</map>

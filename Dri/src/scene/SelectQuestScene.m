@@ -27,9 +27,9 @@
         town_banner.position = ccp(160, 390);
         [self addChild:town_banner];
         
-        CCMenuItemFont *item_quest_1 = [CCMenuItemFont itemWithString:@"QUEST<1>" target:self selector:@selector(didPressButton:)];
-        CCMenuItemFont *item_quest_2 = [CCMenuItemFont itemWithString:@"QUEST<2>" target:self selector:@selector(didPressButton:)];
-        CCMenuItemFont *item_quest_3 = [CCMenuItemFont itemWithString:@"QUEST<3>" target:self selector:@selector(didPressButton:)];
+        CCMenuItemFont *item_quest_1 = [CCMenuItemFont itemWithString:@"QUEST<1>" target:self selector:@selector(didPressButton_0:)];
+        CCMenuItemFont *item_quest_2 = [CCMenuItemFont itemWithString:@"QUEST<2>" target:self selector:@selector(didPressButton_1:)];
+        CCMenuItemFont *item_quest_3 = [CCMenuItemFont itemWithString:@"QUEST<3>" target:self selector:@selector(didPressButton_2:)];
         CCMenuItemFont *item_home    = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
         CCMenu *menu = [CCMenu menuWithItems:
                         item_quest_1,
@@ -51,13 +51,29 @@
     // [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
 }
 
-- (void)didPressButton:(CCMenuItem *)sender
+- (void)goto_dungeon_scene:(uint)dungeon_id
 {
-    uint dungeon_id = 0;
-    
     CCScene *scene = [DungeonPreloadScene sceneWithDungeonId:dungeon_id];
     CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
     [[CCDirector sharedDirector] replaceScene:trans];
+}
+
+- (void)didPressButton_0:(CCMenuItem *)sender
+{
+    uint dungeon_id = 0;
+    [self goto_dungeon_scene:dungeon_id];
+}
+
+- (void)didPressButton_1:(CCMenuItem *)sender
+{
+    uint dungeon_id = 1;
+    [self goto_dungeon_scene:dungeon_id];
+}
+
+- (void)didPressButton_2:(CCMenuItem *)sender
+{
+    uint dungeon_id = 2;
+    [self goto_dungeon_scene:dungeon_id];
 }
 
 - (void)didPressButtonHome:(CCMenuItem *)sender

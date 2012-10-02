@@ -8,6 +8,7 @@
 
 #import "DungeonMenuScene.h"
 #import "DungeonScene.h"
+#import "HomeScene.h"
 
 @implementation DungeonMenuScene
 
@@ -30,6 +31,15 @@
         
 		// enable touch
         self.isTouchEnabled = YES;
+        
+        // IMPLEMENT:
+        CCMenuItemFont *item_home = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
+        CCMenu *menu = [CCMenu menuWithItems:
+                        item_home,
+                        nil];
+        menu.position = ccp(160, 220);
+        [menu alignItemsVertically];
+        [self addChild:menu];
 	}
 	return self;
 }
@@ -37,6 +47,13 @@
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     [[CCDirector sharedDirector] popScene];
+}
+
+- (void)didPressButtonHome:(CCMenuItem *)sender
+{
+    CCScene *next_scene = [HomeScene scene];
+    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:next_scene withColor:ccc3(0, 0, 0)];
+    [[CCDirector sharedDirector] replaceScene:trans];
 }
 
 @end

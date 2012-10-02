@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C102EAC615E8E2A5000E8366 /* floor001.json in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC415E8E2A5000E8366 /* floor001.json */; };
-		C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC515E8E2A5000E8366 /* floor001.tmx */; };
 		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
 		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
 		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
@@ -28,6 +27,7 @@
 		C1621D3816198B2600AB73A0 /* home000.png in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3616198B2600AB73A0 /* home000.png */; };
 		C1621D3C1619A03200AB73A0 /* DungeonPreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */; };
 		C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3D161A7D9200AB73A0 /* floor000.json */; };
+		C1621D40161A82E800AB73A0 /* floor002.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3F161A82E800AB73A0 /* floor002.json */; };
 		C183A136160EA7FE00FE672F /* AttackablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A135160EA7FD00FE672F /* AttackablePresentation.m */; };
 		C183A13B160FFB7000FE672F /* ItemMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13A160FFB7000FE672F /* ItemMaster.m */; };
 		C183A13E161115E500FE672F /* UserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C183A13D161115E500FE672F /* UserItem.m */; };
@@ -223,7 +223,6 @@
 
 /* Begin PBXFileReference section */
 		C102EAC415E8E2A5000E8366 /* floor001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor001.json; sourceTree = "<group>"; };
-		C102EAC515E8E2A5000E8366 /* floor001.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = floor001.tmx; sourceTree = "<group>"; };
 		C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakableBehaivior.h; path = src/block_behavior/BreakableBehaivior.h; sourceTree = "<group>"; };
 		C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakableBehaivior.m; path = src/block_behavior/BreakableBehaivior.m; sourceTree = "<group>"; };
 		C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggressiveBehaivior.h; path = src/block_behavior/AggressiveBehaivior.h; sourceTree = "<group>"; };
@@ -255,6 +254,7 @@
 		C1621D3A1619A03100AB73A0 /* DungeonPreloadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonPreloadScene.h; path = src/scene/DungeonPreloadScene.h; sourceTree = "<group>"; };
 		C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonPreloadScene.m; path = src/scene/DungeonPreloadScene.m; sourceTree = "<group>"; };
 		C1621D3D161A7D9200AB73A0 /* floor000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor000.json; sourceTree = "<group>"; };
+		C1621D3F161A82E800AB73A0 /* floor002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor002.json; sourceTree = "<group>"; };
 		C183A134160EA7FD00FE672F /* AttackablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttackablePresentation.h; path = src/block_presentation/AttackablePresentation.h; sourceTree = "<group>"; };
 		C183A135160EA7FD00FE672F /* AttackablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttackablePresentation.m; path = src/block_presentation/AttackablePresentation.m; sourceTree = "<group>"; };
 		C183A139160FFB7000FE672F /* ItemMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemMaster.h; path = src/model/item/ItemMaster.h; sourceTree = "<group>"; };
@@ -650,7 +650,7 @@
 			children = (
 				C1621D3D161A7D9200AB73A0 /* floor000.json */,
 				C102EAC415E8E2A5000E8366 /* floor001.json */,
-				C102EAC515E8E2A5000E8366 /* floor001.tmx */,
+				C1621D3F161A82E800AB73A0 /* floor002.json */,
 			);
 			name = tilemap;
 			path = Resources/tilemap;
@@ -1432,7 +1432,6 @@
 				C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */,
 				C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */,
 				C102EAC615E8E2A5000E8366 /* floor001.json in Resources */,
-				C102EAC715E8E2A5000E8366 /* floor001.tmx in Resources */,
 				C11D62BB15ED7EBF00F7633D /* blood.plist in Resources */,
 				C1CCAA7F1605CC4300A0EB1C /* heal.plist in Resources */,
 				C1CCAA811605D2EF00A0EB1C /* heal.png in Resources */,
@@ -1474,6 +1473,7 @@
 				C1621D3716198B2600AB73A0 /* guild000.png in Resources */,
 				C1621D3816198B2600AB73A0 /* home000.png in Resources */,
 				C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */,
+				C1621D40161A82E800AB73A0 /* floor002.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
