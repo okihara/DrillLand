@@ -40,7 +40,7 @@
         [self->base_layer addChild:self->block_layer];
         
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
-        sky.position = ccp(160, 480 - 64 - 11);
+        sky.position = ccp(160, 480 - 256 / 2);
         [self->base_layer addChild:sky];
         
         self->effect_layer = [[CCLayer alloc] init];
