@@ -31,5 +31,6 @@ enum DL_EVENT_TYPE {
 @property (readonly, assign) NSMutableDictionary *params;
 
 +(DLEvent*)eventWithType:(enum DL_EVENT_TYPE)type target:(id)target;
+-(NSString*)get_event_text;
 
 @end

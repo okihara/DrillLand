@@ -152,8 +152,12 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
+    NSLog(@"[EVENT] on_hit -------------");
+
     // モデルへ通知
     BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+    NSLog(@"[EVENT] ");
+
     if (!changed) { return; }
     
     // タップ後のシーケンス再生
@@ -239,7 +243,6 @@
     
     while (e) {
         
-        NSLog(@"[EVENT_N] type:%d", e.type);
         CCAction *act = [self->dungeon_view notify:self->dungeon_model event:e];
         if (act) {
             [actions addObject:act];
@@ -341,7 +344,8 @@
 
 -(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
-    NSLog(@"[EVENT] type:%d", event.type);
+    BlockModel *block = event.target;
+    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.type, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
     
     switch (event.type) {
             
