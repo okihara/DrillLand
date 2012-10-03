@@ -43,7 +43,7 @@
     [block clear];
     
     // TODO: とりあえずすぎる
-    if (rand() % 30 == 0) {
+    if (rand() % 15 == 0) {
 
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];

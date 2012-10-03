@@ -13,7 +13,7 @@
 
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    //BlockModel *b = e.target;
+    // BlockModel *block = e.target;
     switch (e.type) {
             
         case DL_ON_HIT:
@@ -42,7 +42,8 @@
         case DL_ON_CHANGE:
         {
             view_.is_change = YES;
-            return nil;
+            return [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
+//            return nil;
         }
             break;
             
