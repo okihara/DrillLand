@@ -13,9 +13,9 @@
 
 @implementation QuestFactory
 
--(Quest*)make_test
++(Quest*)make_test
 {
-    QuestCondition *pick_cond = [QuestCondition new];
+    QuestCondition *pick_cond = [PickCondition new];
     Quest *quest = [[Quest alloc] initWithQuestId:0 conditions:[NSArray arrayWithObjects:pick_cond, nil]];
     return quest;
 }

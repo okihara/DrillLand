@@ -22,15 +22,18 @@
 - (id)init
 {
     if (self = [super init]) {
+
+        self->lowest_empty_y = 5;
+
+        self->observer_list = [[NSMutableArray array] retain];
         self->block_builder = [[BlockBuilder alloc] init];
         self->player = [block_builder buildWithID:ID_PLAYER];
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
+
         [self _fill_blocks];
-        
-        self->lowest_empty_y = 5;
     }
     return self;
 }
@@ -54,7 +57,7 @@
 
 -(void) add_observer:(id<DungenModelObserver>)observer_
 {
-    self->observer = observer_;
+    [self->observer_list addObject:observer_];
 }
 
 -(void)on_update
@@ -110,7 +113,7 @@
     }
     if (target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
-        [self->observer notify:self event:event];
+        [self dispatchEvent:event];
         return NO;
     }
     
@@ -135,7 +138,9 @@
 
 -(void) dispatchEvent:(DLEvent*)e
 {
-    [self->observer notify:self event:e];
+    for (id<DungenModelObserver> observer_ in self->observer_list) {
+        [observer_ notify:self event:e];
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------------------

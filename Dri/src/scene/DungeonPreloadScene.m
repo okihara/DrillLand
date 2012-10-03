@@ -7,6 +7,7 @@
 
 #import "DungeonPreloadScene.h"
 #import "DungeonScene.h"
+#import "QuestFactory.h"
 
 @implementation DungeonPreloadScene
 
@@ -29,6 +30,9 @@
 {
     // setup dungeon model
     self->dungeon_model = [[DungeonModel alloc] init];
+    
+    
+    [self->dungeon_model add_observer:[QuestFactory make_test]];
     [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];
 }
 

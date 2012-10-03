@@ -38,6 +38,7 @@
     NSMutableArray *route_list;
 
     id<DungenModelObserver> observer;
+    NSMutableArray *observer_list;
 
     // ファイルから読む部分で使ってる
     // load_from_file 別クラス化できそう

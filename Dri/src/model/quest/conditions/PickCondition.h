@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QuestCondition.h"
 
-@interface PickCondition : NSObject
+@interface PickCondition : QuestCondition
+{
+    uint block_id;
+    uint num_required;
+    
+    uint counter;
+}
 
 @end

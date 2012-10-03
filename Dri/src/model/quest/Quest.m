@@ -15,9 +15,16 @@
 {
     if(self = [super init]) {
         self->quest_id = quest_id_;
-        self->condition_list = conditions;
+        self->condition_list = [conditions retain];
     }
     return self;
+}
+
+- (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
+{
+    for (QuestCondition *quest_cond in self->condition_list) {
+        [quest_cond notify:dungeon_ event:e];
+    }
 }
 
 -(void)judge:(void*)environment

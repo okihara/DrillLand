@@ -10,6 +10,10 @@
 
 @implementation QuestCondition
 
+- (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
+{
+}
+
 -(BOOL)judge:(void*)environment
 {
     // クリア条件に達していたら

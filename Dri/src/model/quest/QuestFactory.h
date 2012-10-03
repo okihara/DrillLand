@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Quest.h"
 
 @interface QuestFactory : NSObject
+
++(Quest*)make_test;
 
 @end

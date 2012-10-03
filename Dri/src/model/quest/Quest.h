@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DungeonModel.h"
 
-@interface Quest : NSObject
+@interface Quest : NSObject<DungenModelObserver>
 {
     uint quest_id;
     NSArray *condition_list;
