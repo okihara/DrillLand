@@ -30,16 +30,19 @@
 {
     // setup dungeon model
     self->dungeon_model = [[DungeonModel alloc] init];
+
+    // setup quest
+    Quest *quest = [QuestFactory make_test];
+    [self->dungeon_model add_observer:quest];
     
-    
-    [self->dungeon_model add_observer:[QuestFactory make_test]];
+    // load dungeon data
     [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];
 }
 
 - (void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-//
+
     DungeonPreloadScene *this = self;
     CCCallBlock *cb = [CCCallBlock actionWithBlock:^(){
         CCScene *next_scene = [DungeonScene sceneWithDungeonModel:this->dungeon_model];
