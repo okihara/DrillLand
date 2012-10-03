@@ -12,6 +12,8 @@
 
 -(BOOL)judge:(void*)environment
 {
+    // クリア条件に達していたら
+    // イベント投げる
     return NO;
 }
 

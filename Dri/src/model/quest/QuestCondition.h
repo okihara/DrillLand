@@ -13,4 +13,6 @@
     uint type_id;
 }
 
+-(BOOL)judge:(void*)environment;
+
 @end

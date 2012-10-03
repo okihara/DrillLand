@@ -11,9 +11,10 @@
 @interface Quest : NSObject
 {
     uint quest_id;
-    NSMutableArray *condition_list;
+    NSArray *condition_list;
 }
 
+-(id)initWithQuestId:(uint)quest_id_ conditions:(NSArray*)conditions;
 -(void)judge:(void*)environment;
 
 @end
