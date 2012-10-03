@@ -60,7 +60,7 @@
 
         // 勇者を初期位置に
         [dungeon_view update_view:dungeon_model];
-        CGPoint p_pos = [dungeon_view model_to_local:cdp(5,1)];
+        CGPoint p_pos = [dungeon_view model_to_local:cdp(5,3)];
         player.position = p_pos;
         
         // fade 用のレイヤー
@@ -114,7 +114,7 @@
 
     // 勇者がてくてく歩く
     CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
-    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,1)];
+    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,3)];
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;

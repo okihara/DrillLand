@@ -23,7 +23,7 @@
 
         // IMPLEMENT:
         CCSprite *town_banner = [CCSprite spriteWithFile:@"home000.png"];
-        town_banner.position = ccp(160, 428);
+        town_banner.position = ccp(160, 390);
         [self addChild:town_banner];
         
         
@@ -41,7 +41,7 @@
                         item_info,
                         item_config,
                         nil];
-        menu.position = ccp(160, 220);
+        menu.position = ccp(160, 160);
         [menu alignItemsVertically];
         [self addChild:menu];
     }
@@ -61,8 +61,11 @@
 
 - (void)didPressButton:(CCMenuItem *)sender
 {
+    // TODO: fade の処理が散らばるなあ。。。
+    // CCDirector に protocol でトランジッション指定できる replaceScene 作ったらいいかも
     CCScene *scene = [SelectQuestScene scene];
-    [[CCDirector sharedDirector] replaceScene:scene];
+    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
+    [[CCDirector sharedDirector] replaceScene:trans];
 }
 
 + (CCScene *)scene

@@ -95,6 +95,11 @@
     self->player.pos = next_pos;
 }
 
+-(BOOL)judge_quest_cleared
+{
+    return NO;
+}
+
 -(BOOL) on_hit:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
@@ -117,6 +122,9 @@
     
     // ブロックのアップデートフェイズ
     [self on_update];
+    
+    // hoge
+    // [self judge_quest_cleared];
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
