@@ -33,6 +33,7 @@
         CCMenuItemFont *item_status = [CCMenuItemFont itemWithString:@"STATUS" target:self selector:@selector(didPressButton_null:)];
         CCMenuItemFont *item_info = [CCMenuItemFont itemWithString:@"INFO" target:self selector:@selector(didPressButton_null:)];
         CCMenuItemFont *item_config = [CCMenuItemFont itemWithString:@"CONFIG" target:self selector:@selector(didPressButton_null:)];
+        
         CCMenu *menu = [CCMenu menuWithItems:
                         item_quest,
                         item_item,

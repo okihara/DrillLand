@@ -60,21 +60,32 @@
     [self->observer_list addObject:observer_];
 }
 
--(void)on_update
+-(void) dispatchEvent:(DLEvent*)e
 {
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
-            BlockModel* b = [self get:cdp(i, j)];
-            [b on_update:self];
-        }
+    for (id<DungenModelObserver> observer_ in self->observer_list) {
+        [observer_ notify:self event:e];
     }
 }
 
+//-----------------------------------------------------------------------------------------------------------------
+//
+// 更新系
+//
+//-----------------------------------------------------------------------------------------------------------------
+
+// -- プレイヤーの移動フェイズ
+- (void)move_player:(DLPoint)pos
+{
+    [self update_route_map:pos target:player.pos];
+    DLPoint next_pos = [self get_player_pos:player.pos];
+    self->player.pos = next_pos;
+}
+
+// -- ブロックのヒット処理フェイズ
 - (void)on_hit_block:(DLPoint)pos
 {
-    // -- ブロックのヒット処理フェイズ
     BlockModel* b = [self get:pos];
-
+    
     // TODO: 
     DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self->player];
     [self dispatchEvent:e];
@@ -90,12 +101,14 @@
     }
 }
 
-- (void)move_player:(DLPoint)pos
+-(void)on_update
 {
-    // -- プレイヤーの移動フェイズ
-    [self update_route_map:pos target:player.pos];
-    DLPoint next_pos = [self get_player_pos:player.pos];
-    self->player.pos = next_pos;
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self get:cdp(i, j)];
+            [b on_update:self];
+        }
+    }
 }
 
 -(BOOL)judge_quest_cleared
@@ -117,16 +130,16 @@
         return NO;
     }
     
-    // PLAYER の移動
+    // プレイヤーの移動
     [self move_player:pos];
 
     // ブロックのヒットフェイズ
     [self on_hit_block:pos];
     
-    // ブロックのアップデートフェイズ
+    // ブロック(プレイヤー以外の)のアップデートフェイズ
     [self on_update];
     
-    // hoge
+    // クリア判定
     // [self judge_quest_cleared];
     
     // ここはシーンから呼ぶほうがいいか
@@ -136,12 +149,6 @@
     return YES;
 }
 
--(void) dispatchEvent:(DLEvent*)e
-{
-    for (id<DungenModelObserver> observer_ in self->observer_list) {
-        [observer_ notify:self event:e];
-    }
-}
 
 //-----------------------------------------------------------------------------------------------------------------
 //
