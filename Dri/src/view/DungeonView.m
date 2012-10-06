@@ -69,6 +69,7 @@
 -(void)add_block:(BlockView*)block
 {
     // TODO: プレイヤーを一番上にするために。。。
+    // TODO: プレイヤー専用やん。。。
     [self->effect_layer addChild:block];    
 }
 
