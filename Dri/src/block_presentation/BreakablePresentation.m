@@ -35,7 +35,7 @@
                 [ctx launch_particle:@"block" position:view_.position];
             }];
             
-            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:view_ action:[CCMoveBy actionWithDuration:1.0f position:ccp(0, 60)]];
+            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:view_ action:[CCJumpBy actionWithDuration:0.5f position:ccp(0, 0) height:60 jumps:3]];
 
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
                 view_.is_alive = NO;

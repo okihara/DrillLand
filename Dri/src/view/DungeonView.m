@@ -85,7 +85,7 @@
     BlockModel *block_model = [dungeon_model get:cdp(x, y)];
     
     // 既に描画済みなら描画しない
-    if (block) {
+    if (block || block_model.type == ID_EMPTY) {
         return;
     }
     
