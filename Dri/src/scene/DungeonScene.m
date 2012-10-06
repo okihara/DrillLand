@@ -87,16 +87,16 @@
 	return self;
 }
 
-- (void)didPressButton:(CCMenuItem *)sender
-{
-    CCScene *scene = [DungeonMenuScene scene];
-    [[CCDirector sharedDirector] pushScene:scene];
-}
-
 - (void) dealloc
 {
     [dungeon_model release];
     [super dealloc];
+}
+
+- (void)didPressButton:(CCMenuItem *)sender
+{
+    CCScene *scene = [DungeonMenuScene scene];
+    [[CCDirector sharedDirector] pushScene:scene];
 }
 
 
@@ -119,8 +119,6 @@
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;
     }], nil]];
-
-    //self.isTouchEnabled = YES;
 }
 
 
@@ -263,7 +261,7 @@
 
     // 描画イベント全部処理して、死んでたら
     CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
-        NSLog(@"[SUICIDE] %d %d", b.pos.x, b.pos.y);
+        NSLog(@"[SUICIDE] %d %d %d", b.type, b.pos.x, b.pos.y);
         [self->dungeon_view remove_block_view_if_dead:b.pos];
     }];
     [actions addObject:act_suicide];
