@@ -100,6 +100,7 @@
 
 -(void)_attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
+    // TODO: ちゃんとして計算式を
     int damage = self.atk - target.def;
     damage += rand() % 3 - 1;
     
