@@ -21,12 +21,15 @@
     // この２つは１つの型に出来る
     int disp_w;
     int disp_h;
+
     
+    // スクロール/カリング
     int offset_y;
     int latest_remove_y;
 
     int curring_top;
     int curring_bottom;
+    
     
     ObjectXDMap *view_map;
     
@@ -46,6 +49,7 @@
 - (void)add_block:(BlockView*)block;
 
 // 描画
+- (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model;
 - (void)update_view_line:(int)y dungeon_model:(DungeonModel *)dungeon_model;
 - (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;

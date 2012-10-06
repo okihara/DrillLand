@@ -84,19 +84,10 @@
     BlockView *block = [view_map get_x:x y:y];
     BlockModel *block_model = [dungeon_model get:cdp(x, y)];
     
-    
-    // TODO: 何かしら変えるべき
-    // -----------------------------------------------------
-    if (block.is_change) {
-        [self remove_block_view:block_model.pos];
-    }
     // 既に描画済みなら描画しない
-    if (block && !block.is_change) {
+    if (block) {
         return;
     }
-    block.is_change = NO;
-    // -----------------------------------------------------
-    
     
     block = [BlockViewBuilder create:block_model ctx:dungeon_model];
     block.position = [self model_to_local:cdp(x, y)];
@@ -178,8 +169,7 @@
 //===============================================================
 //
 // スクロール関係
-// TODO: dungeon_view 移動
-// カリングの機能は view が持つべき
+// カリング関係
 //
 //===============================================================
 

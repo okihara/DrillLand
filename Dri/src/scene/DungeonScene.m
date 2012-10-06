@@ -235,8 +235,12 @@
     }
     
     NSMutableArray *actions = [NSMutableArray array];
+    
+    // 先頭のイベントを取得
+    // TODO: 下の処理と被ってる
     DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
-
+    [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
+    
     BlockModel *b = (BlockModel*)e.target;
     
     while (e) {
@@ -252,7 +256,12 @@
         if (![self->events count]) {
             break;
         }
+        
+        // 先頭のイベントを取得
+        // TODO: 上の処理と被ってる
         e = (DLEvent*)[self->events objectAtIndex:0];
+        [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
+
         if( e.type == DL_ON_HIT ) {
             break;
         }

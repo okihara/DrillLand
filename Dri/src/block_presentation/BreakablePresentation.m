@@ -13,7 +13,7 @@
 
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    // BlockModel *block = e.target;
+    BlockModel *block = e.target;
     switch (e.type) {
             
         case DL_ON_HIT:
@@ -31,19 +31,33 @@
             
         case DL_ON_DESTROY:
         {
-            CCCallBlock *act = [CCCallBlock actionWithBlock:^{
+            CCCallBlock *act_0 = [CCCallBlock actionWithBlock:^{
                 [ctx launch_particle:@"block" position:view_.position];
-                view_.is_alive = NO;
             }];
-            return [CCSequence actions:act, [CCDelayTime actionWithDuration:0.10], nil];
+            
+            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:view_ action:[CCMoveBy actionWithDuration:1.0f position:ccp(0, 60)]];
+
+            CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
+                view_.is_alive = NO;
+                [ctx remove_block_view_if_dead:block.pos];
+            }];
+
+            return [CCSequence actions:act_0, act_1, act_2, nil];
         }
             break;
             
         case DL_ON_CHANGE:
         {
-            view_.is_change = YES;
-            return [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
-//            return nil;
+            CCTargetedAction *act_0 =  [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
+            CCCallBlock *act_1 = [CCCallBlock actionWithBlock:^{
+                
+                DungeonModel *dungeon_model = [e.params objectForKey:@"dungeon_model"];
+                [ctx remove_block_view:block.pos];
+                [ctx update_block:block.pos.y x:block.pos.x dungeon_model:dungeon_model];
+            
+            }];
+
+            return [CCSequence actions:act_0, act_1, nil];
         }
             break;
             

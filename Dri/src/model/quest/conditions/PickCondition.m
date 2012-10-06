@@ -22,7 +22,7 @@
 - (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)event
 {
     BlockModel *block = event.target;
-    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.type, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
+    //NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.type, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
     
     switch (event.type) {
             
