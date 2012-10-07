@@ -41,7 +41,7 @@
                 view_.is_alive = NO;
                 [ctx remove_block_view_if_dead:block.pos];
             }];
-
+            
             return [CCSequence actions:act_0, act_1, act_2, nil];
         }
             break;

@@ -13,7 +13,7 @@
 
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    //BlockModel *b = e.target;
+    BlockModel *block = e.target;
     switch (e.type) {
             
         case DL_ON_HIT:
@@ -25,8 +25,11 @@
             
         case DL_ON_DESTROY:
         {
-            view_.is_alive = NO;
-            return nil;
+            CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
+                view_.is_alive = NO;
+                [ctx remove_block_view_if_dead:block.pos];
+            }];
+            return act_2;
         }
             break;
             

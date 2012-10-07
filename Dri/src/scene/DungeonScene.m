@@ -150,16 +150,31 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    NSLog(@"[EVENT] on_hit -------------");
+    uint state = 0;
 
-    // モデルへ通知
-    BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
-    NSLog(@"[EVENT] ");
-
-    if (!changed) { return; }
-    
-    // タップ後のシーケンス再生
-    [self run_sequence];
+    switch (state) {
+            
+        case 0:
+        {
+            // モデルへ通知
+            BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+            
+            if (!changed) { return; }
+            
+            // タップ後のシーケンス再生
+            [self run_sequence];
+        }
+            break;
+            
+        case 1:
+        {
+            // クリア時のステート
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
