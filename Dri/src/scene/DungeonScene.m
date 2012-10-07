@@ -150,6 +150,8 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
+    // TODO: ステートの処理、大きくなりそうなら別クラス化
+    
     uint state = 0;
 
     switch (state) {
@@ -189,7 +191,8 @@
     // アクションのシーケンスを作成
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
     
-    // 
+    // -------------------------------------------------------------------------------    
+    // シーケンス再生中はタップ不可
     self.isTouchEnabled = NO;
     
     // -------------------------------------------------------------------------------
@@ -209,6 +212,7 @@
     }
     
     // -------------------------------------------------------------------------------
+    // TODO: これは入れるのか？？
     // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
     // エネミーチェンジフェイズ
     
@@ -229,6 +233,7 @@
     } object:self];
     [action_list addObject:act_to_touchable];
     
+    // -------------------------------------------------------------------------------    
     // 実行
     [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
 }
@@ -339,22 +344,11 @@
 
 - (void)do_scroll
 {
-    // プレイヤーの一個下のブロックが空なら
-    // スクロールする
-//    DLPoint ppos = self->dungeon_model.player.pos;
-//    DLPoint under_pos = cdp(ppos.x, ppos.y + 1);
-//    BlockModel* b = [self->dungeon_model get:under_pos];
+    // スクロールの offset 更新
+    [self->dungeon_view update_offset_y:self->dungeon_model.lowest_empty_y - 1];
     
-//    if (b.type == ID_EMPTY) {
-    if (YES) {
-        
-        // スクロールの offset 更新
-        //[self->dungeon_view update_offset_y:self->dungeon_model.player.pos.y];
-        [self->dungeon_view update_offset_y:self->dungeon_model.lowest_empty_y - 1];
-        
-        // 実際にスクロールさせる
-        [self->dungeon_view scroll_to];
-    }
+    // 実際にスクロールさせる
+    [self->dungeon_view scroll_to];
 }
 
 
