@@ -82,6 +82,9 @@
 
         [self addChild:menu];
         
+        // --
+        [BasicNotifierView setup:self];
+        
         [self run_first_sequece];
 	}
 	return self;
@@ -379,7 +382,7 @@
                 [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];                
             }];
             [BasicNotifierView notify:@"QUEST CLEAR" target:self duration:3.0f];
-            CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0f];
+            CCDelayTime *delay = [CCDelayTime actionWithDuration:7.0f];
             [self runAction:[CCSequence actions:delay, goto_result, nil]];
         }
             break;

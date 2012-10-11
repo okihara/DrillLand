@@ -14,7 +14,10 @@
     CCSprite     *base_view;
     CCSprite     *content_view;
     CCLabelBMFont *content_text;
+    ccTime duration_sec;
 }
+
++(void)setup:(CCNode*)target_node_;
 
 +(void)notify:(NSString*)message target:(CCNode*)node;
 +(void)notify:(NSString*)message target:(CCNode*)node duration:(ccTime)sec;
