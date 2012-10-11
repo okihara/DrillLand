@@ -379,7 +379,9 @@
         {
 
             CCCallBlock *goto_result = [CCCallBlock actionWithBlock:^(){
-                [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];                
+                CCScene *next_scene = [DungeonResultScene scene];
+                CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:3.0 scene:next_scene withColor:ccc3(0, 0, 0)];
+                [[CCDirector sharedDirector] replaceScene:trans];
             }];
             [BasicNotifierView notify:@"QUEST CLEAR" target:self duration:3.0f];
             CCDelayTime *delay = [CCDelayTime actionWithDuration:7.0f];

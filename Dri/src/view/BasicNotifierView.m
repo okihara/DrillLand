@@ -51,32 +51,35 @@ static CCNode *target_node = nil;
 +(void)setup:(CCNode*)target_node_
 {
     target_node = target_node_;
+    if (notify_queue) {
+        [notify_queue release];
+    }
+    notify_queue = [[NSMutableArray alloc] init];
 }
 
 +(void)fire
 {
-    if ([notify_queue count] > 0) {
-        BasicNotifierView *notifier = [notify_queue objectAtIndex:0];
-        
-        [notifier run];
-        [target_node addChild:notifier];
-    } 
+    if ([notify_queue count] < 1) {
+        return;
+    }
+    
+    BasicNotifierView *notifier = [notify_queue objectAtIndex:0];
+    [notifier run];
+    [target_node addChild:notifier];
 }
 
 +(void)notify:(NSString*)message target:(CCNode*)node duration:(ccTime)sec
 {
-    if (!notify_queue) {
-        notify_queue = [[NSMutableArray array] retain];
-    }
-
     CCNode *notifier = [[BasicNotifierView alloc] initWithMessage:message duration:(ccTime)sec];
     [notify_queue addObject:notifier];
 
+    // queue の長さが 1 の時はすぐ呼び出さないといけない
     if ([notify_queue count] == 1) {
         [BasicNotifierView fire];
     }
 }
 
+// duration 指定しなくても大丈夫版
 +(void)notify:(NSString*)message target:(CCNode*)node;
 {
     [BasicNotifierView notify:message target:node duration:1.0];
@@ -86,6 +89,8 @@ static CCNode *target_node = nil;
 {
     [self removeFromParentAndCleanup:YES];
     [notify_queue removeObjectAtIndex:0];
+    
+    // 消えるタイミングで、キューにたまっていれば追加
     [BasicNotifierView fire];
 }
 
