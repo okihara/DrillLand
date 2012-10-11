@@ -150,8 +150,6 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    // TODO: ステートの処理、大きくなりそうなら別クラス化
-    
     uint state = 0;
 
     switch (state) {
@@ -202,6 +200,11 @@
         [action_list addObject:act_player_move];
     }
     
+    // -------------------------------------------------------------------------------
+    // プレイヤーを中心にして、ブロックの明るさを変える
+    [self->dungeon_view update_block_color:dungeon_model center_pos:self->dungeon_model.player.pos];
+
+    
     // -------------------------------------------------------------------------------    
     // ブロック毎のターン処理
     // アニメーション開始
@@ -217,14 +220,14 @@
     // エネミーチェンジフェイズ
     
     // -------------------------------------------------------------------------------
-    // スクロールフェイズ
-    CCAction *act_scroll = [CCCallFuncO actionWithTarget:self selector:@selector(do_scroll)];
-    [action_list addObject:act_scroll];
-    
-    // -------------------------------------------------------------------------------
     // 画面の描画
     CCAction* act_update_view = [CCCallFuncO actionWithTarget:self->dungeon_view selector:@selector(update_dungeon_view:) object:self->dungeon_model];
     [action_list addObject:act_update_view];
+    
+    // -------------------------------------------------------------------------------
+    // スクロールフェイズ
+    CCAction *act_scroll = [CCCallFuncO actionWithTarget:self selector:@selector(do_scroll)];
+    [action_list addObject:act_scroll];
     
     // -------------------------------------------------------------------------------
     // タッチをオンに

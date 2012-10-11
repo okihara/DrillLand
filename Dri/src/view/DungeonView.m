@@ -75,6 +75,27 @@
 
 //===============================================================
 //
+// ブロックの
+//
+//===============================================================
+
+- (void)update_block_color:(DungeonModel *)dungeon_model center_pos:(DLPoint)center_pos
+{
+    for (int y = self->curring_top; y < self->curring_bottom; y++) {
+        for (int x = 0; x < disp_w; x++) {
+            BlockView *block_view = [view_map get_x:x y:y];
+            if (!block_view) { continue; }
+            int xx = abs(x - center_pos.x);
+            int yy = abs(center_pos.y - y);
+            int bright = 255 - 255 * (xx + yy) / 8 * 1.2;
+            unsigned char color = bright < 0 ? 0 : bright;
+            block_view.color = ccc3(color, color, color);
+        }
+    }
+}
+
+//===============================================================
+//
 // ブロックの描画
 //
 //===============================================================
@@ -113,14 +134,17 @@
 
 // 最初に一回しか呼ばないかも
 // update_view -> update_view_lines -> update_view_line
-- (void)update_view:(DungeonModel *)_dungeon
+- (void)update_view:(DungeonModel *)dungeon_model
 {
     // clear
     [self->block_layer removeAllChildrenWithCleanup:YES];
     [view_map clear];
 
     // curring を考慮して更新
-    [self update_view_lines:_dungeon];
+    [self update_view_lines:dungeon_model];
+    
+    //
+    [self update_block_color:dungeon_model center_pos:cdp(2, 3)];
 }
 
 - (void)remove_block_view_outside:(DungeonModel *)dungeon_model
@@ -201,9 +225,11 @@
 // カリングの計算
 - (void)update_curring_range
 {
-    // 通常は 0
+    // 通常は 4~8 一気にスクロールする量による
     // debug 用に -2 とかすると描画領域が狭くなる
-    int curring_var = 0;
+    // TODO: top と bottom で分けたほうがいいかも
+    // スクロールしたあとに消すってすれば top のカリングは 0 でもいいね
+    int curring_var = 6;
     
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);

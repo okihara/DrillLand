@@ -59,6 +59,10 @@
 - (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
 - (void)remove_block_view_if_dead:(DLPoint)pos;
 
+// ライトの処理
+- (void)update_block_color:(DungeonModel *)dungeon_model center_pos:(DLPoint)center_pos;
+
+
 // スクロール関係
 // カリングの計算
 - (void)update_offset_y:(int)target_y;
