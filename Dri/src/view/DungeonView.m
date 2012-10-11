@@ -15,6 +15,8 @@
 #import "BlockViewBuilder.h"
 
 #define DISP_H 8
+#define LIGHT_RANGE 6
+#define CURRING_VAR 6
 
 @implementation DungeonView
 
@@ -87,7 +89,7 @@
             if (!block_view) { continue; }
             int xx = abs(x - center_pos.x);
             int yy = abs(center_pos.y - y);
-            int bright = 255 - 255 * (xx + yy) / 8 * 1.2;
+            int bright = 255 - 255 * (xx + yy) / LIGHT_RANGE * 1.0f;
             unsigned char color = bright < 0 ? 0 : bright;
             block_view.color = ccc3(color, color, color);
         }
@@ -229,7 +231,7 @@
     // debug 用に -2 とかすると描画領域が狭くなる
     // TODO: top と bottom で分けたほうがいいかも
     // スクロールしたあとに消すってすれば top のカリングは 0 でもいいね
-    int curring_var = 6;
+    int curring_var = CURRING_VAR;
     
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
