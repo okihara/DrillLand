@@ -373,7 +373,15 @@
             break;
             
         case DL_ON_CLEAR:
-            [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];
+        {
+
+            CCCallBlock *goto_result = [CCCallBlock actionWithBlock:^(){
+                [[CCDirector sharedDirector] replaceScene:[DungeonResultScene scene]];                
+            }];
+            [BasicNotifierView notify:@"QUEST CLEAR" target:self duration:3.0f];
+            CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0f];
+            [self runAction:[CCSequence actions:delay, goto_result, nil]];
+        }
             break;
             
         case DL_ON_HEAL:

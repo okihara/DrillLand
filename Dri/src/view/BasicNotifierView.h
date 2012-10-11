@@ -17,7 +17,9 @@
 }
 
 +(void)notify:(NSString*)message target:(CCNode*)node;
++(void)notify:(NSString*)message target:(CCNode*)node duration:(ccTime)sec;
 
--(id) initWithMessage:(NSString*)message;
+-(id) initWithMessage:(NSString*)message duration:(ccTime)sec;
+
 
 @end

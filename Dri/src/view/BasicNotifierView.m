@@ -12,10 +12,16 @@
 
 @implementation BasicNotifierView
 
+
++(void)notify:(NSString*)message target:(CCNode*)node duration:(ccTime)sec
+{
+    CCNode* notifier = [[BasicNotifierView alloc] initWithMessage:message duration:(ccTime)sec];
+    [node addChild:notifier];
+}
+
 +(void)notify:(NSString*)message target:(CCNode*)node;
 {
-    CCNode* notifier = [[BasicNotifierView alloc] initWithMessage:message];
-    [node addChild:notifier];
+    [BasicNotifierView notify:message target:node duration:1.0];
 }
 
 -(void) suicide
@@ -23,7 +29,7 @@
     [self removeFromParentAndCleanup:YES];
 }
 
--(id) initWithMessage:(NSString*)message
+-(id) initWithMessage:(NSString*)message duration:(ccTime)sec
 {
     if(self=[super init]) {
                 
@@ -40,7 +46,7 @@
         [self addChild:self->content_text];
 
         CCFiniteTimeAction* enter = [CCMoveTo actionWithDuration:0.1 position:end_pos];
-        CCActionInterval* nl = [CCDelayTime actionWithDuration:1.0];
+        CCActionInterval* nl = [CCDelayTime actionWithDuration:sec];
         CCFiniteTimeAction* exit  = [CCMoveTo actionWithDuration:0.1 position:start_pos];
         CCCallFuncO *suicide = [CCCallFuncO actionWithTarget:self selector:@selector(suicide)];
         CCSequence* seq = [CCSequence actions:enter, nl, exit, suicide, nil];
