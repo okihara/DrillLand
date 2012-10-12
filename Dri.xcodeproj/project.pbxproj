@@ -10,6 +10,7 @@
 		C102EAC615E8E2A5000E8366 /* floor001.json in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC415E8E2A5000E8366 /* floor001.json */; };
 		C111124D1628031C00F9950E /* block200.png in Resources */ = {isa = PBXBuildFile; fileRef = C111124C1628031C00F9950E /* block200.png */; };
 		C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1111250162805F000F9950E /* GettableItemBehavior.m */; };
+		C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C111125316280F9900F9950E /* GettableItemPresentation.m */; };
 		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
 		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
 		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
@@ -233,6 +234,8 @@
 		C111124C1628031C00F9950E /* block200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block200.png; path = Resources/spritesheet/cave000/block200.png; sourceTree = "<group>"; };
 		C111124F162805F000F9950E /* GettableItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemBehavior.h; path = src/block_behavior/GettableItemBehavior.h; sourceTree = "<group>"; };
 		C1111250162805F000F9950E /* GettableItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GettableItemBehavior.m; path = src/block_behavior/GettableItemBehavior.m; sourceTree = "<group>"; };
+		C111125216280F9800F9950E /* GettableItemPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemPresentation.h; path = src/block_presentation/GettableItemPresentation.h; sourceTree = "<group>"; };
+		C111125316280F9900F9950E /* GettableItemPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GettableItemPresentation.m; path = src/block_presentation/GettableItemPresentation.m; sourceTree = "<group>"; };
 		C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakableBehaivior.h; path = src/block_behavior/BreakableBehaivior.h; sourceTree = "<group>"; };
 		C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakableBehaivior.m; path = src/block_behavior/BreakableBehaivior.m; sourceTree = "<group>"; };
 		C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggressiveBehaivior.h; path = src/block_behavior/AggressiveBehaivior.h; sourceTree = "<group>"; };
@@ -708,6 +711,8 @@
 				C16009F515F2D94100A4616C /* BloodyPresentation.m */,
 				C16009F115F2D49100A4616C /* BreakablePresentation.h */,
 				C16009F215F2D49100A4616C /* BreakablePresentation.m */,
+				C111125216280F9800F9950E /* GettableItemPresentation.h */,
+				C111125316280F9900F9950E /* GettableItemPresentation.m */,
 			);
 			name = block_presentation;
 			sourceTree = "<group>";
@@ -1687,6 +1692,7 @@
 				C1621D53161ACC0400AB73A0 /* PickCondition.m in Sources */,
 				C1621D56161BDAE800AB73A0 /* QuestFactory.m in Sources */,
 				C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */,
+				C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

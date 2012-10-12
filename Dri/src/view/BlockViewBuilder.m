@@ -14,6 +14,7 @@
 #import "PlayerPresentation.h"
 #import "BasicPresentation.h"
 #import "AttackablePresentation.h"
+#import "GettableItemPresentation.h"
 
 @implementation BlockViewBuilder
 
@@ -143,13 +144,25 @@
             break;
             
         case ID_ITEM_BLOCK_0:
-        case ID_ITEM_BLOCK_1:
         {
             //block.scale = 2.0f;   
             [self add_can_destroy_num:b block:block];
             {
                 NSObject<BlockPresentation>* p;
                 p = [[BasicPresentation alloc] init];
+                [block add_presentation:p];
+                [p release];
+            }
+        }
+            break;
+            
+        case ID_ITEM_BLOCK_1:
+        {
+            //block.scale = 2.0f;   
+            [self add_can_destroy_num:b block:block];
+            {
+                NSObject<BlockPresentation>* p;
+                p = [[GettableItemPresentation alloc] init];
                 [block add_presentation:p];
                 [p release];
             }
