@@ -2,13 +2,14 @@
 MYNAME = 'Masataka Okihara'
 MYCOMPANYNAME = 'HIROMITSU'
 
+suffix = 'Behavior'
 date = "12/09/16"
-classname = ARGV[0] || 'Hoge'
+classname = (ARGV[0] || 'Hoge') + suffix
 puts classname
 
 presen_path = '../Dri/src/block_behavior/'
-header_fname = presen_path + classname + 'Behavior.h'
-impl_fname   = presen_path + classname + 'Behavior.m'
+header_fname = presen_path + classname + '.h'
+impl_fname   = presen_path + classname + '.m'
 
 puts header_fname
 puts impl_fname
@@ -17,7 +18,7 @@ puts '------------------------------------'
 
 template_header = <<"TEMPLATE"
 //
-//  #{classname}Behavior.h
+//  #{header_fname}
 //
 //  Created by #{MYNAME} on #{date}.
 //  Copyright (c) 2012 #{MYCOMPANYNAME} All rights reserved.
@@ -26,7 +27,7 @@ template_header = <<"TEMPLATE"
 #import <Foundation/Foundation.h>
 #import "BlockModel.h"
 
-@interface #{classname}Behavior : NSObject<BlockBehaivior>
+@interface #{classname} : NSObject<BlockBehaivior>
 
 @end
 
@@ -36,16 +37,16 @@ TEMPLATE
 
 template_impl = <<"TEMPLATE"
 //
-//  #{classname}Behavior.m
+//  #{classname}.m
 //
 //  Created by #{MYNAME} on #{date}.
 //  Copyright (c) 2012 #{MYCOMPANYNAME} All rights reserved.
 //
 
-#import "#{classname}Behavior.h"
+#import "#{header_fname}"
 #import "BlockModel.h"
 
-@implementation #{classname}Behavior
+@implementation #{classname}
 
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
