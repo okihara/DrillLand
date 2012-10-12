@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C102EAC615E8E2A5000E8366 /* floor001.json in Resources */ = {isa = PBXBuildFile; fileRef = C102EAC415E8E2A5000E8366 /* floor001.json */; };
+		C111124D1628031C00F9950E /* block200.png in Resources */ = {isa = PBXBuildFile; fileRef = C111124C1628031C00F9950E /* block200.png */; };
 		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
 		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
 		C11D62B915EC9C0700F7633D /* DieableBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B815EC9C0700F7633D /* DieableBehavior.m */; };
@@ -228,6 +229,7 @@
 
 /* Begin PBXFileReference section */
 		C102EAC415E8E2A5000E8366 /* floor001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor001.json; sourceTree = "<group>"; };
+		C111124C1628031C00F9950E /* block200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block200.png; path = Resources/spritesheet/cave000/block200.png; sourceTree = "<group>"; };
 		C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakableBehaivior.h; path = src/block_behavior/BreakableBehaivior.h; sourceTree = "<group>"; };
 		C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakableBehaivior.m; path = src/block_behavior/BreakableBehaivior.m; sourceTree = "<group>"; };
 		C11D62B415EC3B6F00F7633D /* AggressiveBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AggressiveBehaivior.h; path = src/block_behavior/AggressiveBehaivior.h; sourceTree = "<group>"; };
@@ -1260,6 +1262,7 @@
 				C1EE3BC416083B2F00DE62CD /* block10.png */,
 				C1EE3BC516083B2F00DE62CD /* block11.png */,
 				C1EE3BC616083B2F00DE62CD /* block99.png */,
+				C111124C1628031C00F9950E /* block200.png */,
 				C1EE3BC716083B2F00DE62CD /* block201.png */,
 				C1EE3BC816083B2F00DE62CD /* mon001.png */,
 				C1EE3BC916083B2F00DE62CD /* mon002.png */,
@@ -1507,6 +1510,7 @@
 				C1621D3816198B2600AB73A0 /* home000.png in Resources */,
 				C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */,
 				C1621D40161A82E800AB73A0 /* floor002.json in Resources */,
+				C111124D1628031C00F9950E /* block200.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

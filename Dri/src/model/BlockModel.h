@@ -35,6 +35,7 @@ enum ID_BLOCK {
     ID_ENEMY_BLOCK_1 = 2001, // RED  SLIME
     
     ID_ITEM_BLOCK_0 = 3000, // POTION
+    ID_ITEM_BLOCK_1 = 3001, // DORAYAKI
     
     ID_PLAYER = INT16_MAX
 };
