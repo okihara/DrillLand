@@ -27,14 +27,15 @@
     switch (event.type) {
             
         case DL_ON_GET:
+            
             if (block.type == ID_ITEM_BLOCK_1) {
-                
                 self->counter++;
                 if (counter == num_required) {
                     DLEvent *e = [DLEvent eventWithType:DL_ON_CLEAR target:nil];
                     [dungeon_ dispatchEvent:e];
                 }
             }
+            
             break;
             
         default:

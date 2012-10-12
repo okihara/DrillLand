@@ -65,10 +65,15 @@
     <property name="type" value="3000"/>
    </properties>
   </tile>
+  <tile id="9">
+   <properties>
+    <property name="type" value="3001"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="main" width="5" height="100">
   <data encoding="base64" compression="zlib">
-   eJztkuEKwCAIhMNqq/d/4W2Q8O1wsGD718FBnqappfQt2iDPTvtZy+CsFuUzUGPevrEHtmrK7WQdZO48fKpFddkr7TKh1YAtsP0NNu55Pp6jXqrsosjc/X4VParNWhkx9Blqq83+Oc9rV0RHPiXnQm0PNI1T9nT/f09/ZmFhYcFxAOTBBLU=
+   eJztk0sKwCAMRMVPq97/wG3BwHNIF0K7c2DAjPmYqCF8izrItTH+rCVwVfPyRVB9qPWFM3b4v/G4WQaZJ4091by67JV2XtCKw+rYdoY44iwf114vRe4iy9wtvoju1WatBB/uRdRWm/1zni3MaMin5FyonY6mfsoW5vfXnLu1f7axsbHx4ALRhQSy
   </data>
  </layer>
 </map>

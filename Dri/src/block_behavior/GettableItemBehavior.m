@@ -29,9 +29,7 @@
 }
 
 -(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
-{
-    [block clear];
-    
+{    
     // イベント飛ばす
     {
         DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
@@ -44,6 +42,9 @@
         DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
         [dungeon_ dispatchEvent:e];
     }
+    
+    // TODO: イベント飛ばした後で clear しないといけないのを直す（クエストコンディションの中で block の type 見ている）
+    [block clear];
 }
 
 @end
