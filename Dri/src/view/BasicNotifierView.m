@@ -51,6 +51,8 @@ static CCNode *target_node = nil;
 +(void)setup:(CCNode*)target_node_
 {
     target_node = target_node_;
+    
+    // 作成済みならリリースしてから作る
     if (notify_queue) {
         [notify_queue release];
     }
