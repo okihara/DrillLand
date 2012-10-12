@@ -13,6 +13,7 @@
 #import "DieableBehavior.h"
 #import "PotionBehavior.h"
 #import "BossBehavior.h"
+#import "GettableItemBehavior.h"
 
 @implementation BlockBuilder
 
@@ -191,7 +192,7 @@
     b.def = 0;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[[[GettableItemBehavior alloc] init] autorelease]];
     
     return b;    
 }

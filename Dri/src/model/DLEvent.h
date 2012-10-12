@@ -17,7 +17,8 @@ enum DL_EVENT_TYPE {
     DL_ON_HEAL,
     DL_ON_CLEAR,
     DL_ON_CHANGE,
-    DL_ON_NEW
+    DL_ON_NEW,
+    DL_ON_GET
 };
 
 @interface DLEvent : NSObject

@@ -26,8 +26,8 @@
     
     switch (event.type) {
             
-        case DL_ON_HIT:
-            if (block.type == ID_ITEM_BLOCK_0) {
+        case DL_ON_GET:
+            if (block.type == ID_ITEM_BLOCK_1) {
                 
                 self->counter++;
                 if (counter == num_required) {

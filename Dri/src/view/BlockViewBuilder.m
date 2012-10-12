@@ -143,6 +143,7 @@
             break;
             
         case ID_ITEM_BLOCK_0:
+        case ID_ITEM_BLOCK_1:
         {
             //block.scale = 2.0f;   
             [self add_can_destroy_num:b block:block];
