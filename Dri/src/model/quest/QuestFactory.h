@@ -11,6 +11,8 @@
 
 @interface QuestFactory : NSObject
 
-+(Quest*)make_test;
++(Quest*)make_test_0;
++(Quest*)make_test_1;
++(Quest*)make_test_2;
 
 @end

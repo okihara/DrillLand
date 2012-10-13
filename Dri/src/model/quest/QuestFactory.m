@@ -10,13 +10,28 @@
 #import "Quest.h"
 #import "QuestCondition.h"
 #import "PickCondition.h"
+#import "HuntingCondition.h"
 
 @implementation QuestFactory
 
-+(Quest*)make_test
++(Quest*)make_test_0
 {
-    QuestCondition *pick_cond = [PickCondition new];
-    Quest *quest = [[Quest alloc] initWithQuestId:0 conditions:[NSArray arrayWithObjects:pick_cond, nil]];
+    QuestCondition *cond = [PickCondition new];
+    Quest *quest = [[Quest alloc] initWithQuestId:0 conditions:[NSArray arrayWithObjects:cond, nil]];
+    return quest;
+}
+
++(Quest*)make_test_1
+{
+    QuestCondition *cond = [[HuntingCondition alloc] initWithTargetId:ID_ENEMY_BLOCK_0 required_num:3];
+    Quest *quest = [[Quest alloc] initWithQuestId:0 conditions:[NSArray arrayWithObjects:cond, nil]];
+    return quest;
+}
+
++(Quest*)make_test_2
+{
+    QuestCondition *cond = [[HuntingCondition alloc] initWithTargetId:ID_ENEMY_BLOCK_1 required_num:1];
+    Quest *quest = [[Quest alloc] initWithQuestId:0 conditions:[NSArray arrayWithObjects:cond, nil]];
     return quest;
 }
 

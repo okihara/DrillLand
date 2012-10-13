@@ -10,4 +10,42 @@
 
 @implementation HuntingCondition
 
+-(id)initWithTargetId:(enum ID_BLOCK)target_id required_num:(uint)req_num
+{
+    if(self = [super init]) {
+        self->target_block_id = target_id;
+        self->required_num = req_num;
+        self->counter = 0;
+    }
+    return self;
+}
+
+- (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)event
+{
+    BlockModel *block = event.target;
+    
+    switch (event.type) {
+            
+        case DL_ON_DESTROY:
+            
+            if (block.type == self->target_block_id) {
+                self->counter++;
+                if (counter == required_num) {
+                    DLEvent *e = [DLEvent eventWithType:DL_ON_CLEAR target:nil];
+                    [dungeon_ dispatchEvent:e];
+                }
+            }
+            break;
+            
+        default:
+            break;
+    } 
+}
+
+-(BOOL)judge:(void*)environment
+{
+    NSLog(@"[EVENT] ----- kiteru");
+    return NO;
+}
+
 @end

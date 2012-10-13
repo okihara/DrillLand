@@ -39,43 +39,48 @@
     // どういう意味？？
 
     DLPoint pos = block.pos;
-    
-    [block clear];
-    
+            
     // TODO: とりあえずすぎる
     int r = rand();
+    
     if (r % 15 == 0) {
 
+        // イベント飛ばす
+        DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
+        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_0] forKey:@"type"];
+        [dungeon_ dispatchEvent:e];
+
+        // モデルの情報書き換える      
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_0];
         // TODO: set でOK? メモリリークしない？
         [dungeon_ set:pos block:block];
         
+    } else if (r % 15 == 1) {
+
         // イベント飛ばす
         DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
-        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_0] forKey:@"type"];
+        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] forKey:@"type"];
         [dungeon_ dispatchEvent:e];
-        
-    } else if (r % 15 == 1) {
-        
+
+        // モデルの情報書き換える      
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_1];
         // TODO: set でOK? メモリリークしない？
         [dungeon_ set:pos block:block];
         
-        // イベント飛ばす
-        DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
-        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] forKey:@"type"];
-        [dungeon_ dispatchEvent:e];
-        
     } else {
-        
+  
+        // イベント飛ばす
         DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
         [dungeon_ dispatchEvent:e];
-        
-    }
+
+        // モデルの情報書き換える
+        [block clear];
+    
+    }    
 }
 
 @end

@@ -32,8 +32,32 @@
     self->dungeon_model = [[DungeonModel alloc] init];
 
     // setup quest
-    Quest *quest = [QuestFactory make_test];
-    [self->dungeon_model add_observer:quest];
+    switch (dungeon_id) {
+            
+        case 0:
+        {
+            Quest *quest = [QuestFactory make_test_0];
+            [self->dungeon_model add_observer:quest];
+        }
+            break;
+            
+        case 1:
+        {
+            Quest *quest = [QuestFactory make_test_1];
+            [self->dungeon_model add_observer:quest];
+        }
+            break;
+            
+        case 2:
+        {
+            Quest *quest = [QuestFactory make_test_2];
+            [self->dungeon_model add_observer:quest];
+        }
+            
+        default:
+            break;
+    }
+
     
     // load dungeon data
     [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];

@@ -13,6 +13,9 @@
 {
     uint target_block_id;
     uint required_num;
+    uint counter;
 }
+
+-(id)initWithTargetId:(enum ID_BLOCK)target_id required_num:(uint)req_num;
 
 @end
