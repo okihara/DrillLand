@@ -32,8 +32,6 @@
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
-
-        [self _fill_blocks];
     }
     return self;
 }
@@ -116,15 +114,12 @@
     return NO;
 }
 
--(BOOL) on_hit:(DLPoint)pos
+-(BOOL)on_hit:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
     
     // タップできない（ターン消費無し）
-    if (target.type == ID_EMPTY) {
-        return NO;
-    }
-    if (target.can_tap == NO) {
+    if (target.type == ID_EMPTY || target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
         [self dispatchEvent:event];
         return NO;
@@ -132,7 +127,13 @@
     
     // プレイヤーの移動
     [self move_player:pos];
-
+    
+    // 仲間の移動
+    // not implemented yet
+    
+    // 敵の移動
+    // not implemented yet
+    
     // ブロックのヒットフェイズ
     [self on_hit_block:pos];
     
@@ -157,6 +158,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
+// 上はなぜ？
 -(void) _set:(DLPoint)pos block:(BlockModel*)block
 {
     block.pos = pos;
@@ -170,19 +172,22 @@
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
+// 完璧
 -(BlockModel*)get:(DLPoint)pos
 {
     return [self->map get_x:pos.x y:pos.y];
 }
 
+// 完璧
 -(int)can_tap:(DLPoint)pos
 {
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
     return b.can_tap;
 }
 
-//---------------------------------------------------
 
+//---------------------------------------------------
+// フロア情報をロード
 -(void)load_from_file:(NSString*)filename
 {
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
@@ -219,16 +224,16 @@
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
--(void)_fill_blocks
-{
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
-            BlockModel* b = [[BlockModel alloc] init];
-            b.type = ID_NORMAL_BLOCK;
-            [self set:cdp(i, j) block:b];
-        }
-    }
-}
+//-(void)_fill_blocks
+//{
+//    for (int j = 0; j < HEIGHT; j++) {
+//        for (int i = 0; i < WIDTH; i++) {
+//            BlockModel* b = [[BlockModel alloc] init];
+//            b.type = ID_NORMAL_BLOCK;
+//            [self set:cdp(i, j) block:b];
+//        }
+//    }
+//}
 
 -(void)_clear_can_tap
 {
@@ -241,10 +246,23 @@
 }
 
 
+
+// ここからはほぼ変更なし ========================================================================
+
+
+
 //===========================================================================================
+// TODO: 別クラス化
 // ダンジョンのブロックの状態や経路探索の結果を更新するメソッド群
 // インターフェイスは、ほぼ変更されることはないだろう
 // 高速化くらいはやる
+//===========================================================================================
+
+
+//===========================================================================================
+//
+// タップ可能ブロックの情報を更新
+//
 //===========================================================================================
 
 -(void) update_can_tap:(DLPoint)pos
@@ -298,6 +316,13 @@
     }
 }
 
+
+//===========================================================================================
+//
+// ブロック同士のグループ情報を更新
+//
+//===========================================================================================
+
 -(void) update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id
 {
     // group_id=0 の時はグループ化しない
@@ -341,6 +366,13 @@
     [self update_group_info_r:cdp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
 }
 
+
+//===========================================================================================
+//
+// 移動ルート情報を更新
+//
+//===========================================================================================
+
 -(void) update_route_map:(DLPoint)pos target:(DLPoint)target
 {
     [self->route_map fill:999];
@@ -376,6 +408,13 @@
     [self update_route_map_r:cdp(pos.x - 1, pos.y + 0) target:target level: level + 1];
     [self update_route_map_r:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
 }
+
+
+//===========================================================================================
+//
+// 移動ルート情報から実際に辿るブロックのリストを作る
+//
+//===========================================================================================
 
 // かならず 1 に辿り着けることを期待してるね
 // TODO: ここの実装ひどい

@@ -57,7 +57,6 @@
 -(BOOL) on_hit:(DLPoint)pos;
 
 // ---
--(void) _fill_blocks;
 -(void) _clear_can_tap;
 
 // loader json
