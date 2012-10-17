@@ -114,11 +114,13 @@
     return NO;
 }
 
+// -- おおもとのやつ
 -(BOOL)on_hit:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
     
     // タップできない（ターン消費無し）
+    // このレイヤーでやることか？
     if (target.type == ID_EMPTY || target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
         [self dispatchEvent:event];
@@ -139,9 +141,6 @@
     
     // ブロック(プレイヤー以外の)のアップデートフェイズ
     [self on_update];
-    
-    // クリア判定
-    // [self judge_quest_cleared];
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
