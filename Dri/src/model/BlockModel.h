@@ -53,14 +53,15 @@ enum ID_BLOCK {
     id group_info;
     BOOL can_tap;
     NSMutableArray* behavior_list;
+    
+    NSMutableDictionary *my_items;
+    NSMutableDictionary *my_equipment;
 }
 
 -(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
--(BOOL)in_attack_range:(DungeonModel*)dungeon;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
--(void)_attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
 
 -(void)heal:(int)value;

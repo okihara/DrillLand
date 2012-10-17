@@ -79,26 +79,7 @@
     }
 }
 
-// これは武器/敵によってロジックが変わるので、ここに書くべきではない
--(BOOL)in_attack_range:(DungeonModel*)dungeon
-{
-    // 上下左右
-    BlockModel* p = (BlockModel*)dungeon.player;
-    if((p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y - 1) ||
-       (p.pos.x == self.pos.x + 0 && p.pos.y == self.pos.y + 1) ||
-       (p.pos.x == self.pos.x - 1 && p.pos.y == self.pos.y + 0) ||
-       (p.pos.x == self.pos.x + 1 && p.pos.y == self.pos.y + 0)) {
-        return YES;
-    }
-    return NO;
-}
-
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
-{
-    [self _attack:target dungeon:dungeon];
-}
-
--(void)_attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
     // TODO: ちゃんとして計算式を
     int damage = self.atk - target.def;
