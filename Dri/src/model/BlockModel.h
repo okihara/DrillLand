@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XDMap.h"
 #import "MyItems.h"
+#import "MyEquipment.h"
 
 enum ID_BLOCK {
     ID_EMPTY  = 0,
@@ -55,9 +56,9 @@ enum ID_BLOCK {
     // behavior
     NSMutableArray* behavior_list;
     
-    // my_items
+    // items/equipment
     MyItems *my_items;
-    NSMutableDictionary *my_equipment;
+    MyEquipment *my_equipment;
 }
 
 -(void)clear;

@@ -52,6 +52,7 @@
         [self->my_items release];
     }
     self->my_items = [[MyItems alloc] init];
+    self->my_equipment = [[MyEquipment alloc] init];
 }
 
 -(void)dealloc

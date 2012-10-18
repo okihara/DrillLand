@@ -21,6 +21,7 @@
 		C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF4160B31F300B4AF35 /* linkatk.json */; };
 		C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */; };
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
+		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -253,6 +254,8 @@
 		C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonMenuScene.m; path = src/scene/DungeonMenuScene.m; sourceTree = "<group>"; };
 		C148531D162F7E470023FAF6 /* MyItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItems.h; path = src/model/item/MyItems.h; sourceTree = "<group>"; };
 		C148531E162F7E470023FAF6 /* MyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItems.m; path = src/model/item/MyItems.m; sourceTree = "<group>"; };
+		C1485321162F8ACF0023FAF6 /* MyEquipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEquipment.h; path = src/model/item/MyEquipment.h; sourceTree = "<group>"; };
+		C1485322162F8ACF0023FAF6 /* MyEquipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEquipment.m; path = src/model/item/MyEquipment.m; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -760,6 +763,8 @@
 			children = (
 				C148531D162F7E470023FAF6 /* MyItems.h */,
 				C148531E162F7E470023FAF6 /* MyItems.m */,
+				C1485321162F8ACF0023FAF6 /* MyEquipment.h */,
+				C1485322162F8ACF0023FAF6 /* MyEquipment.m */,
 				C183A13C161115E500FE672F /* UserItem.h */,
 				C183A13D161115E500FE672F /* UserItem.m */,
 				C183A139160FFB7000FE672F /* ItemMaster.h */,
@@ -1699,6 +1704,7 @@
 				C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */,
 				C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */,
 				C148531F162F7E470023FAF6 /* MyItems.m in Sources */,
+				C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
