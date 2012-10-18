@@ -37,7 +37,7 @@
     // TODO: クラス化
     NSMutableArray *route_list;
 
-    id<DungenModelObserver> observer;
+    // observer
     NSMutableArray *observer_list;
 
     // ファイルから読む部分で使ってる
@@ -72,7 +72,8 @@
 -(DLPoint) get_player_pos:(DLPoint)pos;
 
 // Observer
--(void) add_observer:(id<DungenModelObserver>)observer;
+-(void)add_observer:(id<DungenModelObserver>)observer;
+//-(void)remove_observer:(id<DungenModelObserver>)observer;
 -(void) dispatchEvent:(DLEvent*)e;
 
 @property (nonatomic, readonly) XDMap *route_map;
