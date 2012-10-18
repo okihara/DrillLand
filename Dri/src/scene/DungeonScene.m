@@ -21,7 +21,31 @@
 // HelloWorldLayer implementation
 @implementation DungeonScene
 
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
+
+// -----------------------------------------------------------------------------
+// 最初のシーケンス
+- (void)run_first_sequece {
+    
+    // FADE OUT
+    CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
+    [self->fade_layer runAction:fi];
+    
+    // ダンジョン名表示
+    self->large_notify = [[LargeNotifierView alloc] init];
+    [self addChild:self->large_notify];
+    
+    // 勇者がてくてく歩く
+    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
+    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,3)];
+    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
+    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
+        self.isTouchEnabled = YES;
+    }], nil]];
+}
+
+
+// -----------------------------------------------------------------------------
+// 初期化
 + (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model
 {
 	CCScene *scene = [CCScene node];
@@ -30,7 +54,6 @@
 	return scene;
 }
 
-// on "init" you need to initialize your instance
 - (id) initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
 	if( (self=[super init]) ) {
@@ -96,87 +119,107 @@
     [super dealloc];
 }
 
+// -----------------------------------------------------------------------------
+// メニューボタン押した時のハンドラ
 - (void)didPressButton:(CCMenuItem *)sender
 {
     CCScene *scene = [DungeonMenuScene scene];
     [[CCDirector sharedDirector] pushScene:scene];
 }
 
-
-//===============================================================
-
-- (void)run_first_sequece {
-
-    // FADE OUT
-    CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
-    [self->fade_layer runAction:fi];
-
-    // ダンジョン名表示
-    self->large_notify = [[LargeNotifierView alloc] init];
-    [self addChild:self->large_notify];
-
-    // 勇者がてくてく歩く
-    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
-    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,3)];
-    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
-    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
-        self.isTouchEnabled = YES;
-    }], nil]];
-}
-
-
 //===============================================================
 //
-// タッチのハンドラ
+// １ブロックの１ターン毎のアクションを生成
+// TODO: 別クラス化
 //
 //===============================================================
 
-- (DLPoint)_screen_to_view_pos:(CGPoint)location
+// ブロック毎の１ターンのアクションを返す
+- (CCAction*)_animate
 {
-    // TODO: ここから先 DungeonView に移動するべき
-    // ↑ ほんとうか？
-    // model_to_local の反対
-    int x = (int)(location.x / BLOCK_WIDTH);
-    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
-    return cdp(x, y);
-}
-
-// HELPER: スクリーン座標からビューの座標へ変換
-- (DLPoint)screen_to_view_pos:(NSSet *)touches
-{
-    UITouch *touch =[touches anyObject];
-    CGPoint location =[touch locationInView:[touch view]];
-    location =[[CCDirector sharedDirector] convertToGL:location];
+    // ガード
+    if (![self->events count]) {
+        return nil;
+    }
     
-    return [self _screen_to_view_pos:location];
+    NSMutableArray *actions = [NSMutableArray array];
+    
+    // 先頭のイベントを取得
+    // TODO: 下の処理と被ってる
+    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
+    [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
+    
+    BlockModel *b = (BlockModel*)e.target;
+    
+    while (e) {
+        
+        CCAction *act = [self->dungeon_view notify:self->dungeon_model event:e];
+        if (act) {
+            [actions addObject:act];
+        }
+        
+        [self->events removeObjectAtIndex:0];
+        
+        
+        if (![self->events count]) {
+            break;
+        }
+        
+        // 先頭のイベントを取得
+        // TODO: 上の処理と被ってる
+        e = (DLEvent*)[self->events objectAtIndex:0];
+        [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
+        
+        if( e.type == DL_ON_HIT ) {
+            break;
+        }
+        
+    }
+    
+    // 描画イベント全部処理して、死んでたら
+    CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
+        NSLog(@"[SUICIDE] %d %d %d", b.type, b.pos.x, b.pos.y);
+        [self->dungeon_view remove_block_view_if_dead:b.pos];
+    }];
+    [actions addObject:act_suicide];
+    
+    if ([actions count]) {
+        return [CCSequence actionWithArray:actions];
+    } else {
+        return nil;
+    }
+    
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+// 全部の今回起こったアクション全てをシーケンスにしたアクションを返す
+- (CCAction*)animate
 {
-    uint state = 0;
-
-    switch (state) {
-            
-        case 0:
-        {
-            // モデルへ通知
-            BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
-            
-            if (!changed) { return; }
-            
-            // タップ後のシーケンス再生
-            [self run_sequence];
+    // ガード
+    if (![self->events count]) {
+        return nil;
+    }
+    
+    NSMutableArray *actions = [NSMutableArray array];
+    
+    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
+    while (e) {
+        
+        CCAction *action = [self _animate];
+        if (action) {
+            [actions addObject:action];
         }
+        
+        if (![self->events count]) {
             break;
-            
-        case 1:
-        {
-            // クリア時のステート
         }
-            break;
-            
-        default:
-            break;
+        e = (DLEvent*)[self->events objectAtIndex:0];
+        
+    }
+    
+    if (actions) {
+        return [CCSequence actionWithArray:actions];
+    } else {
+        return nil;
     }
 }
 
@@ -247,97 +290,56 @@
 
 //===============================================================
 //
-// １ブロックの１ターン毎のアクションを生成
-// TODO: 別クラス化
+// タッチのハンドラ
 //
 //===============================================================
 
-// ブロック毎の１ターンのアクションを返す
-- (CCAction*)_animate
+- (DLPoint)_screen_to_view_pos:(CGPoint)location
 {
-    // ガード
-    if (![self->events count]) {
-        return nil;
-    }
-    
-    NSMutableArray *actions = [NSMutableArray array];
-    
-    // 先頭のイベントを取得
-    // TODO: 下の処理と被ってる
-    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
-    [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
-    
-    BlockModel *b = (BlockModel*)e.target;
-    
-    while (e) {
-        
-        CCAction *act = [self->dungeon_view notify:self->dungeon_model event:e];
-        if (act) {
-            [actions addObject:act];
-        }
-
-        [self->events removeObjectAtIndex:0];
-        
-        
-        if (![self->events count]) {
-            break;
-        }
-        
-        // 先頭のイベントを取得
-        // TODO: 上の処理と被ってる
-        e = (DLEvent*)[self->events objectAtIndex:0];
-        [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
-
-        if( e.type == DL_ON_HIT ) {
-            break;
-        }
-        
-    }
-
-    // 描画イベント全部処理して、死んでたら
-    CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
-        NSLog(@"[SUICIDE] %d %d %d", b.type, b.pos.x, b.pos.y);
-        [self->dungeon_view remove_block_view_if_dead:b.pos];
-    }];
-    [actions addObject:act_suicide];
-    
-    if ([actions count]) {
-        return [CCSequence actionWithArray:actions];
-    } else {
-        return nil;
-    }
-
+    // TODO: ここから先 DungeonView に移動するべき
+    // ↑ ほんとうか？
+    // model_to_local の反対
+    int x = (int)(location.x / BLOCK_WIDTH);
+    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
+    return cdp(x, y);
 }
 
-// 全部の今回起こったアクション全てをシーケンスにしたアクションを返す
-- (CCAction*)animate
+// HELPER: スクリーン座標からビューの座標へ変換
+- (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
-    // ガード
-    if (![self->events count]) {
-        return nil;
-    }
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    location =[[CCDirector sharedDirector] convertToGL:location];
     
-    NSMutableArray *actions = [NSMutableArray array];
+    return [self _screen_to_view_pos:location];
+}
 
-    DLEvent *e = (DLEvent*)[self->events objectAtIndex:0];
-    while (e) {
-        
-        CCAction *action = [self _animate];
-        if (action) {
-            [actions addObject:action];
-        }
-        
-        if (![self->events count]) {
-            break;
-        }
-        e = (DLEvent*)[self->events objectAtIndex:0];
-        
-    }
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    uint state = 0;
     
-    if (actions) {
-        return [CCSequence actionWithArray:actions];
-    } else {
-        return nil;
+    switch (state) {
+            
+        case 0:
+        {
+            // モデルへ通知
+            BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+            
+            if (!changed) { return; }
+            
+            // タップ後のシーケンス再生
+            [self run_sequence];
+        }
+            break;
+            
+        case 1:
+        {
+            // クリア時のステート
+        }
+            break;
+            
+        default:
+            break;
     }
 }
 
