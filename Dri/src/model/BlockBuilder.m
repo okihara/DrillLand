@@ -28,16 +28,16 @@
 
 -(void)setupBuilders
 {
-    [self registerBuilderWithID:ID_PLAYER builder:@selector(build_player)];
-    [self registerBuilderWithID:ID_NORMAL_BLOCK builder:@selector(build_normal)];
-    [self registerBuilderWithID:ID_GROUPED_BLOCK_1 builder:@selector(build_grouped_1)];
-    [self registerBuilderWithID:ID_GROUPED_BLOCK_2 builder:@selector(build_grouped_2)];
-    [self registerBuilderWithID:ID_GROUPED_BLOCK_3 builder:@selector(build_grouped_3)];
+    [self registerBuilderWithID:ID_PLAYER            builder:@selector(build_player)];
+    [self registerBuilderWithID:ID_NORMAL_BLOCK      builder:@selector(build_normal)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_1   builder:@selector(build_grouped_1)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_2   builder:@selector(build_grouped_2)];
+    [self registerBuilderWithID:ID_GROUPED_BLOCK_3   builder:@selector(build_grouped_3)];
     [self registerBuilderWithID:ID_UNBREAKABLE_BLOCK builder:@selector(build_unbreakable)];
-    [self registerBuilderWithID:ID_ENEMY_BLOCK_0 builder:@selector(build_enemy_0)];
-    [self registerBuilderWithID:ID_ENEMY_BLOCK_1 builder:@selector(build_enemy_1)];
-    [self registerBuilderWithID:ID_ITEM_BLOCK_0 builder:@selector(build_item_0)];
-    [self registerBuilderWithID:ID_ITEM_BLOCK_1 builder:@selector(build_item_1)];
+    [self registerBuilderWithID:ID_ENEMY_BLOCK_0     builder:@selector(build_enemy_0)];
+    [self registerBuilderWithID:ID_ENEMY_BLOCK_1     builder:@selector(build_enemy_1)];
+    [self registerBuilderWithID:ID_ITEM_BLOCK_0      builder:@selector(build_item_0)];
+    [self registerBuilderWithID:ID_ITEM_BLOCK_1      builder:@selector(build_item_1)];
 }
 
 -(void)registerBuilderWithID:(enum ID_BLOCK)id_ builder:(SEL)builder_method
@@ -196,7 +196,5 @@
     
     return b;    
 }
-
-
 
 @end
