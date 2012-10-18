@@ -14,4 +14,6 @@
     UInt16 type;
 }
 
+-(UInt32)unique_id;
+
 @end

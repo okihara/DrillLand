@@ -8,6 +8,7 @@
 
 #import "BlockModel.h"
 #import "DungeonModel.h"
+#import "UserItem.h"
 
 @implementation BlockModel
 
@@ -31,6 +32,7 @@
 
 -(void)clear
 {
+    // vars
     type = ID_EMPTY;
     hp = 0;
     atk = 0;
@@ -38,17 +40,43 @@
     group_id = 0;
     group_info = NULL;
     can_tap = NO;
+    
+    // behavior
     if (self->behavior_list) {
         [self->behavior_list release];
     }
     self->behavior_list = [[NSMutableArray alloc] init];
+    
+    // my_items
+    if (self->my_items) {
+        [self->my_items release];
+    }
+    self->my_items = [[MyItems alloc] init];
 }
 
+-(void)dealloc
+{
+    [self->behavior_list release];
+    [self->my_items release];
+    [super dealloc];
+}
+
+// -----------------------------------------------------------------------------
+// behavior
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_
 {
     [self->behavior_list addObject:behaivior_];
 }
-    
+
+// -----------------------------------------------------------------------------
+// my_item
+-(void)add_item:(UserItem*)user_item
+{
+    [self->my_items add_item:user_item];
+}
+
+// -----------------------------------------------------------------------------
+// handler
 -(void)on_hit:(DungeonModel*)dungeon
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
@@ -79,6 +107,8 @@
     }
 }
 
+// -----------------------------------------------------------------------------
+// action/command
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
     // TODO: ちゃんとして計算式を
@@ -108,12 +138,6 @@
     }
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:self.hp]];
-}
-
--(void)dealloc
-{
-    [self->behavior_list release];
-    [super dealloc];
 }
 
 @end

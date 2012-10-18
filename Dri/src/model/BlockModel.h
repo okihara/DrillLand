@@ -8,20 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XDMap.h"
-
-
-@class DungeonModel;
-
-@class BlockModel;
-@protocol BlockBehaivior <NSObject>
-
--(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_;
-
-@end
-
+#import "MyItems.h"
 
 enum ID_BLOCK {
     ID_EMPTY  = 0,
@@ -40,9 +27,21 @@ enum ID_BLOCK {
     ID_PLAYER = INT16_MAX
 };
 
+@class DungeonModel;
+@class BlockModel;
+
+@protocol BlockBehaivior <NSObject>
+
+-(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_;
+
+@end
 
 @interface BlockModel : NSObject
 {
+    // vars
     int hp;
     int max_hp;
     int type;
@@ -52,18 +51,20 @@ enum ID_BLOCK {
     unsigned int group_id;
     id group_info;
     BOOL can_tap;
+    
+    // behavior
     NSMutableArray* behavior_list;
     
-    NSMutableDictionary *my_items;
+    // my_items
+    MyItems *my_items;
     NSMutableDictionary *my_equipment;
 }
 
 -(void)clear;
 -(void)on_hit:(DungeonModel*)dungeon;
 -(void)on_update:(DungeonModel*)dungeon;
--(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
-
+-(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)heal:(int)value;
 
 @property (nonatomic, assign) int hp;

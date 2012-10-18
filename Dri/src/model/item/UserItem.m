@@ -10,4 +10,9 @@
 
 @implementation UserItem
 
+-(UInt32)unique_id
+{
+    return UINT_FAST32_MAX;
+}
+
 @end

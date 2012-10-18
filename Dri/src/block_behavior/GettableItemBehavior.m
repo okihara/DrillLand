@@ -29,7 +29,11 @@
 }
 
 -(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
-{    
+{
+    // attacker のアイテムに、UserItem を挿入するよ
+    // ほとんどが Player だよ
+    // [player_model add_tem:[block get_item_info]];
+    
     // イベント飛ばす
     {
         DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
