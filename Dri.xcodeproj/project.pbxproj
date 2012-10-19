@@ -22,6 +22,7 @@
 		C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */; };
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
 		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
+		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -256,6 +257,8 @@
 		C148531E162F7E470023FAF6 /* MyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItems.m; path = src/model/item/MyItems.m; sourceTree = "<group>"; };
 		C1485321162F8ACF0023FAF6 /* MyEquipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEquipment.h; path = src/model/item/MyEquipment.h; sourceTree = "<group>"; };
 		C1485322162F8ACF0023FAF6 /* MyEquipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEquipment.m; path = src/model/item/MyEquipment.m; sourceTree = "<group>"; };
+		C148532416312D800023FAF6 /* GetExpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetExpView.h; path = src/view/viewparts/GetExpView.h; sourceTree = "<group>"; };
+		C148532516312D810023FAF6 /* GetExpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetExpView.m; path = src/view/viewparts/GetExpView.m; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -791,7 +794,7 @@
 			name = effect;
 			sourceTree = "<group>";
 		};
-		C183A1501611D64C00FE672F /* ui */ = {
+		C183A1501611D64C00FE672F /* viewparts */ = {
 			isa = PBXGroup;
 			children = (
 				C1CCAA731605A42400A0EB1C /* StatusBarView.h */,
@@ -802,8 +805,10 @@
 				C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */,
 				C1CCAA6D16009ACD00A0EB1C /* DamageNumView.h */,
 				C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */,
+				C148532416312D800023FAF6 /* GetExpView.h */,
+				C148532516312D810023FAF6 /* GetExpView.m */,
 			);
-			name = ui;
+			name = viewparts;
 			sourceTree = "<group>";
 		};
 		C195462A15D7F485002119CC = {
@@ -1396,7 +1401,7 @@
 			isa = PBXGroup;
 			children = (
 				C11D62C215F19BCD00F7633D /* block_presentation */,
-				C183A1501611D64C00FE672F /* ui */,
+				C183A1501611D64C00FE672F /* viewparts */,
 				C183A145161196BF00FE672F /* effect */,
 				C1600A0115F3451900A4616C /* DungeonView.h */,
 				C16009FD15F3450F00A4616C /* DungeonView.m */,
@@ -1705,6 +1710,7 @@
 				C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */,
 				C148531F162F7E470023FAF6 /* MyItems.m in Sources */,
 				C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */,
+				C148532616312D820023FAF6 /* GetExpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

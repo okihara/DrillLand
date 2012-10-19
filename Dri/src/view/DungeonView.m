@@ -23,6 +23,8 @@
 @synthesize player;
 @synthesize offset_y;
 @synthesize fade_layer;
+@synthesize block_layer;
+@synthesize effect_layer;
 
 -(id) init
 {

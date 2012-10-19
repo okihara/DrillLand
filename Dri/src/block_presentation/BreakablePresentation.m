@@ -8,6 +8,7 @@
 
 #import "BreakablePresentation.h"
 #import "DungeonView.h"
+#import "GetExpView.h"
 
 @implementation BreakablePresentation
 
@@ -39,6 +40,11 @@
             CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.025f];
 
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
+                
+                // --
+                [GetExpView spawn:ctx.effect_layer position:view_.position num_exp:3];
+                
+                // --
                 view_.is_alive = NO;
                 [ctx remove_block_view_if_dead:block.pos];
             }];
