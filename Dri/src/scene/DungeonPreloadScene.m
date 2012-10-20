@@ -14,14 +14,15 @@
 - (id)init
 {
     if( (self=[super init]) ) {
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"DUNGEONPRELOAD" fontName:DL_FONT_NAME fontSize:20];
-        label.position =  ccp(160, 440);
+        
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"NOW LOADING..." fontName:DL_FONT_NAME fontSize:20];
+        label.position =  ccp(8, 440);
+        label.anchorPoint = ccp(0, 0);
         [self addChild:label];
 
-        // enable touch
-        self.isTouchEnabled = YES;
-
-        // IMPLEMENT:
+        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIPS WO KOKO NI" fontName:DL_FONT_NAME fontSize:16];
+        tips.position =  ccp(160, 240);
+        [self addChild:tips];
     }
     return self;
 }
@@ -74,7 +75,8 @@
         [[CCDirector sharedDirector] replaceScene:trans];        
     }];
     
-    CCSequence *seq = [CCSequence actions:[CCDelayTime actionWithDuration:0.01f], cb, nil];
+    CCSequence *seq = [CCSequence actions:[CCDelayTime actionWithDuration:0.5f], cb, nil];
+    
     [self runAction:seq];
 }
 
