@@ -9,6 +9,7 @@
 #import "BreakablePresentation.h"
 #import "DungeonView.h"
 #import "GetExpView.h"
+#import "GetGoldView.h"
 
 @implementation BreakablePresentation
 
@@ -41,7 +42,10 @@
 
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
                 
-                // --
+                // coin
+                [GetGoldView spawn:ctx.effect_layer position:view_.position num_exp:10];
+
+                // exp
                 [GetExpView spawn:ctx.effect_layer position:view_.position num_exp:3];
                 
                 // --

@@ -23,6 +23,8 @@
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
 		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
 		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
+		C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532816314D9C0023FAF6 /* GetGoldView.m */; };
+		C148532B16314EE90023FAF6 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = C148532A16314EE90023FAF6 /* coin.png */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -259,6 +261,9 @@
 		C1485322162F8ACF0023FAF6 /* MyEquipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEquipment.m; path = src/model/item/MyEquipment.m; sourceTree = "<group>"; };
 		C148532416312D800023FAF6 /* GetExpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetExpView.h; path = src/view/viewparts/GetExpView.h; sourceTree = "<group>"; };
 		C148532516312D810023FAF6 /* GetExpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetExpView.m; path = src/view/viewparts/GetExpView.m; sourceTree = "<group>"; };
+		C148532716314D9A0023FAF6 /* GetGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGoldView.h; path = src/view/viewparts/GetGoldView.h; sourceTree = "<group>"; };
+		C148532816314D9C0023FAF6 /* GetGoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGoldView.m; path = src/view/viewparts/GetGoldView.m; sourceTree = "<group>"; };
+		C148532A16314EE90023FAF6 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -807,6 +812,8 @@
 				C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */,
 				C148532416312D800023FAF6 /* GetExpView.h */,
 				C148532516312D810023FAF6 /* GetExpView.m */,
+				C148532716314D9A0023FAF6 /* GetGoldView.h */,
+				C148532816314D9C0023FAF6 /* GetGoldView.m */,
 			);
 			name = viewparts;
 			sourceTree = "<group>";
@@ -1303,6 +1310,7 @@
 				C1EE3BD616083B7800DE62CD /* link_f.json */,
 				C1EE3BD716083B7800DE62CD /* link_f.png */,
 				C1EE3BD816083B7800DE62CD /* sky00.png */,
+				C148532A16314EE90023FAF6 /* coin.png */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -1536,6 +1544,7 @@
 				C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */,
 				C1621D40161A82E800AB73A0 /* floor002.json in Resources */,
 				C111124D1628031C00F9950E /* block200.png in Resources */,
+				C148532B16314EE90023FAF6 /* coin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1711,6 +1720,7 @@
 				C148531F162F7E470023FAF6 /* MyItems.m in Sources */,
 				C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */,
 				C148532616312D820023FAF6 /* GetExpView.m in Sources */,
+				C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
