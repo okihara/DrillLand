@@ -31,10 +31,15 @@
         self->name.position = ccp(-150, 6);
         [self addChild:self->name];
         
-        self->hp = [FontFactory makeLabel:@"HP: 10  EXP: 0"];
+        self->hp = [FontFactory makeLabel:@"HP: 10"];
         self->hp.anchorPoint = ccp(0, 0);
         self->hp.position = ccp(-150, -14);
         [self addChild:self->hp];
+
+        self->exp = [FontFactory makeLabel:@"EXP: 0"];
+        self->exp.anchorPoint = ccp(0, 0);
+        self->exp.position = ccp(-75, -14);
+        [self addChild:self->exp];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(update_hp:) name:@"UpdateHP" object:nil];
