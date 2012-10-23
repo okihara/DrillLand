@@ -73,8 +73,8 @@
     [super onEnter];
     
     //[self goto_dungeon];
-    [self goto_debug_block_view];
-    //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    //[self goto_debug_block_view];
+    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 
 @end
