@@ -19,6 +19,7 @@
         case DL_ON_DESTROY:
         {
             // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ
+            // DungeonScene にイベント投げるぐらいにするべき
             return [CCCallBlock actionWithBlock:^(){
                 [[CCDirector sharedDirector] replaceScene:[DungeonOverScene scene]];
             }];
