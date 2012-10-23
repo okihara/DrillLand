@@ -51,7 +51,7 @@
 //
 //===============================================================
 
-- (CCAction*)_update_presentation:(DungeonView *)ctx event:(DLEvent*)e
+- (CCAction*)_update_presentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
     // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
     
@@ -61,7 +61,8 @@
     if (b.type == ID_PLAYER){
         
         for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            CCAction *action = [p handle_event:ctx event:e view:ctx.player];
+//            CCAction *action = [p handle_event:ctx event:e view:ctx.player];
+            CCAction *action = [p handle_event:ctx event:e view:self];
             if (action) {
                 [actions addObject:action];
             }
@@ -88,7 +89,8 @@
 
 //----------------------------------------------------------------
 
-- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e
+//- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e
+- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
     return [self _update_presentation:ctx event:e];
 }

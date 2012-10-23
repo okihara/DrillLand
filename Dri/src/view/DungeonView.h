@@ -12,11 +12,12 @@
 #import "DLEvent.h"
 #import "BlockView.h"
 #import "cocos2d.h"
+#import "DLView.h"
 
 @class XDMap;
 @class BlockView;
 
-@interface DungeonView : CCLayer
+@interface DungeonView : CCLayer<ViewContextProtocol>
 {
     // この２つは１つの型に出来る
     int disp_w;
@@ -77,9 +78,7 @@
 // ヘルパ
 - (CGPoint)model_to_local:(DLPoint)pos;
 
-// TODO: ガチで別クラスへ
-- (void)launch_particle:(NSString*)name position:(CGPoint)pos;
--(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params;
+
 
 
 @end

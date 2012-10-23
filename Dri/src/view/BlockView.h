@@ -10,15 +10,14 @@
 #import "cocos2d.h"
 #import "DungeonModel.h"
 #import "DLEvent.h"
-
+#import "DLView.h"
 
 @class BlockModel, DungeonView;
 @class BlockView;
 
 @protocol BlockPresentation <NSObject>
 
-//-(void)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
--(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_;
+-(CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e view:(BlockView *)view_;
 
 @end
 
@@ -37,6 +36,18 @@ enum DL_PHASE {
     
     NSMutableArray* events;
     NSMutableArray* presentation_list;
+    
+    uint direction;
+    
+    // Dictionary になるか？
+//    {
+//        normal : こういうアニメーションだよぉ,
+//        on_hit : ヒット時のアニメーション,
+//        on_destroy: 死亡時のアニメーション,
+//        on_attack : 攻撃時のアニメーション
+//        on_appeared : 出現時のアニメーション,
+//        
+//    }
 }
 
 @property (readwrite, assign) BOOL is_alive;
@@ -46,7 +57,7 @@ enum DL_PHASE {
 - (void)add_presentation:(NSObject<BlockPresentation>*)presentation;
 
 // event
-- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e;
+- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
 
 // helper
 - (void)play_anime:(NSString*)name;

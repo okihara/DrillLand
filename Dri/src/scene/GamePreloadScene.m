@@ -14,6 +14,7 @@
 #import "AnimationLoader.h"
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
+#import "DebugBlockScene.h"
 
 @implementation GamePreloadScene
 
@@ -61,12 +62,19 @@
     [[CCDirector sharedDirector] replaceScene:next_scene];
 }
 
+-(void)goto_debug_block_view
+{
+    CCScene *next_scene = [DebugBlockScene scene];
+    [[CCDirector sharedDirector] replaceScene:next_scene];    
+}
+
 -(void)onEnter
 {
     [super onEnter];
     
     //[self goto_dungeon];
-    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    [self goto_debug_block_view];
+    //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 
 @end
