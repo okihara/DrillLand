@@ -55,35 +55,17 @@
 {
     // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
     
-    BlockModel *b = (BlockModel*)e.target;
+//    BlockModel *b = (BlockModel*)e.target;
     NSMutableArray *actions = [NSMutableArray array];
     
-    if (b.type == ID_PLAYER){
-        
-        for (NSObject<BlockPresentation>* p in self->presentation_list) {
-//            CCAction *action = [p handle_event:ctx event:e view:ctx.player];
-            CCAction *action = [p handle_event:ctx event:e view:self];
-            if (action) {
-                [actions addObject:action];
-            }
+    for (NSObject<BlockPresentation>* p in self->presentation_list) {
+        CCAction *action = [p handle_event:ctx event:e view:self];
+        if (action) {
+            [actions addObject:action];
         }
-        
-    } else {
-        
-        for (NSObject<BlockPresentation>* p in self->presentation_list) {
-            CCAction *action = [p handle_event:ctx event:e view:self];
-            if (action) {
-                [actions addObject:action];
-            }
-        }
-        
     }
-    
-    if ([actions count]) {
-        return [CCSequence actionWithArray:actions];
-    } else {
-        return nil;
-    }
+
+    return [actions count] ? [CCSequence actionWithArray:actions] : nil;
 }
 
 
