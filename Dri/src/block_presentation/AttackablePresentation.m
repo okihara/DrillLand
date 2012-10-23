@@ -26,6 +26,7 @@
             // いるならここに
             
             // TODO: ないわー
+            // ここで分岐とかないわー
             if (block_model.type == ID_PLAYER) {
                 CCFiniteTimeAction *anim_attack = [block_view play_anime_one:@"atk000"];
                 CCCallBlock *act_walk = [CCCallFuncO actionWithTarget:block_view selector:@selector(play_anime:) object:@"walk"];
