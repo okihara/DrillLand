@@ -59,7 +59,7 @@
                 [ctx launch_effect:@"damage" target:view_ params:e.params];
             }];
             
-            return [CCSequence actions:act, [CCDelayTime actionWithDuration:1.0], act2, [CCDelayTime actionWithDuration:0.5], nil];
+            return [CCSequence actions:act, [CCDelayTime actionWithDuration:1.5], act2, [CCDelayTime actionWithDuration:0.5], nil];
         }
             break;
             
