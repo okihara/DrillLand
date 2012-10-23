@@ -13,11 +13,15 @@
 
 @interface MockViewContext : CCLayer<ViewContextProtocol>
 {
+    CCLayerColor *fade_layer;
     CCLayer *effect_layer;
     CCLayer *block_layer;
+    
     EffectLauncher *effect_launcher;
 }
 
+@property (nonatomic, readonly, retain) CCLayerColor *fade_layer;
+@property (nonatomic, readonly, retain) CCLayer *effect_layer;
 @property (nonatomic, readonly, retain) CCLayer *block_layer;
 
 @end

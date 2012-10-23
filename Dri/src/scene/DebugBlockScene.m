@@ -79,7 +79,8 @@ int block_id_list[] = {
             CCMenu *menu = [CCMenu menuWithItems:
                             [CCMenuItemFont itemWithString:@"ATTACK" target:self selector:@selector(didPressButton_attack:)],
                             [CCMenuItemFont itemWithString:@"DAMAGE" target:self selector:@selector(didPressButton_damage:)],
-                            [CCMenuItemFont itemWithString:@"DESTROY" target:self selector:@selector(didPressButton_next:)],
+                            [CCMenuItemFont itemWithString:@"HEAL" target:self selector:@selector(didPressButton_heal:)],
+                            [CCMenuItemFont itemWithString:@"DESTROY" target:self selector:@selector(didPressButton_destroy:)],
                             nil];
             menu.position = ccp(160, 100);
             [menu alignItemsVertically];
@@ -160,6 +161,25 @@ int block_id_list[] = {
             self.isTouchEnabled  = YES;
         }], nil];
         [self->current_block_view runAction:seq];
+    }
+}
+
+- (void)didPressButton_heal:(CCMenuItem *)sender
+{
+    DLEvent *event = [DLEvent eventWithType:DL_ON_HEAL target:self->current_block_model];
+    [event.params setObject:[NSNumber numberWithInt:9999] forKey:@"damage"];
+    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
+    if (action) {
+        [self->current_block_view runAction:action];
+    }
+}
+
+- (void)didPressButton_destroy:(CCMenuItem *)sender
+{
+    DLEvent *event = [DLEvent eventWithType:DL_ON_DESTROY target:self->current_block_model];
+    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
+    if (action) {
+        [self->current_block_view runAction:action];
     }
 }
 

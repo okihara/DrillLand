@@ -8,9 +8,12 @@
 
 #import "MockViewContext.h"
 #import "DLView.h"
+#import "DL.h"
 
 @implementation MockViewContext
 
+@synthesize fade_layer;
+@synthesize effect_layer;
 @synthesize block_layer;
 
 -(id) init
@@ -27,11 +30,10 @@
         
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
-//        
-//        // fade_layer
-//        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
-//        [self addChild:self->fade_layer];
-//        
+        
+        // fade_layer
+        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
+        [self addChild:self->fade_layer];
     }
     return self;
 }
@@ -44,6 +46,10 @@
 -(CCFiniteTimeAction*)launch_effect:(NSString *)name target:(CCNode*)target params:(NSDictionary*)params
 {
     return [self->effect_launcher launch_effect:name target:target params:params];
+}
+
+- (void)remove_block_view_if_dead:(DLPoint)pos
+{
 }
 
 @end
