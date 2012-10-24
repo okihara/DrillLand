@@ -13,6 +13,7 @@
 {
     CCSprite *icon;
     CCLabelBMFont *content_text;
+    CCSprite *coin_icon;
 }
 
 +(void)spawn:(CCNode*)parent position:(CGPoint)pos num_exp:(UInt32)num_gold;

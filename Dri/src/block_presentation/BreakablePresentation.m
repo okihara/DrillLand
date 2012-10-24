@@ -38,7 +38,7 @@
             }];
             
 //            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:view_ action:[CCJumpBy actionWithDuration:0.5f position:ccp(0, 0) height:60 jumps:3]];
-            CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.025f];
+            CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.01f];
 
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
                 

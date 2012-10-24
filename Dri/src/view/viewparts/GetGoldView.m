@@ -25,7 +25,7 @@
     CCJumpBy *j4 = [CCJumpBy actionWithDuration:0.037 position:ccp(0, 0) height:3.7  jumps:1];
     CCJumpBy *j5 = [CCJumpBy actionWithDuration:0.018 position:ccp(0, 0) height:1.8  jumps:1];
     //CCDelayTime *delay = [CCDelayTime actionWithDuration:0.7];
-    CCFadeOut *fo = [CCFadeOut actionWithDuration:0.7];
+    CCFadeOut *fo = [CCTargetedAction actionWithTarget:self->coin_icon action:[CCFadeOut actionWithDuration:0.7]];
     CCCallFunc *suicide = [CCCallFunc actionWithTarget:self selector:@selector(suicide)];
     
 //    return [CCSequence actions:j1, j2, j3, j4, j5, delay, fo, suicide, nil];
@@ -35,15 +35,15 @@
 -(id)initWithNumExp:(UInt32)num_exp
 {
     if(self=[super init]) {
-        ccColor3B color = ccc3(255, 255, 255);
-        NSString *str = [NSString stringWithFormat:@"+%d G", num_exp];
-        self->content_text = [FontFactory makeLabel:str color:color];
-        self->content_text.position = ccp(20, 0);
-        [self addChild:self->content_text];
+//        ccColor3B color = ccc3(255, 255, 255);
+//        NSString *str = [NSString stringWithFormat:@"+%d G", num_exp];
+//        self->content_text = [FontFactory makeLabel:str color:color];
+//        self->content_text.position = ccp(20, 0);
+//        [self addChild:self->content_text];
         
-        CCSprite *coin_icon = [CCSprite spriteWithFile:@"coin.png"];
-        coin_icon.position = ccp(-24, 0);
-        coin_icon.scale = 0.5f;
+        self->coin_icon = [CCSprite spriteWithFile:@"coin.png"];
+        self->coin_icon.position = ccp(0, 0);
+        self->coin_icon.scale = 0.5f;
         
         [self addChild:coin_icon];
     }    
