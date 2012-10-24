@@ -118,7 +118,7 @@
         return;
     }
     
-    block = [BlockViewBuilder create:block_model ctx:dungeon_model];
+    block = [BlockViewBuilder build:block_model ctx:dungeon_model];
     block.position = [self model_to_local:cdp(x, y)];
     
     [self->block_layer addChild:block];

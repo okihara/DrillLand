@@ -42,11 +42,10 @@
 // TODO: なんていうか、switch でやるのはいけてないよねー
 // Command パターン
 
-+ (BlockView *)create:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
++(NSString*)name_from_block_type:(enum ID_BLOCK)block_id
 {
-    // ブロック
     NSString *filename;
-    switch (block_model.type) {
+    switch (block_id) {
         case ID_NORMAL_BLOCK:
             filename = @"block01.png";
             break;
@@ -78,11 +77,12 @@
             filename = @"block00.png";
             break;
     }
-    
-    BlockView* block_view = [BlockView spriteWithFile:filename];
-    [block_view setup];
-    [[block_view texture] setAliasTexParameters];
-    
+    return filename;
+}
+
++ (BlockView*)attach_presentation:(BlockView *)block_view block_model:(BlockModel *)block_model
+{
+    // type/block_id によって presentation を追加
     switch (block_model.type) {
             
         case ID_EMPTY:
@@ -94,7 +94,7 @@
         case ID_PLAYER:
         {
             block_view.scale = 2.0;
-
+            
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
                 [block_view add_presentation:p];
@@ -122,7 +122,7 @@
         case ID_ENEMY_BLOCK_1:
         {
             block_view.scale = 2.0;
-
+            
             [self add_can_destroy_num:block_model block:block_view];
             
             NSObject<BlockPresentation>* p;
@@ -183,6 +183,15 @@
     }
     
     return block_view;
+}
+
++ (BlockView *)build:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
+{
+    NSString *filename = [BlockViewBuilder name_from_block_type:block_model.type];
+    BlockView* block_view = [BlockView spriteWithFile:filename];
+    [block_view setup];
+    [[block_view texture] setAliasTexParameters];
+    return [self attach_presentation:block_view block_model:block_model];
 }
 
 @end

@@ -103,7 +103,7 @@ int block_id_list[] = {
     
     BlockBuilder *block_builder = [[BlockBuilder alloc] init];
     BlockModel *block_model = [block_builder buildWithID:block_id];
-    BlockView *block_view = [BlockViewBuilder create:block_model ctx:nil];
+    BlockView *block_view = [BlockViewBuilder build:block_model ctx:nil];
     
     block_view.position = ccp(160, 240);
     
