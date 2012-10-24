@@ -40,7 +40,7 @@
 
 
 // TODO: なんていうか、switch でやるのはいけてないよねー
-// Command パターン
+// Command パターン使おうよ
 
 +(NSString*)name_from_block_type:(enum ID_BLOCK)block_id
 {
@@ -80,9 +80,9 @@
     return filename;
 }
 
-+ (BlockView*)attach_presentation:(BlockView *)block_view block_model:(BlockModel *)block_model
+// type/block_id によって presentation を追加
++(void)attach_presentation:(BlockView *)block_view block_model:(BlockModel *)block_model
 {
-    // type/block_id によって presentation を追加
     switch (block_model.type) {
             
         case ID_EMPTY:
@@ -125,15 +125,17 @@
             
             [self add_can_destroy_num:block_model block:block_view];
             
-            NSObject<BlockPresentation>* p;
-            
-            p = [[BreakablePresentation alloc] init];
-            [block_view add_presentation:p];
-            [p release];
-            
-            p = [[BloodyPresentation alloc] init];
-            [block_view add_presentation:p];
-            [p release];
+            {
+                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
+                [block_view add_presentation:p];
+                [p release];
+            }
+
+            {
+                NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
+                [block_view add_presentation:p];
+                [p release];
+            }
             
             {
                 NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
@@ -145,11 +147,10 @@
             
         case ID_ITEM_BLOCK_0:
         {
-            //block.scale = 2.0f;   
             [self add_can_destroy_num:block_model block:block_view];
+            
             {
-                NSObject<BlockPresentation> *p;
-                p = [[GettableItemPresentation alloc] init];
+                NSObject<BlockPresentation> *p = [[GettableItemPresentation alloc] init];
                 [block_view add_presentation:p];
                 [p release];
             }
@@ -158,11 +159,10 @@
             
         case ID_ITEM_BLOCK_1:
         {
-            //block.scale = 2.0f;   
             [self add_can_destroy_num:block_model block:block_view];
+            
             {
-                NSObject<BlockPresentation>* p;
-                p = [[GettableItemPresentation alloc] init];
+                NSObject<BlockPresentation>* p = [[GettableItemPresentation alloc] init];
                 [block_view add_presentation:p];
                 [p release];
             }
@@ -173,25 +173,24 @@
         {
             [self add_can_destroy_num:block_model block:block_view];
             
-            NSObject<BlockPresentation>* p;
-            
-            p = [[BreakablePresentation alloc] init];
-            [block_view add_presentation:p];
-            [p release];
+            {            
+                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
+                [block_view add_presentation:p];
+                [p release];
+            }
         }
             break;
     }
-    
-    return block_view;
 }
 
-+ (BlockView *)build:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
++(BlockView*)build:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
 {
     NSString *filename = [BlockViewBuilder name_from_block_type:block_model.type];
     BlockView* block_view = [BlockView spriteWithFile:filename];
     [block_view setup];
     [[block_view texture] setAliasTexParameters];
-    return [self attach_presentation:block_view block_model:block_model];
+    [self attach_presentation:block_view block_model:block_model];
+    return block_view;
 }
 
 @end
