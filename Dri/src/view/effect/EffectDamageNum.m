@@ -14,9 +14,17 @@
 
 + (CCFiniteTimeAction*)launch:(CCNode*)target params:(NSDictionary*)params effect_layer:(CCLayer*)effect_layer
 {    
+    NSValue *value_color = [params objectForKey:@"color"];
+    ccColor3B color;
+    if (value_color) {
+        [value_color getValue:&color];
+    } else {
+        color = ccc3(255, 255, 255);
+    }
+    
     NSNumber *num = (NSNumber*)[params objectForKey:@"damage"];
     int damage = num ? [num intValue] : 0;
-    [DamageNumView spawn:damage target:effect_layer position:target.position];
+    [DamageNumView spawn:damage target:effect_layer position:target.position color:color];
     return nil;
 }
 

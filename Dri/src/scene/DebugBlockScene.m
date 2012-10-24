@@ -118,6 +118,14 @@ int block_id_list[] = {
     [self change_block:block_id_list[self->current_index]];
 }
 
+- (void)handle_event_and_do_action:(DLEvent *)event
+{
+    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
+    if (action) {
+        [self->current_block_view runAction:action];
+    }
+}
+
 - (void)didPressButton_next:(CCMenuItem *)sender
 {
     self->current_index += 1;
@@ -141,10 +149,7 @@ int block_id_list[] = {
 - (void)didPressButton_attack:(CCMenuItem *)sender
 {
     DLEvent *event = [DLEvent eventWithType:DL_ON_ATTACK target:self->current_block_model];
-    CCAction *action = [self->current_block_view handle_event:nil event:event];
-    if (action) {
-        [self->current_block_view runAction:action];
-    }
+    [self handle_event_and_do_action:event];
 }
 
 - (void)didPressButton_damage:(CCMenuItem *)sender
@@ -168,19 +173,16 @@ int block_id_list[] = {
 {
     DLEvent *event = [DLEvent eventWithType:DL_ON_HEAL target:self->current_block_model];
     [event.params setObject:[NSNumber numberWithInt:9999] forKey:@"damage"];
-    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
-    if (action) {
-        [self->current_block_view runAction:action];
-    }
+    
+    [self handle_event_and_do_action:event];
 }
 
 - (void)didPressButton_destroy:(CCMenuItem *)sender
 {
     DLEvent *event = [DLEvent eventWithType:DL_ON_DESTROY target:self->current_block_model];
-    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
-    if (action) {
-        [self->current_block_view runAction:action];
-    }
+    
+    [self handle_event_and_do_action:event];
+    self->current_block_view = nil;
 }
 
 -(void)onEnterTransitionDidFinish

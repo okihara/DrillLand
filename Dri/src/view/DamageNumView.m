@@ -33,11 +33,12 @@
 {
      if(self=[super init]) {
         
+         CGPoint base_pos = ccp(0, -20);
          self->content_text = [FontFactory makeLabel:str color:color];
-         self->content_text.scale = 1.0;
+         self->content_text.scale = 0.8;
          [self addChild:self->content_text];
          
-         CCJumpBy *j1 = [CCJumpBy actionWithDuration:0.3   position:ccp(0, 0) height:30.0 jumps:1];
+         CCJumpBy *j1 = [CCJumpBy actionWithDuration:0.3   position:base_pos height:30.0 jumps:1];
          CCJumpBy *j2 = [CCJumpBy actionWithDuration:0.15  position:ccp(0, 0) height:15.0 jumps:1];
          CCJumpBy *j3 = [CCJumpBy actionWithDuration:0.075 position:ccp(0, 0) height:7.5  jumps:1];
          CCJumpBy *j4 = [CCJumpBy actionWithDuration:0.037 position:ccp(0, 0) height:3.7  jumps:1];

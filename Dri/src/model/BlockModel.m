@@ -40,7 +40,7 @@
     group_id = 0;
     group_info = NULL;
     can_tap = NO;
-    
+        
     // behavior
     if (self->behavior_list) {
         [self->behavior_list release];

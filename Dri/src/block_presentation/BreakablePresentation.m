@@ -59,16 +59,16 @@
             
         case DL_ON_CHANGE:
         {
-            CCTargetedAction *act_0 =  [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
+            // CCTargetedAction *act_0 =  [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
+
             CCCallBlock *act_1 = [CCCallBlock actionWithBlock:^{
-                
                 DungeonModel *dungeon_model = [e.params objectForKey:@"dungeon_model"];
                 [ctx remove_block_view:block.pos];
                 [ctx update_block:block.pos.y x:block.pos.x dungeon_model:dungeon_model];
-            
             }];
 
-            return [CCSequence actions:act_0, act_1, nil];
+            return [CCSequence actions:act_1, nil];
+
         }
             break;
             

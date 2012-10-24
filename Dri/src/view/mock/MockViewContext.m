@@ -50,6 +50,7 @@
 
 - (void)remove_block_view_if_dead:(DLPoint)pos
 {
+    [self->block_layer removeAllChildrenWithCleanup:YES];
 }
 
 @end

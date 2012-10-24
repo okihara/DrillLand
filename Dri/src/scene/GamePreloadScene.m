@@ -71,10 +71,10 @@
 -(void)onEnter
 {
     [super onEnter];
-    
+
+    [self goto_debug_block_view];
     //[self goto_dungeon];
-    //[self goto_debug_block_view];
-    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 
 @end

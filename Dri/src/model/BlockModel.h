@@ -52,6 +52,9 @@ enum ID_BLOCK {
     unsigned int group_id;
     id group_info;
     BOOL can_tap;
+
+    // TODO: クラス化
+    uint direction;
     
     // behavior
     NSMutableArray* behavior_list;

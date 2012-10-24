@@ -20,7 +20,7 @@
         label.anchorPoint = ccp(0, 0);
         [self addChild:label];
 
-        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIPS WO KOKO NI" fontName:DL_FONT_NAME fontSize:16];
+        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIPSTIPSTIPS" fontName:DL_FONT_NAME fontSize:15];
         tips.position =  ccp(160, 240);
         [self addChild:tips];
     }

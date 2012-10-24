@@ -395,6 +395,11 @@
             [BasicNotifierView notify:@"HP GA 10 KAIFUKU!" target:self];
             [self->events addObject:event];
             break;
+
+        case DL_ON_GET:
+            [BasicNotifierView notify:@"You got Dorayaki(S)" target:self];
+            [self->events addObject:event];
+            break;
             
         default:
             [self->events addObject:event];
