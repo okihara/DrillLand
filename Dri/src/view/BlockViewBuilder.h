@@ -17,7 +17,7 @@
 {
 }
 
-+(BlockView *)create:(BlockModel*)b ctx:(DungeonModel*)ctx;
++(BlockView *)create:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model;
 
 @end
 

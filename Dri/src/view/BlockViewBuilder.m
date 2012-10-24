@@ -42,11 +42,11 @@
 // TODO: なんていうか、switch でやるのはいけてないよねー
 // Command パターン
 
-+ (BlockView *)create:(BlockModel*)b ctx:(DungeonModel*)ctx
++ (BlockView *)create:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
 {
     // ブロック
     NSString *filename;
-    switch (b.type) {
+    switch (block_model.type) {
         case ID_NORMAL_BLOCK:
             filename = @"block01.png";
             break;
@@ -79,11 +79,11 @@
             break;
     }
     
-    BlockView* block = [BlockView spriteWithFile:filename];
-    [block setup];
-    [[block texture] setAliasTexParameters];
+    BlockView* block_view = [BlockView spriteWithFile:filename];
+    [block_view setup];
+    [[block_view texture] setAliasTexParameters];
     
-    switch (b.type) {
+    switch (block_model.type) {
             
         case ID_EMPTY:
         {
@@ -93,51 +93,51 @@
             
         case ID_PLAYER:
         {
-            block.scale = 2.0;
+            block_view.scale = 2.0;
 
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
             
             {
                 NSObject<BlockPresentation>* p = [[PlayerPresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
             
             {
                 NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
             
-            [block play_anime:@"walk"];
+            [block_view play_anime:@"walk"];
         }
             break;
             
         case ID_ENEMY_BLOCK_0:
-            [block play_anime:@"action0"];
+            [block_view play_anime:@"action0"];
         case ID_ENEMY_BLOCK_1:
         {
-            block.scale = 2.0;
+            block_view.scale = 2.0;
 
-            [self add_can_destroy_num:b block:block];
+            [self add_can_destroy_num:block_model block:block_view];
             
             NSObject<BlockPresentation>* p;
             
             p = [[BreakablePresentation alloc] init];
-            [block add_presentation:p];
+            [block_view add_presentation:p];
             [p release];
             
             p = [[BloodyPresentation alloc] init];
-            [block add_presentation:p];
+            [block_view add_presentation:p];
             [p release];
             
             {
                 NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
         }            
@@ -146,11 +146,11 @@
         case ID_ITEM_BLOCK_0:
         {
             //block.scale = 2.0f;   
-            [self add_can_destroy_num:b block:block];
+            [self add_can_destroy_num:block_model block:block_view];
             {
                 NSObject<BlockPresentation> *p;
                 p = [[GettableItemPresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
         }
@@ -159,11 +159,11 @@
         case ID_ITEM_BLOCK_1:
         {
             //block.scale = 2.0f;   
-            [self add_can_destroy_num:b block:block];
+            [self add_can_destroy_num:block_model block:block_view];
             {
                 NSObject<BlockPresentation>* p;
                 p = [[GettableItemPresentation alloc] init];
-                [block add_presentation:p];
+                [block_view add_presentation:p];
                 [p release];
             }
         }
@@ -171,18 +171,18 @@
             
         default:
         {
-            [self add_can_destroy_num:b block:block];
+            [self add_can_destroy_num:block_model block:block_view];
             
             NSObject<BlockPresentation>* p;
             
             p = [[BreakablePresentation alloc] init];
-            [block add_presentation:p];
+            [block_view add_presentation:p];
             [p release];
         }
             break;
     }
     
-    return block;
+    return block_view;
 }
 
 @end
