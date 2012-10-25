@@ -80,6 +80,11 @@
     [self->effect_layer addChild:block];    
 }
 
+-(BlockView*)get_block_view:(DLPoint)pos
+{
+    return [self->view_map get_x:pos.x y:pos.y];
+}
+
 
 //==============================================================================
 //

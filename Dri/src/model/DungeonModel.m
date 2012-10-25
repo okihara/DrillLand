@@ -169,6 +169,7 @@
 {
     [self set_without_update_can_tap:pos block:block];
 
+    // この一行いらんかも
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
 
     // ここで NEW イベント飛ばす

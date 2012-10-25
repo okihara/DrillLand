@@ -68,6 +68,9 @@
         case DL_ON_GET:
             return @"DL_ON_GET";
             break;
+        case DL_ON_NEW:
+            return @"DL_ON_NEW";
+            break;
         default:
             return @"UNKOWN";
             break;

@@ -49,7 +49,9 @@
 @property (readonly) int offset_y;
 
 
-- (void)add_block:(BlockView*)block;
+-(void)add_block:(BlockView*)block;
+-(BlockView*)get_block_view:(DLPoint)pos;
+
 
 // 描画
 - (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model;

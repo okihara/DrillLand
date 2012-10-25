@@ -16,6 +16,7 @@
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
     BlockModel *block = e.target;
+    
     switch (e.type) {
             
         case DL_ON_HIT:
@@ -57,14 +58,19 @@
         }
             break;
             
-        case DL_ON_CHANGE:
+        case DL_ON_NEW:
         {
-            // CCTargetedAction *act_0 =  [CCTargetedAction actionWithTarget:view_ action:[CCBlink actionWithDuration:0.5f blinks:2]];
-
             CCCallBlock *act_1 = [CCCallBlock actionWithBlock:^{
+                
                 DungeonModel *dungeon_model = [e.params objectForKey:@"dungeon_model"];
-                [ctx remove_block_view:block.pos];
+                [ctx remove_block_view_if_dead:block.pos];
                 [ctx update_block:block.pos.y x:block.pos.x dungeon_model:dungeon_model];
+                
+                
+                BlockView *new_block_view = [ctx get_block_view:block.pos];
+                CCJumpBy *act_jump = [CCTargetedAction actionWithTarget:new_block_view action:[CCJumpBy actionWithDuration:1.0f position:ccp(0, 0) height:60 jumps:1]];
+                [new_block_view runAction:act_jump];
+
             }];
 
             return [CCSequence actions:act_1, nil];
