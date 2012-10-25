@@ -33,54 +33,46 @@
     [dungeon_ dispatchEvent:e];
 }
 
--(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
+- (void)change_if_needed:(BlockModel *)block dungeon_model:(DungeonModel *)dungeon_model
 {
-    // TODO: ここで behaivior リストも破棄しないといけない
-    // どういう意味？？
+    // TODO: とりあえずすぎる
+
+    int r = rand();
 
     DLPoint pos = block.pos;
-            
-    // TODO: とりあえずすぎる
-    int r = rand();
-    
+
     if (r % 15 == 0) {
-
-        // イベント飛ばす
-        DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
-        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_0] forKey:@"type"];
-        [dungeon_ dispatchEvent:e];
-
+        
         // モデルの情報書き換える      
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_0];
         // TODO: set でOK? メモリリークしない？
-        [dungeon_ set:pos block:block];
+        [dungeon_model set:pos block:block];
         
     } else if (r % 15 == 1) {
-
-        // イベント飛ばす
-        DLEvent *e = [DLEvent eventWithType:DL_ON_CHANGE target:block];
-        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] forKey:@"type"];
-        [dungeon_ dispatchEvent:e];
-
+        
         // モデルの情報書き換える      
         // TODO: 無理矢理書き換えてる
         BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
         block = [builder buildWithID:ID_ITEM_BLOCK_1];
         // TODO: set でOK? メモリリークしない？
-        [dungeon_ set:pos block:block];
+        [dungeon_model set:pos block:block];
         
-    } else {
-  
-        // イベント飛ばす
-        DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
-        [dungeon_ dispatchEvent:e];
+    }
+}
 
-        // モデルの情報書き換える
-        [block clear];
+-(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
+{
+    // イベント飛ばす
+    DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
+    [dungeon_ dispatchEvent:e];
     
-    }    
+    // 必要なら違うブロックに変わる
+    [self change_if_needed:block dungeon_model:dungeon_];  
+
+    // モデルの情報書き換える。初期化。
+    [block clear];
 }
 
 @end

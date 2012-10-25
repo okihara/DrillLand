@@ -158,17 +158,22 @@
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
 // 上はなぜ？
--(void) _set:(DLPoint)pos block:(BlockModel*)block
+-(void)set_without_update_can_tap:(DLPoint)pos block:(BlockModel*)block
 {
     block.pos = pos;
     [self->map set_x:pos.x y:pos.y value:block];
     [self update_group_info:pos group_id:block.group_id];
 }
 
--(void) set:(DLPoint)pos block:(BlockModel*)block
+-(void)set:(DLPoint)pos block:(BlockModel*)block
 {
-    [self _set:pos block:block];
+    [self set_without_update_can_tap:pos block:block];
+
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
+
+    // ここで NEW イベント飛ばす
+    DLEvent *e = [DLEvent eventWithType:DL_ON_NEW target:block];
+    [self dispatchEvent:e];
 }
 
 // 完璧
@@ -215,8 +220,8 @@
                 int type_id = [[prop objectForKey:@"type"] intValue];
                 b = [block_builder buildWithID:type_id];
             }
-            [self _set:cdp(i, j) block:b];
             
+            [self set_without_update_can_tap:cdp(i, j) block:b];
         }
     }
  
