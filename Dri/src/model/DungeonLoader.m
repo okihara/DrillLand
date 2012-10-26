@@ -24,8 +24,10 @@
 
 -(void)dealloc
 {
+    [self->block_builder release];
     [super dealloc];
 }
+
 //---------------------------------------------------
 // フロア情報をロード
 -(void)load_from_file:(NSString*)filename

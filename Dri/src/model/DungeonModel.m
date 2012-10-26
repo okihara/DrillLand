@@ -60,8 +60,8 @@
 
 -(void)dispatchEvent:(DLEvent*)e
 {
-    for (id<DungenModelObserver> observer_ in self->observer_list) {
-        [observer_ notify:self event:e];
+    for (id<DungenModelObserver> observer in self->observer_list) {
+        [observer notify:self event:e];
     }
 }
 
