@@ -84,6 +84,7 @@
 {
     BlockModel* b = [self get:pos];
     
+    
     // TODO: 
     DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self->player];
     [self dispatchEvent:e];
@@ -115,6 +116,7 @@
     
     // タップできない（ターン消費無し）
     // このレイヤーでやることか？
+    // ここじゃないとするなら、どこよ？
     if (target.type == ID_EMPTY || target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
         [self dispatchEvent:event];
@@ -124,10 +126,7 @@
     // プレイヤーの移動
     [self move_player:pos];
     
-    // 仲間の移動
-    // not implemented yet
-    
-    // 敵の移動
+    // 仲間/敵の移動
     // not implemented yet
     
     // ブロックのヒットフェイズ
@@ -137,7 +136,6 @@
     [self on_update];
     
     // ここはシーンから呼ぶほうがいいか
-    // フロアの情報が変わったので更新＆通知
     [self update_can_tap:self->player.pos];
     
     return YES;
