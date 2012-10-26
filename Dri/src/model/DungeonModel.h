@@ -48,6 +48,11 @@
 
 -(id) init;
 
+// Observer
+-(void)add_observer:(id<DungenModelObserver>)observer;
+//-(void)remove_observer:(id<DungenModelObserver>)observer;
+-(void)dispatchEvent:(DLEvent*)e;
+
 // ---
 -(void)set:(DLPoint)pos block:(BlockModel*)block;
 -(void)set_without_update_can_tap:(DLPoint)pos block:(BlockModel*)block;
@@ -57,13 +62,11 @@
 // ---
 -(BOOL)on_hit:(DLPoint)pos;
 
-// ---
--(void)_clear_can_tap;
-
 // loader json
 -(void)load_from_file:(NSString*)filename;
 
 // calc route and grouping
+-(void)_clear_can_tap;
 -(void)update_can_tap:(DLPoint)pos;
 -(void)update_can_tap_r:(DLPoint)pos;
 -(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
@@ -71,11 +74,6 @@
 -(void)update_route_map:(DLPoint)pos target:(DLPoint)target;
 -(void)update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint)get_player_pos:(DLPoint)pos;
-
-// Observer
--(void)add_observer:(id<DungenModelObserver>)observer;
-//-(void)remove_observer:(id<DungenModelObserver>)observer;
--(void)dispatchEvent:(DLEvent*)e;
 
 @property (nonatomic, readonly) XDMap *route_map;
 @property (nonatomic, readonly) BlockModel *player;

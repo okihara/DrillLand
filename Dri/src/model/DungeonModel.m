@@ -109,13 +109,7 @@
     }
 }
 
--(BOOL)judge_quest_cleared
-{
-    return NO;
-}
-
-// -- おおもとのやつ
--(BOOL)on_hit:(DLPoint)pos
+- (BOOL)execute_one_turn:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
     
@@ -144,9 +138,15 @@
     
     // ここはシーンから呼ぶほうがいいか
     // フロアの情報が変わったので更新＆通知
-    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
+    [self update_can_tap:self->player.pos];
     
     return YES;
+}
+
+// -- おおもとのやつ
+-(BOOL)on_hit:(DLPoint)pos
+{
+    return [self execute_one_turn:pos]; // TODO: プレイヤーの座標を指定しないといけない
 }
 
 
@@ -199,9 +199,10 @@
 
 
 
+
 // ここからはほぼ変更なし ========================================================================
 
-#pragma mark SimpleAudioEngine
+
 
 
 //===========================================================================================
@@ -210,7 +211,6 @@
 // インターフェイスは、ほぼ変更されることはないだろう
 // 高速化くらいはやる
 //===========================================================================================
-
 
 //===========================================================================================
 //
@@ -448,7 +448,5 @@
     [self->route_list removeAllObjects];
     return [self _get_player_pos:pos];
 }
-
-#pragma mark SimpleAudioEngineA
 
 @end
