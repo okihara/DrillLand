@@ -23,6 +23,7 @@
 		C1455233163604E40032350D /* DebugBlockScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455232163604E40032350D /* DebugBlockScene.m */; };
 		C1455237163699380032350D /* DLView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455236163699380032350D /* DLView.m */; };
 		C145523B16369AFC0032350D /* MockViewContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523A16369AFC0032350D /* MockViewContext.m */; };
+		C145523E163A2A4F0032350D /* DungeonLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523D163A2A4D0032350D /* DungeonLoader.m */; };
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
 		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
 		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
@@ -264,6 +265,8 @@
 		C1455236163699380032350D /* DLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLView.m; path = src/scene/DLView.m; sourceTree = "<group>"; };
 		C145523916369AFC0032350D /* MockViewContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MockViewContext.h; path = src/view/mock/MockViewContext.h; sourceTree = "<group>"; };
 		C145523A16369AFC0032350D /* MockViewContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MockViewContext.m; path = src/view/mock/MockViewContext.m; sourceTree = "<group>"; };
+		C145523C163A2A4A0032350D /* DungeonLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonLoader.h; path = src/model/DungeonLoader.h; sourceTree = "<group>"; };
+		C145523D163A2A4D0032350D /* DungeonLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonLoader.m; path = src/model/DungeonLoader.m; sourceTree = "<group>"; };
 		C148531D162F7E470023FAF6 /* MyItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItems.h; path = src/model/item/MyItems.h; sourceTree = "<group>"; };
 		C148531E162F7E470023FAF6 /* MyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItems.m; path = src/model/item/MyItems.m; sourceTree = "<group>"; };
 		C1485321162F8ACF0023FAF6 /* MyEquipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEquipment.h; path = src/model/item/MyEquipment.h; sourceTree = "<group>"; };
@@ -1417,6 +1420,8 @@
 				C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */,
 				C1CCAA70160219E600A0EB1C /* DLEvent.h */,
 				C1CCAA71160219E600A0EB1C /* DLEvent.m */,
+				C145523C163A2A4A0032350D /* DungeonLoader.h */,
+				C145523D163A2A4D0032350D /* DungeonLoader.m */,
 				C16009F915F344F900A4616C /* DungeonModel.h */,
 				C16009F715F344F900A4616C /* DungeonModel.m */,
 				C16009FA15F344FA00A4616C /* BlockModel.h */,
@@ -1747,6 +1752,7 @@
 				C1455233163604E40032350D /* DebugBlockScene.m in Sources */,
 				C1455237163699380032350D /* DLView.m in Sources */,
 				C145523B16369AFC0032350D /* MockViewContext.m in Sources */,
+				C145523E163A2A4F0032350D /* DungeonLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #import "BlockModel.h"
 #import "SBJson.h"
 #import "BlockBuilder.h"
-
+#import "DungeonLoader.h"
 
 @implementation DungeonModel
 
@@ -36,7 +36,7 @@
     return self;
 }
 
--(void) dealloc
+-(void)dealloc
 {
     [self->map release];
     [self->route_map release];
@@ -53,12 +53,12 @@
 //
 //-----------------------------------------------------------------------------------------------------------------
 
--(void) add_observer:(id<DungenModelObserver>)observer_
+-(void)add_observer:(id<DungenModelObserver>)observer_
 {
     [self->observer_list addObject:observer_];
 }
 
--(void) dispatchEvent:(DLEvent*)e
+-(void)dispatchEvent:(DLEvent*)e
 {
     for (id<DungenModelObserver> observer_ in self->observer_list) {
         [observer_ notify:self event:e];
@@ -190,70 +190,18 @@
     return b.can_tap;
 }
 
-
-//---------------------------------------------------
-// フロア情報をロード
 -(void)load_from_file:(NSString*)filename
 {
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
-    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    id jsonItem = [jsonData JSONValue];
-    NSArray* layers = [(NSDictionary*)jsonItem objectForKey:@"layers"];
-    NSArray* data = [[layers objectAtIndex:0] objectForKey:@"data"];
-    
-    NSArray *tilesets = [(NSDictionary*)jsonItem objectForKey:@"tilesets"];
-    NSDictionary* tileset = [tilesets objectAtIndex:0];
-    NSDictionary* tileproperties = [tileset objectForKey:@"tileproperties"];
-    
-    int width  = [[jsonItem objectForKey:@"width"] integerValue];
-    //int height = [[jsonItem objectForKey:@"height"] integerValue];
-
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < width; i++) {
-            
-            BlockModel* b;
-            int b_ind = [[data objectAtIndex:i + j * width] integerValue];
-            if (b_ind == 0 || b_ind == 1) {
-                b = [block_builder buildWithID:ID_NORMAL_BLOCK];
-                b.type = 0;
-            } else {
-                NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
-                int type_id = [[prop objectForKey:@"type"] intValue];
-                b = [block_builder buildWithID:type_id];
-            }
-            
-            [self set_without_update_can_tap:cdp(i, j) block:b];
-        }
-    }
- 
-    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
-}
-
-//-(void)_fill_blocks
-//{
-//    for (int j = 0; j < HEIGHT; j++) {
-//        for (int i = 0; i < WIDTH; i++) {
-//            BlockModel* b = [[BlockModel alloc] init];
-//            b.type = ID_NORMAL_BLOCK;
-//            [self set:cdp(i, j) block:b];
-//        }
-//    }
-//}
-
--(void)_clear_can_tap
-{
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
-            BlockModel* b = [self->map get_x:i y:j];
-            b.can_tap = NO;
-        }
-    }
+    DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
+    [loader load_from_file:filename];
+    [self update_can_tap:self->player.pos];
 }
 
 
 
 // ここからはほぼ変更なし ========================================================================
 
+#pragma mark SimpleAudioEngine
 
 
 //===========================================================================================
@@ -269,6 +217,16 @@
 // タップ可能ブロックの情報を更新
 //
 //===========================================================================================
+
+-(void)_clear_can_tap
+{
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self->map get_x:i y:j];
+            b.can_tap = NO;
+        }
+    }
+}
 
 -(void) update_can_tap:(DLPoint)pos
 {
@@ -491,5 +449,6 @@
     return [self _get_player_pos:pos];
 }
 
+#pragma mark SimpleAudioEngineA
 
 @end
