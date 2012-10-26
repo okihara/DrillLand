@@ -171,7 +171,7 @@
 
     // この一行いらんかも
     [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
-
+    
     // ここで NEW イベント飛ばす
     DLEvent *e = [DLEvent eventWithType:DL_ON_NEW target:block];
     [self dispatchEvent:e];

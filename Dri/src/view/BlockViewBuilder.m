@@ -83,6 +83,12 @@
 // type/block_id によって presentation を追加
 +(void)attach_presentation:(BlockView *)block_view block_model:(BlockModel *)block_model
 {
+    {
+        NSObject<BlockPresentation> *p = [[BasicPresentation alloc] init];
+        [block_view add_presentation:p];
+        [p release];
+    }
+    
     switch (block_model.type) {
             
         case ID_EMPTY:

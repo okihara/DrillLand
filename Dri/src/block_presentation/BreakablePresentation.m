@@ -38,8 +38,7 @@
                 [ctx launch_particle:@"block" position:view_.position];
             }];
             
-//            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:view_ action:[CCJumpBy actionWithDuration:0.5f position:ccp(0, 0) height:60 jumps:3]];
-            CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.01f];
+            CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.05f];
 
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
                 
@@ -55,26 +54,6 @@
             }];
             
             return [CCSequence actions:act_0, act_1, act_2, nil];
-        }
-            break;
-            
-        case DL_ON_NEW:
-        {
-            CCCallBlock *act_1 = [CCCallBlock actionWithBlock:^{
-                
-                DungeonModel *dungeon_model = [e.params objectForKey:@"dungeon_model"];
-                [ctx remove_block_view_if_dead:block.pos];
-                [ctx update_block:block.pos.y x:block.pos.x dungeon_model:dungeon_model];
-                
-                
-                BlockView *new_block_view = [ctx get_block_view:block.pos];
-                CCJumpBy *act_jump = [CCTargetedAction actionWithTarget:new_block_view action:[CCJumpBy actionWithDuration:1.0f position:ccp(0, 0) height:60 jumps:1]];
-                [new_block_view runAction:act_jump];
-
-            }];
-
-            return [CCSequence actions:act_1, nil];
-
         }
             break;
             
