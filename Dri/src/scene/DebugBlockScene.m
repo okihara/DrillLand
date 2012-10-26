@@ -17,7 +17,7 @@
 
 @implementation DebugBlockScene
 
-int max_num = 11;
+int max_num = 12;
 
 int block_id_list[] = {
     ID_EMPTY,
@@ -32,6 +32,7 @@ int block_id_list[] = {
     
     ID_ITEM_BLOCK_0, // POTION
     ID_ITEM_BLOCK_1, // DORAYAKI
+    ID_ITEM_BLOCK_2, // DORAYAKI
     
     ID_PLAYER
 };

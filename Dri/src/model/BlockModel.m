@@ -128,6 +128,7 @@
     // ---
     if (target.hp == 0) {
         [target on_break:dungeon];
+        [target clear];
     }
 }
 

@@ -73,6 +73,9 @@
         case ID_ITEM_BLOCK_1:
             filename = @"block201.png";
             break;
+        case ID_ITEM_BLOCK_2:
+            filename = @"block300.png";
+            break;
         default:
             filename = @"block00.png";
             break;
@@ -169,6 +172,18 @@
             
             {
                 NSObject<BlockPresentation>* p = [[GettableItemPresentation alloc] init];
+                [block_view add_presentation:p];
+                [p release];
+            }
+        }
+            break;
+            
+        case ID_ITEM_BLOCK_2:
+        {
+            [self add_can_destroy_num:block_model block:block_view];
+            
+            {
+                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
                 [block_view add_presentation:p];
                 [p release];
             }

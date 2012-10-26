@@ -14,6 +14,8 @@
 #import "PotionBehavior.h"
 #import "BossBehavior.h"
 #import "GettableItemBehavior.h"
+#import "TreasureBoxBehavior.h"
+#import "ChangeBehavior.h"
 
 @implementation BlockBuilder
 
@@ -38,6 +40,7 @@
     [self registerBuilderWithID:ID_ENEMY_BLOCK_1     builder:@selector(build_enemy_1)];
     [self registerBuilderWithID:ID_ITEM_BLOCK_0      builder:@selector(build_item_0)];
     [self registerBuilderWithID:ID_ITEM_BLOCK_1      builder:@selector(build_item_1)];
+    [self registerBuilderWithID:ID_ITEM_BLOCK_2      builder:@selector(build_item_2)];
 }
 
 -(void)registerBuilderWithID:(enum ID_BLOCK)id_ builder:(SEL)builder_method
@@ -112,7 +115,8 @@
     
     // attach Behavior
     [b attach_behaivior:[[[BreakableBehaivior alloc] init] autorelease]];
-    
+    [b attach_behaivior:[[[ChangeBehavior alloc] init] autorelease]];
+
     return b;   
 }
 
@@ -128,9 +132,7 @@
 
 -(BlockModel*)build_grouped_3
 {
-    BlockModel* b = [self build_grouped:ID_GROUPED_BLOCK_3];
-    b.hp = b.max_hp = 1;
-    return b;
+    return [self build_grouped:ID_GROUPED_BLOCK_3];
 }
 
 -(BlockModel*)build_enemy_0
@@ -194,6 +196,22 @@
     // attach Behavior
     [b attach_behaivior:[[[GettableItemBehavior alloc] init] autorelease]];
     
+    return b;    
+}
+
+-(BlockModel*)build_item_2
+{
+    // 生成
+    BlockModel* b = [[BlockModel alloc] init];
+    b.type = ID_ITEM_BLOCK_2;
+    b.hp =  5;
+    b.atk = 0;
+    b.def = 0;
+    
+    // attach Behavior
+    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[[[TreasureBoxBehavior  alloc] init] autorelease]];
+
     return b;    
 }
 
