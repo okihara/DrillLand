@@ -229,6 +229,10 @@
 // タッチ後のシーケンス
 //
 //===============================================================
+-(void)enableTouch
+{
+    self.isTouchEnabled = YES;
+}
 
 - (void)run_sequence
 {
@@ -277,9 +281,7 @@
     
     // -------------------------------------------------------------------------------
     // タッチをオンに
-    CCAction* act_to_touchable = [CCCallBlockO actionWithBlock:^(DungeonScene* this) {
-        this.isTouchEnabled = YES;
-    } object:self];
+    CCAction *act_to_touchable = [CCCallFuncO actionWithTarget:self selector:@selector(enableTouch)];
     [action_list addObject:act_to_touchable];
     
     // -------------------------------------------------------------------------------    
