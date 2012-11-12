@@ -20,6 +20,8 @@
 		C130834E163A8B9F009B254B /* TreasureBoxBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C130834D163A8B9E009B254B /* TreasureBoxBehavior.m */; };
 		C1308351163A8C62009B254B /* ChangeBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1308350163A8C60009B254B /* ChangeBehavior.m */; };
 		C132CC1416510E4600AA4217 /* block_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C132CC1316510E4600AA4217 /* block_master.json */; };
+		C132CC171651101C00AA4217 /* MasterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C132CC161651101C00AA4217 /* MasterLoader.m */; };
+		C132CC1A1651141400AA4217 /* BehaviorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C132CC191651141300AA4217 /* BehaviorFactory.m */; };
 		C13FBDF1160B313E00B4AF35 /* link2.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDEF160B313E00B4AF35 /* link2.json */; };
 		C13FBDF2160B313E00B4AF35 /* link2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF0160B313E00B4AF35 /* link2.png */; };
 		C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF4160B31F300B4AF35 /* linkatk.json */; };
@@ -264,6 +266,10 @@
 		C130834F163A8C5F009B254B /* ChangeBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeBehavior.h; path = src/block_behavior/ChangeBehavior.h; sourceTree = "<group>"; };
 		C1308350163A8C60009B254B /* ChangeBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangeBehavior.m; path = src/block_behavior/ChangeBehavior.m; sourceTree = "<group>"; };
 		C132CC1316510E4600AA4217 /* block_master.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = block_master.json; path = Resources/master/block_master.json; sourceTree = "<group>"; };
+		C132CC151651101B00AA4217 /* MasterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterLoader.h; path = src/misc/MasterLoader.h; sourceTree = "<group>"; };
+		C132CC161651101C00AA4217 /* MasterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterLoader.m; path = src/misc/MasterLoader.m; sourceTree = "<group>"; };
+		C132CC181651141300AA4217 /* BehaviorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BehaviorFactory.h; path = src/block_behavior/BehaviorFactory.h; sourceTree = "<group>"; };
+		C132CC191651141300AA4217 /* BehaviorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BehaviorFactory.m; path = src/block_behavior/BehaviorFactory.m; sourceTree = "<group>"; };
 		C13FBDEF160B313E00B4AF35 /* link2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = link2.json; sourceTree = "<group>"; };
 		C13FBDF0160B313E00B4AF35 /* link2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link2.png; sourceTree = "<group>"; };
 		C13FBDF4160B31F300B4AF35 /* linkatk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = linkatk.json; path = Resources/animation/linkatk.json; sourceTree = "<group>"; };
@@ -718,6 +724,8 @@
 		C11D62B015EC3B1800F7633D /* block_behaivior */ = {
 			isa = PBXGroup;
 			children = (
+				C132CC181651141300AA4217 /* BehaviorFactory.h */,
+				C132CC191651141300AA4217 /* BehaviorFactory.m */,
 				C1CCAA8A1605D88F00A0EB1C /* BossBehavior.h */,
 				C1CCAA8B1605D89000A0EB1C /* BossBehavior.m */,
 				C1CCAA7B1605C61F00A0EB1C /* PotionBehavior.h */,
@@ -1281,6 +1289,8 @@
 		C1CCAA9A1607550A00A0EB1C /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				C132CC151651101B00AA4217 /* MasterLoader.h */,
+				C132CC161651101C00AA4217 /* MasterLoader.m */,
 				C183A14216111A3000FE672F /* AnimationLoader.h */,
 				C183A14316111A3000FE672F /* AnimationLoader.m */,
 				C183A13F1611191200FE672F /* SpriteFrameLoader.h */,
@@ -1789,6 +1799,8 @@
 				C145523E163A2A4F0032350D /* DungeonLoader.m in Sources */,
 				C130834E163A8B9F009B254B /* TreasureBoxBehavior.m in Sources */,
 				C1308351163A8C62009B254B /* ChangeBehavior.m in Sources */,
+				C132CC171651101C00AA4217 /* MasterLoader.m in Sources */,
+				C132CC1A1651141400AA4217 /* BehaviorFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

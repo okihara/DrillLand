@@ -8,7 +8,6 @@
 
 #import "BlockBuilder.h"
 #import "BlockModel.h"
-#import "BreakableBehaivior.h"
 #import "AggressiveBehaivior.h"
 #import "DieableBehavior.h"
 #import "PotionBehavior.h"
@@ -16,6 +15,7 @@
 #import "GettableItemBehavior.h"
 #import "TreasureBoxBehavior.h"
 #import "ChangeBehavior.h"
+#import "BehaviorFactory.h"
 
 @implementation BlockBuilder
 
@@ -87,7 +87,7 @@
     b.hp = 1;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     
     return b;
 }
@@ -100,7 +100,7 @@
     b.hp = 9999;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     
     return b;
 }
@@ -114,7 +114,7 @@
     b.hp = 1;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     [b attach_behaivior:[[[ChangeBehavior alloc] init] autorelease]];
 
     return b;   
@@ -145,7 +145,7 @@
     b.def = 3;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
 
     return b;
@@ -162,7 +162,7 @@
     
     // attach Behavior
     [b attach_behaivior:[[[BossBehavior alloc] init] autorelease]];
-    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
     
     return b;
@@ -179,7 +179,7 @@
     
     // attach Behavior
     [b attach_behaivior:[[[PotionBehavior  alloc] init] autorelease]];
-    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     
     return b;
 }
@@ -209,7 +209,7 @@
     b.def = 0;
     
     // attach Behavior
-    [b attach_behaivior:[[[BreakableBehaivior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     [b attach_behaivior:[[[TreasureBoxBehavior  alloc] init] autorelease]];
 
     return b;    
