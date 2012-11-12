@@ -21,6 +21,8 @@
 @synthesize group_info;
 @synthesize can_tap;
 @synthesize pos;
+@synthesize exp;
+@synthesize gold;
 
 -(id) init
 {

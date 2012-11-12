@@ -8,14 +8,8 @@
 
 #import "BlockBuilder.h"
 #import "BlockModel.h"
-#import "AggressiveBehaivior.h"
-#import "DieableBehavior.h"
-#import "PotionBehavior.h"
-#import "BossBehavior.h"
-#import "GettableItemBehavior.h"
-#import "TreasureBoxBehavior.h"
-#import "ChangeBehavior.h"
 #import "BehaviorFactory.h"
+#import "MasterLoader.h"
 
 @implementation BlockBuilder
 
@@ -48,6 +42,37 @@
     [builder_map setObject:[NSValue valueWithPointer:builder_method] forKey:[NSNumber numberWithInt:id_]];
 }
 
+-(BlockModel*)build_by_id:(enum ID_BLOCK)id_
+{
+    // get json data from master
+    NSDictionary *master = [MasterLoader get_master_by_id:id_];
+    
+    // setup parameter
+    BlockModel* b = [[BlockModel alloc] init];
+    b.type = id_;
+    b.hp   = [[master objectForKey:@"hp"] intValue];
+    b.atk  = [[master objectForKey:@"atk"] intValue];
+    b.def  = [[master objectForKey:@"def"] intValue];
+    b.exp  = [[master objectForKey:@"exp"] intValue];
+    b.gold = [[master objectForKey:@"gold"] intValue];
+    
+    // setup behavior
+    for (int i = 0; i < 3; ++i) {
+        NSString *key = [NSString stringWithFormat:@"behavior_%d", i];
+        NSNumber *number = [master objectForKey:key];
+        if ([number isKindOfClass:[NSNull class]]) {
+            continue;
+        }
+        uint behavior_id = [number intValue];
+        if (!behavior_id) {
+            continue;
+        }
+        NSObject<BlockBehaivior> *behavior = [BehaviorFactory create:behavior_id];
+        [b attach_behaivior:behavior];
+    }
+    return b;
+}
+
 -(BlockModel*)buildWithID:(enum ID_BLOCK)id_
 {
     NSValue* value = [builder_map objectForKey:[NSNumber numberWithInt:id_]];
@@ -71,8 +96,7 @@
     b.type = ID_PLAYER;
     b.hp = b.max_hp = 10;
     b.atk = 5;
-    b.pos = cdp(2, 3);
-    
+        
     // attach Behavior
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_DIEABLE]];
     
@@ -81,15 +105,17 @@
 
 -(BlockModel*)build_normal
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_NORMAL_BLOCK;
-    b.hp = 1;
+    return [self build_by_id:ID_NORMAL_BLOCK];
     
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    
-    return b;
+//    // 生成
+//    BlockModel* b = [[BlockModel alloc] init];
+//    b.type = ID_NORMAL_BLOCK;
+//    b.hp = 1;
+//    
+//    // attach Behavior
+//    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
+//    
+//    return b;
 }
 
 -(BlockModel*)build_unbreakable

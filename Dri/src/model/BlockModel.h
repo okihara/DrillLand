@@ -48,6 +48,7 @@ enum ID_BLOCK {
     int max_hp;
     int type;
     int exp;
+    int gold;
     int atk;
     int def;
     unsigned int group_id;
@@ -77,6 +78,8 @@ enum ID_BLOCK {
 @property (nonatomic, assign) int type;
 @property (nonatomic, assign) int atk;
 @property (nonatomic, assign) int def;
+@property (nonatomic, assign) int exp;
+@property (nonatomic, assign) int gold;
 @property (nonatomic, assign) unsigned int group_id;
 @property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL can_tap;

@@ -15,6 +15,7 @@
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
 #import "DebugBlockScene.h"
+#import "MasterLoader.h"
 
 @implementation GamePreloadScene
 
@@ -49,6 +50,10 @@
         
         [frame_loader load_sprite:@"mon.json"];
         [animation_loader load_animation:@"mon001.json"];
+        
+        // ---
+        MasterLoader *master_loader = [[MasterLoader new] autorelease];
+        [master_loader load:@"block_master.json"];
         
         // -- texture
         [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
