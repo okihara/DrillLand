@@ -10,7 +10,14 @@
 #import "BlockModel.h"
 
 enum ID_BEHAVIOR {
-    BEHAVIOR_BREKABLE = 10000,
+    BEHAVIOR_BREKABLE      = 10000,
+    BEHAVIOR_BOSS          = 10001,
+    BEHAVIOR_POTION        = 10002,
+    BEHAVIOR_AGGRESSIVE    = 10003,
+    BEHAVIOR_DIEABLE       = 10004,
+    BEHAVIOR_GETTABLE_ITEM = 10005,
+    BEHAVIOR_TREASURE_BOX  = 10006,
+    BEHAVIOR_CHANGE        = 10007,
 };
 
 @interface BehaviorFactory : NSObject

@@ -74,7 +74,7 @@
     b.pos = cdp(2, 3);
     
     // attach Behavior
-    [b attach_behaivior:[[[DieableBehavior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_DIEABLE]];
     
     return b;
 }
@@ -115,7 +115,7 @@
     
     // attach Behavior
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[[[ChangeBehavior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_CHANGE]];
 
     return b;   
 }
@@ -146,7 +146,7 @@
     
     // attach Behavior
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_AGGRESSIVE]];
 
     return b;
 }
@@ -161,9 +161,9 @@
     b.def = 3;
     
     // attach Behavior
-    [b attach_behaivior:[[[BossBehavior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BOSS]];
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[[[AggressiveBehaivior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_AGGRESSIVE]];
     
     return b;
 }
@@ -178,7 +178,7 @@
     b.def = 0;
     
     // attach Behavior
-    [b attach_behaivior:[[[PotionBehavior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_POTION]];
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
     
     return b;
@@ -194,7 +194,7 @@
     b.def = 0;
     
     // attach Behavior
-    [b attach_behaivior:[[[GettableItemBehavior alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_GETTABLE_ITEM]];
     
     return b;    
 }
@@ -210,7 +210,7 @@
     
     // attach Behavior
     [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[[[TreasureBoxBehavior  alloc] init] autorelease]];
+    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_TREASURE_BOX]];
 
     return b;    
 }
