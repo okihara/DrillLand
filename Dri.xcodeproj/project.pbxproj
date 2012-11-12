@@ -39,7 +39,7 @@
 		C16009FF15F3450F00A4616C /* DungeonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009FD15F3450F00A4616C /* DungeonView.m */; };
 		C1600A0015F3450F00A4616C /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009FE15F3450F00A4616C /* BlockView.m */; };
 		C1621D3716198B2600AB73A0 /* guild000.png in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3516198B2600AB73A0 /* guild000.png */; };
-		C1621D3816198B2600AB73A0 /* home000.png in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3616198B2600AB73A0 /* home000.png */; };
+		C1621D3816198B2600AB73A0 /* town000.png in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3616198B2600AB73A0 /* town000.png */; };
 		C1621D3C1619A03200AB73A0 /* DungeonPreloadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */; };
 		C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3D161A7D9200AB73A0 /* floor000.json */; };
 		C1621D40161A82E800AB73A0 /* floor002.json in Resources */ = {isa = PBXBuildFile; fileRef = C1621D3F161A82E800AB73A0 /* floor002.json */; };
@@ -297,7 +297,7 @@
 		C1600A0115F3451900A4616C /* DungeonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonView.h; path = src/view/DungeonView.h; sourceTree = "<group>"; };
 		C1600A0215F3451900A4616C /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockView.h; path = src/view/BlockView.h; sourceTree = "<group>"; };
 		C1621D3516198B2600AB73A0 /* guild000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guild000.png; sourceTree = "<group>"; };
-		C1621D3616198B2600AB73A0 /* home000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home000.png; sourceTree = "<group>"; };
+		C1621D3616198B2600AB73A0 /* town000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = town000.png; sourceTree = "<group>"; };
 		C1621D3A1619A03100AB73A0 /* DungeonPreloadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonPreloadScene.h; path = src/scene/DungeonPreloadScene.h; sourceTree = "<group>"; };
 		C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonPreloadScene.m; path = src/scene/DungeonPreloadScene.m; sourceTree = "<group>"; };
 		C1621D3D161A7D9200AB73A0 /* floor000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = floor000.json; sourceTree = "<group>"; };
@@ -702,14 +702,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C102EAC315E8E2A5000E8366 /* tilemap */ = {
+		C102EAC315E8E2A5000E8366 /* floor_data */ = {
 			isa = PBXGroup;
 			children = (
 				C1621D3D161A7D9200AB73A0 /* floor000.json */,
 				C102EAC415E8E2A5000E8366 /* floor001.json */,
 				C1621D3F161A82E800AB73A0 /* floor002.json */,
 			);
-			name = tilemap;
+			name = floor_data;
 			path = Resources/tilemap;
 			sourceTree = "<group>";
 		};
@@ -755,6 +755,17 @@
 			name = block_presentation;
 			sourceTree = "<group>";
 		};
+		C132CC11164DC64100AA4217 /* chara */ = {
+			isa = PBXGroup;
+			children = (
+				C13FBDEF160B313E00B4AF35 /* link2.json */,
+				C13FBDF0160B313E00B4AF35 /* link2.png */,
+				C1EE3BD616083B7800DE62CD /* link_f.json */,
+				C1EE3BD716083B7800DE62CD /* link_f.png */,
+			);
+			name = chara;
+			sourceTree = "<group>";
+		};
 		C145523816369AAF0032350D /* mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,7 +779,7 @@
 			isa = PBXGroup;
 			children = (
 				C1621D3516198B2600AB73A0 /* guild000.png */,
-				C1621D3616198B2600AB73A0 /* home000.png */,
+				C1621D3616198B2600AB73A0 /* town000.png */,
 			);
 			name = town000;
 			path = Resources/spritesheet/town000;
@@ -901,9 +912,9 @@
 			children = (
 				C1EE3BA71608083A00DE62CD /* misc */,
 				DB419B06160742DC00B30495 /* font */,
-				C102EAC315E8E2A5000E8366 /* tilemap */,
+				C102EAC315E8E2A5000E8366 /* floor_data */,
 				C1EEBD0A15E86D25007F1814 /* particle */,
-				C1EEBCFC15E79423007F1814 /* animation */,
+				C1EEBCFC15E79423007F1814 /* animation_data */,
 				C1EEBCFB15E793F3007F1814 /* spritesheet */,
 				C195466315D7F486002119CC /* Info.plist */,
 				C195466415D7F486002119CC /* iTunesArtwork */,
@@ -1319,6 +1330,7 @@
 		C1EE3BBE16083B0100DE62CD /* cave000 */ = {
 			isa = PBXGroup;
 			children = (
+				C1EE3BD816083B7800DE62CD /* sky00.png */,
 				C1EE3BDC1608443500DE62CD /* mon.json */,
 				C1EE3BDD1608443500DE62CD /* mon.png */,
 				C1EE3BBF16083B2F00DE62CD /* block00.png */,
@@ -1341,11 +1353,6 @@
 		C1EE3BD516083B4500DE62CD /* common */ = {
 			isa = PBXGroup;
 			children = (
-				C13FBDEF160B313E00B4AF35 /* link2.json */,
-				C13FBDF0160B313E00B4AF35 /* link2.png */,
-				C1EE3BD616083B7800DE62CD /* link_f.json */,
-				C1EE3BD716083B7800DE62CD /* link_f.png */,
-				C1EE3BD816083B7800DE62CD /* sky00.png */,
 				C148532A16314EE90023FAF6 /* coin.png */,
 			);
 			name = common;
@@ -1406,6 +1413,7 @@
 		C1EEBCFB15E793F3007F1814 /* spritesheet */ = {
 			isa = PBXGroup;
 			children = (
+				C132CC11164DC64100AA4217 /* chara */,
 				C1621D3416198B2600AB73A0 /* town000 */,
 				C1EE3BD516083B4500DE62CD /* common */,
 				C1EE3BBE16083B0100DE62CD /* cave000 */,
@@ -1413,14 +1421,14 @@
 			name = spritesheet;
 			sourceTree = "<group>";
 		};
-		C1EEBCFC15E79423007F1814 /* animation */ = {
+		C1EEBCFC15E79423007F1814 /* animation_data */ = {
 			isa = PBXGroup;
 			children = (
 				C1EE3BE016084C8900DE62CD /* mon001.json */,
 				C13FBDF4160B31F300B4AF35 /* linkatk.json */,
 				C1EEBCFF15E79485007F1814 /* link.json */,
 			);
-			name = animation;
+			name = animation_data;
 			sourceTree = "<group>";
 		};
 		C1EEBD0815E8431E007F1814 /* model */ = {
@@ -1581,7 +1589,7 @@
 				C13FBDF2160B313E00B4AF35 /* link2.png in Resources */,
 				C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */,
 				C1621D3716198B2600AB73A0 /* guild000.png in Resources */,
-				C1621D3816198B2600AB73A0 /* home000.png in Resources */,
+				C1621D3816198B2600AB73A0 /* town000.png in Resources */,
 				C1621D3E161A7D9200AB73A0 /* floor000.json in Resources */,
 				C1621D40161A82E800AB73A0 /* floor002.json in Resources */,
 				C111124D1628031C00F9950E /* block200.png in Resources */,
