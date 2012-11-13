@@ -31,6 +31,7 @@
     b.block_id = id_;
     b.type     = [[master objectForKey:@"type"] intValue];
     b.group_id = [[master objectForKey:@"group_id"] intValue];
+    b.view_id  = [[master objectForKey:@"view_id"] intValue];
     b.hp       = [[master objectForKey:@"hp"] intValue];
     b.max_hp   = b.hp;
     b.atk      = [[master objectForKey:@"atk"] intValue];

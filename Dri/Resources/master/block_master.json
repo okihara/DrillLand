@@ -707,7 +707,7 @@
          "old_view_id" : "mon001.png",
          "name" : "プレイヤー自身",
          "msg_0" : null,
-         "view_id" : "13000",
+         "view_id" : "0",
          "group_id" : "0",
          "type" : "0",
          "behaive_2" : null,

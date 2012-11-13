@@ -15,6 +15,8 @@
 @synthesize block_id;
 @synthesize type;
 @synthesize group_id;
+@synthesize view_id;
+
 @synthesize hp;
 @synthesize max_hp;
 @synthesize atk;
@@ -39,6 +41,7 @@
     // vars
     block_id = ID_EMPTY;
     type     = 0;
+    view_id  = 0;
     hp       = 0;
     atk      = 0;
     def      = 0;
