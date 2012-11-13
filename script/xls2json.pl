@@ -27,6 +27,6 @@ my $file = $ARGV[0] || "";
 die "need filename" unless ($file =~ /\.xls/ && -e $file);
 
 my $sheets = Util::ExcelParser::parseFile($file, 'utf8', 'utf8');
-my $json = JSON::XS->new->encode($sheets);
+my $json = JSON::XS->new->pretty(1)->encode($sheets);
 
 print $json;
