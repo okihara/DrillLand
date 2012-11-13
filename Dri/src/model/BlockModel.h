@@ -26,7 +26,7 @@ enum ID_BLOCK {
     ID_ITEM_BLOCK_1 = 12001, // DORAYAKI
     ID_ITEM_BLOCK_2 = 12002, // TREASURE BOX
     
-    ID_PLAYER = INT16_MAX
+    ID_PLAYER = 13000
 };
 
 @class DungeonModel;

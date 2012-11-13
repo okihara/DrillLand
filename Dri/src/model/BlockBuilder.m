@@ -49,13 +49,16 @@
     
     // setup parameter
     BlockModel* b = [[BlockModel alloc] init];
+    
     b.block_id = id_;
-    b.type = id_;
-    b.hp   = [[master objectForKey:@"hp"] intValue];
-    b.atk  = [[master objectForKey:@"atk"] intValue];
-    b.def  = [[master objectForKey:@"def"] intValue];
-    b.exp  = [[master objectForKey:@"exp"] intValue];
-    b.gold = [[master objectForKey:@"gold"] intValue];
+    b.type     = id_;
+    b.group_id = [[master objectForKey:@"group_id"] intValue];
+    b.hp       = [[master objectForKey:@"hp"] intValue];
+    b.max_hp   = b.hp;
+    b.atk      = [[master objectForKey:@"atk"] intValue];
+    b.def      = [[master objectForKey:@"def"] intValue];
+    b.exp      = [[master objectForKey:@"exp"] intValue];
+    b.gold     = [[master objectForKey:@"gold"] intValue];
     
     // setup behavior  
     for (int i = 0; i < 3; ++i) {
@@ -71,6 +74,7 @@
         NSObject<BlockBehaivior> *behavior = [BehaviorFactory create:behavior_id];
         [b attach_behaivior:behavior];
     }
+    
     return b;
 }
 
@@ -111,30 +115,12 @@
 
 -(BlockModel*)build_unbreakable
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_UNBREAKABLE_BLOCK;
-    b.hp = 9999;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    
-    return b;
+    return [self build_by_id:ID_UNBREAKABLE_BLOCK];
 }
 
 -(BlockModel*)build_grouped:(enum ID_BLOCK)id_
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = id_;
-    b.group_id = id_;
-    b.hp = 1;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_CHANGE]];
-
-    return b;   
+    return [self build_by_id:id_];
 }
 
 -(BlockModel*)build_grouped_1
@@ -154,82 +140,28 @@
 
 -(BlockModel*)build_enemy_0
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_ENEMY_BLOCK_0;
-    b.hp = b.max_hp = 4;
-    b.atk = 3;
-    b.def = 3;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_AGGRESSIVE]];
-
-    return b;
+    return [self build_by_id:ID_ENEMY_BLOCK_0];
 }
 
 -(BlockModel*)build_enemy_1
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_ENEMY_BLOCK_1;
-    b.hp = b.max_hp = 17;
-    b.atk = 4;
-    b.def = 3;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BOSS]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_AGGRESSIVE]];
-    
-    return b;
+    return [self build_by_id:ID_ENEMY_BLOCK_1];
 }
 
 -(BlockModel*)build_item_0
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_ITEM_BLOCK_0;
-    b.hp =  1;
-    b.atk = 0;
-    b.def = 0;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_POTION]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    
-    return b;
+    return [self build_by_id:ID_ITEM_BLOCK_0];
 }
 
 -(BlockModel*)build_item_1
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_ITEM_BLOCK_1;
-    b.hp =  1;
-    b.atk = 0;
-    b.def = 0;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_GETTABLE_ITEM]];
-    
-    return b;    
+    return [self build_by_id:ID_ITEM_BLOCK_1];
+
 }
 
 -(BlockModel*)build_item_2
 {
-    // 生成
-    BlockModel* b = [[BlockModel alloc] init];
-    b.type = ID_ITEM_BLOCK_2;
-    b.hp =  5;
-    b.atk = 0;
-    b.def = 0;
-    
-    // attach Behavior
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_TREASURE_BOX]];
-
-    return b;    
+    return [self build_by_id:ID_ITEM_BLOCK_2];
 }
 
 @end

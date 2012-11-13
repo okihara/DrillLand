@@ -26,7 +26,13 @@ NSArray *master_list;
 +(NSDictionary*)get_master_by_id:(uint)id_
 {
     for (NSDictionary *json in master_list) {
+        if (!json) {
+            continue;
+        }
         NSNumber *number = [json objectForKey:@"type"];
+        if ([number isKindOfClass:[NSNull class]]) {
+            continue;
+        }
         uint block_id = [number unsignedIntValue];
         if (block_id == id_) {
             return json;
