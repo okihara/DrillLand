@@ -13,7 +13,7 @@
    <properties>
     <property name="group_id" value="0"/>
     <property name="hp" value="1"/>
-    <property name="type" value="1000"/>
+    <property name="type" value="10000"/>
    </properties>
   </tile>
   <tile id="2">

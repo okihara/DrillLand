@@ -49,6 +49,7 @@
     
     // setup parameter
     BlockModel* b = [[BlockModel alloc] init];
+    b.block_id = id_;
     b.type = id_;
     b.hp   = [[master objectForKey:@"hp"] intValue];
     b.atk  = [[master objectForKey:@"atk"] intValue];
@@ -106,16 +107,6 @@
 -(BlockModel*)build_normal
 {
     return [self build_by_id:ID_NORMAL_BLOCK];
-    
-//    // 生成
-//    BlockModel* b = [[BlockModel alloc] init];
-//    b.type = ID_NORMAL_BLOCK;
-//    b.hp = 1;
-//    
-//    // attach Behavior
-//    [b attach_behaivior:[BehaviorFactory create:BEHAVIOR_BREKABLE]];
-//    
-//    return b;
 }
 
 -(BlockModel*)build_unbreakable

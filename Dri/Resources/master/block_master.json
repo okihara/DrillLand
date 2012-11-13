@@ -92,7 +92,7 @@
          "behavior_1" : null,
          "old_type" : "ID_NORMAL_BLOCK_0",
          "atk" : "0",
-         "behavior_0" : "BreakableBehaivior",
+         "behavior_0" : "10000",
          "block_id" : "10000",
          "gold" : "10",
          "use" : "1",
@@ -111,10 +111,10 @@
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
       {
-         "behavior_1" : null,
+         "behavior_1" : "10007",
          "old_type" : "ID_GROUPED_BLOCK_1",
          "atk" : "0",
-         "behavior_0" : "BreakableBehaivior",
+         "behavior_0" : "10000",
          "block_id" : "10001",
          "gold" : "10",
          "use" : "1",
@@ -133,10 +133,10 @@
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
       {
-         "behavior_1" : null,
+         "behavior_1" : "10007",
          "old_type" : "ID_GROUPED_BLOCK_2",
          "atk" : "0",
-         "behavior_0" : "BreakableBehaivior",
+         "behavior_0" : "10000",
          "block_id" : "10002",
          "gold" : "10",
          "use" : "1",
@@ -155,10 +155,10 @@
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
       {
-         "behavior_1" : null,
+         "behavior_1" : "10007",
          "old_type" : "ID_GROUPED_BLOCK_3",
          "atk" : "0",
-         "behavior_0" : "BreakableBehaivior",
+         "behavior_0" : "10000",
          "block_id" : "10003",
          "gold" : "10",
          "use" : "1",
