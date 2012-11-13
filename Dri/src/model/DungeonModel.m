@@ -118,7 +118,7 @@
     // タップできない（ターン消費無し）
     // このレイヤーでやることか？
     // ここじゃないとするなら、どこよ？
-    if (target.type == ID_EMPTY || target.can_tap == NO) {
+    if (target.block_id == ID_EMPTY || target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
         [self dispatchEvent:event];
         return NO;
@@ -234,7 +234,7 @@
     
     // 起点は 0 でなければならない
     BlockModel* b = [self->map get_x:x y:y]; 
-    if ( b.type > 0 ) return;
+    if ( b.block_id > 0 ) return;
     
     // 操作済み判別テーブルを初期化
     [done_map clear];
@@ -257,9 +257,9 @@
     if (!b) return;
     
     [done_map set_x:x y:y value:1];
-    if (b.type != ID_EMPTY) {
+    if (b.block_id != ID_EMPTY) {
         b.can_tap = YES;
-    } else if (b.type == ID_EMPTY) {
+    } else if (b.block_id == ID_EMPTY) {
         b.can_tap = NO;
         [self update_can_tap_r:cdp(x + 0, y + 1)];
         [self update_can_tap_r:cdp(x + 0, y - 1)];
@@ -352,7 +352,7 @@
     // ブロックの場合はそれ以上探索しない
     // ただし level = 0 （最初の一回目は）例外
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
-    if (b.type != ID_EMPTY && level != 0) return;
+    if (b.block_id != ID_EMPTY && level != 0) return;
     
     int cost = [self->route_map get_x:pos.x y:pos.y];
     

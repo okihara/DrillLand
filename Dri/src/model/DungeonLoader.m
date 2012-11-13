@@ -53,7 +53,6 @@
             if (b_ind == 0 || b_ind == 1) {
                 b = [self->block_builder buildWithID:ID_NORMAL_BLOCK];
                 b.block_id = ID_EMPTY;
-                b.type = ID_EMPTY;
             } else {
                 NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
                 int type_id = [[prop objectForKey:@"type"] intValue];

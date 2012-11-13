@@ -29,7 +29,7 @@
     BlockModel* b = [[BlockModel alloc] init];
     
     b.block_id = id_;
-    b.type     = id_;
+    b.type     = 0;//id_;
     b.group_id = [[master objectForKey:@"group_id"] intValue];
     b.hp       = [[master objectForKey:@"hp"] intValue];
     b.max_hp   = b.hp;

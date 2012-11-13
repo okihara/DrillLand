@@ -119,7 +119,7 @@
     BlockModel *block_model = [dungeon_model get:cdp(x, y)];
     
     // 既に描画済みなら描画しない
-    if (block || block_model.type == ID_EMPTY) {
+    if (block || block_model.block_id == ID_EMPTY) {
         return;
     }
     
@@ -278,7 +278,7 @@
     
     BlockModel *b = (BlockModel*)e.target;
     
-    if(b.type == ID_PLAYER) {
+    if(b.block_id == ID_PLAYER) {
         
         BlockView* block = self.player;
         return [block handle_event:self event:e];

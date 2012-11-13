@@ -92,7 +92,7 @@
         [p release];
     }
     
-    switch (block_model.type) {
+    switch (block_model.block_id) {
             
         case ID_EMPTY:
         {
@@ -206,7 +206,7 @@
 
 +(BlockView*)build:(BlockModel*)block_model ctx:(DungeonModel*)dungeon_model
 {
-    NSString *filename = [BlockViewBuilder name_from_block_type:block_model.type];
+    NSString *filename = [BlockViewBuilder name_from_block_type:block_model.block_id];
     BlockView* block_view = [BlockView spriteWithFile:filename];
     [block_view setup];
     [[block_view texture] setAliasTexParameters];

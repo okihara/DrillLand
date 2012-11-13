@@ -20,7 +20,7 @@
         case DL_ON_DAMAGE:
         {
             CCFiniteTimeAction *shake;
-            if (b.type == ID_PLAYER) {
+            if (b.block_id == ID_PLAYER) {
                 shake = [ctx launch_effect:@"shake" target:ctx   params:nil];
             } else {
                 shake = [ctx launch_effect:@"shake" target:view_ params:nil];

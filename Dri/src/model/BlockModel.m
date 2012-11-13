@@ -37,7 +37,8 @@
 -(void)clear
 {
     // vars
-    type = ID_EMPTY;
+    block_id = ID_EMPTY;
+    type = 0;//ID_EMPTY;
     hp = 0;
     atk = 0;
     def = 0;
@@ -86,7 +87,7 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_hit:self dungeon:dungeon];
-        if (self.type == ID_EMPTY) return;
+        if (self.block_id == ID_EMPTY) return;
     }    
 }
 
@@ -108,7 +109,7 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_break:self dungeon:dungeon];
-        if (self.type == ID_EMPTY) return;
+        if (self.block_id == ID_EMPTY) return;
     }
 }
 

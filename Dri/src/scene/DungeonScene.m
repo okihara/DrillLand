@@ -178,7 +178,7 @@
     
     // 描画イベント全部処理して、死んでたら
     CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
-        NSLog(@"[SUICIDE] %d %d %d", b.type, b.pos.x, b.pos.y);
+        NSLog(@"[SUICIDE] %d %d %d", b.block_id, b.pos.x, b.pos.y);
         [self->dungeon_view remove_block_view_if_dead:b.pos];
     }];
     [actions addObject:act_suicide];
@@ -369,7 +369,7 @@
 -(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
     BlockModel *block = event.target;
-    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.type, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
+    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.block_id, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
     
     switch (event.type) {
             
