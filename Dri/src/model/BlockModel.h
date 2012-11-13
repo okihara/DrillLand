@@ -43,15 +43,20 @@ enum ID_BLOCK {
 
 @interface BlockModel : NSObject
 {
-    // vars
+    // params
+    uint block_id;
+    uint type;
+    uint group_id;
+    
     int hp;
     int max_hp;
-    int type;
-    int exp;
-    int gold;
     int atk;
     int def;
-    unsigned int group_id;
+    int exp;
+    int gold;
+    
+    
+    // 状態
     id group_info;
     BOOL can_tap;
 
@@ -73,16 +78,19 @@ enum ID_BLOCK {
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)heal:(int)value;
 
+@property (nonatomic, assign) uint block_id;
+@property (nonatomic, assign) uint type;
+@property (nonatomic, assign) uint group_id;
+
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int max_hp;
-@property (nonatomic, assign) int type;
 @property (nonatomic, assign) int atk;
 @property (nonatomic, assign) int def;
 @property (nonatomic, assign) int exp;
 @property (nonatomic, assign) int gold;
-@property (nonatomic, assign) unsigned int group_id;
-@property (nonatomic, assign) NSMutableArray* group_info;
+
+@property (nonatomic, assign) DLPoint pos;
 @property (nonatomic, assign) BOOL can_tap;
-@property (nonatomic, readwrite, assign) DLPoint pos;
+@property (nonatomic, assign) NSMutableArray* group_info;
 
 @end

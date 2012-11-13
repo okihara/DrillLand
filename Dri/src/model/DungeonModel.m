@@ -28,6 +28,7 @@
         self->observer_list = [[NSMutableArray array] retain];
         self->block_builder = [[BlockBuilder alloc] init];
         self->player = [block_builder buildWithID:ID_PLAYER];
+        self->player.pos = cdp(2,3);
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];

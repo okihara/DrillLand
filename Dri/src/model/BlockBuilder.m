@@ -56,7 +56,7 @@
     b.exp  = [[master objectForKey:@"exp"] intValue];
     b.gold = [[master objectForKey:@"gold"] intValue];
     
-    // setup behavior
+    // setup behavior  
     for (int i = 0; i < 3; ++i) {
         NSString *key = [NSString stringWithFormat:@"behavior_%d", i];
         NSNumber *number = [master objectForKey:key];

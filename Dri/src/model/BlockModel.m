@@ -12,17 +12,19 @@
 
 @implementation BlockModel
 
-@synthesize max_hp;
-@synthesize hp;
+@synthesize block_id;
 @synthesize type;
+@synthesize group_id;
+@synthesize hp;
+@synthesize max_hp;
 @synthesize atk;
 @synthesize def;
-@synthesize group_id;
-@synthesize group_info;
-@synthesize can_tap;
-@synthesize pos;
 @synthesize exp;
 @synthesize gold;
+
+@synthesize pos;
+@synthesize can_tap;
+@synthesize group_info;
 
 -(id) init
 {

@@ -76,7 +76,7 @@
         [self->dungeon_model add_observer:self];
 
         // setup player
-        BlockView* player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];  
+        BlockView* player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
