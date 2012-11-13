@@ -39,50 +39,11 @@
 }
 
 
-// TODO: なんていうか、switch でやるのはいけてないよねー
-// Command パターン使おうよ
+// -----------------------------------------------------------------------------
 
 +(NSString*)name_from_block_type:(enum ID_BLOCK)block_id
 {
     return [NSString stringWithFormat:@"blk%05d.png", block_id];
-//    
-//    NSString *filename;
-//    switch (block_id) {
-//        case ID_NORMAL_BLOCK:
-//            filename = @"block01.png";
-//            break;
-//        case ID_GROUPED_BLOCK_1:
-//            filename = @"block02.png";
-//            break;
-//        case ID_GROUPED_BLOCK_2:
-//            filename = @"block03.png";
-//            break;
-//        case ID_GROUPED_BLOCK_3:
-//            filename = @"block04.png";
-//            break;
-//        case ID_ENEMY_BLOCK_0:
-//            filename = @"mon001.png";
-//            break;
-//        case ID_ENEMY_BLOCK_1:
-//            filename = @"mon002.png";
-//            break;
-//        case ID_UNBREAKABLE_BLOCK:
-//            filename = @"block99.png";
-//            break;
-//        case ID_ITEM_BLOCK_0:
-//            filename = @"block200.png";
-//            break;
-//        case ID_ITEM_BLOCK_1:
-//            filename = @"block201.png";
-//            break;
-//        case ID_ITEM_BLOCK_2:
-//            filename = @"block300.png";
-//            break;
-//        default:
-//            filename = @"block00.png";
-//            break;
-//    }
-//    return filename;
 }
 
 // type/block_id によって presentation を追加
