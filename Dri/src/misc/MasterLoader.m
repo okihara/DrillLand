@@ -29,7 +29,7 @@ NSArray *master_list;
         if (!json) {
             continue;
         }
-        NSNumber *number = [json objectForKey:@"type"];
+        NSNumber *number = [json objectForKey:@"block_id"];
         if ([number isKindOfClass:[NSNull class]]) {
             continue;
         }

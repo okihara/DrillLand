@@ -5,52 +5,6 @@
          "old_type" : null,
          "atk" : null,
          "behavior_0" : null,
-         "block_id" : null,
-         "gold" : null,
-         "use" : null,
-         "def" : null,
-         "dig_hp" : null,
-         "equip_1" : null,
-         "equip_0" : null,
-         "exp" : null,
-         "hp" : null,
-         "old_view_id" : null,
-         "name" : null,
-         "msg_0" : null,
-         "view_id" : null,
-         "group_id" : null,
-         "type" : null,
-         "behaive_2" : null,
-         "view_type" : null
-      },
-      {
-         "behavior_1" : null,
-         "old_type" : null,
-         "atk" : null,
-         "behavior_0" : null,
-         "block_id" : "",
-         "gold" : "",
-         "use" : null,
-         "def" : null,
-         "dig_hp" : null,
-         "equip_1" : null,
-         "equip_0" : null,
-         "exp" : "",
-         "hp" : "",
-         "old_view_id" : "",
-         "name" : "",
-         "msg_0" : null,
-         "view_id" : "",
-         "group_id" : "",
-         "type" : "",
-         "behaive_2" : null,
-         "view_type" : ""
-      },
-      {
-         "behavior_1" : null,
-         "old_type" : null,
-         "atk" : null,
-         "behavior_0" : null,
          "block_id" : "",
          "gold" : "",
          "use" : null,
@@ -88,7 +42,7 @@
          "msg_0" : null,
          "view_id" : "10000",
          "group_id" : "0",
-         "type" : "10000",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -111,7 +65,7 @@
          "msg_0" : null,
          "view_id" : "10001",
          "group_id" : "10001",
-         "type" : "10001",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -134,7 +88,7 @@
          "msg_0" : null,
          "view_id" : "10002",
          "group_id" : "10002",
-         "type" : "10002",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -157,7 +111,7 @@
          "msg_0" : null,
          "view_id" : "10003",
          "group_id" : "10003",
-         "type" : "10003",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -180,7 +134,7 @@
          "msg_0" : null,
          "view_id" : "10000",
          "group_id" : "0",
-         "type" : "10004",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -203,7 +157,7 @@
          "msg_0" : null,
          "view_id" : "10999",
          "group_id" : "0",
-         "type" : "10999",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -272,7 +226,7 @@
          "msg_0" : null,
          "view_id" : "11000",
          "group_id" : "0",
-         "type" : "11000",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -295,7 +249,7 @@
          "msg_0" : null,
          "view_id" : "11001",
          "group_id" : "0",
-         "type" : "11001",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -318,7 +272,7 @@
          "msg_0" : null,
          "view_id" : "11002",
          "group_id" : "0",
-         "type" : "11002",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -341,7 +295,7 @@
          "msg_0" : null,
          "view_id" : "11003",
          "group_id" : "0",
-         "type" : "11003",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -364,7 +318,7 @@
          "msg_0" : null,
          "view_id" : "11004",
          "group_id" : "0",
-         "type" : "11004",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -387,7 +341,7 @@
          "msg_0" : null,
          "view_id" : "11005",
          "group_id" : "0",
-         "type" : "11005",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -410,7 +364,7 @@
          "msg_0" : null,
          "view_id" : "11006",
          "group_id" : "0",
-         "type" : "11006",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -433,7 +387,7 @@
          "msg_0" : null,
          "view_id" : "11007",
          "group_id" : "0",
-         "type" : "11007",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -456,7 +410,7 @@
          "msg_0" : null,
          "view_id" : "11008",
          "group_id" : "0",
-         "type" : "11008",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -479,7 +433,7 @@
          "msg_0" : null,
          "view_id" : "11009",
          "group_id" : "0",
-         "type" : "11009",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -548,7 +502,7 @@
          "msg_0" : null,
          "view_id" : "12000",
          "group_id" : "0",
-         "type" : "12000",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -571,7 +525,7 @@
          "msg_0" : null,
          "view_id" : "12001",
          "group_id" : "0",
-         "type" : "12001",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -594,7 +548,7 @@
          "msg_0" : null,
          "view_id" : "12002",
          "group_id" : "0",
-         "type" : "12002",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -617,7 +571,7 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "12003",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -640,7 +594,7 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "12004",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -663,7 +617,7 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "12005",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -686,7 +640,7 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "12005",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -709,7 +663,7 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "12006",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -755,7 +709,7 @@
          "msg_0" : null,
          "view_id" : "13000",
          "group_id" : "0",
-         "type" : "13000",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_ANIMATE"
       },
@@ -801,7 +755,7 @@
          "msg_0" : "BLOCK をタップして奥に進んでいこう",
          "view_id" : "13000",
          "group_id" : "0",
-         "type" : "14000",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },
@@ -824,7 +778,7 @@
          "msg_0" : "HP が０になると町にもどるよ",
          "view_id" : "13000",
          "group_id" : "0",
-         "type" : "14001",
+         "type" : "0",
          "behaive_2" : null,
          "view_type" : "VIEW_TYPE_NOANIMATE"
       },

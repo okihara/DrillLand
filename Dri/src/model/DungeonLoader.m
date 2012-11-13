@@ -55,7 +55,7 @@
                 b.block_id = ID_EMPTY;
             } else {
                 NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
-                int type_id = [[prop objectForKey:@"type"] intValue];
+                int type_id = [[prop objectForKey:@"block_id"] intValue];
                 b = [block_builder buildWithID:type_id];
             }
             
