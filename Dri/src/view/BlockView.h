@@ -21,6 +21,7 @@
 
 @end
 
+// 使ってない
 enum DL_PHASE {
     DL_ETC = 0,
     DL_MOVE,
