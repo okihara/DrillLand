@@ -46,10 +46,10 @@
 
         
         [frame_loader load_sprite:@"link_f.json"];
-        [animation_loader load_animation:@"link.json"];
+        [animation_loader load_animation:@"anim13000.json"];
         
         [frame_loader load_sprite:@"mon.json"];
-        [animation_loader load_animation:@"mon001.json"];
+        [animation_loader load_animation:@"anim11000.json"];
         
         // ---
         MasterLoader *master_loader = [[MasterLoader new] autorelease];

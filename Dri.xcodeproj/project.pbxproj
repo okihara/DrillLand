@@ -222,7 +222,7 @@
 		C1EE3BDB16083B7800DE62CD /* sky00.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BD816083B7800DE62CD /* sky00.png */; };
 		C1EE3BDE1608443500DE62CD /* mon.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BDC1608443500DE62CD /* mon.json */; };
 		C1EE3BDF1608443500DE62CD /* mon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BDD1608443500DE62CD /* mon.png */; };
-		C1EE3BE116084C8900DE62CD /* mon001.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BE016084C8900DE62CD /* mon001.json */; };
+		C1EE3BE116084C8900DE62CD /* anim11000.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BE016084C8900DE62CD /* anim11000.json */; };
 		C1EEBCC815E6F354007F1814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCC715E6F354007F1814 /* AppDelegate.m */; };
 		C1EEBCE715E6F50E007F1814 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCCF15E6F50E007F1814 /* NSObject+SBJson.m */; };
 		C1EEBCE815E6F50E007F1814 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCD215E6F50E007F1814 /* SBJsonParser.m */; };
@@ -236,7 +236,7 @@
 		C1EEBCF015E6F50E007F1814 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCE215E6F50E007F1814 /* SBJsonTokeniser.m */; };
 		C1EEBCF115E6F50E007F1814 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCE415E6F50E007F1814 /* SBJsonUTF8Stream.m */; };
 		C1EEBCF215E6F50E007F1814 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBCE615E6F50E007F1814 /* SBJsonWriter.m */; };
-		C1EEBD0015E79485007F1814 /* link.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBCFF15E79485007F1814 /* link.json */; };
+		C1EEBD0015E79485007F1814 /* anim13000.json in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBCFF15E79485007F1814 /* anim13000.json */; };
 		C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0B15E86D25007F1814 /* hit1.plist */; };
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 		DB419B0A1607431000B30495 /* ebit.png in Resources */ = {isa = PBXBuildFile; fileRef = DB419B081607431000B30495 /* ebit.png */; };
@@ -654,7 +654,7 @@
 		C1EE3BD816083B7800DE62CD /* sky00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky00.png; path = Resources/spritesheet/common/sky00.png; sourceTree = "<group>"; };
 		C1EE3BDC1608443500DE62CD /* mon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mon.json; path = Resources/spritesheet/cave000/mon.json; sourceTree = "<group>"; };
 		C1EE3BDD1608443500DE62CD /* mon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mon.png; path = Resources/spritesheet/cave000/mon.png; sourceTree = "<group>"; };
-		C1EE3BE016084C8900DE62CD /* mon001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mon001.json; path = Resources/animation/mon001.json; sourceTree = "<group>"; };
+		C1EE3BE016084C8900DE62CD /* anim11000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = anim11000.json; path = Resources/animation/anim11000.json; sourceTree = "<group>"; };
 		C1EEBCC615E6F354007F1814 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C1EEBCC715E6F354007F1814 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1EEBCCE15E6F50E007F1814 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -682,7 +682,7 @@
 		C1EEBCE415E6F50E007F1814 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		C1EEBCE515E6F50E007F1814 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		C1EEBCE615E6F50E007F1814 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		C1EEBCFF15E79485007F1814 /* link.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = link.json; path = Resources/animation/link.json; sourceTree = "<group>"; };
+		C1EEBCFF15E79485007F1814 /* anim13000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = anim13000.json; path = Resources/animation/anim13000.json; sourceTree = "<group>"; };
 		C1EEBD0B15E86D25007F1814 /* hit1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit1.plist; sourceTree = "<group>"; };
 		C1EEBD0D15E870BB007F1814 /* hit2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hit2.plist; sourceTree = "<group>"; };
 		DB419B081607431000B30495 /* ebit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ebit.png; path = Resources/font/ebit.png; sourceTree = "<group>"; };
@@ -1444,9 +1444,9 @@
 		C1EEBCFC15E79423007F1814 /* animation_data */ = {
 			isa = PBXGroup;
 			children = (
-				C1EE3BE016084C8900DE62CD /* mon001.json */,
+				C1EE3BE016084C8900DE62CD /* anim11000.json */,
 				C13FBDF4160B31F300B4AF35 /* linkatk.json */,
-				C1EEBCFF15E79485007F1814 /* link.json */,
+				C1EEBCFF15E79485007F1814 /* anim13000.json */,
 			);
 			name = animation_data;
 			sourceTree = "<group>";
@@ -1566,7 +1566,7 @@
 			files = (
 				C195466515D7F486002119CC /* iTunesArtwork in Resources */,
 				C19547A315D7F48B002119CC /* ChangeLog in Resources */,
-				C1EEBD0015E79485007F1814 /* link.json in Resources */,
+				C1EEBD0015E79485007F1814 /* anim13000.json in Resources */,
 				C1EEBD0C15E86D25007F1814 /* hit1.plist in Resources */,
 				C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */,
 				C102EAC615E8E2A5000E8366 /* floor001.json in Resources */,
@@ -1593,7 +1593,7 @@
 				C1EE3BDB16083B7800DE62CD /* sky00.png in Resources */,
 				C1EE3BDE1608443500DE62CD /* mon.json in Resources */,
 				C1EE3BDF1608443500DE62CD /* mon.png in Resources */,
-				C1EE3BE116084C8900DE62CD /* mon001.json in Resources */,
+				C1EE3BE116084C8900DE62CD /* anim11000.json in Resources */,
 				C13FBDF1160B313E00B4AF35 /* link2.json in Resources */,
 				C13FBDF2160B313E00B4AF35 /* link2.png in Resources */,
 				C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */,

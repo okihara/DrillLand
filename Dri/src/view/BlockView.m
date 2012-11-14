@@ -71,11 +71,11 @@
     switch (block_model.block_id) {
             
         case ID_PLAYER:
-            anime_name = @"walk";
+            anime_name = @"13000front";
             break;
             
         default:
-            anime_name = @"action0";
+            anime_name = @"11000front";
             break;
     }
     
