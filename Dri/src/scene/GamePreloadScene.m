@@ -41,12 +41,12 @@
         SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
-        [frame_loader load_sprite:@"link_f.json"];
+        [frame_loader load_sprite:@"blk13000.json"];
         [animation_loader load_animation:@"anim13000.json"];
-        [frame_loader load_sprite:@"link2.json"];
+        [frame_loader load_sprite:@"blk13000a.json"];
         [animation_loader load_animation:@"anim13000a.json"];
         
-        [frame_loader load_sprite:@"mon.json"];
+        [frame_loader load_sprite:@"blk11000.json"];
         [animation_loader load_animation:@"anim11000.json"];
         
         // ---

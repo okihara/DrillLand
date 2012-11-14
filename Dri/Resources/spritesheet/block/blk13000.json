@@ -120,7 +120,7 @@
     "meta":{
         "app":"ImagePacker",
         "version":"1.0.8",
-        "image":"link_f.png",
+        "image":"blk13000.png",
         "format":"RGBA8888",
         "size":{
             "w":256,"h":256
