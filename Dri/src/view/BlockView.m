@@ -53,11 +53,11 @@
     switch (block_model.block_id) {
             
         case ID_PLAYER:
-            anime_name = @"atk000";
+            anime_name = @"13000atk";
             break;
             
         default:
-            anime_name = @"attack";
+            anime_name = @"11000atk";
             break;
     }
     

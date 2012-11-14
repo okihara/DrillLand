@@ -41,12 +41,10 @@
         SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
-        [frame_loader load_sprite:@"link2.json"];
-        [animation_loader load_animation:@"linkatk.json"];
-
-        
         [frame_loader load_sprite:@"link_f.json"];
         [animation_loader load_animation:@"anim13000.json"];
+        [frame_loader load_sprite:@"link2.json"];
+        [animation_loader load_animation:@"anim13000a.json"];
         
         [frame_loader load_sprite:@"mon.json"];
         [animation_loader load_animation:@"anim11000.json"];
@@ -56,7 +54,7 @@
         [master_loader load:@"block_master.json"];
         
         // -- texture
-        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
+//        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
     }
 	return self;
 }
