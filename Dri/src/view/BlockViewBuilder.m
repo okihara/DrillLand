@@ -15,6 +15,7 @@
 #import "BasicPresentation.h"
 #import "AttackablePresentation.h"
 #import "GettableItemPresentation.h"
+#import "EnemyPresentation.h"
 
 @implementation BlockViewBuilder
 
@@ -69,13 +70,13 @@
             block_view.scale = 2.0;
             
             {
-                NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
+                NSObject<BlockPresentation>* p = [[PlayerPresentation alloc] init];
                 [block_view add_presentation:p];
                 [p release];
             }
             
             {
-                NSObject<BlockPresentation>* p = [[PlayerPresentation alloc] init];
+                NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
                 [block_view add_presentation:p];
                 [p release];
             }
@@ -97,6 +98,13 @@
             block_view.scale = 2.0;
             
             [self add_can_destroy_num:block_model block:block_view];
+
+            
+            {
+                NSObject<BlockPresentation>* p = [[EnemyPresentation alloc] init];
+                [block_view add_presentation:p];
+                [p release];
+            }
             
             {
                 NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
@@ -115,6 +123,7 @@
                 [block_view add_presentation:p];
                 [p release];
             }
+
         }            
             break;
             

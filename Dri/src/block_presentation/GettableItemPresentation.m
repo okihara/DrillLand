@@ -18,7 +18,6 @@
 
         case DL_ON_DESTROY:
         {
-//            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCMoveBy actionWithDuration:0.1f position:ccp(0, 60)]];
             CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCFadeOut actionWithDuration:0.3f]];
             
             // implement here

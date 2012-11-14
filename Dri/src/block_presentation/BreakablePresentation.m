@@ -25,13 +25,6 @@
             }];
             break;
             
-        case DL_ON_DAMAGE:
-        {
-//            CCFiniteTimeAction *shake = [ctx launch_effect_shake:@"shake" target:view_ params:nil];
-//            return [CCSequence actions:shake, [CCDelayTime actionWithDuration:0], nil];
-        }
-            break;
-            
         case DL_ON_DESTROY:
         {
             CCCallBlock *act_0 = [CCCallBlock actionWithBlock:^{

@@ -31,6 +31,7 @@
 		C132CC461652455C00AA4217 /* blk12000.png in Resources */ = {isa = PBXBuildFile; fileRef = C132CC3B1652455700AA4217 /* blk12000.png */; };
 		C132CC471652455C00AA4217 /* blk12001.png in Resources */ = {isa = PBXBuildFile; fileRef = C132CC3C1652455800AA4217 /* blk12001.png */; };
 		C132CC481652455C00AA4217 /* blk12002.png in Resources */ = {isa = PBXBuildFile; fileRef = C132CC3D1652455A00AA4217 /* blk12002.png */; };
+		C132CC4B1653548F00AA4217 /* EnemyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C132CC4A1653548C00AA4217 /* EnemyPresentation.m */; };
 		C13FBDF1160B313E00B4AF35 /* link2.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDEF160B313E00B4AF35 /* link2.json */; };
 		C13FBDF2160B313E00B4AF35 /* link2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF0160B313E00B4AF35 /* link2.png */; };
 		C13FBDF5160B31F300B4AF35 /* linkatk.json in Resources */ = {isa = PBXBuildFile; fileRef = C13FBDF4160B31F300B4AF35 /* linkatk.json */; };
@@ -277,6 +278,8 @@
 		C132CC3B1652455700AA4217 /* blk12000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12000.png; path = Resources/spritesheet/cave000/blk12000.png; sourceTree = "<group>"; };
 		C132CC3C1652455800AA4217 /* blk12001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12001.png; path = Resources/spritesheet/cave000/blk12001.png; sourceTree = "<group>"; };
 		C132CC3D1652455A00AA4217 /* blk12002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12002.png; path = Resources/spritesheet/cave000/blk12002.png; sourceTree = "<group>"; };
+		C132CC491653548800AA4217 /* EnemyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyPresentation.h; path = src/block_presentation/EnemyPresentation.h; sourceTree = "<group>"; };
+		C132CC4A1653548C00AA4217 /* EnemyPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyPresentation.m; path = src/block_presentation/EnemyPresentation.m; sourceTree = "<group>"; };
 		C13FBDEF160B313E00B4AF35 /* link2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = link2.json; sourceTree = "<group>"; };
 		C13FBDF0160B313E00B4AF35 /* link2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link2.png; sourceTree = "<group>"; };
 		C13FBDF4160B31F300B4AF35 /* linkatk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = linkatk.json; path = Resources/animation/linkatk.json; sourceTree = "<group>"; };
@@ -749,6 +752,8 @@
 				C183A135160EA7FD00FE672F /* AttackablePresentation.m */,
 				C1CCAA97160754C800A0EB1C /* PlayerPresentation.h */,
 				C1CCAA98160754C800A0EB1C /* PlayerPresentation.m */,
+				C132CC491653548800AA4217 /* EnemyPresentation.h */,
+				C132CC4A1653548C00AA4217 /* EnemyPresentation.m */,
 				C1CCAA821605D37500A0EB1C /* BasicPresentation.h */,
 				C1CCAA831605D37600A0EB1C /* BasicPresentation.m */,
 				C16009F415F2D94100A4616C /* BloodyPresentation.h */,
@@ -1793,6 +1798,7 @@
 				C1308351163A8C62009B254B /* ChangeBehavior.m in Sources */,
 				C132CC171651101C00AA4217 /* MasterLoader.m in Sources */,
 				C132CC1A1651141400AA4217 /* BehaviorFactory.m in Sources */,
+				C132CC4B1653548F00AA4217 /* EnemyPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

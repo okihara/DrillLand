@@ -13,19 +13,12 @@
 
 -(CCAction*)handle_event:(DungeonView *)ctx event:(DLEvent*)e view:(BlockView *)view_
 {
-    BlockModel *b = (BlockModel*)e.target;
+//    BlockModel *b = (BlockModel*)e.target;
     
     switch (e.type) {
             
         case DL_ON_DAMAGE:
         {
-            CCFiniteTimeAction *shake;
-            if (b.block_id == ID_PLAYER) {
-                shake = [ctx launch_effect:@"shake" target:ctx   params:nil];
-            } else {
-                shake = [ctx launch_effect:@"shake" target:view_ params:nil];
-            }
-
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
                 // effect
                 [ctx launch_particle:@"blood" position:view_.position];
@@ -33,7 +26,7 @@
                 [ctx launch_effect:@"damage" target:view_ params:e.params];
             }];
           
-            return [CCSequence actions:shake, act, [CCDelayTime actionWithDuration:0.3], nil];
+            return [CCSequence actions:act, [CCDelayTime actionWithDuration:0.3], nil];
         }   
             break;
             
