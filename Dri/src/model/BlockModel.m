@@ -16,6 +16,7 @@
 @synthesize type;
 @synthesize group_id;
 @synthesize view_id;
+@synthesize view_type;
 
 @synthesize hp;
 @synthesize max_hp;
@@ -39,15 +40,16 @@
 -(void)clear
 {
     // vars
-    block_id = ID_EMPTY;
-    type     = 0;
-    view_id  = 0;
-    hp       = 0;
-    atk      = 0;
-    def      = 0;
-    group_id = 0;
+    block_id  = ID_EMPTY;
+    type      = 0;
+    view_type = 0;
+    view_id   = 0;
+    hp        = 0;
+    atk       = 0;
+    def       = 0;
+    group_id   = 0;
     group_info = NULL;
-    can_tap = NO;
+    can_tap    = NO;
         
     // behavior
     if (self->behavior_list) {

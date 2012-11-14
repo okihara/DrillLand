@@ -1,4 +1,114 @@
 {
+   "block_view_master" : [
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "�",
+         "種類" : "ブロック",
+         "サブ種類" : "普通の",
+         "デストロイされたとき" : "◯",
+         "生成されたとき" : "�",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "�",
+         "種類" : null,
+         "サブ種類" : "壊れないやつ",
+         "デストロイされたとき" : "�",
+         "生成されたとき" : "�",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "◯",
+         "種類" : "敵",
+         "サブ種類" : null,
+         "デストロイされたとき" : "◯",
+         "生成されたとき" : "◯",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "�",
+         "種類" : "落ちてるアイテム",
+         "サブ種類" : "武器",
+         "デストロイされたとき" : "◯",
+         "生成されたとき" : "◯",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "�",
+         "種類" : null,
+         "サブ種類" : "宝箱",
+         "デストロイされたとき" : "◯",
+         "生成されたとき" : "◯",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : "◯",
+         "正面以外（左右上向き）" : "�",
+         "種類" : null,
+         "サブ種類" : "草",
+         "デストロイされたとき" : "◯",
+         "生成されたとき" : "◯",
+         "タップされたとき" : "◯"
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : "ワナ",
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : null,
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : null,
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : null,
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : null,
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      },
+      {
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "種類" : null,
+         "サブ種類" : null,
+         "デストロイされたとき" : null,
+         "生成されたとき" : null,
+         "タップされたとき" : null
+      }
+   ],
    "block_master" : [
       {
          "behavior_1" : null,
@@ -59,8 +169,8 @@
          "msg_0" : null,
          "view_id" : "10001",
          "group_id" : "10001",
-         "type" : "101",
-         "view_type" : "101",
+         "type" : "100",
+         "view_type" : "100",
          "behaive_2" : null
       },
       {
@@ -80,8 +190,8 @@
          "msg_0" : null,
          "view_id" : "10002",
          "group_id" : "10002",
-         "type" : "101",
-         "view_type" : "101",
+         "type" : "100",
+         "view_type" : "100",
          "behaive_2" : null
       },
       {
@@ -101,8 +211,8 @@
          "msg_0" : null,
          "view_id" : "10003",
          "group_id" : "10003",
-         "type" : "101",
-         "view_type" : "101",
+         "type" : "100",
+         "view_type" : "100",
          "behaive_2" : null
       },
       {
@@ -122,8 +232,8 @@
          "msg_0" : null,
          "view_id" : "10000",
          "group_id" : "0",
-         "type" : "101",
-         "view_type" : "101",
+         "type" : "100",
+         "view_type" : "100",
          "behaive_2" : null
       },
       {
@@ -143,8 +253,8 @@
          "msg_0" : null,
          "view_id" : "10999",
          "group_id" : "0",
-         "type" : "102",
-         "view_type" : "102",
+         "type" : "100",
+         "view_type" : "100",
          "behaive_2" : null
       },
       {
@@ -479,8 +589,8 @@
          "msg_0" : null,
          "view_id" : "12001",
          "group_id" : "0",
-         "type" : "301",
-         "view_type" : "301",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
@@ -500,8 +610,8 @@
          "msg_0" : null,
          "view_id" : "12002",
          "group_id" : "0",
-         "type" : "303",
-         "view_type" : "303",
+         "type" : "301",
+         "view_type" : "301",
          "behaive_2" : null
       },
       {
@@ -521,8 +631,8 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "304",
-         "view_type" : "304",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
@@ -542,8 +652,8 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "305",
-         "view_type" : "305",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
@@ -563,8 +673,8 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "305",
-         "view_type" : "305",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
@@ -584,8 +694,8 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "305",
-         "view_type" : "305",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
@@ -605,27 +715,27 @@
          "msg_0" : null,
          "view_id" : "12003",
          "group_id" : "0",
-         "type" : "305",
-         "view_type" : "305",
+         "type" : "300",
+         "view_type" : "300",
          "behaive_2" : null
       },
       {
-         "behavior_1" : null,
+         "behavior_1" : "",
          "atk" : null,
          "behavior_0" : null,
-         "block_id" : null,
-         "gold" : null,
+         "block_id" : "",
+         "gold" : "",
          "use" : null,
          "def" : null,
          "dig_hp" : null,
          "equip_1" : null,
          "equip_0" : null,
-         "exp" : null,
-         "hp" : null,
-         "name" : null,
+         "exp" : "",
+         "hp" : "",
+         "name" : "",
          "msg_0" : null,
-         "view_id" : null,
-         "group_id" : null,
+         "view_id" : "",
+         "group_id" : "",
          "type" : null,
          "view_type" : null,
          "behaive_2" : null

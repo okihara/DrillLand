@@ -21,6 +21,16 @@
 
 @end
 
+enum VIEW_TYPE {
+    VIEW_TYPE_NULL       = 0,
+    VIEW_TYPE_BLOCK      = 100,
+    VIEW_TYPE_ENEMY      = 200,
+    VIEW_TYPE_ITEM_BASIC = 300,
+    VIEW_TYPE_ITEM_BOX   = 301,
+    VIEW_TYPE_PLAYER     = 900,
+    VIEW_TYPE_MESSAGE    = 500,
+};
+
 // 使ってない
 enum DL_PHASE {
     DL_ETC = 0,

@@ -47,6 +47,7 @@ enum ID_BLOCK {
     uint block_id;
     uint type;
     uint group_id;
+    uint view_type;
     uint view_id;
     
     int hp;
@@ -83,6 +84,7 @@ enum ID_BLOCK {
 @property (nonatomic, assign) uint type;
 @property (nonatomic, assign) uint group_id;
 @property (nonatomic, assign) uint view_id;
+@property (nonatomic, assign) uint view_type;
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int max_hp;
