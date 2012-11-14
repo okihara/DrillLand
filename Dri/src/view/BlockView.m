@@ -44,18 +44,49 @@
     [self->presentation_list addObject:presentation];
 }
 
+//==============================================================================
 
-//===============================================================
-//
-//
-//
-//===============================================================
+-(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model
+{
+    NSString *anime_name;
+
+    switch (block_model.block_id) {
+            
+        case ID_PLAYER:
+            anime_name = @"atk000";
+            break;
+            
+        default:
+            anime_name = @"attack";
+            break;
+    }
+    
+    return [self play_anime_one:anime_name];
+}
+
+-(CCFiniteTimeAction*)play_front:(BlockModel*)block_model
+{
+    NSString *anime_name;
+
+    switch (block_model.block_id) {
+            
+        case ID_PLAYER:
+            anime_name = @"walk";
+            break;
+            
+        default:
+            anime_name = @"action0";
+            break;
+    }
+    
+    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
+}
+
+
+//==============================================================================
 
 - (CCAction*)_update_presentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
-    // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
-    
-//    BlockModel *b = (BlockModel*)e.target;
     NSMutableArray *actions = [NSMutableArray array];
     
     for (NSObject<BlockPresentation>* p in self->presentation_list) {
