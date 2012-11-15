@@ -71,6 +71,7 @@
             break;
             
         default:
+            block_view.scale = 4.0;
             [self add_can_destroy_num:block_model block:block_view];
             break;
     }
