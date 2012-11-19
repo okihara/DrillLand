@@ -72,7 +72,7 @@ enum DL_PHASE {
 
 // helper
 - (void)play_anime:(NSString*)name;
-- (CCFiniteTimeAction*)play_anime_one:(NSString*)name;
+- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;
 
