@@ -16,6 +16,7 @@
 #import "AttackablePresentation.h"
 #import "GettableItemPresentation.h"
 #import "EnemyPresentation.h"
+#import "ItemBoxPresentation.h"
 
 @implementation BlockViewBuilder
 
@@ -171,7 +172,7 @@
         case VIEW_TYPE_ITEM_BOX:
         {
             {
-                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
+                NSObject<BlockPresentation>* p = [ItemBoxPresentation new];
                 [block_view add_presentation:p];
                 [p release];
             }

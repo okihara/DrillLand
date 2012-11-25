@@ -43,6 +43,7 @@
 		C1373814165E1EB900C9DD41 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = C1373813165E1EB900C9DD41 /* coin.png */; };
 		C1373817165E26A400C9DD41 /* common.json in Resources */ = {isa = PBXBuildFile; fileRef = C1373815165E26A400C9DD41 /* common.json */; };
 		C1373818165E26A400C9DD41 /* common.png in Resources */ = {isa = PBXBuildFile; fileRef = C1373816165E26A400C9DD41 /* common.png */; };
+		C137381B1661B4C300C9DD41 /* ItemBoxPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C137381A1661B4C300C9DD41 /* ItemBoxPresentation.m */; };
 		C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */; };
 		C1455233163604E40032350D /* DebugBlockScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455232163604E40032350D /* DebugBlockScene.m */; };
 		C1455237163699380032350D /* DLView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455236163699380032350D /* DLView.m */; };
@@ -292,6 +293,8 @@
 		C1373813165E1EB900C9DD41 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = Resources/spritesheet/common/coin.png; sourceTree = "<group>"; };
 		C1373815165E26A400C9DD41 /* common.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = common.json; path = Resources/spritesheet/common/common.json; sourceTree = "<group>"; };
 		C1373816165E26A400C9DD41 /* common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = common.png; path = Resources/spritesheet/common/common.png; sourceTree = "<group>"; };
+		C13738191661B4C200C9DD41 /* ItemBoxPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemBoxPresentation.h; path = src/block_presentation/ItemBoxPresentation.h; sourceTree = "<group>"; };
+		C137381A1661B4C300C9DD41 /* ItemBoxPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemBoxPresentation.m; path = src/block_presentation/ItemBoxPresentation.m; sourceTree = "<group>"; };
 		C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = src/scene/DungeonMenuScene.h; sourceTree = "<group>"; };
 		C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonMenuScene.m; path = src/scene/DungeonMenuScene.m; sourceTree = "<group>"; };
 		C1455231163604E40032350D /* DebugBlockScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugBlockScene.h; path = src/scene/DebugBlockScene.h; sourceTree = "<group>"; };
@@ -764,6 +767,8 @@
 				C16009F215F2D49100A4616C /* BreakablePresentation.m */,
 				C111125216280F9800F9950E /* GettableItemPresentation.h */,
 				C111125316280F9900F9950E /* GettableItemPresentation.m */,
+				C13738191661B4C200C9DD41 /* ItemBoxPresentation.h */,
+				C137381A1661B4C300C9DD41 /* ItemBoxPresentation.m */,
 			);
 			name = block_presentation;
 			sourceTree = "<group>";
@@ -1803,6 +1808,7 @@
 				C132CC171651101C00AA4217 /* MasterLoader.m in Sources */,
 				C132CC1A1651141400AA4217 /* BehaviorFactory.m in Sources */,
 				C132CC4B1653548F00AA4217 /* EnemyPresentation.m in Sources */,
+				C137381B1661B4C300C9DD41 /* ItemBoxPresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
