@@ -61,6 +61,7 @@ enum ID_BLOCK {
     // 状態
     id group_info;
     BOOL can_tap;
+    BOOL is_dead;
 
     // TODO: クラス化
     uint direction;
@@ -96,5 +97,6 @@ enum ID_BLOCK {
 @property (nonatomic, assign) DLPoint pos;
 @property (nonatomic, assign) BOOL can_tap;
 @property (nonatomic, assign) NSMutableArray* group_info;
+@property (nonatomic, assign) BOOL is_dead;
 
 @end

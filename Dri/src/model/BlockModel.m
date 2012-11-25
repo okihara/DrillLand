@@ -28,6 +28,7 @@
 @synthesize pos;
 @synthesize can_tap;
 @synthesize group_info;
+@synthesize is_dead;
 
 -(id) init
 {
@@ -50,6 +51,7 @@
     group_id   = 0;
     group_info = NULL;
     can_tap    = NO;
+    is_dead    = NO;
         
     // behavior
     if (self->behavior_list) {
@@ -138,7 +140,7 @@
     // ---
     if (target.hp == 0) {
         [target on_break:dungeon];
-        [target clear];
+        target.is_dead = YES;
     }
 }
 
