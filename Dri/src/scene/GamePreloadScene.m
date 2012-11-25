@@ -63,7 +63,7 @@
 
 -(void)goto_dungeon
 {
-    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:0];
+    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:1];
     [[CCDirector sharedDirector] replaceScene:next_scene];
 }
 
@@ -77,8 +77,8 @@
 {
     [super onEnter];
 
-    [self goto_debug_block_view];
-    //[self goto_dungeon];
+    //[self goto_debug_block_view];
+    [self goto_dungeon];
     //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 

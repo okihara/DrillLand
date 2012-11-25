@@ -17,6 +17,9 @@
 @class XDMap;
 @class BlockView;
 
+
+// memo: DungeonView の使い方は、物理エンジンの扱い方と同じにしたほうが良いかも
+// ?
 @interface DungeonView : CCLayer<ViewContextProtocol>
 {
     // この２つは１つの型に出来る

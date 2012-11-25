@@ -160,7 +160,6 @@
         
         [self->events removeObjectAtIndex:0];
         
-        
         if (![self->events count]) {
             break;
         }
@@ -170,10 +169,10 @@
         e = (DLEvent*)[self->events objectAtIndex:0];
         [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
         
+        // これどういうこと？？
         if( e.type == DL_ON_HIT ) {
             break;
         }
-        
     }
     
     // 描画イベント全部処理して、死んでたら
@@ -213,7 +212,6 @@
             break;
         }
         e = (DLEvent*)[self->events objectAtIndex:0];
-        
     }
     
     if (actions) {
@@ -369,6 +367,7 @@
 -(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
     BlockModel *block = event.target;
+    
     NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.block_id, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
     
     switch (event.type) {

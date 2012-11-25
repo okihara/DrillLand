@@ -19,7 +19,7 @@
         case DL_ON_DAMAGE:
         {
             CCFiniteTimeAction *shake;
-            shake = [ctx launch_effect:@"shake" target:ctx   params:nil];
+            shake = [ctx launch_effect:@"shake" target:ctx params:nil];
             return shake;
         }
             break;
