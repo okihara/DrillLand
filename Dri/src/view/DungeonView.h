@@ -37,11 +37,13 @@
     
     ObjectXDMap *view_map;
     
+    // -- レイヤー
     CCLayer *base_layer;
     CCLayer *block_layer;
     CCLayer *effect_layer;
     CCLayerColor *fade_layer;
     
+    // -- 
     EffectLauncher *effect_launcher;
 }
 

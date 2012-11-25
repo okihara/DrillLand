@@ -26,6 +26,17 @@
 // 最初のシーケンス
 - (void)run_first_sequece {
     
+    if (1) {
+
+        // FADE OUT
+        CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
+        [self->fade_layer runAction:fi];
+        
+        self.isTouchEnabled = YES;
+
+        return;
+    }
+    
     // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
@@ -306,9 +317,8 @@
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     UITouch *touch =[touches anyObject];
-    CGPoint location =[touch locationInView:[touch view]];
+    CGPoint location = [touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
-    
     return [self _screen_to_view_pos:location];
 }
 
@@ -322,7 +332,6 @@
         {
             // モデルへ通知
             BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
-            
             if (!changed) { return; }
             
             // タップ後のシーケンス再生
