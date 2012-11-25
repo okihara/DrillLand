@@ -9,7 +9,7 @@
 #ifndef Dri_DL_h
 #define Dri_DL_h
 
-#define BLOCK_WIDTH 64
+#define BLOCK_WIDTH 50
 #define DL_FONT_NAME @"AppleGothic"
 
 struct DLPoint {

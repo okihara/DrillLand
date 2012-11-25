@@ -48,6 +48,8 @@
         
         [frame_loader load_sprite:@"blk11000.json"];
         [animation_loader load_animation:@"anim11000.json"];
+
+        [frame_loader load_sprite:@"common.json"];
         
         // ---
         MasterLoader *master_loader = [[MasterLoader new] autorelease];

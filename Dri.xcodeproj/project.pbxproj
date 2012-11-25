@@ -40,6 +40,9 @@
 		C132CC7D1653C02500AA4217 /* blk13000a.json in Resources */ = {isa = PBXBuildFile; fileRef = C132CC7B1653C02500AA4217 /* blk13000a.json */; };
 		C132CC7E1653C02500AA4217 /* blk13000a.png in Resources */ = {isa = PBXBuildFile; fileRef = C132CC7C1653C02500AA4217 /* blk13000a.png */; };
 		C132CC801653C0EB00AA4217 /* blk11000.json in Resources */ = {isa = PBXBuildFile; fileRef = C132CC7F1653C0EB00AA4217 /* blk11000.json */; };
+		C1373814165E1EB900C9DD41 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = C1373813165E1EB900C9DD41 /* coin.png */; };
+		C1373817165E26A400C9DD41 /* common.json in Resources */ = {isa = PBXBuildFile; fileRef = C1373815165E26A400C9DD41 /* common.json */; };
+		C1373818165E26A400C9DD41 /* common.png in Resources */ = {isa = PBXBuildFile; fileRef = C1373816165E26A400C9DD41 /* common.png */; };
 		C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */; };
 		C1455233163604E40032350D /* DebugBlockScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455232163604E40032350D /* DebugBlockScene.m */; };
 		C1455237163699380032350D /* DLView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455236163699380032350D /* DLView.m */; };
@@ -49,7 +52,6 @@
 		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
 		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
 		C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532816314D9C0023FAF6 /* GetGoldView.m */; };
-		C148532B16314EE90023FAF6 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = C148532A16314EE90023FAF6 /* coin.png */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -287,6 +289,9 @@
 		C132CC7B1653C02500AA4217 /* blk13000a.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = blk13000a.json; path = Resources/spritesheet/block/blk13000a.json; sourceTree = "<group>"; };
 		C132CC7C1653C02500AA4217 /* blk13000a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk13000a.png; path = Resources/spritesheet/block/blk13000a.png; sourceTree = "<group>"; };
 		C132CC7F1653C0EB00AA4217 /* blk11000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = blk11000.json; path = Resources/spritesheet/block/blk11000.json; sourceTree = "<group>"; };
+		C1373813165E1EB900C9DD41 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = Resources/spritesheet/common/coin.png; sourceTree = "<group>"; };
+		C1373815165E26A400C9DD41 /* common.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = common.json; path = Resources/spritesheet/common/common.json; sourceTree = "<group>"; };
+		C1373816165E26A400C9DD41 /* common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = common.png; path = Resources/spritesheet/common/common.png; sourceTree = "<group>"; };
 		C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = src/scene/DungeonMenuScene.h; sourceTree = "<group>"; };
 		C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonMenuScene.m; path = src/scene/DungeonMenuScene.m; sourceTree = "<group>"; };
 		C1455231163604E40032350D /* DebugBlockScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugBlockScene.h; path = src/scene/DebugBlockScene.h; sourceTree = "<group>"; };
@@ -305,7 +310,6 @@
 		C148532516312D810023FAF6 /* GetExpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetExpView.m; path = src/view/viewparts/GetExpView.m; sourceTree = "<group>"; };
 		C148532716314D9A0023FAF6 /* GetGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGoldView.h; path = src/view/viewparts/GetGoldView.h; sourceTree = "<group>"; };
 		C148532816314D9C0023FAF6 /* GetGoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGoldView.m; path = src/view/viewparts/GetGoldView.m; sourceTree = "<group>"; };
-		C148532A16314EE90023FAF6 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -1370,7 +1374,9 @@
 		C1EE3BD516083B4500DE62CD /* common */ = {
 			isa = PBXGroup;
 			children = (
-				C148532A16314EE90023FAF6 /* coin.png */,
+				C1373815165E26A400C9DD41 /* common.json */,
+				C1373816165E26A400C9DD41 /* common.png */,
+				C1373813165E1EB900C9DD41 /* coin.png */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -1588,7 +1594,6 @@
 				C1EE3BE116084C8900DE62CD /* anim11000.json in Resources */,
 				C1621D3716198B2600AB73A0 /* guild000.png in Resources */,
 				C1621D3816198B2600AB73A0 /* town000.png in Resources */,
-				C148532B16314EE90023FAF6 /* coin.png in Resources */,
 				C132CC1416510E4600AA4217 /* block_master.json in Resources */,
 				C132CC4D1653885600AA4217 /* anim13000a.json in Resources */,
 				C132CC5C1653BB9D00AA4217 /* blk12002.png in Resources */,
@@ -1610,6 +1615,9 @@
 				C132CC7D1653C02500AA4217 /* blk13000a.json in Resources */,
 				C132CC7E1653C02500AA4217 /* blk13000a.png in Resources */,
 				C132CC801653C0EB00AA4217 /* blk11000.json in Resources */,
+				C1373814165E1EB900C9DD41 /* coin.png in Resources */,
+				C1373817165E26A400C9DD41 /* common.json in Resources */,
+				C1373818165E26A400C9DD41 /* common.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

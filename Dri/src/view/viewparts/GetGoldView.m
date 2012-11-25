@@ -24,12 +24,13 @@
     CCJumpBy *j3 = [CCJumpBy actionWithDuration:0.075 position:ccp(7.5* mag, 0) height:7.5  jumps:1];
     CCJumpBy *j4 = [CCJumpBy actionWithDuration:0.037 position:ccp(3.7* mag, 0) height:3.7  jumps:1];
     CCJumpBy *j5 = [CCJumpBy actionWithDuration:0.018 position:ccp(1.8* mag, 0) height:1.8  jumps:1];
-    CCFadeOut *fo = [CCFadeOut actionWithDuration:0.7];
+//    CCFadeOut *fo = [CCFadeOut actionWithDuration:0.7];
+    CCMoveTo *fo = [CCMoveTo actionWithDuration:0.4 position:ccp(300, 500)];
     CCCallFunc *suicide = [CCCallFunc actionWithTarget:self selector:@selector(suicide)];
-    
+    CCEaseIn *last = [CCEaseIn actionWithAction:fo rate:5.0];
 //    return [CCSequence actions:j1, j2, j3, j4, j5, delay, fo, suicide, nil];
     
-    CCSequence *seq = [CCSequence actions:j1, j2, j3, j4, j5, fo, suicide, nil];
+    CCSequence *seq = [CCSequence actions:j1, j2, j3, j4, j5, last, suicide, nil];
 //    CCMoveBy   *move_right = [CCMoveBy actionWithDuration:1.0 position:ccp(20, 0)];
     return [CCTargetedAction actionWithTarget:self->coin_icon action:[CCSpawn actions:seq, nil]];
 }
@@ -44,9 +45,10 @@
 //        self->content_text.position = ccp(20, 0);
 //        [self addChild:self->content_text];
         
-        self->coin_icon = [CCSprite spriteWithFile:@"coin.png"];
+        self->coin_icon = [CCSprite spriteWithSpriteFrameName:@"coin0.png"];
+
         self->coin_icon.position = ccp(0, 0);
-        self->coin_icon.scale = 0.5f;
+        self->coin_icon.scale = 2.0f;
         
         [self addChild:coin_icon];
     }    
