@@ -39,6 +39,7 @@
     
     // -- レイヤー
     CCLayer *base_layer;
+    CCLayer *player_layer;
     CCLayer *block_layer;
     CCLayer *effect_layer;
     CCLayerColor *fade_layer;
@@ -54,7 +55,7 @@
 @property (readonly) int offset_y;
 
 
--(void)add_block:(BlockView*)block;
+-(void)add_player:(BlockView*)block;
 -(BlockView*)get_block_view:(DLPoint)pos;
 
 

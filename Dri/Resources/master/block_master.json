@@ -158,6 +158,18 @@
       },
       {
          "TWEENの種類" : null,
+         "種類" : "変化する系",
+         "デストロイされたとき" : null,
+         "内容" : null,
+         "被攻撃時" : null,
+         "正面のアニメ" : null,
+         "正面以外（左右上向き）" : null,
+         "自分がアタックした時のアニメ" : null,
+         "サブ種類" : null,
+         "タップされたとき" : ""
+      },
+      {
+         "TWEENの種類" : null,
          "種類" : null,
          "デストロイされたとき" : "TWEEN",
          "内容" : null,
@@ -708,9 +720,9 @@
          "behaive_2" : null
       },
       {
-         "behavior_1" : "10000",
+         "behavior_1" : "10002",
          "atk" : "0",
-         "behavior_0" : "10002",
+         "behavior_0" : "10000",
          "block_id" : "12000",
          "gold" : "10",
          "use" : "1",
@@ -761,7 +773,7 @@
          "equip_1" : null,
          "equip_0" : null,
          "exp" : "3",
-         "hp" : "5",
+         "hp" : "1",
          "name" : "宝箱",
          "msg_0" : null,
          "view_id" : "12002",
