@@ -113,23 +113,8 @@
     }
 }
 
--(void)_clear_if_dead
-{
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
-            BlockModel* b = [self get:cdp(i, j)];
-            if (b.is_dead) {
-                [b clear];
-            };
-        }
-    }
-}
 
--(void)postprocess
-{
-    [self _clear_if_dead];
-    [self update_can_tap:self->player.pos];
-}
+// =============================================================================
 
 - (BOOL)execute_one_turn:(DLPoint)pos
 {
@@ -163,6 +148,24 @@
 -(BOOL)on_hit:(DLPoint)pos
 {
     return [self execute_one_turn:pos]; // TODO: プレイヤーの座標を指定しないといけない
+}
+
+-(void)_clear_if_dead
+{
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self get:cdp(i, j)];
+            if (b.is_dead) {
+                [b clear];
+            };
+        }
+    }
+}
+
+-(void)postprocess
+{
+    [self _clear_if_dead];
+    [self update_can_tap:self->player.pos];
 }
 
 
