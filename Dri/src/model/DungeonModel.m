@@ -111,6 +111,24 @@
     }
 }
 
+-(void)_clear_if_dead
+{
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self get:cdp(i, j)];
+            if (b.is_dead) {
+                [b clear];
+            };
+        }
+    }
+}
+
+-(void)postprocess
+{
+    [self _clear_if_dead];
+    [self update_can_tap:self->player.pos];
+}
+
 - (BOOL)execute_one_turn:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
@@ -135,9 +153,6 @@
     
     // ブロック(プレイヤー以外の)のアップデートフェイズ
     [self on_update];
-    
-    // ここはシーンから呼ぶほうがいいか
-    [self update_can_tap:self->player.pos];
     
     return YES;
 }

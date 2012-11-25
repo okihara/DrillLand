@@ -230,12 +230,12 @@
 
 - (void)run_sequence
 {
-    // アクションのシーケンスを作成
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
-    
     // -------------------------------------------------------------------------------    
     // シーケンス再生中はタップ不可
     self.isTouchEnabled = NO;
+    
+    // アクションのシーケンスを作成
+    NSMutableArray* action_list = [NSMutableArray array];
     
     // -------------------------------------------------------------------------------
     // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
@@ -327,6 +327,10 @@
             
             // タップ後のシーケンス再生
             [self run_sequence];
+            
+            // 死亡フラグついてるブロックをクリア
+            // タップ可能範囲をアップデート
+            [self->dungeon_model postprocess];
         }
             break;
             
