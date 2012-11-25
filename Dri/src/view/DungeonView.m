@@ -40,12 +40,15 @@
         self->base_layer = [[CCLayer alloc] init];
         [self addChild:self->base_layer];
         
-        self->block_layer = [[CCLayer alloc] init];
-        [self->base_layer addChild:self->block_layer];
-        
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
         sky.position = ccp(160, 480 - 256 / 2);
         [self->base_layer addChild:sky];
+        
+        self->player_layer = [[CCLayer alloc] init];
+        [self->base_layer addChild:self->player_layer];
+        
+        self->block_layer = [[CCLayer alloc] init];
+        [self->base_layer addChild:self->block_layer];
         
         self->effect_layer = [[CCLayer alloc] init];
         [self->base_layer addChild:self->effect_layer];
@@ -73,11 +76,11 @@
 
 //------------------------------------------------------------------------------
 //
--(void)add_block:(BlockView*)block
+-(void)add_player:(BlockView*)block
 {
     // TODO: プレイヤーを一番上にするために。。。
     // TODO: プレイヤー専用やん。。。
-    [self->effect_layer addChild:block];    
+    [self->player_layer addChild:block];
 }
 
 -(BlockView*)get_block_view:(DLPoint)pos

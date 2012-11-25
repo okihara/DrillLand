@@ -39,11 +39,9 @@
             NSDictionary *params = [NSDictionary
                                     dictionaryWithObject:[NSValue valueWithBytes:&color objCType:@encode(ccColor3B)]
                                     forKey:@"color"];
-            {
-                [ctx launch_effect:@"COLORFLASH" target:ctx.fade_layer params:params];
-            }
             
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
+                [ctx launch_effect:@"COLORFLASH" target:ctx.fade_layer params:params];
                 // effect
                 [ctx launch_particle:@"heal" position:view_.position];
             }];
