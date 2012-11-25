@@ -46,7 +46,7 @@
     for (NSString *key in [action keyEnumerator]) {
         // TODO: とりあえずすぎる
         float delay;
-        if ([key isEqualToString:@"atk000"]) {
+        if ([key isEqualToString:@"13000atk"]) {
             delay = 0.033f;
         } else {
             delay = 0.072f;

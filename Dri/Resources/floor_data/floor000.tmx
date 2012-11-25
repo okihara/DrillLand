@@ -1,73 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="5" height="100" tilewidth="60" tileheight="60">
  <tileset firstgid="1" name="floor1" tilewidth="60" tileheight="60">
-  <image source="../spritesheet/floor1.png" width="512" height="512"/>
+  <image source="../spritesheet/00origin/floor1.png" width="512" height="512"/>
   <tile id="0">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="0"/>
+    <property name="block_id" value="0"/>
     <property name="type" value="0"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="1"/>
-    <property name="type" value="1000"/>
+    <property name="block_id" value="10000"/>
+    <property name="type" value="10000"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="group_id" value="2"/>
-    <property name="hp" value="1"/>
-    <property name="type" value="1001"/>
+    <property name="block_id" value="10001"/>
+    <property name="type" value="10001"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="group_id" value="3"/>
-    <property name="hp" value="1"/>
-    <property name="type" value="1002"/>
+    <property name="block_id" value="10002"/>
+    <property name="type" value="10002"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="group_id" value="4"/>
-    <property name="hp" value="1"/>
-    <property name="type" value="1003"/>
+    <property name="block_id" value="10003"/>
+    <property name="type" value="10003"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="3"/>
-    <property name="type" value="2000"/>
+    <property name="block_id" value="11000"/>
+    <property name="type" value="11000"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="10"/>
-    <property name="type" value="2001"/>
+    <property name="block_id" value="11001"/>
+    <property name="type" value="11001"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="65535"/>
-    <property name="type" value="1999"/>
+    <property name="block_id" value="10999"/>
+    <property name="type" value="10999"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
-    <property name="group_id" value="0"/>
-    <property name="hp" value="1"/>
-    <property name="type" value="3000"/>
+    <property name="block_id" value="12000"/>
+    <property name="type" value="12000"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="type" value="3001"/>
+    <property name="block_id" value="12001"/>
+    <property name="type" value="12001"/>
    </properties>
   </tile>
  </tileset>

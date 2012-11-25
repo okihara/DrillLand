@@ -18,32 +18,20 @@
 
         case DL_ON_ATTACK:
         {
-            // TODO: とりあえずすぎる
-            // TODO: Attackable Presentation 作り、移動する
             [block_view stopAllActions];
             
-            // 俺のターンエフェクト
-            // いるならここに
+            // 俺のターンエフェクトがいるならここに書く
+            // 
+
+            // ---
+            CCFiniteTimeAction *anim_attack = [block_view play_attack:block_model];
+            CCFiniteTimeAction *anim_front  = [block_view play_front:block_model];
             
-            // TODO: ないわー
-            // ここで分岐とかないわー
-            if (block_model.type == ID_PLAYER) {
-                CCFiniteTimeAction *anim_attack = [block_view play_anime_one:@"atk000"];
-                CCCallBlock *act_walk = [CCCallFuncO actionWithTarget:block_view selector:@selector(play_anime:) object:@"walk"];
-                return [CCSequence actions:
-                        [CCTargetedAction actionWithTarget:block_view action:anim_attack],
-                        [CCDelayTime actionWithDuration:1.0f / 10],
-                        act_walk,
-                        nil];
-            } else {
-                CCFiniteTimeAction *anim_attack = [block_view play_anime_one:@"attack"];
-                CCCallFuncO *act_walk = [CCCallFuncO actionWithTarget:block_view selector:@selector(play_anime:) object:@"action0"];
-                return [CCSequence actions:
-                        [CCTargetedAction actionWithTarget:block_view action:anim_attack],
-                        [CCDelayTime actionWithDuration:1.0f / 10],
-                        act_walk,
-                        nil];
-            }
+            return [CCSequence actions:
+                    [CCTargetedAction actionWithTarget:block_view action:anim_attack],
+                    [CCDelayTime actionWithDuration:1.0f / 10],
+                    anim_front,
+                    nil];
         }
             break;
 

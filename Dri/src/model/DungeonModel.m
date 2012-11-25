@@ -28,6 +28,7 @@
         self->observer_list = [[NSMutableArray array] retain];
         self->block_builder = [[BlockBuilder alloc] init];
         self->player = [block_builder buildWithID:ID_PLAYER];
+        self->player.pos = cdp(2,3);
         self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];
@@ -105,10 +106,15 @@
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < WIDTH; i++) {
             BlockModel* b = [self get:cdp(i, j)];
-            [b on_update:self];
+            if (!b.is_dead) {
+                [b on_update:self];
+            }
         }
     }
 }
+
+
+// =============================================================================
 
 - (BOOL)execute_one_turn:(DLPoint)pos
 {
@@ -117,7 +123,7 @@
     // タップできない（ターン消費無し）
     // このレイヤーでやることか？
     // ここじゃないとするなら、どこよ？
-    if (target.type == ID_EMPTY || target.can_tap == NO) {
+    if (target.block_id == ID_EMPTY || target.can_tap == NO) {
         DLEvent* event = [DLEvent eventWithType:DL_ON_CANNOT_TAP target:target];
         [self dispatchEvent:event];
         return NO;
@@ -135,9 +141,6 @@
     // ブロック(プレイヤー以外の)のアップデートフェイズ
     [self on_update];
     
-    // ここはシーンから呼ぶほうがいいか
-    [self update_can_tap:self->player.pos];
-    
     return YES;
 }
 
@@ -145,6 +148,24 @@
 -(BOOL)on_hit:(DLPoint)pos
 {
     return [self execute_one_turn:pos]; // TODO: プレイヤーの座標を指定しないといけない
+}
+
+-(void)_clear_if_dead
+{
+    for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            BlockModel* b = [self get:cdp(i, j)];
+            if (b.is_dead) {
+                [b clear];
+            };
+        }
+    }
+}
+
+-(void)postprocess
+{
+    [self _clear_if_dead];
+    [self update_can_tap:self->player.pos];
 }
 
 
@@ -233,7 +254,7 @@
     
     // 起点は 0 でなければならない
     BlockModel* b = [self->map get_x:x y:y]; 
-    if ( b.type > 0 ) return;
+    if ( b.block_id > 0 ) return;
     
     // 操作済み判別テーブルを初期化
     [done_map clear];
@@ -256,9 +277,9 @@
     if (!b) return;
     
     [done_map set_x:x y:y value:1];
-    if (b.type != ID_EMPTY) {
+    if (b.block_id != ID_EMPTY) {
         b.can_tap = YES;
-    } else if (b.type == ID_EMPTY) {
+    } else if (b.block_id == ID_EMPTY) {
         b.can_tap = NO;
         [self update_can_tap_r:cdp(x + 0, y + 1)];
         [self update_can_tap_r:cdp(x + 0, y - 1)];
@@ -351,7 +372,7 @@
     // ブロックの場合はそれ以上探索しない
     // ただし level = 0 （最初の一回目は）例外
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
-    if (b.type != ID_EMPTY && level != 0) return;
+    if (b.block_id != ID_EMPTY && level != 0) return;
     
     int cost = [self->route_map get_x:pos.x y:pos.y];
     

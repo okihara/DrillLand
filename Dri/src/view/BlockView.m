@@ -44,18 +44,67 @@
     [self->presentation_list addObject:presentation];
 }
 
+//==============================================================================
 
-//===============================================================
-//
-//
-//
-//===============================================================
+-(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model
+{
+    NSString *anime_name = [NSString stringWithFormat:@"%datk", block_model.block_id];
+    return [self play_anime_onece:anime_name];
+}
+
+-(CCFiniteTimeAction*)play_front:(BlockModel*)block_model
+{
+    NSString *anime_name = [NSString stringWithFormat:@"%dfront", block_model.block_id];
+    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
+}
+
+-(CCFiniteTimeAction*)play_r:(BlockModel*)block_model
+{
+    NSString *anime_name;
+    
+    switch (block_model.block_id) {
+            
+        case ID_PLAYER:
+            anime_name = @"13000r";
+            break;
+            
+        default:
+            anime_name = @"11000r";
+            break;
+    }
+    
+    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
+}
+
+-(CCFiniteTimeAction*)play_l:(BlockModel*)block_model
+{
+    NSString *anime_name = [NSString stringWithFormat:@"%dl", block_model.block_id];   
+    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
+}
+
+-(CCFiniteTimeAction*)play_bank:(BlockModel*)block_model
+{
+    NSString *anime_name;
+    
+    switch (block_model.block_id) {
+            
+        case ID_PLAYER:
+            anime_name = @"13000back";
+            break;
+            
+        default:
+            anime_name = @"11000back";
+            break;
+    }
+    
+    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
+}
+
+
+//==============================================================================
 
 - (CCAction*)_update_presentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
-    // TODO: プレイヤーその他で処理が別れとる(´；ω；｀)ﾌﾞﾜｯ
-    
-//    BlockModel *b = (BlockModel*)e.target;
     NSMutableArray *actions = [NSMutableArray array];
     
     for (NSObject<BlockPresentation>* p in self->presentation_list) {
@@ -84,14 +133,20 @@
 - (void)play_anime:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
+    if (!anim) {
+        return;
+    }
     CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
     [self runAction:act];   
 }
 
 // TODO: ないわーこれはないわー
-- (CCFiniteTimeAction*)play_anime_one:(NSString*)name
+- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
+    if (!anim) {
+        return nil;
+    }
     CCFiniteTimeAction* act = [CCAnimate actionWithAnimation:anim];
     return act;
 }

@@ -16,6 +16,14 @@
 {
     switch (e.type) {
             
+        case DL_ON_DAMAGE:
+        {
+            CCFiniteTimeAction *shake;
+            shake = [ctx launch_effect:@"shake" target:ctx params:nil];
+            return shake;
+        }
+            break;
+            
         case DL_ON_DESTROY:
         {
             // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ

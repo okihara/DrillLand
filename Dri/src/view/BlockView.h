@@ -21,6 +21,17 @@
 
 @end
 
+enum VIEW_TYPE {
+    VIEW_TYPE_NULL       = 0,
+    VIEW_TYPE_BLOCK      = 100,
+    VIEW_TYPE_ENEMY      = 200,
+    VIEW_TYPE_ITEM_BASIC = 300,
+    VIEW_TYPE_ITEM_BOX   = 301,
+    VIEW_TYPE_PLAYER     = 900,
+    VIEW_TYPE_MESSAGE    = 500,
+};
+
+// 使ってない
 enum DL_PHASE {
     DL_ETC = 0,
     DL_MOVE,
@@ -61,8 +72,12 @@ enum DL_PHASE {
 
 // helper
 - (void)play_anime:(NSString*)name;
-- (CCFiniteTimeAction*)play_anime_one:(NSString*)name;
+- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;
+
+// そなえて置くべきメソッド
+-(CCFiniteTimeAction*)play_front:(BlockModel*)block_model;
+-(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model;
 
 @end

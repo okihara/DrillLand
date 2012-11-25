@@ -28,7 +28,7 @@
             
         case DL_ON_DESTROY:
             
-            if (block.type == self->target_block_id) {
+            if (block.block_id == self->target_block_id) {
                 self->counter++;
                 if (counter == required_num) {
                     DLEvent *e = [DLEvent eventWithType:DL_ON_CLEAR target:nil];

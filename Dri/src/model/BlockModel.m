@@ -12,15 +12,23 @@
 
 @implementation BlockModel
 
-@synthesize max_hp;
-@synthesize hp;
+@synthesize block_id;
 @synthesize type;
+@synthesize group_id;
+@synthesize view_id;
+@synthesize view_type;
+
+@synthesize hp;
+@synthesize max_hp;
 @synthesize atk;
 @synthesize def;
-@synthesize group_id;
-@synthesize group_info;
-@synthesize can_tap;
+@synthesize exp;
+@synthesize gold;
+
 @synthesize pos;
+@synthesize can_tap;
+@synthesize group_info;
+@synthesize is_dead;
 
 -(id) init
 {
@@ -33,13 +41,17 @@
 -(void)clear
 {
     // vars
-    type = ID_EMPTY;
-    hp = 0;
-    atk = 0;
-    def = 0;
-    group_id = 0;
+    block_id  = ID_EMPTY;
+    type      = 0;
+    view_type = 0;
+    view_id   = 0;
+    hp        = 0;
+    atk       = 0;
+    def       = 0;
+    group_id   = 0;
     group_info = NULL;
-    can_tap = NO;
+    can_tap    = NO;
+    is_dead    = NO;
         
     // behavior
     if (self->behavior_list) {
@@ -82,7 +94,7 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_hit:self dungeon:dungeon];
-        if (self.type == ID_EMPTY) return;
+        if (self.block_id == ID_EMPTY) return;
     }    
 }
 
@@ -104,7 +116,7 @@
 {
     for (NSObject<BlockBehaivior>* b in self->behavior_list) {
         [b on_break:self dungeon:dungeon];
-        if (self.type == ID_EMPTY) return;
+        if (self.block_id == ID_EMPTY) return;
     }
 }
 
@@ -128,7 +140,7 @@
     // ---
     if (target.hp == 0) {
         [target on_break:dungeon];
-        [target clear];
+        target.is_dead = YES;
     }
 }
 

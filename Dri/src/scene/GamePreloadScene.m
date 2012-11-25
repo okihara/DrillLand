@@ -15,6 +15,7 @@
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
 #import "DebugBlockScene.h"
+#import "MasterLoader.h"
 
 @implementation GamePreloadScene
 
@@ -40,25 +41,29 @@
         SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
-        [frame_loader load_sprite:@"link2.json"];
-        [animation_loader load_animation:@"linkatk.json"];
+        [frame_loader load_sprite:@"blk13000.json"];
+        [animation_loader load_animation:@"anim13000.json"];
+        [frame_loader load_sprite:@"blk13000a.json"];
+        [animation_loader load_animation:@"anim13000a.json"];
+        
+        [frame_loader load_sprite:@"blk11000.json"];
+        [animation_loader load_animation:@"anim11000.json"];
 
+        [frame_loader load_sprite:@"common.json"];
         
-        [frame_loader load_sprite:@"link_f.json"];
-        [animation_loader load_animation:@"link.json"];
-        
-        [frame_loader load_sprite:@"mon.json"];
-        [animation_loader load_animation:@"mon001.json"];
+        // ---
+        MasterLoader *master_loader = [[MasterLoader new] autorelease];
+        [master_loader load:@"block_master.json"];
         
         // -- texture
-        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
+//        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
     }
 	return self;
 }
 
 -(void)goto_dungeon
 {
-    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:0];
+    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:1];
     [[CCDirector sharedDirector] replaceScene:next_scene];
 }
 
@@ -72,8 +77,8 @@
 {
     [super onEnter];
 
-    [self goto_debug_block_view];
-    //[self goto_dungeon];
+    //[self goto_debug_block_view];
+    [self goto_dungeon];
     //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 }
 

@@ -26,6 +26,17 @@
 // 最初のシーケンス
 - (void)run_first_sequece {
     
+    if (1) {
+
+        // FADE OUT
+        CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
+        [self->fade_layer runAction:fi];
+        
+        self.isTouchEnabled = YES;
+
+        return;
+    }
+    
     // FADE OUT
     CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
     [self->fade_layer runAction:fi];
@@ -76,7 +87,7 @@
         [self->dungeon_model add_observer:self];
 
         // setup player
-        BlockView* player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];  
+        BlockView* player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
         [dungeon_view add_block:player];
         dungeon_view.player = player;
         [player release];
@@ -160,7 +171,6 @@
         
         [self->events removeObjectAtIndex:0];
         
-        
         if (![self->events count]) {
             break;
         }
@@ -170,15 +180,15 @@
         e = (DLEvent*)[self->events objectAtIndex:0];
         [e.params setObject:self->dungeon_model forKey:@"dungeon_model"];
         
+        // これどういうこと？？
         if( e.type == DL_ON_HIT ) {
             break;
         }
-        
     }
     
     // 描画イベント全部処理して、死んでたら
     CCAction *act_suicide = [CCCallBlock actionWithBlock:^{
-        NSLog(@"[SUICIDE] %d %d %d", b.type, b.pos.x, b.pos.y);
+        NSLog(@"[SUICIDE] %d %d %d", b.block_id, b.pos.x, b.pos.y);
         [self->dungeon_view remove_block_view_if_dead:b.pos];
     }];
     [actions addObject:act_suicide];
@@ -213,7 +223,6 @@
             break;
         }
         e = (DLEvent*)[self->events objectAtIndex:0];
-        
     }
     
     if (actions) {
@@ -236,12 +245,12 @@
 
 - (void)run_sequence
 {
-    // アクションのシーケンスを作成
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:10];
-    
     // -------------------------------------------------------------------------------    
     // シーケンス再生中はタップ不可
     self.isTouchEnabled = NO;
+    
+    // アクションのシーケンスを作成
+    NSMutableArray* action_list = [NSMutableArray array];
     
     // -------------------------------------------------------------------------------
     // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
@@ -310,9 +319,8 @@
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     UITouch *touch =[touches anyObject];
-    CGPoint location =[touch locationInView:[touch view]];
+    CGPoint location = [touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
-    
     return [self _screen_to_view_pos:location];
 }
 
@@ -326,11 +334,14 @@
         {
             // モデルへ通知
             BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
-            
             if (!changed) { return; }
             
             // タップ後のシーケンス再生
             [self run_sequence];
+            
+            // 死亡フラグついてるブロックをクリア
+            // タップ可能範囲をアップデート
+            [self->dungeon_model postprocess];
         }
             break;
             
@@ -371,7 +382,8 @@
 -(void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
     BlockModel *block = event.target;
-    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.type, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
+    
+    NSLog(@"[EVENT] block:%05d %@\t%@ %@", block.block_id, [NSValue valueWithCGPoint:ccp(block.pos.x, block.pos.y)], [event get_event_text], event.params);
     
     switch (event.type) {
             

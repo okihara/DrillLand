@@ -20,7 +20,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/spritesheet\/floor1.png",
+         "image":"..\/spritesheet\/00origin\/floor1.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
@@ -35,61 +35,53 @@
             {
              "0":
                 {
-                 "group_id":"0",
-                 "hp":"0",
+                 "block_id":"0",
                  "type":"0"
                 },
              "1":
                 {
-                 "group_id":"0",
-                 "hp":"1",
-                 "type":"1000"
+                 "block_id":"10000",
+                 "type":"10000"
                 },
              "2":
                 {
-                 "group_id":"2",
-                 "hp":"1",
-                 "type":"1001"
+                 "block_id":"10001",
+                 "type":"10001"
                 },
              "3":
                 {
-                 "group_id":"3",
-                 "hp":"1",
-                 "type":"1002"
+                 "block_id":"10002",
+                 "type":"10002"
                 },
              "4":
                 {
-                 "group_id":"4",
-                 "hp":"1",
-                 "type":"1003"
+                 "block_id":"10003",
+                 "type":"10003"
                 },
              "5":
                 {
-                 "group_id":"0",
-                 "hp":"3",
-                 "type":"2000"
+                 "block_id":"11000",
+                 "type":"11000"
                 },
              "6":
                 {
-                 "group_id":"0",
-                 "hp":"10",
-                 "type":"2001"
+                 "block_id":"11001",
+                 "type":"11001"
                 },
              "7":
                 {
-                 "group_id":"0",
-                 "hp":"65535",
-                 "type":"1999"
+                 "block_id":"10999",
+                 "type":"10999"
                 },
              "8":
                 {
-                 "group_id":"0",
-                 "hp":"1",
-                 "type":"3000"
+                 "block_id":"12000",
+                 "type":"12000"
                 },
              "9":
                 {
-                 "type":"3001"
+                 "block_id":"12001",
+                 "type":"12001"
                 }
             },
          "tilewidth":60

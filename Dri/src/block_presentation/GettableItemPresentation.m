@@ -18,8 +18,7 @@
 
         case DL_ON_DESTROY:
         {
-//            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCMoveBy actionWithDuration:0.1f position:ccp(0, 60)]];
-            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCFadeOut actionWithDuration:0.3f]];
+//            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCFadeOut actionWithDuration:0.3f]];
             
             // implement here
             // TODO: この NO にして remove するのなんとかならんか
@@ -27,7 +26,7 @@
                 block_view.is_alive = NO;
                 [dungeon_view remove_block_view_if_dead:block.pos];
             }];
-            return [CCSequence actions:act_1, act_2, nil];
+            return [CCSequence actions:act_2, nil];
         }
             break;
 

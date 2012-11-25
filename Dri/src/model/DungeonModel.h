@@ -61,6 +61,7 @@
 
 // ---
 -(BOOL)on_hit:(DLPoint)pos;
+-(void)postprocess;
 
 // loader json
 -(void)load_from_file:(NSString*)filename;
