@@ -106,7 +106,9 @@
     for (int j = 0; j < HEIGHT; j++) {
         for (int i = 0; i < WIDTH; i++) {
             BlockModel* b = [self get:cdp(i, j)];
-            [b on_update:self];
+            if (!b.is_dead) {
+                [b on_update:self];
+            }
         }
     }
 }
