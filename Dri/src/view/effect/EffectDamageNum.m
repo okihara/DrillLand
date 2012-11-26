@@ -25,6 +25,7 @@
     NSNumber *num = (NSNumber*)[params objectForKey:@"damage"];
     int damage = num ? [num intValue] : 0;
     [DamageNumView spawn:damage target:effect_layer position:target.position color:color];
+    //[DamageNumView spawn:damage target:target position:ccp(0,0) color:color];
     return nil;
 }
 

@@ -40,19 +40,18 @@
                                     dictionaryWithObject:[NSValue valueWithBytes:&color objCType:@encode(ccColor3B)]
                                     forKey:@"color"];
             
-            CCCallBlock *act = [CCCallBlock actionWithBlock:^{
+            CCCallBlock *act_flash = [CCCallBlock actionWithBlock:^{
                 [ctx launch_effect:@"COLORFLASH" target:ctx.fade_layer params:params];
-                // effect
                 [ctx launch_particle:@"heal" position:view_.position];
             }];
             
-            CCCallBlock *act2 = [CCCallBlock actionWithBlock:^{
-                // damage num
+            // damage num
+            CCCallBlock *act_damage = [CCCallBlock actionWithBlock:^{
                 [e.params setObject:[NSValue valueWithBytes:&color objCType:@encode(ccColor3B)] forKey:@"color"];
                 [ctx launch_effect:@"damage" target:view_ params:e.params];
             }];
             
-            return [CCSequence actions:act, [CCDelayTime actionWithDuration:1.5], act2, [CCDelayTime actionWithDuration:0.5], nil];
+            return [CCSequence actions:act_flash, [CCDelayTime actionWithDuration:0.5f], act_damage, [CCDelayTime actionWithDuration:0.1f], nil];
         }
             break;
             
