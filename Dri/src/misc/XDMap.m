@@ -13,7 +13,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        bound_w  = 5;
+        bound_w  = CAP_W;
         bound_h =  CAP_H;
     }
     return self;
@@ -84,7 +84,7 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        bound_w  = 5;
+        bound_w  = CAP_W;
         bound_h =  CAP_H;
         [self clear];
     }

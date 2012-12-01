@@ -13,7 +13,7 @@
 #import "DLEvent.h"
 
 
-#define WIDTH 5
+#define WIDTH 7
 #define HEIGHT 48
 
 @class DungeonModel;
@@ -65,6 +65,7 @@
 
 // loader json
 -(void)load_from_file:(NSString*)filename;
+-(void)load_random:(UInt16)seed;
 
 // calc route and grouping
 -(void)_clear_can_tap;
