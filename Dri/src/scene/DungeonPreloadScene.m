@@ -20,7 +20,7 @@
         label.anchorPoint = ccp(0, 0);
         [self addChild:label];
 
-        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIPSTIPSTIPS" fontName:DL_FONT_NAME fontSize:15];
+        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIP:WWWWWW" fontName:DL_FONT_NAME fontSize:15];
         tips.position =  ccp(160, 240);
         [self addChild:tips];
     }
@@ -61,7 +61,12 @@
 
     
     // load dungeon data
-    [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];
+    if (dungeon_id==3) {
+        //random
+        [self->dungeon_model load_random:0];
+    } {
+        [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];
+    }
 }
 
 - (void)onEnterTransitionDidFinish

@@ -30,11 +30,13 @@
         CCMenuItemFont *item_quest_1 = [CCMenuItemFont itemWithString:@"QUEST 000" target:self selector:@selector(didPressButton_0:)];
         CCMenuItemFont *item_quest_2 = [CCMenuItemFont itemWithString:@"QUEST 001" target:self selector:@selector(didPressButton_1:)];
         CCMenuItemFont *item_quest_3 = [CCMenuItemFont itemWithString:@"QUEST 002" target:self selector:@selector(didPressButton_2:)];
+        CCMenuItemFont *item_quest_4 = [CCMenuItemFont itemWithString:@"QUEST 003" target:self selector:@selector(didPressButton_3:)];
         CCMenuItemFont *item_home    = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
         CCMenu *menu = [CCMenu menuWithItems:
                         item_quest_1,
                         item_quest_2,
                         item_quest_3,
+                        item_quest_4,
                         item_home,
                         nil];
         menu.position = ccp(160, 200);
@@ -73,6 +75,12 @@
 - (void)didPressButton_2:(CCMenuItem *)sender
 {
     uint dungeon_id = 2;
+    [self goto_dungeon_scene:dungeon_id];
+}
+
+- (void)didPressButton_3:(CCMenuItem *)sender
+{
+    uint dungeon_id = 3;
     [self goto_dungeon_scene:dungeon_id];
 }
 
