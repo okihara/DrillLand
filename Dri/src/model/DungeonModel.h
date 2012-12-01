@@ -13,7 +13,7 @@
 #import "DLEvent.h"
 
 
-#define WIDTH 5
+#define WIDTH 7
 #define HEIGHT 48
 
 @class DungeonModel;
