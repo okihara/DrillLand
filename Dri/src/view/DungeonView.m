@@ -261,7 +261,7 @@
     [self update_curring_range];
     
     // アクションを実行
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration: 0.4 position:ccp(0, self->offset_y)];
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.4f position:ccp(0, self->offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [self->base_layer runAction:ease];
 }
@@ -302,7 +302,9 @@
 
 - (CGPoint)model_to_local:(DLPoint)pos
 {
-    return ccp(30 + pos.x * BLOCK_WIDTH, 480 - (30 + pos.y * BLOCK_WIDTH));
+    // この 30 ってなに？
+    // 60 / 2 ってこと？
+    return ccp(BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH, 480 - (BLOCK_WIDTH / 2 + pos.y * BLOCK_WIDTH));
 }
 
 
