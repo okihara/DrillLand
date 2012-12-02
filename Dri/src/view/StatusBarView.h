@@ -10,11 +10,12 @@
 #import "cocos2d.h"
 
 @interface StatusBarView : CCNode {
-    CCLayerColor *bg;
+    CCLayerColor  *bg;
     CCLabelBMFont *hp;
     CCLabelBMFont *exp;
     CCLabelBMFont *name;
     CCLabelBMFont *level;
+    CCLabelBMFont *floor;
 }
 
 @end

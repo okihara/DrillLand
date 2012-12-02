@@ -244,15 +244,16 @@ static int block_id_list[] = {
             
             BlockModel *b;
             // ４列目までは空ならのでスキップ
-            if (j < 4) {
-                b = [self->block_builder buildWithID:ID_NORMAL_BLOCK];
-                b.block_id = ID_EMPTY;
+        if (j < 4) {
+                b = [self->block_builder buildWithID:ID_EMPTY];
             } else if (j == 4) {
                 if (i == 3) {
                     b = [self->block_builder buildWithID:ID_EMPTY];
                 } else {
                     b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
                 }
+            } else if (i == 0 || i == (WIDTH -1)) {
+                b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
             } else {
                 int index = random() % (max_num - 2);
                 int type_id = block_id_list[index];

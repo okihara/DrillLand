@@ -18,6 +18,12 @@
     [self->hp setString:[NSString stringWithFormat:@"HP: %d", [value intValue]]];
 }
 
+-(void)update_floor:(NSNotification *)aNotification
+{
+    NSNumber *value = (NSNumber*)[aNotification object];
+    [self->floor setString:[NSString stringWithFormat:@"%3dF", [value intValue]]];
+}
+
 - (id)init
 {
     if(self=[super init]) {
@@ -41,8 +47,14 @@
         self->exp.position = ccp(-75, -14);
         [self addChild:self->exp];
         
+        self->floor = [FontFactory makeLabel:@"  1F"];
+        self->floor.anchorPoint = ccp(0, 0);
+        self->floor.position = ccp(-150, -40);
+        [self addChild:self->floor];
+        
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(update_hp:) name:@"UpdateHP" object:nil];
+        [nc addObserver:self selector:@selector(update_floor:) name:@"UpdateFloor" object:nil];
     }
     return self;
 }

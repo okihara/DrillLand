@@ -137,11 +137,11 @@
                 [p release];
             }
             
-            {
-                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
-                [block_view add_presentation:p];
-                [p release];
-            }
+//            {
+//                NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
+//                [block_view add_presentation:p];
+//                [p release];
+//            }
 
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
