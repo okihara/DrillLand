@@ -41,7 +41,7 @@
         [self addChild:self->base_layer];
         
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
-        sky.position = ccp(160, 480 - 256 / 2);
+        sky.position = ccp(160 + 36, 480 - 224 / 2);
         [self->base_layer addChild:sky];
         
         self->player_layer = [[CCLayer alloc] init];
@@ -58,6 +58,7 @@
         
         // fade_layer
         self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
+        self->fade_layer.position = ccp(36, 0);
         [self addChild:self->fade_layer];
 	}
 	return self;

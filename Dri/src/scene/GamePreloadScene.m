@@ -17,6 +17,8 @@
 #import "DebugBlockScene.h"
 #import "MasterLoader.h"
 
+#import "SimpleAudioEngine.h"
+
 @implementation GamePreloadScene
 
 +(CCScene*)scene {
@@ -54,7 +56,11 @@
         // ---
         MasterLoader *master_loader = [[MasterLoader new] autorelease];
         [master_loader load:@"block_master.json"];
-        
+
+        // ---
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"skullpile1.wav"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"death3.wav"];
+
         // -- texture
 //        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
     }
@@ -63,7 +69,7 @@
 
 -(void)goto_dungeon
 {
-    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:1];
+    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:0];
     [[CCDirector sharedDirector] replaceScene:next_scene];
 }
 

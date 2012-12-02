@@ -65,6 +65,8 @@
 	return scene;
 }
 
+#define LEFT_OFFSET -36
+
 - (id) initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
 	if( (self=[super init]) ) {
@@ -77,6 +79,7 @@
      
         // setup dungeon view
         dungeon_view = [DungeonView node];
+        dungeon_view.position = ccp(LEFT_OFFSET, 0); // 中央に寄せた
         [self addChild:dungeon_view];
         
         // calc curring
@@ -283,6 +286,12 @@
     // スクロールフェイズ
     CCAction *act_scroll = [CCCallFuncO actionWithTarget:self selector:@selector(do_scroll)];
     [action_list addObject:act_scroll];
+
+    // -------------------------------------------------------------------------------
+    // 現在の階層を更新
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"UpdateFloor" object:[NSNumber numberWithInt:(self->dungeon_model.lowest_empty_y - 4)]];
+
     
     // -------------------------------------------------------------------------------
     // タッチをオンに
@@ -308,7 +317,7 @@
     // TODO: ここから先 DungeonView に移動するべき
     // ↑ ほんとうか？
     // model_to_local の反対
-    int x = (int)(location.x / BLOCK_WIDTH);
+    int x = (int)((location.x - LEFT_OFFSET)/ BLOCK_WIDTH);
     int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
 }
@@ -386,7 +395,7 @@
     switch (event.type) {
             
         case DL_ON_CANNOT_TAP:
-            [BasicNotifierView notify:@"CAN NOT TAP" target:self];
+//            [BasicNotifierView notify:@"CAN NOT TAP" target:self];
             break;
             
         case DL_ON_CLEAR:

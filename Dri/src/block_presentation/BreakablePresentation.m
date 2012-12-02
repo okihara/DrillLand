@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SimpleAudioEngine.h"
 #import "BreakablePresentation.h"
 #import "DungeonView.h"
 #import "GetExpView.h"
@@ -40,6 +41,8 @@
 
                 // exp
                 [GetExpView spawn:ctx.effect_layer position:view_.position num_exp:3];
+                
+                [[SimpleAudioEngine sharedEngine] playEffect:@"skullpile1.wav"];
                 
                 // --
                 view_.is_alive = NO;
