@@ -5,19 +5,18 @@
 //  Created by  on 12/08/24.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
-
-#import "GamePreloadScene.h"
 #import "SBJson.h"
-#import "DungeonScene.h"
+#import "SimpleAudioEngine.h"
 #import "DL.h"
+#import "GamePreloadScene.h"
+#import "DungeonScene.h"
 #import "SpriteFrameLoader.h"
 #import "AnimationLoader.h"
+#import "MasterLoader.h"
+#import "DebugBlockScene.h"
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
-#import "DebugBlockScene.h"
-#import "MasterLoader.h"
-
-#import "SimpleAudioEngine.h"
+#import "SelectQuestScene.h"
 
 @implementation GamePreloadScene
 
@@ -84,8 +83,9 @@
     [super onEnter];
 
     //[self goto_debug_block_view];
-    [self goto_dungeon];
+    //[self goto_dungeon];
     //[[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
 }
 
 @end

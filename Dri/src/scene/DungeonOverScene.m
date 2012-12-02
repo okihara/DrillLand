@@ -8,6 +8,7 @@
 
 #import "DungeonOverScene.h"
 #import "HomeScene.h"
+#import "SelectQuestScene.h"
 
 @implementation DungeonOverScene
 
@@ -36,7 +37,8 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+//    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
 }
 
 @end
