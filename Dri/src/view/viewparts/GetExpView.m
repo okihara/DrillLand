@@ -31,7 +31,7 @@
 {
     if(self=[super init]) {
         ccColor3B color = ccc3(255, 255, 255);
-        NSString *str = [NSString stringWithFormat:@"XP +%d", num_exp];
+        NSString *str = [NSString stringWithFormat:@"XP +%ld", num_exp];
         self->content_text = [FontFactory makeLabel:str color:color];
         [self addChild:self->content_text];
     }    
