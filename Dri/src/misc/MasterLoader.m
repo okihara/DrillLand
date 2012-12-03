@@ -33,7 +33,7 @@ NSArray *master_list;
         if ([number isKindOfClass:[NSNull class]]) {
             continue;
         }
-        uint block_id = [number unsignedIntValue];
+        uint block_id = [number intValue];
         if (block_id == id_) {
             return json;
         }
