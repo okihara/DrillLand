@@ -30,6 +30,7 @@
     self->presentation_list = [[NSMutableArray array] retain];
     is_alive = YES;
     is_change = NO;
+    is_touching = NO;
 }
 
 - (void)dealloc

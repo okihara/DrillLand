@@ -48,6 +48,9 @@ enum DL_PHASE {
     NSMutableArray* events;
     NSMutableArray* presentation_list;
     
+    BOOL is_touching;
+    
+    float origin_scale;
     uint direction;
     
     // Dictionary になるか？

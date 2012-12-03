@@ -45,7 +45,7 @@
     int width  = [[jsonItem objectForKey:@"width"] integerValue];
     //int height = [[jsonItem objectForKey:@"height"] integerValue];
     
-    for (int j = 0; j < HEIGHT; j++) {
+    for (int j = 0; j < DM_HEIGHT; j++) {
         for (int i = 0; i < width; i++) {
             
             BlockModel* b;

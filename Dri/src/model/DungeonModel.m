@@ -103,8 +103,8 @@
 
 -(void)on_update
 {
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
+    for (int j = 0; j < DM_HEIGHT; j++) {
+        for (int i = 0; i < DM_WIDTH; i++) {
             BlockModel* b = [self get:cdp(i, j)];
             if (!b.is_dead) {
                 [b on_update:self];
@@ -152,8 +152,8 @@
 
 -(void)_clear_if_dead
 {
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
+    for (int j = 0; j < DM_HEIGHT; j++) {
+        for (int i = 0; i < DM_WIDTH; i++) {
             BlockModel* b = [self get:cdp(i, j)];
             if (b.is_dead) {
                 [b clear];
@@ -239,8 +239,8 @@ static int block_id_list[] = {
 
 -(void)load_random:(UInt16)seed
 {
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
+    for (int j = 0; j < DM_HEIGHT; j++) {
+        for (int i = 0; i < DM_WIDTH; i++) {
             
             BlockModel *b;
             // ４列目までは空ならのでスキップ
@@ -252,7 +252,7 @@ static int block_id_list[] = {
                 } else {
                     b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
                 }
-            } else if (i == 0 || i == (WIDTH -1)) {
+            } else if (i == 0 || i == (DM_WIDTH -1)) {
                 b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
             } else {
                 int index = random() % (max_num - 2);
@@ -288,8 +288,8 @@ static int block_id_list[] = {
 
 -(void)_clear_can_tap
 {
-    for (int j = 0; j < HEIGHT; j++) {
-        for (int i = 0; i < WIDTH; i++) {
+    for (int j = 0; j < DM_HEIGHT; j++) {
+        for (int i = 0; i < DM_WIDTH; i++) {
             BlockModel* b = [self->map get_x:i y:j];
             b.can_tap = NO;
         }

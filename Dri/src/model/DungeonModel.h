@@ -13,11 +13,10 @@
 #import "DLEvent.h"
 
 
-#define WIDTH 7
-#define HEIGHT 48
+#define DM_WIDTH 7
+#define DM_HEIGHT 48
 
 @class DungeonModel;
-
 
 @protocol DungenModelObserver <NSObject>
 - (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;

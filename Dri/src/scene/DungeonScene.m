@@ -65,8 +65,6 @@
 	return scene;
 }
 
-#define LEFT_OFFSET -36
-
 - (id) initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
 	if( (self=[super init]) ) {
@@ -79,7 +77,6 @@
      
         // setup dungeon view
         dungeon_view = [DungeonView node];
-        dungeon_view.position = ccp(LEFT_OFFSET, 0); // 中央に寄せた
         [self addChild:dungeon_view];
         
         // calc curring
@@ -319,18 +316,31 @@
     // TODO: ここから先 DungeonView に移動するべき
     // ↑ ほんとうか？
     // model_to_local の反対
-    int x = (int)((location.x - LEFT_OFFSET)/ BLOCK_WIDTH);
-    int y = (int)((480 - location.y + self->dungeon_view.offset_y) / BLOCK_WIDTH);
+    int x = (int)((      location.x - DV_OFFSET_X) / BLOCK_WIDTH);
+    int y = (int)((480 - location.y + self->dungeon_view.offset_y  ) / BLOCK_WIDTH);
     return cdp(x, y);
 }
 
 // HELPER: スクリーン座標からビューの座標へ変換
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
-    UITouch *touch =[touches anyObject];
+    UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
     return [self _screen_to_view_pos:location];
+}
+
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DLPoint pos = [self screen_to_view_pos:touches];
+    [self->dungeon_view on_touch_start:pos];
+}
+
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DLPoint pos = [self screen_to_view_pos:touches];
+    [self->dungeon_view on_touch_start:pos];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

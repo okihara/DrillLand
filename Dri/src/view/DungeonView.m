@@ -14,10 +14,6 @@
 #import "BlockView.h"
 #import "BlockViewBuilder.h"
 
-#define DISP_H 8
-#define LIGHT_RANGE 6
-#define CURRING_VAR 6
-
 @implementation DungeonView
 
 @synthesize player;
@@ -30,18 +26,22 @@
 {
 	if(self=[super init]) {
         
-        disp_w = WIDTH;
-        disp_h = HEIGHT;
+        disp_w = DM_WIDTH;
+        disp_h = DV_DISP_H;
+
+        offset_x = DV_OFFSET_X;
         offset_y = 0;
         latest_remove_y = -1;
+        selected_block = nil;
         
         self->view_map = [[ObjectXDMap alloc] init];
         
         self->base_layer = [[CCLayer alloc] init];
+        self->base_layer.position = ccp(self->offset_x, self->offset_y);
         [self addChild:self->base_layer];
         
         CCSprite *sky = [CCSprite spriteWithFile:@"sky00.png"];
-        sky.position = ccp(160 + 36, 480 - 224 / 2);
+        sky.position = ccp(160 - self->offset_x, 480 - 224 / 2);
         [self->base_layer addChild:sky];
         
         self->player_layer = [[CCLayer alloc] init];
@@ -52,14 +52,13 @@
         
         self->effect_layer = [[CCLayer alloc] init];
         [self->base_layer addChild:self->effect_layer];
-             
+        
+        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
+        [self addChild:self->fade_layer];
+    
+        // ---
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
-        
-        // fade_layer
-        self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
-        self->fade_layer.position = ccp(36, 0);
-        [self addChild:self->fade_layer];
 	}
 	return self;
 }
@@ -233,7 +232,7 @@
     
     // ここらへんはフロアの情報によって決まる
     // current_floor_max_rows * block_height + margin
-    int max_scroll = (HEIGHT - DISP_H) * BLOCK_WIDTH + 30;
+    int max_scroll = (DM_HEIGHT - self->disp_h) * BLOCK_WIDTH + 30;
     if (offset_y > max_scroll) {
         self->offset_y = max_scroll;   
     }
@@ -251,8 +250,8 @@
     // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
     self->curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
-    int num_draw = DISP_H + curring_var;
-    self->curring_bottom = visible_y + num_draw  > HEIGHT ? HEIGHT : visible_y + num_draw; 
+    int num_draw = self->disp_h + curring_var;
+    self->curring_bottom = visible_y + num_draw  > DM_HEIGHT ? DM_HEIGHT : visible_y + num_draw; 
 }
 
 // 実際の処理
@@ -262,7 +261,7 @@
     [self update_curring_range];
     
     // アクションを実行
-    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.4f position:ccp(0, self->offset_y)];
+    CCMoveTo *act_move = [CCMoveTo actionWithDuration:0.4f position:ccp(self->offset_x, self->offset_y)];
     CCEaseInOut *ease = [CCEaseInOut actionWithAction:act_move rate:2];
     [self->base_layer runAction:ease];
 }
@@ -322,5 +321,16 @@
 {
     return [self->effect_launcher launch_effect:name target:target params:params];
 }
+
+// =============================================================================
+// タッチされた時におっきくする
+// =============================================================================
+- (void)on_touch_start:(DLPoint)pos
+{
+    BlockView *b_view = [self->view_map get_x:pos.x y:pos.y];
+    b_view.scale *= 2.0;
+    b_view.zOrder = 10000;
+}
+
 
 @end

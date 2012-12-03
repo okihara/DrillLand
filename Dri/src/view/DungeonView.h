@@ -17,6 +17,10 @@
 @class XDMap;
 @class BlockView;
 
+#define DV_DISP_H 8
+#define LIGHT_RANGE 6
+#define CURRING_VAR 6
+#define DV_OFFSET_X -36
 
 // memo: DungeonView の使い方は、物理エンジンの扱い方と同じにしたほうが良いかも
 // ?
@@ -28,7 +32,9 @@
 
     
     // スクロール/カリング
+    int offset_x;
     int offset_y;
+    
     int latest_remove_y;
 
     int curring_top;
@@ -38,14 +44,17 @@
     ObjectXDMap *view_map;
     
     // -- レイヤー
-    CCLayer *base_layer;
-    CCLayer *player_layer;
-    CCLayer *block_layer;
-    CCLayer *effect_layer;
+    CCLayer      *base_layer;
+    CCLayer      *player_layer;
+    CCLayer      *block_layer;
+    CCLayer      *effect_layer;
     CCLayerColor *fade_layer;
     
-    // -- 
+    // --- 
     EffectLauncher *effect_launcher;
+    
+    // ---
+    BlockView *selected_block;
 }
 
 @property (nonatomic, readonly, retain) CCLayerColor *fade_layer;
@@ -73,6 +82,8 @@
 // ライトの処理
 - (void)update_block_color:(DungeonModel *)dungeon_model center_pos:(DLPoint)center_pos;
 
+//
+- (void)on_touch_start:(DLPoint)pos;
 
 // スクロール関係
 // カリングの計算
@@ -85,8 +96,6 @@
 
 // ヘルパ
 - (CGPoint)model_to_local:(DLPoint)pos;
-
-
 
 
 @end
