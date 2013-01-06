@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Test.h"
+#import "TestBlockModel.h"
 #import "BlockModel.h"
 
-@implementation Test
+@implementation TestBlockModel
 
 - (void)setUp
 {
@@ -27,8 +27,13 @@
 
 - (void)testInit
 {
-    BlockModel *block_model = [[BlockModel alloc] init];
+    block_model = [[BlockModel alloc] init];
     STAssertNotNil(block_model, @"createed");
 }
 
+- (void)testClear
+{
+    [block_model clear];
+    STAssertEquals(block_model.block_id, (uint)ID_EMPTY, @"");
+}
 @end

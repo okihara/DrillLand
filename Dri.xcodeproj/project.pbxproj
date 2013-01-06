@@ -14,7 +14,7 @@
 		C11768B11687F52200CC0C81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195464315D7F485002119CC /* UIKit.framework */; };
 		C11768B21687F52200CC0C81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195464515D7F485002119CC /* Foundation.framework */; };
 		C11768B81687F52200CC0C81 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11768B61687F52200CC0C81 /* InfoPlist.strings */; };
-		C11768BB1687F52200CC0C81 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = C11768BA1687F52200CC0C81 /* Test.m */; };
+		C11768BB1687F52200CC0C81 /* TestBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C11768BA1687F52200CC0C81 /* TestBlockModel.m */; };
 		C11768C41687F55800CC0C81 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11768C31687F55800CC0C81 /* SenTestingKit.framework */; };
 		C11D62B315EC3B5200F7633D /* BreakableBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B215EC3B5200F7633D /* BreakableBehaivior.m */; };
 		C11D62B615EC3B6F00F7633D /* AggressiveBehaivior.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D62B515EC3B6F00F7633D /* AggressiveBehaivior.m */; };
@@ -272,8 +272,8 @@
 		C11768AE1687F52200CC0C81 /* Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11768B51687F52200CC0C81 /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
 		C11768B71687F52200CC0C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C11768B91687F52200CC0C81 /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		C11768BA1687F52200CC0C81 /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		C11768B91687F52200CC0C81 /* TestBlockModel.h */ = {isa = PBXFileReference; path = TestBlockModel.h; sourceTree = "<group>"; };
+		C11768BA1687F52200CC0C81 /* TestBlockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBlockModel.m; sourceTree = "<group>"; };
 		C11768BC1687F52200CC0C81 /* Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Prefix.pch"; sourceTree = "<group>"; };
 		C11768C31687F55800CC0C81 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C11D62B115EC3B5200F7633D /* BreakableBehaivior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakableBehaivior.h; path = src/block_behavior/BreakableBehaivior.h; sourceTree = "<group>"; };
@@ -781,8 +781,8 @@
 		C11768B31687F52200CC0C81 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				C11768B91687F52200CC0C81 /* Test.h */,
-				C11768BA1687F52200CC0C81 /* Test.m */,
+				C11768B91687F52200CC0C81 /* TestBlockModel.h */,
+				C11768BA1687F52200CC0C81 /* TestBlockModel.m */,
 				C11768B41687F52200CC0C81 /* Supporting Files */,
 			);
 			path = Test;
@@ -1756,7 +1756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11768BB1687F52200CC0C81 /* Test.m in Sources */,
+				C11768BB1687F52200CC0C81 /* TestBlockModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

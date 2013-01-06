@@ -7,9 +7,11 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "BlockModel.h"
 
-@interface Test : SenTestCase
+@interface TestBlockModel : SenTestCase
 {
+    BlockModel *block_model;
 }
 
 @end
