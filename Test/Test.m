@@ -7,6 +7,7 @@
 //
 
 #import "Test.h"
+#import "BlockModel.h"
 
 @implementation Test
 
@@ -24,9 +25,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testInit
 {
-    STFail(@"Unit tests are not implemented yet in Test");
+    BlockModel *block_model = [[BlockModel alloc] init];
+    STAssertNotNil(block_model, @"createed");
 }
 
 @end
