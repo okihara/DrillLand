@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BlockModel.h"
 
+@class DungeonModel;
+
 @interface UserItem : NSObject
 {
     uint master_id;
@@ -16,6 +18,6 @@
 }
 
 -(UInt32)unique_id;
--(BOOL)use_with_target:(BlockModel*)target;
+-(BOOL)use_with_dungeon_model:(DungeonModel*)dungeon_model target:(BlockModel*)target;
 
 @end

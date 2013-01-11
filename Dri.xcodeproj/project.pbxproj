@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089141169FE48E0094FF8C /* TestDLEvent.m */; };
+		C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089145169FE7320094FF8C /* TestDungeonModel.m */; };
 		C10A1B82166B914B009E748E /* skullpile1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B81166B914B009E748E /* skullpile1.wav */; };
 		C10A1B84166B9449009E748E /* death3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B83166B9449009E748E /* death3.wav */; };
 		C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1111250162805F000F9950E /* GettableItemBehavior.m */; };
@@ -264,6 +266,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1089140169FE48E0094FF8C /* TestDLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDLEvent.h; sourceTree = "<group>"; };
+		C1089141169FE48E0094FF8C /* TestDLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDLEvent.m; sourceTree = "<group>"; };
+		C1089144169FE7320094FF8C /* TestDungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDungeonModel.h; sourceTree = "<group>"; };
+		C1089145169FE7320094FF8C /* TestDungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDungeonModel.m; sourceTree = "<group>"; };
 		C10A1B81166B914B009E748E /* skullpile1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skullpile1.wav; sourceTree = "<group>"; };
 		C10A1B83166B9449009E748E /* death3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death3.wav; sourceTree = "<group>"; };
 		C111124F162805F000F9950E /* GettableItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemBehavior.h; path = src/block_behavior/GettableItemBehavior.h; sourceTree = "<group>"; };
@@ -788,6 +794,10 @@
 				C11768BA1687F52200CC0C81 /* TestBlockModel.m */,
 				C1EEE632169BCED3007DB940 /* TestItem.h */,
 				C1EEE633169BCED3007DB940 /* TestItem.m */,
+				C1089140169FE48E0094FF8C /* TestDLEvent.h */,
+				C1089141169FE48E0094FF8C /* TestDLEvent.m */,
+				C1089144169FE7320094FF8C /* TestDungeonModel.h */,
+				C1089145169FE7320094FF8C /* TestDungeonModel.m */,
 				C11768B41687F52200CC0C81 /* Supporting Files */,
 			);
 			path = Test;
@@ -1763,6 +1773,8 @@
 			files = (
 				C11768BB1687F52200CC0C81 /* TestBlockModel.m in Sources */,
 				C1EEE634169BCED3007DB940 /* TestItem.m in Sources */,
+				C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */,
+				C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1990,6 +2002,7 @@
 					"$(inherited)",
 				);
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				HEADER_SEARCH_PATHS = "\"Dri/libs/kazmath/include\"/**";
 				INFOPLIST_FILE = "Test/Test-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2012,6 +2025,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				HEADER_SEARCH_PATHS = "\"Dri/libs/kazmath/include\"/**";
 				INFOPLIST_FILE = "Test/Test-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

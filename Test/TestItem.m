@@ -7,8 +7,28 @@
 //
 
 #import "TestItem.h"
+
 #import "UserItem.h"
 #import "BlockModel.h"
+#import "DungeonModel.h"
+#import "DLEvent.h"
+// ↑これらに依存している
+
+BOOL reached = NO;
+
+@interface DummyObserver : NSObject<DungenModelObserver>
+{
+}
+@end
+
+@implementation DummyObserver
+- (void)notify:(DungeonModel*)dungeon_model event:(DLEvent*)e
+{
+    //STAssertEquals(e.type, 0, @"hoge");
+    reached = YES;
+}
+@end
+
 
 @implementation TestItem
 
@@ -32,14 +52,17 @@
     block_model.hp = 1;
     STAssertEquals(1, block_model.hp, @"");
     
+    DungeonModel *dungeon_model = [DungeonModel new];
+    [dungeon_model add_observer:[DummyObserver new]];
+    
     // 実行 -------
-    BOOL ok = [user_item use_with_target:block_model];
+    BOOL ok = [user_item use_with_dungeon_model:dungeon_model target:block_model];
     
     // アサート ---
     STAssertTrue(ok, @"");
     STAssertTrue(block_model.hp > 11, @"");
     // TODO: 回復のイベントが飛んでいる
-    // STAssertTrue(NO, @"");
+    STAssertTrue(reached, @"イベントがオブザーバーまで届いていない");
 }
 
 @end
