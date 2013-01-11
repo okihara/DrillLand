@@ -17,7 +17,8 @@
     UInt16 type;
 }
 
--(UInt32)unique_id;
 -(BOOL)use_with_dungeon_model:(DungeonModel*)dungeon_model target:(BlockModel*)target;
+
+@property (assign) UInt32 unique_id;
 
 @end

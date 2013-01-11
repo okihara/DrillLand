@@ -13,8 +13,10 @@
 @interface MyItems : NSObject
 {
     NSMutableDictionary *my_items;
+    UInt64 last_id;
 }
 
--(void)add_item:(UserItem*)user_item;
+-(NSArray*)get_list;
+-(UInt64)add_item:(UserItem*)user_item;
 
 @end

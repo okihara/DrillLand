@@ -12,17 +12,14 @@
 
 @implementation UserItem
 
+@synthesize unique_id;
+
 -(id) init
 {
 	if( (self=[super init]) ) {
         self->type = 1001;
 	}
 	return self;
-}
-
--(UInt32)unique_id
-{
-    return UINT_FAST32_MAX;
 }
 
 -(BOOL)use_with_dungeon_model:(DungeonModel*)dungeon_model target:(BlockModel*)target;

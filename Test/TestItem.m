@@ -32,11 +32,11 @@ BOOL reached = NO;
 
 @implementation TestItem
 
-- (void)testClear
+- (void)testNew
 {
     UserItem *user_item = [UserItem new];
     
-    STAssertTrue([user_item unique_id] > 0, @"");
+    STAssertNotNil(user_item, @"");
 }
 
 - (void)testUse_should_failed_no_target

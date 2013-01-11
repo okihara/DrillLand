@@ -11,8 +11,7 @@
 
 @implementation TestDungeonModel
 
-// All code under test is in the iOS Application
-- (void)testAppDelegate
+- (void)testNew
 {
     // 準備 -------
     DungeonModel *dungeon_model = [DungeonModel new];

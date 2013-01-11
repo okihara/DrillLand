@@ -10,9 +10,11 @@
 
 @interface ItemMaster : NSObject
 {
-    int atk;
-    int def;
+    uint item_id;
+    uint atk;
+    uint def;
     uint type;
+    uint action_id;
 }
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089141169FE48E0094FF8C /* TestDLEvent.m */; };
 		C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089145169FE7320094FF8C /* TestDungeonModel.m */; };
+		C108914A169FF9F10094FF8C /* TestMyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089149169FF9F10094FF8C /* TestMyItems.m */; };
 		C10A1B82166B914B009E748E /* skullpile1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B81166B914B009E748E /* skullpile1.wav */; };
 		C10A1B84166B9449009E748E /* death3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B83166B9449009E748E /* death3.wav */; };
 		C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1111250162805F000F9950E /* GettableItemBehavior.m */; };
@@ -270,6 +271,8 @@
 		C1089141169FE48E0094FF8C /* TestDLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDLEvent.m; sourceTree = "<group>"; };
 		C1089144169FE7320094FF8C /* TestDungeonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDungeonModel.h; sourceTree = "<group>"; };
 		C1089145169FE7320094FF8C /* TestDungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDungeonModel.m; sourceTree = "<group>"; };
+		C1089148169FF9F10094FF8C /* TestMyItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMyItems.h; sourceTree = "<group>"; };
+		C1089149169FF9F10094FF8C /* TestMyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMyItems.m; sourceTree = "<group>"; };
 		C10A1B81166B914B009E748E /* skullpile1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skullpile1.wav; sourceTree = "<group>"; };
 		C10A1B83166B9449009E748E /* death3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death3.wav; sourceTree = "<group>"; };
 		C111124F162805F000F9950E /* GettableItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemBehavior.h; path = src/block_behavior/GettableItemBehavior.h; sourceTree = "<group>"; };
@@ -770,6 +773,13 @@
 			path = Resources/tilemap;
 			sourceTree = "<group>";
 		};
+		C1089147169FF5D10094FF8C /* action */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = action;
+			sourceTree = "<group>";
+		};
 		C10A1B7E166B9121009E748E /* sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +808,8 @@
 				C1089141169FE48E0094FF8C /* TestDLEvent.m */,
 				C1089144169FE7320094FF8C /* TestDungeonModel.h */,
 				C1089145169FE7320094FF8C /* TestDungeonModel.m */,
+				C1089148169FF9F10094FF8C /* TestMyItems.h */,
+				C1089149169FF9F10094FF8C /* TestMyItems.m */,
 				C11768B41687F52200CC0C81 /* Supporting Files */,
 			);
 			path = Test;
@@ -1554,6 +1566,7 @@
 		C1EEBD0815E8431E007F1814 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C1089147169FF5D10094FF8C /* action */,
 				C11D62B015EC3B1800F7633D /* block_behaivior */,
 				C1621D39161997CA00AB73A0 /* quest */,
 				C183A138160FFB1100FE672F /* item */,
@@ -1775,6 +1788,7 @@
 				C1EEE634169BCED3007DB940 /* TestItem.m in Sources */,
 				C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */,
 				C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */,
+				C108914A169FF9F10094FF8C /* TestMyItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
