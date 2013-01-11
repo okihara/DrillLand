@@ -36,4 +36,5 @@
     [block_model clear];
     STAssertEquals(block_model.block_id, (uint)ID_EMPTY, @"");
 }
+
 @end

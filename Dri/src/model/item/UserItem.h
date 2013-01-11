@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BlockModel.h"
 
 @interface UserItem : NSObject
 {
@@ -15,5 +16,6 @@
 }
 
 -(UInt32)unique_id;
+-(BOOL)use_with_target:(BlockModel*)target;
 
 @end
