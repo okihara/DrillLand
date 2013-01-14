@@ -5,7 +5,6 @@
 //  Created by  on 12/09/25.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
 #import "UserItem.h"
 #import "DLEvent.h"
 #import "DungeonModel.h"
@@ -22,16 +21,21 @@
 	return self;
 }
 
--(BOOL)use_with_dungeon_model:(DungeonModel*)dungeon_model target:(BlockModel*)target;
+-(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon
 {
     switch (self->type) {
         case 1001:
-            target.hp += 12;
+        {
+            UInt32 up_hp = 12;
+            
+            target.hp += up_hp;
             
             DLEvent *e = [DLEvent eventWithType:DL_ON_HEAL target:target];
-            [e.params setObject:[NSNumber numberWithInt:10] forKey:@"damage"];
-            [dungeon_model dispatchEvent:e];
+            [e.params setObject:[NSNumber numberWithInt:up_hp] forKey:@"damage"];
+            [dungeon dispatchEvent:e];
+            
             break;
+        }
             
         default:
             break;

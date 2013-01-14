@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class UserItem;
+@class DungeonModel;
+@class BlockModel;
 
 @interface MyItems : NSObject
 {
@@ -18,5 +20,8 @@
 
 -(NSArray*)get_list;
 -(UInt64)add_item:(UserItem*)user_item;
+
+-(UserItem*)get_by_id:(UInt64)unique_id;
+-(BOOL)use:(UInt64)unique_item_id target:(BlockModel*)block_model dungeon:(DungeonModel*)dungeon_model;
 
 @end

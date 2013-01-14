@@ -56,7 +56,7 @@ BOOL reached = NO;
     [dungeon_model add_observer:[DummyObserver new]];
     
     // 実行 -------
-    BOOL ok = [user_item use_with_dungeon_model:dungeon_model target:block_model];
+    BOOL ok = [user_item use:block_model dungeon:dungeon_model];
     
     // アサート ---
     STAssertTrue(ok, @"");

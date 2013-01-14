@@ -51,9 +51,16 @@
     return;
 }
 
--(void)use_item:(UInt32)unique_id
+-(UserItem*)get_by_id:(UInt64)unique_id
 {
-    return;
+    return [self->my_items objectForKey:[NSNumber numberWithInt:unique_id]];
+}
+
+-(BOOL)use:(UInt64)unique_item_id target:(BlockModel*)block_model dungeon:(DungeonModel*)dungeon_model
+{
+    UserItem *user_item = [self get_by_id:unique_item_id];
+    [user_item use:block_model dungeon:dungeon_model];
+    return YES;
 }
 
 @end
