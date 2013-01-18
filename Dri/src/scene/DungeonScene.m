@@ -17,6 +17,10 @@
 #import "BasicNotifierView.h"
 #import "DungeonResultScene.h"
 #import "DungeonMenuScene.h"
+#import "InventoryScene.h"
+
+#import "MyItems.h"
+#import "UserItem.h"
 
 // HelloWorldLayer implementation
 @implementation DungeonScene
@@ -134,8 +138,25 @@
 // メニューボタン押した時のハンドラ
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    CCScene *scene = [DungeonMenuScene scene];
-    [[CCDirector sharedDirector] pushScene:scene];
+    // アイテムデータのセットアップ
+    {
+        MyItems  *my_items = [MyItems new];
+        UserItem *item     = [UserItem new];
+        [my_items add_item:item];
+        
+        BlockModel *player = self->dungeon_model.player;
+        [my_items use:1 target:player dungeon:self->dungeon_model];
+    }
+
+    // MENU に飛ばす
+    if (NO) {
+        CCScene *scene = [DungeonMenuScene scene];
+        [[CCDirector sharedDirector] pushScene:scene];
+    } else {
+        // INVENTORY に飛ばす
+        CCScene *scene = [InventoryScene scene:self->dungeon_model];
+        [[CCDirector sharedDirector] pushScene:scene];
+    }
 }
 
 //===============================================================
