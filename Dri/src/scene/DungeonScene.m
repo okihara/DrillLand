@@ -138,18 +138,8 @@
 // メニューボタン押した時のハンドラ
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    // アイテムデータのセットアップ
-    {
-        MyItems  *my_items = [MyItems new];
-        UserItem *item     = [UserItem new];
-        [my_items add_item:item];
-        
-        BlockModel *player = self->dungeon_model.player;
-        [my_items use:1 target:player dungeon:self->dungeon_model];
-    }
-
-    // MENU に飛ばす
     if (NO) {
+        // MENU に飛ばす
         CCScene *scene = [DungeonMenuScene scene];
         [[CCDirector sharedDirector] pushScene:scene];
     } else {

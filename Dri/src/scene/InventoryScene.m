@@ -17,7 +17,7 @@
 {
     if( (self=[super init]) ) {
         
-        self->dungeon_model = dungeon_model;
+        self->dungeon_model = dungeon_model_;
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"INVENTORY" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 440);
@@ -27,29 +27,34 @@
         self.isTouchEnabled = YES;
 
         // アイテムデータのセットアップ
-        self->my_items = [MyItems new];
-        // 準備 -------        
         {
-            UserItem *item    = [UserItem new];
-            [my_items add_item:item];
-        }
-        {
-            UserItem *item    = [UserItem new];
-            [my_items add_item:item];
-        }
-        {
-            UserItem *item    = [UserItem new];
-            [my_items add_item:item];
+            self->my_items = [MyItems new];
+            
+            // 準備 -------        
+            {
+                UserItem *item    = [UserItem new];
+                [my_items add_item:item];
+            }
+            {
+                UserItem *item    = [UserItem new];
+                [my_items add_item:item];
+            }
+            {
+                UserItem *item    = [UserItem new];
+                [my_items add_item:item];
+            }
         }
         
         // IMPLEMENT:
         NSMutableArray *menu_items = [NSMutableArray array];
-        for (int i = 0; i < 3; i++) {
-            NSString *item_name = [NSString stringWithFormat:@"item%03d", i];
-            CCMenuItemFont *menu_item = [CCMenuItemFont itemWithString:item_name target:self selector:@selector(didPressButtonItems:)];
-            ;
+        NSArray *item_list = [self->my_items get_list];
+        for (UserItem *user_item in item_list) {
+            
+            CCMenuItemFont *menu_item = [CCMenuItemFont itemWithString:user_item.name target:self selector:@selector(didPressButtonItems:)];
             [menu_items addObject:menu_item];
-        }        
+            
+        }
+        
         CCMenu *menu = [CCMenu menuWithArray:menu_items];
         menu.position = ccp(160, 220);
         [menu alignItemsVertically];

@@ -21,6 +21,11 @@
 	return self;
 }
 
+-(NSString*)name
+{
+    return @"hoge";
+}
+
 -(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon
 {
     switch (self->type) {

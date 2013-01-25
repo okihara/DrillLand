@@ -20,5 +20,6 @@
 -(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon;
 
 @property (assign) UInt32 unique_id;
+@property (readonly, assign) NSString* name;
 
 @end
