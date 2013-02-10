@@ -13,7 +13,7 @@
 
 @synthesize lowestEmptyY;
 
-- (id)init
+-(id)init
 {
     if (self = [super init]) {
         self->lowestEmptyY = INITIAL_LOWEST_EMPTY_Y;

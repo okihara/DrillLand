@@ -12,6 +12,8 @@
 #import "BlockBuilder.h"
 #import "DungeonLoader.h"
 #import "DungeonModelCanTapUpdater.h"
+#import "DungeonModelGroupInfoUpdater.h"
+
 
 @implementation DungeonModel
 
@@ -302,49 +304,12 @@ static int block_id_list[] = {
 //
 //===========================================================================================
 
--(void) update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id
+-(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
 {
-    // group_id=0 の時はグループ化しない
-    if (_group_id == 0) return;
-    
-    [self->done_map clear];
-    NSMutableArray* group_info = [[NSMutableArray alloc] init];
-    [self update_group_info_r:pos group_id:_group_id group_info:group_info];
-    //NSLog(@"group_info %d %@", _group_id, group_info);
+    DungeonModelGroupInfoUpdater *groupUpdater = [DungeonModelGroupInfoUpdater new];
+    [groupUpdater updateGroupInfo:self->map start:pos groupId:_group_id];
+    [groupUpdater release];
 }
-
--(void) update_group_info_r:(DLPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info
-{
-    int x = (int)pos.x;
-    int y = (int)pos.y;
-    
-    // もうみた
-    if ([done_map get_x:x y:y] != 0) return;
-    
-    // おかしい
-    BlockModel* b = [map get_x:x y:y];
-    if (b == NULL) return;
-    
-    // みたよ
-    [done_map set_x:x y:y value:1];
-    
-    // 同じじゃないならなにもしない
-    if (b.group_id != _group_id) return;
-    
-    //
-    if(b.group_info != NULL) {
-        // TODO:メモリリーク
-        //[b.group_info release];
-    }
-    [_group_info addObject:b];
-    b.group_info = _group_info;
-    
-    [self update_group_info_r:cdp(x + 0, y + 1) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:cdp(x + 0, y - 1) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:cdp(x + 1, y + 0) group_id:_group_id group_info:_group_info];
-    [self update_group_info_r:cdp(x - 1, y + 0) group_id:_group_id group_info:_group_info];
-}
-
 
 //===========================================================================================
 //

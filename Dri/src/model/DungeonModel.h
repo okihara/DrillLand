@@ -73,7 +73,6 @@
 // calc route and grouping
 -(void)updateCanTap:(DLPoint)pos;
 -(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
--(void)update_group_info_r:(DLPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
 -(void)update_route_map:(DLPoint)pos target:(DLPoint)target;
 -(void)update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint)get_player_pos:(DLPoint)pos;
