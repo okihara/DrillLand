@@ -1042,7 +1042,6 @@
 		C195464B15D7F485002119CC /* Dri */ = {
 			isa = PBXGroup;
 			children = (
-				C1EEBCCC15E6F4F2007F1814 /* exlib */,
 				C1EEBCC515E6F31B007F1814 /* src */,
 				C195464C15D7F485002119CC /* Resources */,
 				C195466615D7F486002119CC /* libs */,
@@ -1071,6 +1070,7 @@
 		C195466615D7F486002119CC /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBCCD15E6F50E007F1814 /* SBJSON */,
 				C195477D15D7F48A002119CC /* LICENSE_cocos2d.txt */,
 				C195478C15D7F48B002119CC /* LICENSE_CocosDenshion.txt */,
 				C19547BE15D7F48B002119CC /* LICENSE_Kazmath.txt */,
@@ -1504,14 +1504,6 @@
 				C1CCAA9A1607550A00A0EB1C /* misc */,
 			);
 			name = src;
-			sourceTree = "<group>";
-		};
-		C1EEBCCC15E6F4F2007F1814 /* exlib */ = {
-			isa = PBXGroup;
-			children = (
-				C1EEBCCD15E6F50E007F1814 /* SBJSON */,
-			);
-			name = exlib;
 			sourceTree = "<group>";
 		};
 		C1EEBCCD15E6F50E007F1814 /* SBJSON */ = {
