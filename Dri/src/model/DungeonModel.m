@@ -11,7 +11,7 @@
 #import "SBJson.h"
 #import "BlockBuilder.h"
 #import "DungeonLoader.h"
-#import "DungeonModelImpl.h"
+#import "DungeonModelCanTapUpdater.h"
 
 @implementation DungeonModel
 
@@ -35,7 +35,7 @@
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
         
-        self->impl = [[DungeonModelImpl alloc] init];
+        self->impl = [[DungeonModelCanTapUpdater alloc] init];
     }
     return self;
 }

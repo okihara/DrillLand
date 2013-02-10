@@ -24,7 +24,7 @@
 
 
 @class BlockBuilder;
-@class DungeonModelImpl;
+@class DungeonModelCanTapUpdater;
 
 @interface DungeonModel : NSObject
 {
@@ -46,7 +46,7 @@
     BlockModel *player;
     
     // -
-    DungeonModelImpl *impl;
+    DungeonModelCanTapUpdater *impl;
 }
 
 -(id) init;

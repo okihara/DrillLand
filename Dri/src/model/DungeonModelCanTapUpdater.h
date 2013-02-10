@@ -14,7 +14,7 @@
 @class ObjectXDMap;
 @class XDMap;
 
-@interface DungeonModelImpl : NSObject
+@interface DungeonModelCanTapUpdater : NSObject
 {
     XDMap  *doneMap;
     UInt32 lowestEmptyY;

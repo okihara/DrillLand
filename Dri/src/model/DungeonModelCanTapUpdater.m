@@ -6,10 +6,10 @@
 //
 //
 
-#import "DungeonModelImpl.h"
+#import "DungeonModelCanTapUpdater.h"
 #import "DungeonModel.h"
 
-@implementation DungeonModelImpl
+@implementation DungeonModelCanTapUpdater
 
 @synthesize lowestEmptyY;
 
