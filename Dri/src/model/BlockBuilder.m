@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/08/27.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Hiromitsu. All rights reserved.
 //
 
 #import "BlockBuilder.h"
@@ -13,14 +13,7 @@
 
 @implementation BlockBuilder
 
--(id)init
-{
-    if(self=[super init]) {
-    }
-    return self;
-}
-
--(BlockModel*)build_by_id:(enum ID_BLOCK)id_
+-(BlockModel*)buildWithID:(enum ID_BLOCK)id_
 {
     // get json data from master
     NSDictionary *master = [MasterLoader get_master_by_id:id_];
@@ -40,7 +33,7 @@
     b.exp      = [[master objectForKey:@"exp"] intValue];
     b.gold     = [[master objectForKey:@"gold"] intValue];
     
-    // setup behavior  
+    // setup behavior
     for (int i = 0; i < 3; ++i) {
         NSString *key = [NSString stringWithFormat:@"behavior_%d", i];
         NSNumber *number = [master objectForKey:key];
@@ -56,16 +49,6 @@
     }
     
     return b;
-}
-
--(BlockModel*)buildWithID:(enum ID_BLOCK)id_
-{
-    return [self build_by_id:id_];
-}
-
--(void)dealloc
-{
-    [super dealloc];
 }
 
 @end
