@@ -253,6 +253,8 @@
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 		C1EEE634169BCED3007DB940 /* TestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEE633169BCED3007DB940 /* TestItem.m */; };
 		C1F089B116A2523500D9C350 /* InventoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F089B016A2523500D9C350 /* InventoryScene.m */; };
+		CE07285016C7D4E60031834C /* DungeonModelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelImpl.m */; };
+		CE07285116C7D4E60031834C /* DungeonModelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelImpl.m */; };
 		DB419B0A1607431000B30495 /* ebit.png in Resources */ = {isa = PBXBuildFile; fileRef = DB419B081607431000B30495 /* ebit.png */; };
 		DB419B0B1607431000B30495 /* ebit.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DB419B091607431000B30495 /* ebit.fnt */; };
 /* End PBXBuildFile section */
@@ -731,6 +733,8 @@
 		C1EEE633169BCED3007DB940 /* TestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestItem.m; sourceTree = "<group>"; };
 		C1F089AF16A2523500D9C350 /* InventoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InventoryScene.h; path = src/scene/InventoryScene.h; sourceTree = "<group>"; };
 		C1F089B016A2523500D9C350 /* InventoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventoryScene.m; path = src/scene/InventoryScene.m; sourceTree = "<group>"; };
+		CE07284E16C7D4E10031834C /* DungeonModelImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelImpl.h; path = src/model/DungeonModelImpl.h; sourceTree = "<group>"; };
+		CE07284F16C7D4E30031834C /* DungeonModelImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonModelImpl.m; path = src/model/DungeonModelImpl.m; sourceTree = "<group>"; };
 		DB419B081607431000B30495 /* ebit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ebit.png; path = Resources/font/ebit.png; sourceTree = "<group>"; };
 		DB419B091607431000B30495 /* ebit.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ebit.fnt; path = Resources/font/ebit.fnt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1573,6 +1577,8 @@
 				C145523D163A2A4D0032350D /* DungeonLoader.m */,
 				C16009F915F344F900A4616C /* DungeonModel.h */,
 				C16009F715F344F900A4616C /* DungeonModel.m */,
+				CE07284E16C7D4E10031834C /* DungeonModelImpl.h */,
+				CE07284F16C7D4E30031834C /* DungeonModelImpl.m */,
 				C16009FA15F344FA00A4616C /* BlockModel.h */,
 				C16009F815F344F900A4616C /* BlockModel.m */,
 				C1CCAAAE160755CB00A0EB1C /* BlockBuilder.h */,
@@ -1786,6 +1792,7 @@
 				C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */,
 				C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */,
 				C108914A169FF9F10094FF8C /* TestMyItems.m in Sources */,
+				CE07285116C7D4E60031834C /* DungeonModelImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1970,6 +1977,7 @@
 				C132CC4B1653548F00AA4217 /* EnemyPresentation.m in Sources */,
 				C137381B1661B4C300C9DD41 /* ItemBoxPresentation.m in Sources */,
 				C1F089B116A2523500D9C350 /* InventoryScene.m in Sources */,
+				CE07285016C7D4E60031834C /* DungeonModelImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

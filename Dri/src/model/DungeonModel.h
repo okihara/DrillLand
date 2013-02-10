@@ -24,6 +24,7 @@
 
 
 @class BlockBuilder;
+@class DungeonModelImpl;
 
 @interface DungeonModel : NSObject
 {
@@ -43,6 +44,9 @@
     // load_from_file 別クラス化できそう
     BlockBuilder *block_builder;
     BlockModel *player;
+    
+    // -
+    DungeonModelImpl *impl;
 }
 
 -(id) init;
@@ -67,9 +71,7 @@
 -(void)load_random:(UInt16)seed;
 
 // calc route and grouping
--(void)_clear_can_tap;
--(void)update_can_tap:(DLPoint)pos;
--(void)update_can_tap_r:(DLPoint)pos;
+-(void)updateCanTap:(DLPoint)pos;
 -(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
 -(void)update_group_info_r:(DLPoint)pos group_id:(unsigned int)_group_id group_info:(NSMutableArray*)_group_info;
 -(void)update_route_map:(DLPoint)pos target:(DLPoint)target;

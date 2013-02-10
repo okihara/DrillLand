@@ -11,6 +11,7 @@
 #import "SBJson.h"
 #import "BlockBuilder.h"
 #import "DungeonLoader.h"
+#import "DungeonModelImpl.h"
 
 @implementation DungeonModel
 
@@ -33,12 +34,15 @@
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
+        
+        self->impl = [[DungeonModelImpl alloc] init];
     }
     return self;
 }
 
 -(void)dealloc
 {
+    [self->impl release];
     [self->map release];
     [self->route_map release];
     [self->route_list release];
@@ -165,7 +169,7 @@
 -(void)postprocess
 {
     [self _clear_if_dead];
-    [self update_can_tap:self->player.pos];
+    [self updateCanTap:self->player.pos];
 }
 
 
@@ -189,7 +193,7 @@
     [self set_without_update_can_tap:pos block:block];
 
     // この一行いらんかも
-    [self update_can_tap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
+    [self updateCanTap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
     
     // ここで NEW イベント飛ばす
     DLEvent *e = [DLEvent eventWithType:DL_ON_NEW target:block];
@@ -213,7 +217,7 @@
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_from_file:filename];
-    [self update_can_tap:self->player.pos];
+    [self updateCanTap:self->player.pos];
 }
 
 //------------------------------------------------------------------------------
@@ -263,7 +267,7 @@ static int block_id_list[] = {
             [self set_without_update_can_tap:cdp(i, j) block:b];
         }
     }
-    [self update_can_tap:self->player.pos];
+    [self updateCanTap:self->player.pos];
 }
 
 
@@ -286,67 +290,11 @@ static int block_id_list[] = {
 //
 //===========================================================================================
 
--(void)_clear_can_tap
+-(void)updateCanTap:(DLPoint)pos
 {
-    for (int j = 0; j < DM_HEIGHT; j++) {
-        for (int i = 0; i < DM_WIDTH; i++) {
-            BlockModel* b = [self->map get_x:i y:j];
-            b.can_tap = NO;
-        }
-    }
+    [self->impl updateCanTap:self->map start:pos];
+    self->lowest_empty_y = self->impl.lowestEmptyY;
 }
-
--(void) update_can_tap:(DLPoint)pos
-{
-    int x = (int)pos.x;
-    int y = (int)pos.y;
-    
-    // 起点は 0 でなければならない
-    BlockModel* b = [self->map get_x:x y:y]; 
-    if ( b.block_id > 0 ) return;
-    
-    // 操作済み判別テーブルを初期化
-    [done_map clear];
-    
-    // タップ可能かどうかを初期化
-    [self _clear_can_tap];
-    
-    // チェック処理本体
-    [self update_can_tap_r:pos];
-}
-
--(void) update_can_tap_r:(DLPoint)pos
-{
-    int x = (int)pos.x;
-    int y = (int)pos.y;
-    
-    if ([self->done_map get_x:x y:y] != 0) return;
-    
-    BlockModel* b = [self->map get_x:x y:y];
-    if (!b) return;
-    
-    [done_map set_x:x y:y value:1];
-    if (b.block_id != ID_EMPTY) {
-        b.can_tap = YES;
-    } else if (b.block_id == ID_EMPTY) {
-        b.can_tap = NO;
-        [self update_can_tap_r:cdp(x + 0, y + 1)];
-        [self update_can_tap_r:cdp(x + 0, y - 1)];
-        [self update_can_tap_r:cdp(x + 1, y + 0)];
-        [self update_can_tap_r:cdp(x - 1, y + 0)];
-        
-
-        // スクロール用に 一番下の 空ブロックを記録しておく
-        if (b.pos.y > self->lowest_empty_y) {
-            self->lowest_empty_y = b.pos.y;
-        }
-        
-        
-    } else {
-        // マイナスの時は？？
-    }
-}
-
 
 //===========================================================================================
 //
