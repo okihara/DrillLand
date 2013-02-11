@@ -22,6 +22,12 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [self->doneMap release];
+    [super dealloc];
+}
+
 -(void)clearCanTap:(ObjectXDMap*)map
 {
     for (int j = 0; j < DM_HEIGHT; j++) {

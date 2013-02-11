@@ -165,12 +165,12 @@
 
 - (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view
 {
-    int length = [_dungeon.route_list count];
+    int length = [_dungeon.routeList count];
     if (length == 0) return nil;
     
     float duration = 0.15 / length;
     NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
-    for (NSValue* v in _dungeon.route_list) {
+    for (NSValue* v in _dungeon.routeList) {
         DLPoint pos;
         [v getValue:&pos];
         

@@ -13,29 +13,25 @@
 #import "DLEvent.h"
 
 
-#define DM_WIDTH 7
-#define DM_HEIGHT 48
-
+// protocol
 @class DungeonModel;
-
 @protocol DungenModelObserver <NSObject>
 - (void)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 @end
 
+// -
+#define DM_WIDTH 7
+#define DM_HEIGHT 48
 
 @class BlockBuilder;
 @class DungeonModelCanTapUpdater;
+@class DungeonModelRouteMap;
 
 @interface DungeonModel : NSObject
 {
     // TODO: インスタンス変数 ２つに絞るなら？？
-    
     ObjectXDMap *map;
-    XDMap *route_map;
-
-    // TODO: クラス化
-    NSMutableArray *route_list;
-
+    
     // observer
     NSMutableArray *observer_list;
 
@@ -45,10 +41,13 @@
     BlockModel *player;
     
     // -
-    DungeonModelCanTapUpdater *impl;
+    DungeonModelCanTapUpdater  *impl;
+    DungeonModelRouteMap *routeMap;
 }
 
--(id) init;
+@property (nonatomic, readonly)  BlockModel *player;
+@property (nonatomic, readonly)  NSMutableArray *routeList;
+@property (nonatomic, readwrite) UInt32 lowest_empty_y;
 
 // Observer
 -(void)add_observer:(id<DungenModelObserver>)observer;
@@ -73,12 +72,6 @@
 -(void)updateCanTap:(DLPoint)pos;
 -(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
 -(void)update_route_map:(DLPoint)pos target:(DLPoint)target;
--(void)update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level;
 -(DLPoint)get_player_pos:(DLPoint)pos;
-
-@property (nonatomic, readonly) XDMap *route_map;
-@property (nonatomic, readonly) BlockModel *player;
-@property (nonatomic, retain) NSMutableArray* route_list;
-@property (nonatomic, readwrite) int lowest_empty_y;
 
 @end

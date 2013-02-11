@@ -18,6 +18,12 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [self->doneMap release];
+    [super dealloc];
+}
+
 -(void)updateGroupInfo:(ObjectXDMap*)map
                  start:(DLPoint)pos
                groupId:(unsigned int)groupId

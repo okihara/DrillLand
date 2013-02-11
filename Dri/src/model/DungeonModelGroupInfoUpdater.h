@@ -14,6 +14,6 @@
     XDMap *doneMap;
 }
 
--(void) updateGroupInfo:(ObjectXDMap*)map start:(DLPoint)pos groupId:(unsigned int)groupId;
--(void) updateGroupInfoRecurs:(ObjectXDMap*)map start:(DLPoint)pos groupId:(unsigned int)groupId groupInfo:(NSMutableArray*)groupInfo;
+-(void)updateGroupInfo:(ObjectXDMap*)map start:(DLPoint)pos groupId:(unsigned int)groupId;
+-(void)updateGroupInfoRecurs:(ObjectXDMap*)map start:(DLPoint)pos groupId:(unsigned int)groupId groupInfo:(NSMutableArray*)groupInfo;
 @end

@@ -11,15 +11,14 @@
 #import "SBJson.h"
 #import "BlockBuilder.h"
 #import "DungeonLoader.h"
+
 #import "DungeonModelCanTapUpdater.h"
 #import "DungeonModelGroupInfoUpdater.h"
-
+#import "DungeonModelRouteMap.h"
 
 @implementation DungeonModel
 
-@synthesize route_map;
 @synthesize player;
-@synthesize route_list;
 @synthesize lowest_empty_y;
 
 - (id)init
@@ -28,35 +27,39 @@
 
         self->lowest_empty_y = 5;
 
-        self->observer_list = [[NSMutableArray array] retain];
+        self->observer_list = [[NSMutableArray alloc] init];
         self->block_builder = [[BlockBuilder alloc] init];
         self->player = [block_builder buildWithID:ID_PLAYER];
         self->player.pos = cdp(2,3);
-        self->route_map = [[XDMap alloc] init];
-        self->route_list = [[NSMutableArray alloc] init];
+
         self->map = [[ObjectXDMap alloc] init];
-        
         self->impl = [[DungeonModelCanTapUpdater alloc] init];
+        self->routeMap = [[DungeonModelRouteMap alloc] init];
     }
     return self;
 }
 
 -(void)dealloc
 {
+    [self->routeMap release];
     [self->impl release];
     [self->map release];
-    [self->route_map release];
-    [self->route_list release];
     [self->player release];
     [self->block_builder release];
+    [self->observer_list release];
     [super dealloc];
 }
 
-//-----------------------------------------------------------------------------------------------------------------
+-(NSMutableArray*)routeList
+{
+    return self->routeMap.route_list;
+}
+
+//------------------------------------------------------------------------------
 //
 // 通知系
 //
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 -(void)add_observer:(id<DungenModelObserver>)observer_
 {
@@ -70,11 +73,11 @@
     }
 }
 
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //
 // 更新系
 //
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 // -- プレイヤーの移動フェイズ
 - (void)move_player:(DLPoint)pos
@@ -173,11 +176,11 @@
 }
 
 
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //
 // getter/setter
 //
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 // TODO: set は最初だけにしよう、置き換えるんじゃなくて、作成済みのデータを変更しよう
 // 上はなぜ？
@@ -200,13 +203,11 @@
     [self dispatchEvent:e];
 }
 
-// 完璧
 -(BlockModel*)get:(DLPoint)pos
 {
     return [self->map get_x:pos.x y:pos.y];
 }
 
-// 完璧
 -(int)can_tap:(DLPoint)pos
 {
     BlockModel* b = [self->map get_x:pos.x y:pos.y];
@@ -220,7 +221,9 @@
     [self updateCanTap:self->player.pos];
 }
 
+
 //------------------------------------------------------------------------------
+
 static int max_num = 12;
 
 static int block_id_list[] = {
@@ -271,19 +274,6 @@ static int block_id_list[] = {
 }
 
 
-
-// ここからはほぼ変更なし ========================================================================
-
-
-
-
-//===========================================================================================
-// TODO: 別クラス化
-// ダンジョンのブロックの状態や経路探索の結果を更新するメソッド群
-// インターフェイスは、ほぼ変更されることはないだろう
-// 高速化くらいはやる
-//===========================================================================================
-
 //===========================================================================================
 //
 // タップ可能ブロックの情報を更新
@@ -315,42 +305,10 @@ static int block_id_list[] = {
 //
 //===========================================================================================
 
--(void) update_route_map:(DLPoint)pos target:(DLPoint)target
+-(void)update_route_map:(DLPoint)pos target:(DLPoint)target
 {
-    [self->route_map fill:999];
-    [self update_route_map_r:pos target:target level:0];
+    [routeMap update:self->map start:pos target:target];
 }
-
--(void) update_route_map_r:(DLPoint)pos target:(DLPoint)target level:(int)level
-{
-    // ゴール以降は探索しない
-    //    if (pos.x == target.x && pos.y == target.y) {
-    //        [self->route_map set_x:pos.x y:pos.y value:level];
-    //        return;
-    //    }
-    
-    // ブロックの場合はそれ以上探索しない
-    // ただし level = 0 （最初の一回目は）例外
-    BlockModel* b = [self->map get_x:pos.x y:pos.y];
-    if (b.block_id != ID_EMPTY && level != 0) return;
-    
-    int cost = [self->route_map get_x:pos.x y:pos.y];
-    
-    // 画面外は -1 が返る
-    // 画面外なら、それ以上探索しない
-    if (cost < 0) return;
-    
-    // 計算済みの cost が同じか小さい場合探索しない
-    if (cost <= level) return;
-    
-    [self->route_map set_x:pos.x y:pos.y value:level];
-    
-    [self update_route_map_r:cdp(pos.x + 0, pos.y - 1) target:target level: level + 1];
-    [self update_route_map_r:cdp(pos.x + 0, pos.y + 1) target:target level: level + 1];
-    [self update_route_map_r:cdp(pos.x - 1, pos.y + 0) target:target level: level + 1];
-    [self update_route_map_r:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
-}
-
 
 //===========================================================================================
 //
@@ -358,74 +316,9 @@ static int block_id_list[] = {
 //
 //===========================================================================================
 
-// かならず 1 に辿り着けることを期待してるね
-// TODO: ここの実装ひどい
--(DLPoint) _get_player_pos:(DLPoint)pos
+-(DLPoint)get_player_pos:(DLPoint)pos
 {
-    //# ゴールなので座標を返す
-    int cost = [self->route_map get:pos];
-    if (cost == 1) return pos;
-    // 移動なし
-    // TODO: マジックナンバー(>_<)
-    if (cost == 999) return pos;
-    
-    DLPoint u_pos = cdp(pos.x + 0, pos.y - 1);
-    DLPoint d_pos = cdp(pos.x + 0, pos.y + 1);
-    DLPoint l_pos = cdp(pos.x - 1, pos.y + 0);
-    DLPoint r_pos = cdp(pos.x + 1, pos.y + 0);
-    int u_cost = [self->route_map get:u_pos];
-    int d_cost = [self->route_map get:d_pos];
-    int l_cost = [self->route_map get:l_pos];
-    int r_cost = [self->route_map get:r_pos];
-    u_cost = u_cost < 0 ? 999 : u_cost;
-    d_cost = d_cost < 0 ? 999 : d_cost;
-    l_cost = l_cost < 0 ? 999 : l_cost;
-    r_cost = r_cost < 0 ? 999 : r_cost;
-    
-    NSArray *cost_list = [NSArray arrayWithObjects:
-                          [NSNumber numberWithInt:l_cost],
-                          [NSNumber numberWithInt:r_cost],
-                          [NSNumber numberWithInt:d_cost],
-                          [NSNumber numberWithInt:u_cost],
-                          nil];
-    
-    int min_cost = l_cost;
-    int index = 0;
-    for (int i = 1; i < 4; i++) {
-        int cost = [[cost_list objectAtIndex:i] intValue];
-        if (cost < min_cost) {
-            min_cost = cost;
-            index = i;
-        }
-    }
-    
-    DLPoint out_pos;
-    switch (index) {
-        case 0:
-            out_pos = l_pos;
-            break;
-        case 1:
-            out_pos = r_pos;
-            break;
-        case 2:
-            out_pos = d_pos;
-            break;
-        case 3:
-            out_pos = u_pos;
-            break;
-        default:
-            break;
-    }
-    
-    [self->route_list addObject:[NSValue valueWithBytes:&out_pos objCType:@encode(DLPoint)]];
-    
-    return [self _get_player_pos:out_pos];
-}
-
--(DLPoint) get_player_pos:(DLPoint)pos
-{
-    [self->route_list removeAllObjects];
-    return [self _get_player_pos:pos];
+    return [routeMap get_player_pos:pos];
 }
 
 @end
