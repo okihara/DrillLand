@@ -67,7 +67,7 @@
 //
 //------------------------------------------------------------------------------
 
--(void)add_observer:(id<DungenModelObserver>)observer_
+-(void)addObserver:(id<DungenModelObserver>)observer_
 {
     [self->observer_list addObject:observer_];
 }

@@ -53,7 +53,7 @@ BOOL reached = NO;
     STAssertEquals(1, block_model.hp, @"");
     
     DungeonModel *dungeon_model = [DungeonModel new];
-    [dungeon_model add_observer:[DummyObserver new]];
+    [dungeon_model addObserver:[DummyObserver new]];
     
     // 実行 -------
     BOOL ok = [user_item use:block_model dungeon:dungeon_model];

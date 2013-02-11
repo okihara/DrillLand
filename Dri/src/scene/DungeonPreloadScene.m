@@ -38,21 +38,21 @@
         case 0:
         {
             Quest *quest = [QuestFactory make_test_0];
-            [self->dungeon_model add_observer:quest];
+            [self->dungeon_model addObserver:quest];
         }
             break;
             
         case 1:
         {
             Quest *quest = [QuestFactory make_test_1];
-            [self->dungeon_model add_observer:quest];
+            [self->dungeon_model addObserver:quest];
         }
             break;
             
         case 2:
         {
             Quest *quest = [QuestFactory make_test_2];
-            [self->dungeon_model add_observer:quest];
+            [self->dungeon_model addObserver:quest];
         }
             
         default:

@@ -48,7 +48,7 @@
 @property (nonatomic, readwrite) UInt32 lowest_empty_y;
 
 // Observer
--(void)add_observer:(id<DungenModelObserver>)observer;
+-(void)addObserver:(id<DungenModelObserver>)observer;
 -(void)dispatchEvent:(DLEvent*)e;
 
 // ハンドラ 外から呼ばれる
