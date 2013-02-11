@@ -30,19 +30,15 @@
 @interface DungeonModel : NSObject
 {
     // TODO: インスタンス変数 ２つに絞るなら？？
+    
     ObjectXDMap *map;
     
-    // observer
     NSMutableArray *observer_list;
-
-    // ファイルから読む部分で使ってる
-    // load_from_file 別クラス化できそう
     BlockBuilder *block_builder;
-    BlockModel *player;
-    
-    // -
     DungeonModelCanTapUpdater  *impl;
     DungeonModelRouteMap *routeMap;
+
+    BlockModel *player;
 }
 
 @property (nonatomic, readonly)  BlockModel *player;
@@ -51,17 +47,16 @@
 
 // Observer
 -(void)add_observer:(id<DungenModelObserver>)observer;
-//-(void)remove_observer:(id<DungenModelObserver>)observer;
 -(void)dispatchEvent:(DLEvent*)e;
 
-// ---
+// これは外から触れる必要ある？
 -(void)set:(DLPoint)pos block:(BlockModel*)block;
 -(void)set_without_update_can_tap:(DLPoint)pos block:(BlockModel*)block;
 -(BlockModel*)get:(DLPoint)pos;
 -(int)can_tap:(DLPoint)pos;
 
 // ---
--(BOOL)on_hit:(DLPoint)pos;
+-(BOOL)onTap:(DLPoint)pos;
 -(void)postprocess;
 
 // loader json

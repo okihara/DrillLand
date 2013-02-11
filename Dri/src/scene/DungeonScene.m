@@ -363,7 +363,7 @@
         case 0:
         {
             // モデルへ通知
-            BOOL changed = [self->dungeon_model on_hit:[self screen_to_view_pos:touches]];
+            BOOL changed = [self->dungeon_model onTap:[self screen_to_view_pos:touches]];
             if (!changed) { return; }
             
             // タップ後のシーケンス再生

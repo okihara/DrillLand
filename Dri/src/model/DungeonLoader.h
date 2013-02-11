@@ -19,5 +19,6 @@
 
 -(id)initWithDungeonModel:(DungeonModel*)dungeon_model_;
 -(void)load_from_file:(NSString*)filename;
+-(void)load_random:(UInt16)seed;
 
 @end

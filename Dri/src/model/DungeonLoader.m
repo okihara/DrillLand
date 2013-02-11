@@ -64,4 +64,51 @@
     }
 }
 
+static int max_num = 12;
+static int block_id_list[] = {
+    ID_EMPTY,
+    ID_NORMAL_BLOCK,
+    ID_GROUPED_BLOCK_1,
+    ID_GROUPED_BLOCK_2,
+    ID_GROUPED_BLOCK_3,
+    ID_UNBREAKABLE_BLOCK,
+    
+    ID_ENEMY_BLOCK_0, // BLUE SLIME
+    ID_ENEMY_BLOCK_1, // RED  SLIME
+    
+    ID_ITEM_BLOCK_0, // POTION
+    ID_ITEM_BLOCK_1, // DORAYAKI
+    ID_ITEM_BLOCK_2, // TREASURE
+    
+    ID_PLAYER
+};
+
+-(void)load_random:(UInt16)seed
+{
+    for (int j = 0; j < DM_HEIGHT; j++) {
+        for (int i = 0; i < DM_WIDTH; i++) {
+            
+            BlockModel *b;
+            // ４列目までは空ならのでスキップ
+            if (j < 4) {
+                b = [self->block_builder buildWithID:ID_EMPTY];
+            } else if (j == 4) {
+                if (i == 3) {
+                    b = [self->block_builder buildWithID:ID_EMPTY];
+                } else {
+                    b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
+                }
+            } else if (i == 0 || i == (DM_WIDTH -1)) {
+                b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
+            } else {
+                int index = random() % (max_num - 2);
+                int type_id = block_id_list[index];
+                b = [self->block_builder buildWithID:type_id];
+            }
+            
+            [self->dungeon_model set_without_update_can_tap:cdp(i, j) block:b];
+        }
+    }
+}
+
 @end

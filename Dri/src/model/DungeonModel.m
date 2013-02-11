@@ -8,10 +8,8 @@
 
 #import "DungeonModel.h"
 #import "BlockModel.h"
-#import "SBJson.h"
 #import "BlockBuilder.h"
 #import "DungeonLoader.h"
-
 #import "DungeonModelCanTapUpdater.h"
 #import "DungeonModelGroupInfoUpdater.h"
 #import "DungeonModelRouteMap.h"
@@ -83,8 +81,7 @@
 - (void)move_player:(DLPoint)pos
 {
     [self update_route_map:pos target:player.pos];
-    DLPoint next_pos = [self get_player_pos:player.pos];
-    self->player.pos = next_pos;
+    self->player.pos = [self get_player_pos:player.pos];
 }
 
 // -- ブロックのヒット処理フェイズ
@@ -92,12 +89,10 @@
 {
     BlockModel* b = [self get:pos];
     
-    
     // TODO: 
     DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:self->player];
     [self dispatchEvent:e];
     // TODO:
-    
     
     if (b.group_info) {
         for (BlockModel* block in b.group_info) {
@@ -123,7 +118,7 @@
 
 // =============================================================================
 
-- (BOOL)execute_one_turn:(DLPoint)pos
+- (BOOL)_executeOneTurn:(DLPoint)pos
 {
     BlockModel* target = [self get:pos];
     
@@ -151,13 +146,12 @@
     return YES;
 }
 
-// -- おおもとのやつ
--(BOOL)on_hit:(DLPoint)pos
+-(BOOL)onTap:(DLPoint)pos
 {
-    return [self execute_one_turn:pos]; // TODO: プレイヤーの座標を指定しないといけない
+    return [self _executeOneTurn:pos];
 }
 
--(void)_clear_if_dead
+-(void)_clearAllIfDead
 {
     for (int j = 0; j < DM_HEIGHT; j++) {
         for (int i = 0; i < DM_WIDTH; i++) {
@@ -171,7 +165,7 @@
 
 -(void)postprocess
 {
-    [self _clear_if_dead];
+    [self _clearAllIfDead];
     [self updateCanTap:self->player.pos];
 }
 
@@ -214,71 +208,31 @@
     return b.can_tap;
 }
 
+
+//------------------------------------------------------------------------------
+
 -(void)load_from_file:(NSString*)filename
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_from_file:filename];
     [self updateCanTap:self->player.pos];
+    [loader release];
 }
-
-
-//------------------------------------------------------------------------------
-
-static int max_num = 12;
-
-static int block_id_list[] = {
-    ID_EMPTY,
-    ID_NORMAL_BLOCK,
-    ID_GROUPED_BLOCK_1,
-    ID_GROUPED_BLOCK_2,
-    ID_GROUPED_BLOCK_3,
-    ID_UNBREAKABLE_BLOCK,
-    
-    ID_ENEMY_BLOCK_0, // BLUE SLIME
-    ID_ENEMY_BLOCK_1, // RED  SLIME
-    
-    ID_ITEM_BLOCK_0, // POTION
-    ID_ITEM_BLOCK_1, // DORAYAKI
-    ID_ITEM_BLOCK_2, // TREASURE
-    
-    ID_PLAYER
-};
 
 -(void)load_random:(UInt16)seed
 {
-    for (int j = 0; j < DM_HEIGHT; j++) {
-        for (int i = 0; i < DM_WIDTH; i++) {
-            
-            BlockModel *b;
-            // ４列目までは空ならのでスキップ
-        if (j < 4) {
-                b = [self->block_builder buildWithID:ID_EMPTY];
-            } else if (j == 4) {
-                if (i == 3) {
-                    b = [self->block_builder buildWithID:ID_EMPTY];
-                } else {
-                    b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
-                }
-            } else if (i == 0 || i == (DM_WIDTH -1)) {
-                b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
-            } else {
-                int index = random() % (max_num - 2);
-                int type_id = block_id_list[index];
-                b = [self->block_builder buildWithID:type_id];
-            }
-            
-            [self set_without_update_can_tap:cdp(i, j) block:b];
-        }
-    }
+    DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
+    [loader load_random:seed];
     [self updateCanTap:self->player.pos];
+    [loader release];
 }
 
 
-//===========================================================================================
+//==============================================================================
 //
 // タップ可能ブロックの情報を更新
 //
-//===========================================================================================
+//==============================================================================
 
 -(void)updateCanTap:(DLPoint)pos
 {
@@ -286,11 +240,11 @@ static int block_id_list[] = {
     self->lowest_empty_y = self->impl.lowestEmptyY;
 }
 
-//===========================================================================================
+//==============================================================================
 //
 // ブロック同士のグループ情報を更新
 //
-//===========================================================================================
+//==============================================================================
 
 -(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
 {
@@ -299,26 +253,26 @@ static int block_id_list[] = {
     [groupUpdater release];
 }
 
-//===========================================================================================
+//==============================================================================
 //
 // 移動ルート情報を更新
 //
-//===========================================================================================
+//==============================================================================
 
 -(void)update_route_map:(DLPoint)pos target:(DLPoint)target
 {
-    [routeMap update:self->map start:pos target:target];
+    [self->routeMap update:self->map start:pos target:target];
 }
 
-//===========================================================================================
+//==============================================================================
 //
 // 移動ルート情報から実際に辿るブロックのリストを作る
 //
-//===========================================================================================
+//==============================================================================
 
 -(DLPoint)get_player_pos:(DLPoint)pos
 {
-    return [routeMap get_player_pos:pos];
+    return [self->routeMap get_player_pos:pos];
 }
 
 @end
