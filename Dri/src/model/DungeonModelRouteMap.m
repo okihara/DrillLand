@@ -64,7 +64,7 @@
     [self update_route_map_r:map start:cdp(pos.x + 1, pos.y + 0) target:target level: level + 1];
 }
 
--(DLPoint)get_player_pos:(DLPoint)pos
+-(DLPoint)nextPlayerPos:(DLPoint)pos
 {
     [self->route_list removeAllObjects];
     return [self _get_player_pos:pos];

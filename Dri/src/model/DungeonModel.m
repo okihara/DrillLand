@@ -31,8 +31,10 @@
         self->player.pos = cdp(2,3);
 
         self->map = [[ObjectXDMap alloc] init];
-        self->impl = [[DungeonModelCanTapUpdater alloc] init];
-        self->routeMap = [[DungeonModelRouteMap alloc] init];
+        
+        self->impl =             [[DungeonModelCanTapUpdater alloc] init];
+        self->groupInfoUpdater = [[DungeonModelGroupInfoUpdater alloc] init];
+        self->routeMap =         [[DungeonModelRouteMap alloc] init];
     }
     return self;
 }
@@ -40,12 +42,18 @@
 -(void)dealloc
 {
     [self->routeMap release];
+    [self->groupInfoUpdater release];
     [self->impl release];
     [self->map release];
     [self->player release];
     [self->block_builder release];
     [self->observer_list release];
     [super dealloc];
+}
+
+-(UInt32)lowest_empty_y
+{
+    return self->impl.lowestEmptyY;
 }
 
 -(NSMutableArray*)routeList
@@ -80,8 +88,8 @@
 // -- プレイヤーの移動フェイズ
 - (void)move_player:(DLPoint)pos
 {
-    [self update_route_map:pos target:player.pos];
-    self->player.pos = [self get_player_pos:player.pos];
+    [self->routeMap update:self->map start:pos target:player.pos];
+    self->player.pos = [self->routeMap nextPlayerPos:player.pos];
 }
 
 // -- ブロックのヒット処理フェイズ
@@ -166,7 +174,7 @@
 -(void)postprocess
 {
     [self _clearAllIfDead];
-    [self updateCanTap:self->player.pos];
+    [self->impl updateCanTap:self->map start:self->player.pos];
 }
 
 
@@ -182,7 +190,7 @@
 {
     block.pos = pos;
     [self->map set_x:pos.x y:pos.y value:block];
-    [self update_group_info:pos group_id:block.group_id];
+    [self->groupInfoUpdater updateGroupInfo:self->map start:pos groupId:block.group_id];
 }
 
 -(void)set:(DLPoint)pos block:(BlockModel*)block
@@ -190,8 +198,8 @@
     [self set_without_update_can_tap:pos block:block];
 
     // この一行いらんかも
-    [self updateCanTap:self->player.pos]; // TODO: プレイヤーの座標を指定しないといけない
-    
+    [self->impl updateCanTap:self->map start:self->player.pos];
+
     // ここで NEW イベント飛ばす
     DLEvent *e = [DLEvent eventWithType:DL_ON_NEW target:block];
     [self dispatchEvent:e];
@@ -202,20 +210,13 @@
     return [self->map get_x:pos.x y:pos.y];
 }
 
--(int)can_tap:(DLPoint)pos
-{
-    BlockModel* b = [self->map get_x:pos.x y:pos.y];
-    return b.can_tap;
-}
-
-
 //------------------------------------------------------------------------------
 
 -(void)load_from_file:(NSString*)filename
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_from_file:filename];
-    [self updateCanTap:self->player.pos];
+    [self->impl updateCanTap:self->map start:self->player.pos];
     [loader release];
 }
 
@@ -223,56 +224,9 @@
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_random:seed];
-    [self updateCanTap:self->player.pos];
+    [self->impl updateCanTap:self->map start:self->player.pos];
     [loader release];
 }
 
-
-//==============================================================================
-//
-// タップ可能ブロックの情報を更新
-//
-//==============================================================================
-
--(void)updateCanTap:(DLPoint)pos
-{
-    [self->impl updateCanTap:self->map start:pos];
-    self->lowest_empty_y = self->impl.lowestEmptyY;
-}
-
-//==============================================================================
-//
-// ブロック同士のグループ情報を更新
-//
-//==============================================================================
-
--(void)update_group_info:(DLPoint)pos group_id:(unsigned int)_group_id;
-{
-    DungeonModelGroupInfoUpdater *groupUpdater = [DungeonModelGroupInfoUpdater new];
-    [groupUpdater updateGroupInfo:self->map start:pos groupId:_group_id];
-    [groupUpdater release];
-}
-
-//==============================================================================
-//
-// 移動ルート情報を更新
-//
-//==============================================================================
-
--(void)update_route_map:(DLPoint)pos target:(DLPoint)target
-{
-    [self->routeMap update:self->map start:pos target:target];
-}
-
-//==============================================================================
-//
-// 移動ルート情報から実際に辿るブロックのリストを作る
-//
-//==============================================================================
-
--(DLPoint)get_player_pos:(DLPoint)pos
-{
-    return [self->routeMap get_player_pos:pos];
-}
 
 @end

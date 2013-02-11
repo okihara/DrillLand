@@ -17,6 +17,6 @@
 @property (nonatomic, readonly) NSMutableArray *route_list;
 
 -(void)update:(ObjectXDMap*)map start:(DLPoint)pos target:(DLPoint)target;
--(DLPoint)get_player_pos:(DLPoint)pos;
+-(DLPoint)nextPlayerPos:(DLPoint)pos;
 
 @end
