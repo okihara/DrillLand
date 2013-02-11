@@ -31,7 +31,6 @@
     // TODO: インスタンス変数 ２つに絞るなら？？
     
     ObjectXDMap *map;
-    XDMap *done_map;
     XDMap *route_map;
 
     // TODO: クラス化

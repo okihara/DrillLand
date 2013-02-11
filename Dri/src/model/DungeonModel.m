@@ -32,7 +32,6 @@
         self->block_builder = [[BlockBuilder alloc] init];
         self->player = [block_builder buildWithID:ID_PLAYER];
         self->player.pos = cdp(2,3);
-        self->done_map = [[XDMap alloc] init];
         self->route_map = [[XDMap alloc] init];
         self->route_list = [[NSMutableArray alloc] init];
         self->map = [[ObjectXDMap alloc] init];
@@ -48,7 +47,6 @@
     [self->map release];
     [self->route_map release];
     [self->route_list release];
-    [self->done_map release];
     [self->player release];
     [self->block_builder release];
     [super dealloc];
