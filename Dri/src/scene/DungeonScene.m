@@ -84,7 +84,7 @@
         [self addChild:dungeon_view];
         
         // calc curring
-        [self->dungeon_view update_curring_range];
+        //[self->dungeon_view update_curring_range];
         
         // setup dungeon model
         self->dungeon_model = dungeon_model_;

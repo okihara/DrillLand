@@ -51,14 +51,15 @@
 -(void)add_observer:(id<DungenModelObserver>)observer;
 -(void)dispatchEvent:(DLEvent*)e;
 
-// これは外から触れる必要ある？
--(void)set:(DLPoint)pos block:(BlockModel*)block;
--(void)set_without_update_can_tap:(DLPoint)pos block:(BlockModel*)block;
--(BlockModel*)get:(DLPoint)pos;
-
 // ハンドラ 外から呼ばれる
 -(BOOL)onTap:(DLPoint)pos;
 -(void)postprocess;
+
+// TODO: これは外から触れる必要ある？
+// setter/getter
+-(void)set:(DLPoint)pos block:(BlockModel*)block;
+-(void)set_without_update_can_tap:(DLPoint)pos block:(BlockModel*)block;
+-(BlockModel*)get:(DLPoint)pos;
 
 // loader json
 -(void)load_from_file:(NSString*)filename;

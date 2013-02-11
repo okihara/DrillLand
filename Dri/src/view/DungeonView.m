@@ -59,6 +59,8 @@
         // ---
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
+        
+        [self update_curring_range];
 	}
 	return self;
 }

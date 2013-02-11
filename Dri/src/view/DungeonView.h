@@ -61,7 +61,7 @@
 @property (nonatomic, readonly, retain) CCLayer *block_layer;
 @property (nonatomic, readonly, retain) CCLayer *effect_layer;
 @property (nonatomic, readwrite, retain) BlockView* player;
-@property (readonly) int offset_y;
+@property (nonatomic, readonly) int offset_y;
 
 
 -(void)add_player:(BlockView*)block;
@@ -70,13 +70,9 @@
 
 // 描画
 - (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model;
-- (void)update_view_line:(int)y dungeon_model:(DungeonModel *)dungeon_model;
-- (void)update_view_lines:(DungeonModel *)_dungeon;
 - (void)update_view:(DungeonModel *)_dungeon;
-- (void)update_dungeon_view:(DungeonModel*)dungeon_model;
 
 - (void)remove_block_view:(DLPoint)pos;
-- (void)remove_block_view_line:(int)y _model:(DungeonModel *)_dungeon;
 - (void)remove_block_view_if_dead:(DLPoint)pos;
 
 // ライトの処理
@@ -88,7 +84,6 @@
 // スクロール関係
 // カリングの計算
 - (void)update_offset_y:(int)target_y;
-- (void)update_curring_range;
 - (void)scroll_to;
 
 // イベントハンドラ
