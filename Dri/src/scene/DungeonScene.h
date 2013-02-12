@@ -10,23 +10,23 @@
 #import "LargeNotifierView.h"
 #import "DungeonModel.h"
 #import "StatusBarView.h"
+#import "DungeonSceneEventQueue.h"
+
 
 @class DungeonView;
 
 @interface DungeonScene : CCLayerColor<DungenModelObserver>
 {
-    NSMutableArray *events;
+    DungeonSceneEventQueue *eventQueue;
 
     DungeonModel *dungeon_model;
     DungeonView  *dungeon_view;
     
-    CCLayerColor *fade_layer;
-    
+    CCLayerColor      *fade_layer;
     LargeNotifierView *large_notify;
     StatusBarView     *statusbar;
 }
 
 + (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model;
-- (id) initWithDungeonModel:(DungeonModel*)dungeon_model;
 
 @end
