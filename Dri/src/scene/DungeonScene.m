@@ -27,13 +27,10 @@
 - (void)run_first_sequece {
     
     if (1) {
-
         // FADE OUT
         CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
         [self->fade_layer runAction:fi];
-        
         self.isTouchEnabled = YES;
-
         return;
     }
     
@@ -47,7 +44,7 @@
     
     // 勇者がてくてく歩く
     CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
-    CGPoint p_pos = [dungeon_view model_to_local:cdp(2,3)];
+    CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(2,3)];
     CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;
@@ -94,7 +91,7 @@
 
         // 勇者を初期位置に
         [dungeon_view update_view:dungeon_model];
-        CGPoint p_pos = [dungeon_view model_to_local:cdp(5,3)];
+        CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(5,3)];
         player.position = p_pos;
         
         // fade 用のレイヤー
@@ -315,25 +312,14 @@
 //
 //===============================================================
 
-- (DLPoint)_screen_to_view_pos:(CGPoint)location
-{
-    // TODO: ここから先 DungeonView に移動するべき
-    // ↑ ほんとうか？
-    // model_to_local の反対
-    int x = (int)((      location.x - DV_OFFSET_X) / BLOCK_WIDTH);
-    int y = (int)((480 - location.y + self->dungeon_view.offset_y  ) / BLOCK_WIDTH);
-    return cdp(x, y);
-}
-
 // HELPER: スクリーン座標からビューの座標へ変換
 - (DLPoint)screen_to_view_pos:(NSSet *)touches
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
     location =[[CCDirector sharedDirector] convertToGL:location];
-    return [self _screen_to_view_pos:location];
+    return [self->dungeon_view viewPointToMapPos:location];
 }
-
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

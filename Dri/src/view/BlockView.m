@@ -175,7 +175,7 @@
         
         DLPoint nextPos;
         [v getValue:&nextPos];
-        CGPoint cgpos = [view model_to_local:nextPos];
+        CGPoint cgpos = [view mapPosToViewPoint:nextPos];
         CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
         
         [action_list addObject:act_move];

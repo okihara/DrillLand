@@ -131,7 +131,7 @@
     }
     
     block_view = [BlockViewBuilder build:block_model ctx:dungeon_model];
-    block_view.position = [self model_to_local:cdp(x, y)];
+    block_view.position = [self mapPosToViewPoint:cdp(x, y)];
     block_view.pos = cdp(x, y);
     
     [self->block_layer addChild:block_view];
@@ -298,11 +298,18 @@
 // TODO: 別のクラスに移動
 //==============================================================================
 
-// この 30 ってなに？
-// 60 / 2 ってこと？
-- (CGPoint)model_to_local:(DLPoint)pos
+- (CGPoint)mapPosToViewPoint:(DLPoint)pos
 {
-    return ccp(BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH, 480 - (BLOCK_WIDTH / 2 + pos.y * BLOCK_WIDTH));
+    return ccp(BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH,
+               480 - (BLOCK_WIDTH / 2 + pos.y * BLOCK_WIDTH));
+}
+
+// スクリーン座標から viewMap の座標へ変換
+- (DLPoint)viewPointToMapPos:(CGPoint)point
+{
+    int x = (UInt32)((      point.x - DV_OFFSET_X)      / BLOCK_WIDTH);
+    int y = (UInt32)((480 - point.y + self->offset_y) / BLOCK_WIDTH);
+    return cdp(x, y);
 }
 
 

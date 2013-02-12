@@ -67,7 +67,6 @@
 -(void)add_player:(BlockView*)block;
 -(BlockView*)get_block_view:(DLPoint)pos;
 
-
 // 描画
 - (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model;
 - (void)update_view:(DungeonModel *)_dungeon;
@@ -90,7 +89,7 @@
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e;
 
 // ヘルパ
-- (CGPoint)model_to_local:(DLPoint)pos;
-
+- (CGPoint)mapPosToViewPoint:(DLPoint)pos;
+- (DLPoint)viewPointToMapPos:(CGPoint)point;
 
 @end
