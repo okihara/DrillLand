@@ -26,13 +26,15 @@
 {
 	if(self=[super init]) {
         
-        disp_w = DM_WIDTH;
-        disp_h = DV_DISP_H;
+        self->disp_w = DM_WIDTH;
+        self->disp_h = DV_DISP_H;
 
-        offset_x = DV_OFFSET_X;
-        offset_y = 0;
-        latest_remove_y = -1;
-        selected_block = nil;
+        self->offset_x = DV_OFFSET_X;
+        self->offset_y = 0;
+        
+        self->latest_remove_y = -1;
+        
+        self->selected_block = nil;
         
         self->view_map = [[ObjectXDMap alloc] init];
         
@@ -56,7 +58,6 @@
         self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
         [self addChild:self->fade_layer];
     
-        // ---
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
         
@@ -68,10 +69,7 @@
 -(void)dealloc
 {
     [self->effect_launcher release];
-    [self->view_map release];
-
-    // TODO: view 系は勝手に破棄される？
-    
+    [self->view_map release];    
     [super dealloc];
 }
 
@@ -80,8 +78,6 @@
 //
 -(void)add_player:(BlockView*)block
 {
-    // TODO: プレイヤーを一番上にするために。。。
-    // TODO: プレイヤー専用やん。。。
     [self->player_layer addChild:block];
 }
 
@@ -90,24 +86,30 @@
     return [self->view_map get_x:pos.x y:pos.y];
 }
 
-
 //==============================================================================
 //
 // ブロックの明るさを計算アップデート
 //
 //==============================================================================
 
+// TODO: BlockView に移動？
+// 指定したポイントを基準に離れるほど暗くなる
+- (void)updateColor:(BlockView*)block_view basePos:(DLPoint)center_pos
+{
+    int xx = abs(block_view.pos.x - center_pos.x);
+    int yy = abs(center_pos.y - block_view.pos.y);
+    int bright = 255 - 255 * (xx + yy) / LIGHT_RANGE * 1.0f;
+    unsigned char color = bright < 0 ? 0 : bright;
+    block_view.color = ccc3(color, color, color);
+}
+
 - (void)update_block_color:(DungeonModel *)dungeon_model center_pos:(DLPoint)center_pos
 {
     for (int y = self->curring_top; y < self->curring_bottom; y++) {
-        for (int x = 0; x < disp_w; x++) {
-            BlockView *block_view = [view_map get_x:x y:y];
-            if (!block_view) { continue; }
-            int xx = abs(x - center_pos.x);
-            int yy = abs(center_pos.y - y);
-            int bright = 255 - 255 * (xx + yy) / LIGHT_RANGE * 1.0f;
-            unsigned char color = bright < 0 ? 0 : bright;
-            block_view.color = ccc3(color, color, color);
+        for (int x = 0; x < self->disp_w; x++) {
+            BlockView *block_view = [self->view_map get_x:x y:y];
+            if (!block_view) continue;
+            [self updateColor:block_view basePos:center_pos];
         }
     }
 }
@@ -120,24 +122,25 @@
 
 - (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model
 {
-    BlockView *block = [view_map get_x:x y:y];
+    BlockView  *block_view  = [self->view_map get_x:x y:y];
     BlockModel *block_model = [dungeon_model get:cdp(x, y)];
     
     // 既に描画済みなら描画しない
-    if (block || block_model.block_id == ID_EMPTY) {
+    if (block_view || block_model.block_id == ID_EMPTY) {
         return;
     }
     
-    block = [BlockViewBuilder build:block_model ctx:dungeon_model];
-    block.position = [self model_to_local:cdp(x, y)];
+    block_view = [BlockViewBuilder build:block_model ctx:dungeon_model];
+    block_view.position = [self model_to_local:cdp(x, y)];
+    block_view.pos = cdp(x, y);
     
-    [self->block_layer addChild:block];
-    [view_map set_x:x y:y value:block];
+    [self->block_layer addChild:block_view];
+    [self->view_map set_x:x y:y value:block_view];
 }
 
 - (void)update_view_line:(int)y dungeon_model:(DungeonModel *)dungeon_model
 {
-    for (int x = 0; x < disp_w; x++) {
+    for (int x = 0; x < self->disp_w; x++) {
         [self update_block:y x:x dungeon_model:dungeon_model];
     }
 }
@@ -156,21 +159,13 @@
 {
     // clear
     [self->block_layer removeAllChildrenWithCleanup:YES];
-    [view_map clear];
+    [self->view_map clear];
 
     // curring を考慮して更新
     [self update_view_lines:dungeon_model];
     
     //
     [self update_block_color:dungeon_model center_pos:cdp(2, 3)];
-}
-
-- (void)remove_block_view_outside:(DungeonModel *)dungeon_model
-{
-    for (int y = self->latest_remove_y + 1; y < self->curring_top; y++) {
-        [self remove_block_view_line:y _model:dungeon_model];
-        self->latest_remove_y = y;
-    }
 }
 
 // カリングを考慮して描画
@@ -208,6 +203,14 @@
     }
 }
 
+- (void)remove_block_view_outside:(DungeonModel *)dungeon_model
+{
+    for (int y = self->latest_remove_y + 1; y < self->curring_top; y++) {
+        [self remove_block_view_line:y _model:dungeon_model];
+        self->latest_remove_y = y;
+    }
+}
+
 //==============================================================================
 //
 // スクロール関係
@@ -215,14 +218,12 @@
 //
 //==============================================================================
 
+// 一番現在移動できるポイントが中央にくるまでスクロール？
+// プレイヤーの位置が４段目ぐらいにくるよまでスクロール
+// 一度いった時は引き返せない
+// self->offset_y に依存
 - (void)update_offset_y:(int)target_y
 {
-    // 一番現在移動できるポイントが中央にくるまでスクロール？
-    // プレイヤーの位置が４段目ぐらいにくるよまでスクロール
-    // 一度いった時は引き返せない
-    
-    // self->offset_y に依存
-    
     int threshold = 3;
     
     int by = (int)(self->offset_y / BLOCK_WIDTH);
@@ -241,18 +242,15 @@
 }
 
 // カリングの計算
+// 通常は 4~8 一気にスクロールする量による
+// debug 用に -2 とかすると描画領域が狭くなる
+// TODO: top と bottom で分けたほうがいいかも
+// スクロールしたあとに消すってすれば top のカリングは 0 でもいいね
 - (void)update_curring_range
 {
-    // 通常は 4~8 一気にスクロールする量による
-    // debug 用に -2 とかすると描画領域が狭くなる
-    // TODO: top と bottom で分けたほうがいいかも
-    // スクロールしたあとに消すってすれば top のカリングは 0 でもいいね
-    int curring_var = CURRING_VAR;
-    
-    // カリング
     int visible_y = (int)(self->offset_y / BLOCK_WIDTH);
-    self->curring_top    = visible_y - curring_var < 0 ? 0 : visible_y - curring_var;
-    int num_draw = self->disp_h + curring_var;
+    self->curring_top  = visible_y - CURRING_VAR < 0 ? 0 : visible_y - CURRING_VAR;
+    int num_draw = self->disp_h + CURRING_VAR;
     self->curring_bottom = visible_y + num_draw  > DM_HEIGHT ? DM_HEIGHT : visible_y + num_draw; 
 }
 
@@ -276,11 +274,9 @@
 //==============================================================================
 
 // TODO: DungeonScene においてもいいような。。。
-
+// TODO: PLAYER も同じように扱いたい。。。
 - (CCAction*)notify:(DungeonModel*)dungeon_ event:(DLEvent*)e
 {
-    // TODO: PLAYER も同じように扱いたい。。。
-    
     BlockModel *b = (BlockModel*)e.target;
     
     if(b.block_id == ID_PLAYER) {
@@ -302,10 +298,10 @@
 // TODO: 別のクラスに移動
 //==============================================================================
 
+// この 30 ってなに？
+// 60 / 2 ってこと？
 - (CGPoint)model_to_local:(DLPoint)pos
 {
-    // この 30 ってなに？
-    // 60 / 2 ってこと？
     return ccp(BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH, 480 - (BLOCK_WIDTH / 2 + pos.y * BLOCK_WIDTH));
 }
 

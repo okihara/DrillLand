@@ -16,9 +16,7 @@
 @class BlockView;
 
 @protocol BlockPresentation <NSObject>
-
 -(CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e view:(BlockView *)view_;
-
 @end
 
 enum VIEW_TYPE {
@@ -53,19 +51,12 @@ enum DL_PHASE {
     float origin_scale;
     uint direction;
     
-    // Dictionary になるか？
-//    {
-//        normal : こういうアニメーションだよぉ,
-//        on_hit : ヒット時のアニメーション,
-//        on_destroy: 死亡時のアニメーション,
-//        on_attack : 攻撃時のアニメーション
-//        on_appeared : 出現時のアニメーション,
-//        
-//    }
+    DLPoint pos;
 }
 
 @property (readwrite, assign) BOOL is_alive;
 @property (readwrite, assign) BOOL is_change;
+@property (nonatomic, readwrite) DLPoint pos;
 
 - (void)setup;
 - (void)add_presentation:(NSObject<BlockPresentation>*)presentation;

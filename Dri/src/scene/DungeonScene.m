@@ -3,11 +3,9 @@
 //  Dri
 //
 //  Created by  on 12/08/12.
-//  Copyright __MyCompanyName__ 2012. All rights reserved.
+//  Copyright Hiromitsu 2012. All rights reserved.
 //
 
-
-// Import the interfaces
 #import "DL.h"
 #import "DungeonScene.h"
 #import "DungeonModel.h"
@@ -18,13 +16,11 @@
 #import "DungeonResultScene.h"
 #import "DungeonMenuScene.h"
 #import "InventoryScene.h"
-
 #import "MyItems.h"
 #import "UserItem.h"
 
-// HelloWorldLayer implementation
-@implementation DungeonScene
 
+@implementation DungeonScene
 
 // -----------------------------------------------------------------------------
 // 最初のシーケンス
@@ -69,9 +65,9 @@
 	return scene;
 }
 
-- (id) initWithDungeonModel:(DungeonModel*)dungeon_model_
+-(id)initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
-	if( (self=[super init]) ) {
+	if (self=[super init]) {
         
         // 乱数初期化
         srand(time(nil));
@@ -111,13 +107,10 @@
         [self addChild:self->statusbar];
         
         // menu
-        //CCSprite *spr_menu = [CCSprite spriteWithFile:@"block01.png"];
-        //CCMenuItemSprite *item = [CCMenuItemSprite itemWithNormalSprite:spr_menu selectedSprite:spr_menu target:self selector:@selector(didPressButton:)];
         CCMenuItemFont *item = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
         CCMenu *menu = [CCMenu menuWithItems:item, nil];
         menu.position = ccp(240, 450);
         [menu alignItemsVertically];        
-
         [self addChild:menu];
         
         // --

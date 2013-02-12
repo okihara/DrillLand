@@ -15,6 +15,7 @@
 
 @synthesize is_alive;
 @synthesize is_change; // TODO: カプセル化違反
+@synthesize pos;
 
 - (id)init
 {
@@ -169,13 +170,14 @@
     if (length == 0) return nil;
     
     float duration = 0.15 / length;
-    NSMutableArray* action_list = [NSMutableArray arrayWithCapacity:length];
-    for (NSValue* v in _dungeon.routeList) {
-        DLPoint pos;
-        [v getValue:&pos];
+    NSMutableArray *action_list = [NSMutableArray arrayWithCapacity:length];
+    for (NSValue *v in _dungeon.routeList) {
         
-        CGPoint cgpos = [view model_to_local:pos];
+        DLPoint nextPos;
+        [v getValue:&nextPos];
+        CGPoint cgpos = [view model_to_local:nextPos];
         CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
+        
         [action_list addObject:act_move];
     }
     
