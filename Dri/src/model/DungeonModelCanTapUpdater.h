@@ -19,10 +19,9 @@
     XDMap  *doneMap;
     UInt32 lowestEmptyY;
 }
+@property (nonatomic, readonly) UInt32 lowestEmptyY;
 
 -(void)clearCanTap:(ObjectXDMap*)map;
 -(void)updateCanTap:(ObjectXDMap*)map start:(DLPoint)pos;
-
-@property (readonly) UInt32 lowestEmptyY;
 
 @end
