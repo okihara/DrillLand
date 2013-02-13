@@ -70,17 +70,9 @@ enum ID_BLOCK {
     NSMutableArray* behavior_list;
     
     // items/equipment
-    MyItems *my_items;
+    MyItems     *my_items;
     MyEquipment *my_equipment;
 }
-
--(void)clear;
--(void)on_hit:(DungeonModel*)dungeon;
--(void)on_update:(DungeonModel*)dungeon;
--(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
--(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
--(void)heal:(int)value;
-
 @property (nonatomic, assign) uint block_id;
 @property (nonatomic, assign) uint type;
 @property (nonatomic, assign) uint group_id;
@@ -98,5 +90,15 @@ enum ID_BLOCK {
 @property (nonatomic, assign) BOOL can_tap;
 @property (nonatomic, assign) NSMutableArray* group_info;
 @property (nonatomic, assign) BOOL is_dead;
+
+@property (nonatomic, readonly) MyItems *my_items;
+
+-(void)clear;
+-(void)on_hit:(DungeonModel*)dungeon;
+-(void)on_update:(DungeonModel*)dungeon;
+-(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
+-(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
+-(void)heal:(int)value;
+-(void)add_item:(UserItem*)user_item;
 
 @end

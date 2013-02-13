@@ -64,27 +64,31 @@
     }
 }
 
-static int max_num = 12;
 static int block_id_list[] = {
+    
     ID_EMPTY,
+    
     ID_NORMAL_BLOCK,
     ID_GROUPED_BLOCK_1,
     ID_GROUPED_BLOCK_2,
     ID_GROUPED_BLOCK_3,
     ID_UNBREAKABLE_BLOCK,
     
-    ID_ENEMY_BLOCK_0, // BLUE SLIME
-    ID_ENEMY_BLOCK_1, // RED  SLIME
+//    ID_ENEMY_BLOCK_0, // BLUE SLIME
+//    ID_ENEMY_BLOCK_1, // RED  SLIME
+//    
+//    ID_ITEM_BLOCK_0, // POTION
+//    ID_ITEM_BLOCK_1, // DORAYAKI
+//    ID_ITEM_BLOCK_2, // TREASURE
     
-    ID_ITEM_BLOCK_0, // POTION
-    ID_ITEM_BLOCK_1, // DORAYAKI
-    ID_ITEM_BLOCK_2, // TREASURE
-    
+    12004, // 武器シルエット
+
     ID_PLAYER
 };
 
 -(void)load_random:(UInt16)seed
 {
+    int max_num = sizeof(block_id_list) / sizeof(block_id_list[0]);
     for (int j = 0; j < DM_HEIGHT; j++) {
         for (int i = 0; i < DM_WIDTH; i++) {
             
@@ -101,7 +105,7 @@ static int block_id_list[] = {
             } else if (i == 0 || i == (DM_WIDTH -1)) {
                 b = [self->block_builder buildWithID:ID_UNBREAKABLE_BLOCK];
             } else {
-                int index = random() % (max_num - 2);
+                int index = random() % (max_num - 1);
                 int type_id = block_id_list[index];
                 b = [self->block_builder buildWithID:type_id];
             }

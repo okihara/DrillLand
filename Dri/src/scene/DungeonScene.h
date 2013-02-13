@@ -27,6 +27,9 @@
     CCLayerColor      *fade_layer;
     LargeNotifierView *large_notify;
     StatusBarView     *statusbar;
+    
+    CCMenuItemFont *itemItem;
+    CCMenuItemFont *itemMenu;
 }
 
 +(CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model;

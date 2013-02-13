@@ -741,9 +741,9 @@
          "behaive_2" : null
       },
       {
-         "behavior_1" : null,
+         "behavior_1" : "10005",
          "atk" : "0",
-         "behavior_0" : "10005",
+         "behavior_0" : "10000",
          "block_id" : "12001",
          "gold" : "10",
          "use" : "1",
@@ -804,7 +804,7 @@
          "behaive_2" : null
       },
       {
-         "behavior_1" : "10006",
+         "behavior_1" : "10005",
          "atk" : "0",
          "behavior_0" : "10000",
          "block_id" : "12004",
@@ -818,7 +818,7 @@
          "hp" : "0",
          "name" : "武器シルエット",
          "msg_0" : null,
-         "view_id" : "12003",
+         "view_id" : "12004",
          "group_id" : "0",
          "type" : "300",
          "view_type" : "300",
@@ -839,7 +839,7 @@
          "hp" : "0",
          "name" : "防具シルエット",
          "msg_0" : null,
-         "view_id" : "12003",
+         "view_id" : "12005",
          "group_id" : "0",
          "type" : "300",
          "view_type" : "300",

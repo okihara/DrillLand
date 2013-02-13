@@ -16,51 +16,31 @@
 - (id)init:(DungeonModel*)dungeon_model_
 {
     if( (self=[super init]) ) {
-        
-        self->dungeon_model = dungeon_model_;
-        
+
+        self.isTouchEnabled = YES;
+
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"INVENTORY" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 440);
         [self addChild:label];
 
-        // enable touch
-        self.isTouchEnabled = YES;
-
         // アイテムデータのセットアップ
-        {
-            self->my_items = [MyItems new];
-            
-            // 準備 -------        
-            {
-                UserItem *item    = [UserItem new];
-                [my_items add_item:item];
-            }
-            {
-                UserItem *item    = [UserItem new];
-                [my_items add_item:item];
-            }
-            {
-                UserItem *item    = [UserItem new];
-                [my_items add_item:item];
-            }
-        }
-        
+        // 後で外から渡すように
+        self->my_items = dungeon_model_.player.my_items;
+        self->dungeon_model = dungeon_model_;
+
         // IMPLEMENT:
         NSMutableArray *menu_items = [NSMutableArray array];
         NSArray *item_list = [self->my_items get_list];
         for (UserItem *user_item in item_list) {
-            
             CCMenuItemFont *menu_item = [CCMenuItemFont itemWithString:user_item.name target:self selector:@selector(didPressButtonItems:)];
             [menu_items addObject:menu_item];
-            
         }
-        
         CCMenu *menu = [CCMenu menuWithArray:menu_items];
-        menu.position = ccp(160, 220);
+        menu.position = ccp(160, 240);
         [menu alignItemsVertically];
         [self addChild:menu];
     }
-        
+    
     return self;
 }
 
@@ -77,9 +57,7 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    // IMPLEMENT:
-    // EXAMPLE:
-    // [[CCDirector sharedDirector] replaceScene:[DungeonScene scene]];
+    [[CCDirector sharedDirector] popScene];
 }
 
 + (CCScene *)scene:(DungeonModel *)dungeon_model

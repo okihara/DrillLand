@@ -38,9 +38,6 @@
     // イベント飛ばす
     DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:block];
     [dungeon_ dispatchEvent:e];
-
-    // モデルの情報書き換える。初期化。
-//    [block clear];
 }
 
 @end

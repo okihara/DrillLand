@@ -30,6 +30,8 @@
 @synthesize group_info;
 @synthesize is_dead;
 
+@synthesize my_items;
+
 -(id) init
 {
 	if( (self=[super init]) ) {
@@ -114,8 +116,8 @@
 
 -(void)on_break:(DungeonModel*)dungeon
 {
-    for (NSObject<BlockBehaivior>* b in self->behavior_list) {
-        [b on_break:self dungeon:dungeon];
+    for (NSObject<BlockBehaivior> *behavior in self->behavior_list) {
+        [behavior on_break:self dungeon:dungeon];
         if (self.block_id == ID_EMPTY) return;
     }
 }

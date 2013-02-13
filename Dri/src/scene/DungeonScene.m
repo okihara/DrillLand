@@ -68,13 +68,16 @@
         self->statusbar = [[StatusBarView alloc]init];
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
+
         
         // menu
-        CCMenuItemFont *item = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
-        CCMenu *menu = [CCMenu menuWithItems:item, nil];
+        self->itemItem = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
+        self->itemMenu = [CCMenuItemFont itemWithString:@"[MENU]" target:self selector:@selector(didPressButton:)];
+        CCMenu *menu = [CCMenu menuWithItems:itemItem, itemMenu, nil];
         menu.position = ccp(240, 450);
-        [menu alignItemsVertically];        
+        [menu alignItemsHorizontally];
         [self addChild:menu];
+        
         
         // --
         [BasicNotifierView setup:self];
@@ -213,14 +216,18 @@
 // メニューボタン押した時のハンドラ
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    if (NO) {
+    if (sender == self->itemMenu) {
         // MENU に飛ばす
         CCScene *scene = [DungeonMenuScene scene];
         [[CCDirector sharedDirector] pushScene:scene];
-    } else {
+        return;
+    }
+    
+    if (sender == self->itemItem) {
         // INVENTORY に飛ばす
         CCScene *scene = [InventoryScene scene:self->dungeon_model];
         [[CCDirector sharedDirector] pushScene:scene];
+        return;
     }
 }
 

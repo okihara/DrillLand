@@ -220,6 +220,8 @@
 		C1CCAAAA1607557400A0EB1C /* DungeonScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAA61607557400A0EB1C /* DungeonScene.m */; };
 		C1CCAAAD1607559200A0EB1C /* DL.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAC1607559200A0EB1C /* DL.m */; };
 		C1CCAAB0160755CB00A0EB1C /* BlockBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */; };
+		C1D972DD16CB94A700017FDD /* blk12003.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D972DC16CB94A300017FDD /* blk12003.png */; };
+		C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D972E216CBAF6F00017FDD /* blk12004.png */; };
 		C1EE3B8C160757DA00DE62CD /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EE3B8B160757DA00DE62CD /* FontFactory.m */; };
 		C1EE3BB31608088500DE62CD /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BA81608088500DE62CD /* Default-Landscape~ipad.png */; };
 		C1EE3BB41608088500DE62CD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BA91608088500DE62CD /* Default.png */; };
@@ -690,6 +692,8 @@
 		C1CCAAAC1607559200A0EB1C /* DL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DL.m; path = src/misc/DL.m; sourceTree = "<group>"; };
 		C1CCAAAE160755CB00A0EB1C /* BlockBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockBuilder.h; path = src/model/BlockBuilder.h; sourceTree = "<group>"; };
 		C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockBuilder.m; path = src/model/BlockBuilder.m; sourceTree = "<group>"; };
+		C1D972DC16CB94A300017FDD /* blk12003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12003.png; path = Resources/spritesheet/block/blk12003.png; sourceTree = "<group>"; };
+		C1D972E216CBAF6F00017FDD /* blk12004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12004.png; path = Resources/spritesheet/block/blk12004.png; sourceTree = "<group>"; };
 		C1EE3B8A160757DA00DE62CD /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontFactory.h; path = src/misc/FontFactory.h; sourceTree = "<group>"; };
 		C1EE3B8B160757DA00DE62CD /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontFactory.m; path = src/misc/FontFactory.m; sourceTree = "<group>"; };
 		C1EE3BA81608088500DE62CD /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/misc/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -882,8 +886,10 @@
 		C132CC11164DC64100AA4217 /* block */ = {
 			isa = PBXGroup;
 			children = (
+				C1D972DC16CB94A300017FDD /* blk12003.png */,
 				C132CC4F1653BB9D00AA4217 /* blk12002.png */,
 				C132CC501653BB9D00AA4217 /* blk12001.png */,
+				C1D972E216CBAF6F00017FDD /* blk12004.png */,
 				C132CC511653BB9D00AA4217 /* blk12000.png */,
 				C132CC521653BB9D00AA4217 /* blk11001.png */,
 				C132CC7F1653C0EB00AA4217 /* blk11000.json */,
@@ -1806,6 +1812,8 @@
 				C1373818165E26A400C9DD41 /* common.png in Resources */,
 				C10A1B82166B914B009E748E /* skullpile1.wav in Resources */,
 				C10A1B84166B9449009E748E /* death3.wav in Resources */,
+				C1D972DD16CB94A700017FDD /* blk12003.png in Resources */,
+				C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
