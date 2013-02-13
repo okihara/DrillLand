@@ -18,10 +18,11 @@
 #import "InventoryScene.h"
 #import "MyItems.h"
 #import "UserItem.h"
-
+#import "SequenceBuilder.h"
 
 @interface DungeonScene ()
--(void)run_first_sequece;
+-(void)_runFirstSequece;
+-(DLPoint)_mapPosFromTouches:(NSSet *)touches;
 @end
 
 @implementation DungeonScene
@@ -33,6 +34,8 @@
         // 乱数初期化
         srand(time(nil));
         
+        //
+        self->seqBuilder = [[SequenceBuilder alloc] init];
         //
         self->eventQueue = [[DungeonSceneEventQueue alloc] init];
      
@@ -77,7 +80,7 @@
         // --
         [BasicNotifierView setup:self];
         
-        [self run_first_sequece];
+        [self _runFirstSequece];
 	}
 	return self;
 }
@@ -96,108 +99,6 @@
     [super dealloc];
 }
 
-// -----------------------------------------------------------------------------
-// 最初のシーケンス
-- (void)run_first_sequece {
-    
-    if (1) {
-        // FADE OUT
-        CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
-        [self->fade_layer runAction:fi];
-        self.isTouchEnabled = YES;
-        return;
-    }
-    
-    // FADE OUT
-    CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
-    [self->fade_layer runAction:fi];
-    
-    // ダンジョン名表示
-    self->large_notify = [[LargeNotifierView alloc] init];
-    [self addChild:self->large_notify];
-    
-    // 勇者がてくてく歩く
-    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
-    CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(2,3)];
-    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
-    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
-        self.isTouchEnabled = YES;
-    }], nil]];
-}
-
-//==============================================================================
-//
-// タッチ後のシーケンス
-//
-//==============================================================================
-
-- (void)enableTouch
-{
-    self.isTouchEnabled = YES;
-}
-
-- (void)run_sequence
-{
-    // -------------------------------------------------------------------------
-    // シーケンス再生中はタップ不可
-    self.isTouchEnabled = NO;
-    
-    // アクションのシーケンスを作成
-    NSMutableArray *action_list = [NSMutableArray array];
-    
-    // -------------------------------------------------------------------------
-    // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
-    CCAction *act_player_move = [self->dungeon_view.player get_action_update_player_pos:self->dungeon_model view:self->dungeon_view];
-    if (act_player_move) {
-        [action_list addObject:act_player_move];
-    }
-    
-    // -------------------------------------------------------------------------
-    // プレイヤーを中心にして、ブロックの明るさを変える
-    [self->dungeon_view update_block_color:dungeon_model center_pos:self->dungeon_model.player.pos];
-
-    
-    // -------------------------------------------------------------------------
-    // ブロック毎のターン処理
-    // アニメーション開始
-    CCAction *act_animate = [self->eventQueue animate:self->dungeon_model
-                                          dungeonView:self->dungeon_view];
-    NSLog(@"act_animate %@", act_animate);
-    if (act_animate) {
-        [action_list addObject:act_animate];
-    }
-    
-    // -------------------------------------------------------------------------
-    // TODO: これは入れるのか？？
-    // エネミー死亡エフェクトフェイズ(相手のブロックの死亡フェイズ)
-    // エネミーチェンジフェイズ
-    
-    // -------------------------------------------------------------------------
-    // 画面の描画
-    CCAction *act_update_view = [CCCallFuncO actionWithTarget:self->dungeon_view selector:@selector(update_dungeon_view:) object:self->dungeon_model];
-    [action_list addObject:act_update_view];
-    
-    // -------------------------------------------------------------------------
-    // スクロールフェイズ
-    CCAction *act_scroll = [CCCallFuncO actionWithTarget:self selector:@selector(do_scroll)];
-    [action_list addObject:act_scroll];
-
-    // -------------------------------------------------------------------------
-    // 現在の階層を更新
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:@"UpdateFloor" object:[NSNumber numberWithInt:(self->dungeon_model.lowest_empty_y - 4)]];
-
-    
-    // -------------------------------------------------------------------------
-    // タッチをオンに
-    CCAction *act_to_touchable = [CCCallFuncO actionWithTarget:self selector:@selector(enableTouch)];
-    [action_list addObject:act_to_touchable];
-    
-    // -------------------------------------------------------------------------
-    // 実行
-    [self->dungeon_view.player runAction:[CCSequence actionWithArray:action_list]];
-}
-
 
 //==============================================================================
 //
@@ -205,24 +106,15 @@
 //
 //==============================================================================
 
-// HELPER: スクリーン座標からビューの座標へ変換
-- (DLPoint)screen_to_view_pos:(NSSet *)touches
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:[touch view]];
-    location =[[CCDirector sharedDirector] convertToGL:location];
-    return [self->dungeon_view viewPointToMapPos:location];
-}
-
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DLPoint pos = [self screen_to_view_pos:touches];
+    DLPoint pos = [self _mapPosFromTouches:touches];
     [self->dungeon_view on_touch_start:pos];
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DLPoint pos = [self screen_to_view_pos:touches];
+    DLPoint pos = [self _mapPosFromTouches:touches];
     [self->dungeon_view on_touch_start:pos];
 }
 
@@ -235,11 +127,18 @@
         case 0:
         {
             // モデルへ通知
-            BOOL changed = [self->dungeon_model onTap:[self screen_to_view_pos:touches]];
+            BOOL changed = [self->dungeon_model onTap:
+                            [self _mapPosFromTouches:touches]];
             if (!changed) { return; }
             
             // タップ後のシーケンス再生
-            [self run_sequence];
+            //[self run_sequence];
+            CCAction *action = [self->seqBuilder build:self                         
+                                          dungeonModel:self->dungeon_model 
+                                           dungeonView:self->dungeon_view 
+                                            eventQueue:self->eventQueue];
+            [self->dungeon_view.player runAction:action];
+
             
             // 死亡フラグついてるブロックをクリア
             // タップ可能範囲をアップデート
@@ -256,19 +155,6 @@
         default:
             break;
     }
-}
-
-
-//===============================================================
-//
-// スクロール関係
-//
-//===============================================================
-
-- (void)do_scroll
-{
-    [self->dungeon_view update_offset_y:self->dungeon_model.lowest_empty_y - 1];
-    [self->dungeon_view scroll_to];
 }
 
 
@@ -325,7 +211,7 @@
 // -----------------------------------------------------------------------------
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    if (NO) {
+    if (YES) {
         // MENU に飛ばす
         CCScene *scene = [DungeonMenuScene scene];
         [[CCDirector sharedDirector] pushScene:scene];
@@ -334,6 +220,51 @@
         CCScene *scene = [InventoryScene scene:self->dungeon_model];
         [[CCDirector sharedDirector] pushScene:scene];
     }
+}
+
+// -----------------------------------------------------------------------------
+// Private Methods
+// -----------------------------------------------------------------------------
+
+- (DLPoint)_mapPosFromTouches:(NSSet *)touches
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    location =[[CCDirector sharedDirector] convertToGL:location];
+    return [self->dungeon_view viewPointToMapPos:location];
+}
+
+- (void)_doScroll
+{
+    [self->dungeon_view update_offset_y:self->dungeon_model.lowest_empty_y - 1];
+    [self->dungeon_view scroll_to];
+}
+
+- (void)_runFirstSequece {
+    
+    if (1) {
+        // FADE OUT
+        CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
+        [self->fade_layer runAction:fi];
+        self.isTouchEnabled = YES;
+        return;
+    }
+    
+    // FADE OUT
+    CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:2.0];
+    [self->fade_layer runAction:fi];
+    
+    // ダンジョン名表示
+    self->large_notify = [[LargeNotifierView alloc] init];
+    [self addChild:self->large_notify];
+    
+    // 勇者がてくてく歩く
+    CCActionInterval* nl = [CCDelayTime actionWithDuration:2.0];
+    CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(2,3)];
+    CCAction* action_1 = [CCMoveTo actionWithDuration:2.0 position:p_pos];
+    [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
+        self.isTouchEnabled = YES;
+    }], nil]];
 }
 
 

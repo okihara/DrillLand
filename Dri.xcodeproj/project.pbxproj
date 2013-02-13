@@ -255,6 +255,8 @@
 		C1F089B116A2523500D9C350 /* InventoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F089B016A2523500D9C350 /* InventoryScene.m */; };
 		C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
 		C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
+		C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */; };
+		C1FA43FA16CB2F1F00A3F179 /* SequenceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */; };
 		CE07285016C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285116C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285416C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07285316C7E53E0031834C /* DungeonModelGroupInfoUpdater.m */; };
@@ -741,6 +743,8 @@
 		C1F089B016A2523500D9C350 /* InventoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventoryScene.m; path = src/scene/InventoryScene.m; sourceTree = "<group>"; };
 		C1FA43F216CB24F100A3F179 /* DungeonSceneEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonSceneEventQueue.h; path = src/scene/DungeonSceneEventQueue.h; sourceTree = "<group>"; };
 		C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonSceneEventQueue.m; path = src/scene/DungeonSceneEventQueue.m; sourceTree = "<group>"; };
+		C1FA43F716CB2F1F00A3F179 /* SequenceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SequenceBuilder.h; path = src/scene/SequenceBuilder.h; sourceTree = "<group>"; };
+		C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SequenceBuilder.m; path = src/scene/SequenceBuilder.m; sourceTree = "<group>"; };
 		CE07284E16C7D4E10031834C /* DungeonModelCanTapUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelCanTapUpdater.h; path = src/model/DungeonModelCanTapUpdater.h; sourceTree = "<group>"; };
 		CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonModelCanTapUpdater.m; path = src/model/DungeonModelCanTapUpdater.m; sourceTree = "<group>"; };
 		CE07285216C7E53B0031834C /* DungeonModelGroupInfoUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelGroupInfoUpdater.h; path = src/model/DungeonModelGroupInfoUpdater.h; sourceTree = "<group>"; };
@@ -1465,6 +1469,8 @@
 				C1CCAAA61607557400A0EB1C /* DungeonScene.m */,
 				C1FA43F216CB24F100A3F179 /* DungeonSceneEventQueue.h */,
 				C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */,
+				C1FA43F716CB2F1F00A3F179 /* SequenceBuilder.h */,
+				C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */,
 				C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */,
 				C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */,
 				C1CCAA9F1607557400A0EB1C /* DungeonOverScene.h */,
@@ -1814,6 +1820,7 @@
 				CE07285516C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */,
 				CE07285916C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
 				C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
+				C1FA43FA16CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2002,6 +2009,7 @@
 				CE07285416C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */,
 				CE07285816C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
 				C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
+				C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

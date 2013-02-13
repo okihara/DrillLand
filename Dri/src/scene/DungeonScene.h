@@ -14,9 +14,11 @@
 
 
 @class DungeonView;
+@class SequenceBuilder;
 
 @interface DungeonScene : CCLayerColor<DungenModelObserver>
 {
+    SequenceBuilder        *seqBuilder;
     DungeonSceneEventQueue *eventQueue;
 
     DungeonModel *dungeon_model;
