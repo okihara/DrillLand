@@ -16,7 +16,6 @@
 -(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     // implement behaivior
-    [dungeon_.player attack:context_ dungeon:dungeon_];
 }
 
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
@@ -39,16 +38,11 @@
     [dungeonModel.player add_item:userItem];
     
     // イベント飛ばす
-    {
-        DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
-        // TODO: タイプ決め打ちすぎ
-        [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] 
-                     forKey:@"type"];
-        [dungeonModel dispatchEvent:e];
-    }
-    
-    // TODO: これやらなあかんのおかしいいいいいいいいいいいい
-    [block clear];
+    DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
+    // TODO: タイプ決め打ちすぎィ！
+    [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] 
+                 forKey:@"type"];
+    [dungeonModel dispatchEvent:e];
 }
 
 @end
