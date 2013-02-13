@@ -20,6 +20,7 @@
 #import "UserItem.h"
 #import "SequenceBuilder.h"
 
+
 @interface DungeonScene ()
 -(void)_runFirstSequece;
 -(DLPoint)_mapPosFromTouches:(NSSet *)touches;
@@ -34,9 +35,7 @@
         // 乱数初期化
         srand(time(nil));
         
-        //
         self->seqBuilder = [[SequenceBuilder alloc] init];
-        //
         self->eventQueue = [[DungeonSceneEventQueue alloc] init];
      
         // setup dungeon view
@@ -95,16 +94,14 @@
 
 - (void)dealloc
 {
-    [dungeon_model release];
+    [self->dungeon_model release];
+    [self->seqBuilder release];
     [super dealloc];
 }
 
 
-//==============================================================================
-//
-// タッチのハンドラ
-//
-//==============================================================================
+// -----------------------------------------------------------------------------
+
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -118,6 +115,27 @@
     [self->dungeon_view on_touch_start:pos];
 }
 
+- (void)_handleStateNormal:(NSSet *)touches
+{
+    // モデルへ通知
+    BOOL changed = [self->dungeon_model onTap:
+                    [self _mapPosFromTouches:touches]];
+    if (!changed) { return; }
+    
+    // タップ後のシーケンス再生
+    //[self run_sequence];
+    CCAction *action = [self->seqBuilder build:self                         
+                                  dungeonModel:self->dungeon_model 
+                                   dungeonView:self->dungeon_view 
+                                    eventQueue:self->eventQueue];
+    [self->dungeon_view.player runAction:action];
+    
+    
+    // 死亡フラグついてるブロックをクリア
+    // タップ可能範囲をアップデート
+    [self->dungeon_model postprocess];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     uint state = 0;
@@ -126,23 +144,7 @@
             
         case 0:
         {
-            // モデルへ通知
-            BOOL changed = [self->dungeon_model onTap:
-                            [self _mapPosFromTouches:touches]];
-            if (!changed) { return; }
-            
-            // タップ後のシーケンス再生
-            //[self run_sequence];
-            CCAction *action = [self->seqBuilder build:self                         
-                                          dungeonModel:self->dungeon_model 
-                                           dungeonView:self->dungeon_view 
-                                            eventQueue:self->eventQueue];
-            [self->dungeon_view.player runAction:action];
-
-            
-            // 死亡フラグついてるブロックをクリア
-            // タップ可能範囲をアップデート
-            [self->dungeon_model postprocess];
+            [self _handleStateNormal:touches];
         }
             break;
             
@@ -158,12 +160,8 @@
 }
 
 
-//===============================================================
-//
-// イベントハンドラ
-//
-//===============================================================
-
+// -----------------------------------------------------------------------------
+// ゲーム内イベントのハンドラ
 - (void)notify:(DungeonModel *)dungeon_ event:(DLEvent *)event
 {
     BlockModel *block = event.target;
@@ -208,7 +206,6 @@
 
 // -----------------------------------------------------------------------------
 // メニューボタン押した時のハンドラ
-// -----------------------------------------------------------------------------
 - (void)didPressButton:(CCMenuItem *)sender
 {
     if (YES) {
@@ -221,6 +218,7 @@
         [[CCDirector sharedDirector] pushScene:scene];
     }
 }
+
 
 // -----------------------------------------------------------------------------
 // Private Methods
