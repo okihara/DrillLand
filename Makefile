@@ -1,4 +1,5 @@
 dummy:
+	cat Makefile | grep -e '.*:$$'
 
 master:
 	pushd script/; perl xls2json.pl master/block_master.xls > ../Dri/Resources/master/block_master.json
