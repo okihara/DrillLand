@@ -27,6 +27,6 @@
     StatusBarView     *statusbar;
 }
 
-+ (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model;
++(CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model;
 
 @end

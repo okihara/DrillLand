@@ -253,6 +253,8 @@
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 		C1EEE634169BCED3007DB940 /* TestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEE633169BCED3007DB940 /* TestItem.m */; };
 		C1F089B116A2523500D9C350 /* InventoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F089B016A2523500D9C350 /* InventoryScene.m */; };
+		C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
+		C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
 		CE07285016C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285116C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285416C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07285316C7E53E0031834C /* DungeonModelGroupInfoUpdater.m */; };
@@ -737,6 +739,8 @@
 		C1EEE633169BCED3007DB940 /* TestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestItem.m; sourceTree = "<group>"; };
 		C1F089AF16A2523500D9C350 /* InventoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InventoryScene.h; path = src/scene/InventoryScene.h; sourceTree = "<group>"; };
 		C1F089B016A2523500D9C350 /* InventoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventoryScene.m; path = src/scene/InventoryScene.m; sourceTree = "<group>"; };
+		C1FA43F216CB24F100A3F179 /* DungeonSceneEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonSceneEventQueue.h; path = src/scene/DungeonSceneEventQueue.h; sourceTree = "<group>"; };
+		C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonSceneEventQueue.m; path = src/scene/DungeonSceneEventQueue.m; sourceTree = "<group>"; };
 		CE07284E16C7D4E10031834C /* DungeonModelCanTapUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelCanTapUpdater.h; path = src/model/DungeonModelCanTapUpdater.h; sourceTree = "<group>"; };
 		CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonModelCanTapUpdater.m; path = src/model/DungeonModelCanTapUpdater.m; sourceTree = "<group>"; };
 		CE07285216C7E53B0031834C /* DungeonModelGroupInfoUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelGroupInfoUpdater.h; path = src/model/DungeonModelGroupInfoUpdater.h; sourceTree = "<group>"; };
@@ -1459,6 +1463,8 @@
 				C1621D3B1619A03200AB73A0 /* DungeonPreloadScene.m */,
 				C1CCAAA51607557400A0EB1C /* DungeonScene.h */,
 				C1CCAAA61607557400A0EB1C /* DungeonScene.m */,
+				C1FA43F216CB24F100A3F179 /* DungeonSceneEventQueue.h */,
+				C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */,
 				C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */,
 				C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */,
 				C1CCAA9F1607557400A0EB1C /* DungeonOverScene.h */,
@@ -1807,6 +1813,7 @@
 				CE07285116C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */,
 				CE07285516C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */,
 				CE07285916C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
+				C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1994,6 +2001,7 @@
 				CE07285016C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */,
 				CE07285416C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */,
 				CE07285816C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
+				C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2024,7 +2032,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dri.app/Dri";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -2052,7 +2060,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dri.app/Dri";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -2075,6 +2083,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2096,6 +2106,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (

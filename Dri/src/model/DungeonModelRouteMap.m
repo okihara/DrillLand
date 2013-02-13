@@ -8,6 +8,12 @@
 
 #import "DungeonModelRouteMap.h"
 
+
+@interface DungeonModelRouteMap ()
+-(void) update_route_map_r:(ObjectXDMap*)map start:(DLPoint)pos target:(DLPoint)target level:(int)level;
+-(DLPoint)_get_player_pos:(DLPoint)pos;
+@end
+
 @implementation DungeonModelRouteMap
 
 @synthesize route_list;

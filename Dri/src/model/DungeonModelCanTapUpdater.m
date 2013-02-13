@@ -9,6 +9,10 @@
 #import "DungeonModelCanTapUpdater.h"
 #import "DungeonModel.h"
 
+@interface DungeonModelCanTapUpdater ()
+-(void)updateCanTapRecur:(ObjectXDMap*)map start:(DLPoint)pos;
+@end
+
 @implementation DungeonModelCanTapUpdater
 
 @synthesize lowestEmptyY;

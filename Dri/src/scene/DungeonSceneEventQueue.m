@@ -8,6 +8,12 @@
 
 #import "DungeonSceneEventQueue.h"
 
+
+@interface DungeonSceneEventQueue ()
+- (CCAction*)_animate:(DungeonModel*)dungeonModel
+          dungeonView:(DungeonView*)dungeonView;
+@end
+
 @implementation DungeonSceneEventQueue
 
 -(id)init

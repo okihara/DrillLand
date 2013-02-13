@@ -20,6 +20,10 @@
 #import "UserItem.h"
 
 
+@interface DungeonScene ()
+-(void)run_first_sequece;
+@end
+
 @implementation DungeonScene
 
 - (id)initWithDungeonModel:(DungeonModel*)dungeon_model_

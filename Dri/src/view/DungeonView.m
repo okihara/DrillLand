@@ -14,6 +14,13 @@
 #import "BlockView.h"
 #import "BlockViewBuilder.h"
 
+
+
+@interface DungeonView ()
+-(void)update_curring_range;
+-(void)remove_block_view_outside:(DungeonModel *)dungeon_model;
+@end
+
 @implementation DungeonView
 
 @synthesize player;
