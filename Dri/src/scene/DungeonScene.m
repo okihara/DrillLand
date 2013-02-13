@@ -115,13 +115,8 @@
 //    [self->dungeon_view on_touch_start:pos];
 }
 
-- (void)_handleStateNormal:(NSSet *)touches
+- (void)_runSequence
 {
-    // モデルへ通知
-    BOOL changed = [self->dungeon_model onTap:
-                    [self _mapPosFromTouches:touches]];
-    if (!changed) { return; }
-    
     // タップ後のシーケンス再生
     CCAction *action = [self->seqBuilder build:self                         
                                   dungeonModel:self->dungeon_model 
@@ -133,6 +128,17 @@
     // 死亡フラグついてるブロックをクリア
     // タップ可能範囲をアップデート
     [self->dungeon_model postprocess];
+}
+
+- (void)_handleStateNormal:(NSSet *)touches
+{
+    // モデルへ通知
+    DLPoint pos = [self _mapPosFromTouches:touches];
+    BOOL changed = [self->dungeon_model onTap:pos];
+    
+    if (!changed) { return; }
+    
+    [self _runSequence];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -193,6 +199,10 @@
             [self->eventQueue addObject:event];
             break;
             
+        case DL_ON_UPDATE:
+            [self _runSequence];
+            break;
+            
         default:
             [self->eventQueue addObject:event];
             break;
@@ -203,7 +213,7 @@
 // メニューボタン押した時のハンドラ
 - (void)didPressButton:(CCMenuItem *)sender
 {
-    if (YES) {
+    if (NO) {
         // MENU に飛ばす
         CCScene *scene = [DungeonMenuScene scene];
         [[CCDirector sharedDirector] pushScene:scene];

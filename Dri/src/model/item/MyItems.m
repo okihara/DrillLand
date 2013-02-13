@@ -30,7 +30,7 @@
 {
     NSMutableArray *out_list = [NSMutableArray array];
     for (id item in self->my_items) {
-        [out_list addObject:item];
+        [out_list addObject:[self->my_items objectForKey:item]];
     }
     return out_list;
 }
@@ -42,11 +42,12 @@
     user_item.unique_id = self->last_id;
     self->last_id++;
 
-    [self->my_items setObject:user_item forKey:[NSNumber numberWithInt:user_item.unique_id]];
+    [self->my_items setObject:user_item
+                       forKey:[NSNumber numberWithInt:user_item.unique_id]];
     return user_item.unique_id;
 }
 
--(void)remove_item:(UInt32)unique_id
+-(void)removeItem:(UInt32)unique_id
 {
     return;
 }

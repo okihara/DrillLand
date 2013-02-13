@@ -65,4 +65,10 @@ BOOL reached = NO;
     STAssertTrue(reached, @"イベントがオブザーバーまで届いていない");
 }
 
+- (void)testPropertyName
+{
+    UserItem *userItem = [UserItem new];
+    STAssertTrue([@"hoge" isEqualToString:userItem.name], @"");
+}
+
 @end

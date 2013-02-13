@@ -68,6 +68,9 @@
 {
     BlockModel *player = self->dungeon_model.player;
     [self->my_items use:1 target:player dungeon:self->dungeon_model];
+
+    DLEvent *event = [DLEvent eventWithType:DL_ON_UPDATE target:nil];
+    [self->dungeon_model dispatchEvent:event];
     
     [[CCDirector sharedDirector] popScene];
 }
@@ -82,7 +85,6 @@
 + (CCScene *)scene:(DungeonModel *)dungeon_model
 {
     CCScene *scene = [CCScene node];
-//    CCLayer *layer = [InventoryScene node];
     CCLayer *layer = [[[InventoryScene alloc] init:dungeon_model] autorelease];
     [scene addChild:layer];
     return scene;
