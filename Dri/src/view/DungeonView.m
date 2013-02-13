@@ -15,7 +15,6 @@
 #import "BlockViewBuilder.h"
 
 
-
 @interface DungeonView ()
 -(void)update_curring_range;
 -(void)remove_block_view_outside:(DungeonModel *)dungeon_model;
@@ -82,7 +81,8 @@
 
 
 //------------------------------------------------------------------------------
-//
+
+
 -(void)add_player:(BlockView*)block
 {
     [self->player_layer addChild:block];
@@ -127,6 +127,8 @@
 //
 //==============================================================================
 
+//------------------------------------------------------------------------------
+// update
 - (void)update_block:(int)y x:(int)x dungeon_model:(DungeonModel *)dungeon_model
 {
     BlockView  *block_view  = [self->view_map get_x:x y:y];
@@ -183,10 +185,8 @@
     [self update_view_lines:dungeon_model];
 }
 
-
 //------------------------------------------------------------------------------
 // remove
-
 - (void)remove_block_view:(DLPoint)pos
 {
     BlockView *block = [self->view_map get_x:pos.x y:pos.y];
@@ -205,9 +205,9 @@
 - (void)remove_block_view_if_dead:(DLPoint)pos
 {
     BlockView *block = [self->view_map get_x:pos.x y:pos.y];
-    if (block.is_alive == NO) {
-        [self remove_block_view:pos];
-    }
+    if (block.is_alive) return;
+    
+    [self remove_block_view:pos];
 }
 
 - (void)remove_block_view_outside:(DungeonModel *)dungeon_model
@@ -302,20 +302,19 @@
 
 //==============================================================================
 // HELPER
-// TODO: 別のクラスに移動
 //==============================================================================
 
 - (CGPoint)mapPosToViewPoint:(DLPoint)pos
 {
-    return ccp(BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH,
+    return ccp(       BLOCK_WIDTH / 2 + pos.x * BLOCK_WIDTH,
                480 - (BLOCK_WIDTH / 2 + pos.y * BLOCK_WIDTH));
 }
 
 // スクリーン座標から viewMap の座標へ変換
 - (DLPoint)viewPointToMapPos:(CGPoint)point
 {
-    int x = (UInt32)((      point.x - DV_OFFSET_X)      / BLOCK_WIDTH);
-    int y = (UInt32)((480 - point.y + self->offset_y) / BLOCK_WIDTH);
+    UInt32 x = (UInt32)((      point.x - DV_OFFSET_X)    / BLOCK_WIDTH);
+    UInt32 y = (UInt32)((480 - point.y + self->offset_y) / BLOCK_WIDTH);
     return cdp(x, y);
 }
 

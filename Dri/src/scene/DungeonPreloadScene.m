@@ -62,7 +62,6 @@
     
     // load dungeon data
     if (dungeon_id==3) {
-        //random
         [self->dungeon_model load_random:0];
     } {
         [self->dungeon_model load_from_file:[NSString stringWithFormat:@"floor%03d.json", dungeon_id]];

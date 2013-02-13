@@ -105,14 +105,14 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DLPoint pos = [self _mapPosFromTouches:touches];
-    [self->dungeon_view on_touch_start:pos];
+//    DLPoint pos = [self _mapPosFromTouches:touches];
+//    //[self->dungeon_view on_touch_start:pos];
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DLPoint pos = [self _mapPosFromTouches:touches];
-    [self->dungeon_view on_touch_start:pos];
+//    DLPoint pos = [self _mapPosFromTouches:touches];
+//    [self->dungeon_view on_touch_start:pos];
 }
 
 - (void)_handleStateNormal:(NSSet *)touches
@@ -123,7 +123,6 @@
     if (!changed) { return; }
     
     // タップ後のシーケンス再生
-    //[self run_sequence];
     CCAction *action = [self->seqBuilder build:self                         
                                   dungeonModel:self->dungeon_model 
                                    dungeonView:self->dungeon_view 
@@ -143,15 +142,11 @@
     switch (state) {
             
         case 0:
-        {
             [self _handleStateNormal:touches];
-        }
             break;
             
         case 1:
-        {
             // クリア時のステート
-        }
             break;
             
         default:
