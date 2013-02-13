@@ -16,8 +16,8 @@
     uint master_id;
     UInt16 type;
 }
-@property (assign) UInt32 unique_id;
-@property (readonly, assign) NSString *name;
+@property (nonatomic, assign) UInt32 unique_id;
+@property (nonatomic, readonly, assign) NSString *name;
 
 -(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon;
 

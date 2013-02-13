@@ -10,6 +10,8 @@
 #import "MyItems.h"
 #import "UserItem.h"
 #import "DungeonModel.h"
+#import "InventoryMenuItem.h"
+
 
 @implementation InventoryScene
 
@@ -32,7 +34,7 @@
         NSMutableArray *menu_items = [NSMutableArray array];
         NSArray *item_list = [self->my_items get_list];
         for (UserItem *user_item in item_list) {
-            CCMenuItemFont *menu_item = [CCMenuItemFont itemWithString:user_item.name target:self selector:@selector(didPressButtonItems:)];
+            InventoryMenuItem *menu_item = [[[InventoryMenuItem alloc] initWithUserItem:user_item target:self selector:@selector(didPressButtonItems:)] autorelease];
             [menu_items addObject:menu_item];
         }
         CCMenu *menu = [CCMenu menuWithArray:menu_items];
@@ -46,8 +48,10 @@
 
 - (void)didPressButtonItems:(CCMenuItem *)sender
 {
+    InventoryMenuItem *menuItem = (InventoryMenuItem *)sender;
+    UserItem *userItem = menuItem.userItem;
     BlockModel *player = self->dungeon_model.player;
-    [self->my_items use:1 target:player dungeon:self->dungeon_model];
+    [self->my_items use:userItem.unique_id target:player dungeon:self->dungeon_model];
 
     DLEvent *event = [DLEvent eventWithType:DL_ON_UPDATE target:nil];
     [self->dungeon_model dispatchEvent:event];

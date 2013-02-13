@@ -222,6 +222,7 @@
 		C1CCAAB0160755CB00A0EB1C /* BlockBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */; };
 		C1D972DD16CB94A700017FDD /* blk12003.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D972DC16CB94A300017FDD /* blk12003.png */; };
 		C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D972E216CBAF6F00017FDD /* blk12004.png */; };
+		C1D972E716CBB99A00017FDD /* InventoryMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D972E616CBB99600017FDD /* InventoryMenuItem.m */; };
 		C1EE3B8C160757DA00DE62CD /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EE3B8B160757DA00DE62CD /* FontFactory.m */; };
 		C1EE3BB31608088500DE62CD /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BA81608088500DE62CD /* Default-Landscape~ipad.png */; };
 		C1EE3BB41608088500DE62CD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EE3BA91608088500DE62CD /* Default.png */; };
@@ -694,6 +695,8 @@
 		C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockBuilder.m; path = src/model/BlockBuilder.m; sourceTree = "<group>"; };
 		C1D972DC16CB94A300017FDD /* blk12003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12003.png; path = Resources/spritesheet/block/blk12003.png; sourceTree = "<group>"; };
 		C1D972E216CBAF6F00017FDD /* blk12004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12004.png; path = Resources/spritesheet/block/blk12004.png; sourceTree = "<group>"; };
+		C1D972E516CBB99200017FDD /* InventoryMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InventoryMenuItem.h; path = src/scene/InventoryMenuItem.h; sourceTree = "<group>"; };
+		C1D972E616CBB99600017FDD /* InventoryMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventoryMenuItem.m; path = src/scene/InventoryMenuItem.m; sourceTree = "<group>"; };
 		C1EE3B8A160757DA00DE62CD /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontFactory.h; path = src/misc/FontFactory.h; sourceTree = "<group>"; };
 		C1EE3B8B160757DA00DE62CD /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontFactory.m; path = src/misc/FontFactory.m; sourceTree = "<group>"; };
 		C1EE3BA81608088500DE62CD /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/misc/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -1446,6 +1449,8 @@
 			children = (
 				C1F089AF16A2523500D9C350 /* InventoryScene.h */,
 				C1F089B016A2523500D9C350 /* InventoryScene.m */,
+				C1D972E516CBB99200017FDD /* InventoryMenuItem.h */,
+				C1D972E616CBB99600017FDD /* InventoryMenuItem.m */,
 				C1CCAAA11607557400A0EB1C /* GamePreloadScene.h */,
 				C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */,
 				C1937C481617D05A007A8D05 /* HomeScene.h */,
@@ -2038,6 +2043,7 @@
 				CE07285816C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
 				C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
 				C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
+				C1D972E716CBB99A00017FDD /* InventoryMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
