@@ -11,29 +11,11 @@
 #import "BehaviorFactory.h"
 #import "MasterLoader.h"
 
+
 @implementation BlockBuilder
 
--(BlockModel*)buildWithID:(enum ID_BLOCK)id_
+-(void)_attachBehavior:(BlockModel *)block master:(NSDictionary *)master
 {
-    // get json data from master
-    NSDictionary *master = [MasterLoader get_master_by_id:id_];
-    
-    // setup parameter
-    BlockModel* b = [[BlockModel alloc] init];
-    
-    b.block_id = id_;
-    b.type     = [[master objectForKey:@"type"] intValue];
-    b.group_id = [[master objectForKey:@"group_id"] intValue];
-    b.view_id  = [[master objectForKey:@"view_id"] intValue];
-    b.view_type= [[master objectForKey:@"view_type"] intValue];
-    b.hp       = [[master objectForKey:@"hp"] intValue];
-    b.max_hp   = b.hp;
-    b.atk      = [[master objectForKey:@"atk"] intValue];
-    b.def      = [[master objectForKey:@"def"] intValue];
-    b.exp      = [[master objectForKey:@"exp"] intValue];
-    b.gold     = [[master objectForKey:@"gold"] intValue];
-    
-    // setup behavior
     for (int i = 0; i < 3; ++i) {
         NSString *key = [NSString stringWithFormat:@"behavior_%d", i];
         NSNumber *number = [master objectForKey:key];
@@ -45,10 +27,36 @@
             continue;
         }
         NSObject<BlockBehaivior> *behavior = [BehaviorFactory create:behavior_id];
-        [b attach_behaivior:behavior];
+        [block attach_behaivior:behavior];
     }
+}
+
+- (void)_attachParams:(BlockModel *)b master:(NSDictionary *)master
+{
+    b.type      = [[master objectForKey:@"type"] intValue];
+    b.group_id  = [[master objectForKey:@"group_id"] intValue];
+    b.view_id   = [[master objectForKey:@"view_id"] intValue];
+    b.view_type = [[master objectForKey:@"view_type"] intValue];
+    b.hp        = [[master objectForKey:@"hp"] intValue];
+    b.max_hp    = b.hp;
+    b.atk       = [[master objectForKey:@"atk"] intValue];
+    b.def       = [[master objectForKey:@"def"] intValue];
+    b.exp       = [[master objectForKey:@"exp"] intValue];
+    b.gold      = [[master objectForKey:@"gold"] intValue];
+}
+
+-(BlockModel*)buildWithID:(enum ID_BLOCK)id_
+{
+    // get json data from master
+    NSDictionary *master = [MasterLoader get_master_by_id:id_];
     
-    return b;
+    BlockModel *block = [[BlockModel alloc] init];
+    block.block_id = id_;
+    
+    [self _attachParams:  block master:master];
+    [self _attachBehavior:block master:master];
+    
+    return block;
 }
 
 @end
