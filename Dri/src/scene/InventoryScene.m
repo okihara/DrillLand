@@ -32,7 +32,7 @@
 
         // IMPLEMENT:
         NSMutableArray *menu_items = [NSMutableArray array];
-        NSArray *item_list = [self->my_items get_list];
+        NSArray *item_list = [self->my_items getList];
         for (UserItem *user_item in item_list) {
             InventoryMenuItem *menu_item = [[[InventoryMenuItem alloc] initWithUserItem:user_item target:self selector:@selector(didPressButtonItems:)] autorelease];
             [menu_items addObject:menu_item];

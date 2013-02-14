@@ -15,64 +15,64 @@
 {
     if(self=[super init]) {
         last_id = 1;
-        self->my_items = [[NSMutableDictionary alloc] init];
+        self->myItems = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 -(void)dealloc
 {
-    [self->my_items release];
+    [self->myItems release];
     [super dealloc];
 }
 
 // -----------------------------------------------------------------------------
--(UserItem *)get_by_id:(UInt64)unique_id
+-(UserItem *)getById:(UInt64)uniqueId
 {
-    return [self->my_items objectForKey:[NSNumber numberWithInt:unique_id]];
+    return [self->myItems objectForKey:[NSNumber numberWithInt:uniqueId]];
 }
 
--(NSArray*)get_list
+-(NSArray *)getList
 {
     NSMutableArray *out_list = [NSMutableArray array];
-    for (id item in self->my_items) {
-        [out_list addObject:[self->my_items objectForKey:item]];
+    for (id item in self->myItems) {
+        [out_list addObject:[self->myItems objectForKey:item]];
     }
     return out_list;
 }
 
 // -----------------------------------------------------------------------------
 // add/remove
--(UInt64)add_item:(UserItem*)user_item
+-(UInt64)addItem:(UserItem*)userItem
 {
-    user_item.unique_id = self->last_id;
+    userItem.unique_id = self->last_id;
     self->last_id++;
 
-    [self->my_items setObject:user_item
-                       forKey:[NSNumber numberWithInt:user_item.unique_id]];
-    return user_item.unique_id;
+    [self->myItems setObject:userItem
+                       forKey:[NSNumber numberWithInt:userItem.unique_id]];
+    return userItem.unique_id;
 }
 
 -(void)removeItem:(UInt32)unique_id
 {
-    return [self->my_items removeObjectForKey:[NSNumber numberWithInt:unique_id]];
+    return [self->myItems removeObjectForKey:[NSNumber numberWithInt:unique_id]];
 }
 
 // -----------------------------------------------------------------------------
--(BOOL)use:(UInt64)unique_item_id
-    target:(BlockModel*)block_model 
-   dungeon:(DungeonModel*)dungeon_model
+-(BOOL)use:(UInt64)uniqueId
+    target:(BlockModel*)blockModel 
+   dungeon:(DungeonModel*)dungeonModel
 {
-    UserItem *user_item = [self get_by_id:unique_item_id];
+    UserItem *user_item = [self getById:uniqueId];
     
-    [user_item use:block_model dungeon:dungeon_model];
-    [self removeItem:unique_item_id];
+    [user_item use:blockModel dungeon:dungeonModel];
+    [self removeItem:uniqueId];
     
     return YES;
 }
 
 // -----------------------------------------------------------------------------
--(BOOL)equip:(UInt64)unique_item_id dungeon:(DungeonModel*)dungeonModel
+-(BOOL)equip:(UInt64)uniqueId dungeon:(DungeonModel*)dungeonModel
 {
     // 装備可能アイテムか？
     

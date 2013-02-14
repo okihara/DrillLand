@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/10/18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,14 +14,15 @@
 
 @interface MyItems : NSObject
 {
-    NSMutableDictionary *my_items;
+    NSMutableDictionary *myItems;
     UInt64 last_id;
 }
 
--(NSArray*)get_list;
--(UInt64)add_item:(UserItem*)user_item;
+-(NSArray*)getList;
+-(UInt64)addItem:(UserItem *)userItem;
 
--(UserItem*)get_by_id:(UInt64)unique_id;
--(BOOL)use:(UInt64)unique_item_id target:(BlockModel*)block_model dungeon:(DungeonModel*)dungeon_model;
+-(UserItem*)getById:(UInt64)uniqueId;
+-(BOOL)use:(UInt64)uniqueId target:(BlockModel*)blockModel dungeon:(DungeonModel*)dungeonModel;
+-(BOOL)equip:(UInt64)uniqueId dungeon:(DungeonModel*)dungeonModel;
 
 @end

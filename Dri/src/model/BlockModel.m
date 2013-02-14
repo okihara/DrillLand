@@ -98,7 +98,7 @@
 // my_item
 -(void)add_item:(UserItem*)user_item
 {
-    [self->my_items add_item:user_item];
+    [self->my_items addItem:user_item];
 }
 
 // -----------------------------------------------------------------------------
