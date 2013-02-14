@@ -21,6 +21,7 @@ enum ITEM_TYPE {
     uint def;
     uint type;
     uint action_id;
+    BOOL canEquip;
 }
 
 @end

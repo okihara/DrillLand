@@ -26,6 +26,12 @@
     [super dealloc];
 }
 
+// -----------------------------------------------------------------------------
+-(UserItem *)get_by_id:(UInt64)unique_id
+{
+    return [self->my_items objectForKey:[NSNumber numberWithInt:unique_id]];
+}
+
 -(NSArray*)get_list
 {
     NSMutableArray *out_list = [NSMutableArray array];
@@ -52,11 +58,7 @@
     return [self->my_items removeObjectForKey:[NSNumber numberWithInt:unique_id]];
 }
 
--(UserItem*)get_by_id:(UInt64)unique_id
-{
-    return [self->my_items objectForKey:[NSNumber numberWithInt:unique_id]];
-}
-
+// -----------------------------------------------------------------------------
 -(BOOL)use:(UInt64)unique_item_id
     target:(BlockModel*)block_model 
    dungeon:(DungeonModel*)dungeon_model
@@ -65,6 +67,32 @@
     
     [user_item use:block_model dungeon:dungeon_model];
     [self removeItem:unique_item_id];
+    
+    return YES;
+}
+
+// -----------------------------------------------------------------------------
+-(BOOL)equip:(UInt64)unique_item_id dungeon:(DungeonModel*)dungeonModel
+{
+    // 装備可能アイテムか？
+    
+    // 同じ部位に既に装備しているアイテムがあれば、外す
+    
+    // 装備する
+
+    // 再計算処理();
+
+    return YES;
+}
+
+-(BOOL)unequip:(UInt64)unique_item_id dungeon:(DungeonModel*)dungeonModel
+{
+    // 装備してる？
+    // assert
+    
+    // 装備外す
+    
+    // 再計算処理();
     
     return YES;
 }
