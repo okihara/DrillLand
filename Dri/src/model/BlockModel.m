@@ -66,6 +66,7 @@
         [self->my_items release];
     }
     self->my_items = [[MyItems alloc] init];
+    
     self->my_equipment = [[MyEquipment alloc] init];
 }
 
@@ -74,6 +75,16 @@
     [self->behavior_list release];
     [self->my_items release];
     [super dealloc];
+}
+
+// -----------------------------------------------------------------------------
+
+-(void)setHp:(int)newHp
+{
+    self->hp = newHp;
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"UpdateHP" object:self];
 }
 
 // -----------------------------------------------------------------------------
@@ -152,8 +163,6 @@
     if (self.hp > self.max_hp) {
         self.hp = self.max_hp;
     }
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:@"UpdateHP" object:[NSNumber numberWithInt:self.hp]];
 }
 
 @end

@@ -9,13 +9,16 @@
 #import "StatusBarView.h"
 #import "DL.h"
 #import "FontFactory.h"
+#import "BlockModel.h"
 
 @implementation StatusBarView
 
 -(void)update_hp:(NSNotification *)aNotification
 {
-    NSNumber *value = (NSNumber*)[aNotification object];
-    [self->hp setString:[NSString stringWithFormat:@"HP: %d", [value intValue]]];
+    BlockModel *block = (BlockModel *)[aNotification object];
+    if (block.block_id != ID_PLAYER) return;
+    
+    [self->hp setString:[NSString stringWithFormat:@"HP: %d", block.hp]];
 }
 
 -(void)update_floor:(NSNotification *)aNotification
@@ -53,7 +56,8 @@
         [self addChild:self->floor];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc addObserver:self selector:@selector(update_hp:) name:@"UpdateHP" object:nil];
+        
+        [nc addObserver:self selector:@selector(update_hp:)    name:@"UpdateHP" object:nil];
         [nc addObserver:self selector:@selector(update_floor:) name:@"UpdateFloor" object:nil];
     }
     return self;

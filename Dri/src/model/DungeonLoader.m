@@ -74,12 +74,12 @@ static int block_id_list[] = {
     ID_GROUPED_BLOCK_3,
     ID_UNBREAKABLE_BLOCK,
     
-//    ID_ENEMY_BLOCK_0, // BLUE SLIME
-//    ID_ENEMY_BLOCK_1, // RED  SLIME
-//    
-//    ID_ITEM_BLOCK_0, // POTION
-//    ID_ITEM_BLOCK_1, // DORAYAKI
-//    ID_ITEM_BLOCK_2, // TREASURE
+    ID_ENEMY_BLOCK_0, // BLUE SLIME
+    ID_ENEMY_BLOCK_1, // RED  SLIME
+    
+    ID_ITEM_BLOCK_0, // POTION
+    ID_ITEM_BLOCK_1, // DORAYAKI
+    ID_ITEM_BLOCK_2, // TREASURE
     
     12004, // 武器シルエット
 

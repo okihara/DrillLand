@@ -42,18 +42,15 @@
         dungeon_view = [DungeonView node];
         [self addChild:dungeon_view];
         
-        // calc curring
-        //[self->dungeon_view update_curring_range];
-        
         // setup dungeon model
         self->dungeon_model = dungeon_model_;
         [self->dungeon_model addObserver:self];
 
         // setup player
-        BlockView* player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
+        BlockView *player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
         [dungeon_view add_player:player];
         dungeon_view.player = player;
-        [player release];
+        //[player release];
 
         // 勇者を初期位置に
         [dungeon_view update_view:dungeon_model];
@@ -65,10 +62,9 @@
         [self addChild:self->fade_layer z:10];
         
         // status bar
-        self->statusbar = [[StatusBarView alloc]init];
+        self->statusbar = [[StatusBarView alloc] init];
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
-
         
         // menu
         self->itemItem = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
@@ -78,8 +74,7 @@
         [menu alignItemsHorizontally];
         [self addChild:menu];
         
-        
-        // --
+        // 小通知
         [BasicNotifierView setup:self];
         
         [self _runFirstSequece];
@@ -276,6 +271,5 @@
         self.isTouchEnabled = YES;
     }], nil]];
 }
-
 
 @end
