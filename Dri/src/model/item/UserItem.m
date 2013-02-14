@@ -16,13 +16,16 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        self->type = 1001;
+        self->master_id = 0;
+        self->type      = 1001;
+        self->isEquiped = NO;
 	}
 	return self;
 }
 
 -(NSString*)name
 {
+    // TODO: マスターからとってくる
     return @"hoge";
 }
 
