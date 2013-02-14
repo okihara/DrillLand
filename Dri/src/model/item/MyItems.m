@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/10/18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "MyItems.h"
@@ -71,17 +71,38 @@
     return YES;
 }
 
+-(void)calcEquipments
+{
+    // ソートとか要る？
+    NSArray *itemList = [self getList];
+    NSArray *equipedItemList = [itemList copy];
+    
+    int totalAtk = 0;
+    for (UserItem *userItem in equipedItemList) {
+        totalAtk += userItem.atk;
+    }
+    
+    // オーナーの atk を更新
+}
+
 // -----------------------------------------------------------------------------
 -(BOOL)equip:(UInt64)uniqueId dungeon:(DungeonModel*)dungeonModel
 {
+    UserItem *userItem = [self getById:uniqueId];
+    
+    // もってるのか？
+    NSAssert(userItem, @"should be not nil");
+    
     // 装備可能アイテムか？
     
     // 同じ部位に既に装備しているアイテムがあれば、外す
     
     // 装備する
+    userItem.isEquiped = YES;
 
     // 再計算処理();
-
+    [self calcEquipments];
+    
     return YES;
 }
 

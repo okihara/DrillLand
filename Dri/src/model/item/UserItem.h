@@ -17,8 +17,11 @@
     UInt16 type;
     BOOL   isEquiped;
 }
+
 @property (nonatomic, readwrite) UInt32   unique_id;
 @property (nonatomic, readonly)  NSString *name;
+@property (nonatomic, readwrite) BOOL     isEquiped;
+@property (nonatomic, readonly)  int      atk;
 
 -(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon;
 

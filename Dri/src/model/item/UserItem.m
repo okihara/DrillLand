@@ -12,6 +12,7 @@
 @implementation UserItem
 
 @synthesize unique_id;
+@synthesize isEquiped;
 
 -(id) init
 {
@@ -49,6 +50,11 @@
             break;
     }
     return YES;
+}
+
+-(int)atk
+{
+    return 10;
 }
 
 @end
