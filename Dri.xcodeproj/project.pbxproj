@@ -59,7 +59,6 @@
 		C145523B16369AFC0032350D /* MockViewContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523A16369AFC0032350D /* MockViewContext.m */; };
 		C145523E163A2A4F0032350D /* DungeonLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523D163A2A4D0032350D /* DungeonLoader.m */; };
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
-		C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = C1485322162F8ACF0023FAF6 /* MyEquipment.m */; };
 		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
 		C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532816314D9C0023FAF6 /* GetGoldView.m */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
@@ -355,8 +354,6 @@
 		C145523D163A2A4D0032350D /* DungeonLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonLoader.m; path = src/model/DungeonLoader.m; sourceTree = "<group>"; };
 		C148531D162F7E470023FAF6 /* MyItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyItems.h; path = src/model/item/MyItems.h; sourceTree = "<group>"; };
 		C148531E162F7E470023FAF6 /* MyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyItems.m; path = src/model/item/MyItems.m; sourceTree = "<group>"; };
-		C1485321162F8ACF0023FAF6 /* MyEquipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyEquipment.h; path = src/model/item/MyEquipment.h; sourceTree = "<group>"; };
-		C1485322162F8ACF0023FAF6 /* MyEquipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyEquipment.m; path = src/model/item/MyEquipment.m; sourceTree = "<group>"; };
 		C148532416312D800023FAF6 /* GetExpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetExpView.h; path = src/view/viewparts/GetExpView.h; sourceTree = "<group>"; };
 		C148532516312D810023FAF6 /* GetExpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetExpView.m; path = src/view/viewparts/GetExpView.m; sourceTree = "<group>"; };
 		C148532716314D9A0023FAF6 /* GetGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGoldView.h; path = src/view/viewparts/GetGoldView.h; sourceTree = "<group>"; };
@@ -968,8 +965,6 @@
 			children = (
 				C148531D162F7E470023FAF6 /* MyItems.h */,
 				C148531E162F7E470023FAF6 /* MyItems.m */,
-				C1485321162F8ACF0023FAF6 /* MyEquipment.h */,
-				C1485322162F8ACF0023FAF6 /* MyEquipment.m */,
 				C183A13C161115E500FE672F /* UserItem.h */,
 				C183A13D161115E500FE672F /* UserItem.m */,
 				C183A139160FFB7000FE672F /* ItemMaster.h */,
@@ -2025,7 +2020,6 @@
 				C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */,
 				C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */,
 				C148531F162F7E470023FAF6 /* MyItems.m in Sources */,
-				C1485323162F8AD00023FAF6 /* MyEquipment.m in Sources */,
 				C148532616312D820023FAF6 /* GetExpView.m in Sources */,
 				C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */,
 				C1455233163604E40032350D /* DebugBlockScene.m in Sources */,

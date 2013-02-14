@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XDMap.h"
 #import "MyItems.h"
-#import "MyEquipment.h"
 
 enum ID_BLOCK {
     ID_EMPTY             = 0,
@@ -71,7 +70,6 @@ enum ID_BLOCK {
     
     // items/equipment
     MyItems     *my_items;
-    MyEquipment *my_equipment;
 }
 @property (nonatomic, assign) uint block_id;
 @property (nonatomic, assign) uint type;

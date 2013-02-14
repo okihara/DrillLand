@@ -13,9 +13,12 @@
 @interface InventoryMenuItem : CCMenuItemFont
 {
     UserItem *userItem;
+    BOOL     isSelected;
 }
-@property (nonatomic, readonly) UserItem *userItem;
+@property (nonatomic, readonly)  UserItem *userItem;
+@property (nonatomic, readwrite) BOOL     isSelected;
 
 -(id)initWithUserItem:(UserItem*)userItem_ target:(id)r selector:(SEL)s;
+-(BOOL)onTap;
 
 @end

@@ -15,6 +15,7 @@
 {
     DungeonModel *dungeon_model;
     MyItems      *my_items;
+    NSMutableArray *menuItemList;
 }
 
 +(CCScene*)scene:(DungeonModel*)dungeon_model;

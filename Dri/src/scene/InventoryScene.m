@@ -31,13 +31,13 @@
         self->dungeon_model = dungeon_model_;
 
         // IMPLEMENT:
-        NSMutableArray *menu_items = [NSMutableArray array];
+        self->menuItemList = [[NSMutableArray alloc] init];
         NSArray *item_list = [self->my_items getList];
         for (UserItem *user_item in item_list) {
             InventoryMenuItem *menu_item = [[[InventoryMenuItem alloc] initWithUserItem:user_item target:self selector:@selector(didPressButtonItems:)] autorelease];
-            [menu_items addObject:menu_item];
+            [self->menuItemList addObject:menu_item];
         }
-        CCMenu *menu = [CCMenu menuWithArray:menu_items];
+        CCMenu *menu = [CCMenu menuWithArray:self->menuItemList];
         menu.position = ccp(160, 240);
         [menu alignItemsVertically];
         [self addChild:menu];
@@ -46,7 +46,13 @@
     return self;
 }
 
-- (void)didPressButtonItems:(CCMenuItem *)sender
+-(void)dealloc
+{
+    [self->menuItemList release];
+    [super release];
+}
+
+- (void)___didPressButtonItems:(CCMenuItem *)sender
 {
     InventoryMenuItem *menuItem = (InventoryMenuItem *)sender;
     UserItem *userItem = menuItem.userItem;
@@ -57,6 +63,25 @@
     [self->dungeon_model dispatchEvent:event];
     
     [[CCDirector sharedDirector] popScene];
+}
+
+- (void)didPressButtonItems:(CCMenuItem *)sender
+{
+    InventoryMenuItem *menuItem = (InventoryMenuItem *)sender;
+    
+    // TODO: onTap 2回呼んでるのがいけてない
+    
+    BOOL needUse = [menuItem onTap];
+
+    // 全部 色変える
+    for (InventoryMenuItem *menuItem in self->menuItemList) {
+        menuItem.isSelected = NO;
+    }
+    [menuItem onTap];
+    
+    if (needUse) {
+        [self ___didPressButtonItems:sender];
+    }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
