@@ -1,0 +1,76 @@
+{
+   "item_master" : [
+      {
+         "hp" : "1",
+         "primary_id" : "0",
+         "atk" : "10000",
+         "name" : "空の",
+         "action_id" : "65535",
+         "description" : null,
+         "use" : "1",
+         "canEquip" : "0",
+         "def" : "100",
+         "type" : "0"
+      },
+      {
+         "hp" : "1",
+         "primary_id" : "10000",
+         "atk" : "10000",
+         "name" : "SHORT-SWORD",
+         "action_id" : "65535",
+         "description" : null,
+         "use" : "1",
+         "canEquip" : "0",
+         "def" : "100",
+         "type" : "100"
+      },
+      {
+         "hp" : "1",
+         "primary_id" : "10001",
+         "atk" : "10001",
+         "name" : "SMALL-SHELD",
+         "action_id" : "65535",
+         "description" : null,
+         "use" : "1",
+         "canEquip" : "0",
+         "def" : "100",
+         "type" : "100"
+      },
+      {
+         "hp" : null,
+         "primary_id" : null,
+         "atk" : null,
+         "name" : null,
+         "action_id" : null,
+         "description" : null,
+         "use" : null,
+         "canEquip" : null,
+         "def" : null,
+         "type" : null
+      },
+      {
+         "hp" : null,
+         "primary_id" : null,
+         "atk" : null,
+         "name" : null,
+         "action_id" : null,
+         "description" : null,
+         "use" : null,
+         "canEquip" : null,
+         "def" : null,
+         "type" : null
+      },
+      {
+         "hp" : null,
+         "primary_id" : null,
+         "atk" : null,
+         "name" : null,
+         "action_id" : null,
+         "description" : null,
+         "use" : null,
+         "canEquip" : null,
+         "def" : null,
+         "type" : null
+      }
+   ]
+}

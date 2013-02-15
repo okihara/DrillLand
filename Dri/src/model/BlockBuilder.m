@@ -48,7 +48,7 @@
 -(BlockModel*)buildWithID:(enum ID_BLOCK)id_
 {
     // get json data from master
-    NSDictionary *master = [MasterLoader get_master_by_id:id_];
+    NSDictionary *master = [MasterLoader getMaster:@"block_master" primaryId:id_];
     
     BlockModel *block = [[BlockModel alloc] init];
     block.block_id = id_;

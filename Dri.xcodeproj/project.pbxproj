@@ -61,6 +61,9 @@
 		C148531F162F7E470023FAF6 /* MyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C148531E162F7E470023FAF6 /* MyItems.m */; };
 		C148532616312D820023FAF6 /* GetExpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532516312D810023FAF6 /* GetExpView.m */; };
 		C148532916314D9E0023FAF6 /* GetGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = C148532816314D9C0023FAF6 /* GetGoldView.m */; };
+		C14C3A1A16CE050300B67B27 /* TestMasterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C3A1816CE050200B67B27 /* TestMasterLoader.m */; };
+		C14C3A1C16CE210900B67B27 /* item_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A1B16CE210900B67B27 /* item_master.json */; };
+		C14C3A1D16CE210900B67B27 /* item_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A1B16CE210900B67B27 /* item_master.json */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -358,6 +361,9 @@
 		C148532516312D810023FAF6 /* GetExpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetExpView.m; path = src/view/viewparts/GetExpView.m; sourceTree = "<group>"; };
 		C148532716314D9A0023FAF6 /* GetGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGoldView.h; path = src/view/viewparts/GetGoldView.h; sourceTree = "<group>"; };
 		C148532816314D9C0023FAF6 /* GetGoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGoldView.m; path = src/view/viewparts/GetGoldView.m; sourceTree = "<group>"; };
+		C14C3A1716CE050200B67B27 /* TestMasterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMasterLoader.h; sourceTree = "<group>"; };
+		C14C3A1816CE050200B67B27 /* TestMasterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMasterLoader.m; sourceTree = "<group>"; };
+		C14C3A1B16CE210900B67B27 /* item_master.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = item_master.json; path = Resources/master/item_master.json; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -835,6 +841,8 @@
 				C1089145169FE7320094FF8C /* TestDungeonModel.m */,
 				C1089148169FF9F10094FF8C /* TestMyItems.h */,
 				C1089149169FF9F10094FF8C /* TestMyItems.m */,
+				C14C3A1716CE050200B67B27 /* TestMasterLoader.h */,
+				C14C3A1816CE050200B67B27 /* TestMasterLoader.m */,
 				C11768B41687F52200CC0C81 /* Supporting Files */,
 			);
 			path = Test;
@@ -912,6 +920,7 @@
 			isa = PBXGroup;
 			children = (
 				C132CC1316510E4600AA4217 /* block_master.json */,
+				C14C3A1B16CE210900B67B27 /* item_master.json */,
 			);
 			name = master;
 			sourceTree = "<group>";
@@ -1752,6 +1761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C11768B81687F52200CC0C81 /* InfoPlist.strings in Resources */,
+				C14C3A1D16CE210900B67B27 /* item_master.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1814,6 +1824,7 @@
 				C10A1B84166B9449009E748E /* death3.wav in Resources */,
 				C1D972DD16CB94A700017FDD /* blk12003.png in Resources */,
 				C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */,
+				C14C3A1C16CE210900B67B27 /* item_master.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1850,6 +1861,7 @@
 				CE07285916C8791B0031834C /* DungeonModelRouteMap.m in Sources */,
 				C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
 				C1FA43FA16CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
+				C14C3A1A16CE050300B67B27 /* TestMasterLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

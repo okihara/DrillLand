@@ -52,9 +52,8 @@
 
         [frame_loader load_sprite:@"common.json"];
         
-        // ---
-        MasterLoader *master_loader = [[MasterLoader new] autorelease];
-        [master_loader load:@"block_master.json"];
+        // マスターデータをロード
+        [MasterLoader load:@"block_master.json"];
 
         // ---
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"skullpile1.wav"];

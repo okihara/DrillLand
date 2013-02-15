@@ -3,38 +3,48 @@
 //  Dri
 //
 //  Created by  on 12/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "MasterLoader.h"
 #import "SBJson.h"
 
+
+NSMutableDictionary *masterTable;
+
 @implementation MasterLoader
 
-NSArray *master_list;
-
--(void)load:(NSString*)filename
++(void)load:(NSString *)filename
 {
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
-    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSString *jsonData = [NSString stringWithContentsOfFile:path 
+                                                   encoding:NSUTF8StringEncoding error:nil];
     id jsonItem = [jsonData JSONValue];
-    master_list = [(NSDictionary*)jsonItem objectForKey:@"block_master"];
+    NSString *sheetName = [filename substringWithRange:NSMakeRange(0, [filename length] - 5)];
+
+    NSArray *master_list = [(NSDictionary*)jsonItem objectForKey:sheetName];
     
-    NSLog(@"master_list %@", master_list);
+    if (!masterTable) {
+        masterTable = [[NSMutableDictionary alloc] init];
+    }
+    
+    [masterTable setObject:master_list forKey:sheetName];
 }
 
-+(NSDictionary*)get_master_by_id:(uint)id_
++(NSDictionary*)getMaster:(NSString*)masterName primaryId:(uint)id_;
 {
+    NSArray *master_list = [masterTable valueForKey:masterName];
+    
     for (NSDictionary *json in master_list) {
         if (!json) {
             continue;
         }
-        NSNumber *number = [json objectForKey:@"block_id"];
+        NSNumber *number = [json objectForKey:@"primary_id"];
         if ([number isKindOfClass:[NSNull class]]) {
             continue;
         }
-        uint block_id = [number intValue];
-        if (block_id == id_) {
+        uint primaryId = [number intValue];
+        if (primaryId == id_) {
             return json;
         }
     }
