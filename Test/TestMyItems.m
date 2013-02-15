@@ -31,7 +31,7 @@
     UserItem *item    = [UserItem new];
     
     // 実行 -------
-    UInt64 unique_item_id = [my_items add_item:item];
+    UInt64 unique_item_id = [my_items addItem:item];
     
     // アサート ---
     STAssertEquals(unique_item_id, (UInt64)1, @"");
@@ -44,13 +44,13 @@
     
     {
         UserItem *item    = [UserItem new];
-        [my_items add_item:item];
+        [my_items addItem:item];
     }
     
     UserItem *item    = [UserItem new];
     
     // 実行 -------
-    UInt64 unique_item_id = [my_items add_item:item];
+    UInt64 unique_item_id = [my_items addItem:item];
     
     // アサート ---
     STAssertEquals(unique_item_id, (UInt64)2, @"");
@@ -63,15 +63,15 @@
     
     {
         UserItem *item    = [UserItem new];
-        [my_items add_item:item];
+        [my_items addItem:item];
     }
     {
         UserItem *item    = [UserItem new];
-        [my_items add_item:item];
+        [my_items addItem:item];
     }
     
     // 実行 -------
-    NSArray *item_list = [my_items get_list];
+    NSArray *item_list = [my_items getList];
     
     // アサート ---
     STAssertNotNil(item_list, @"");
@@ -84,7 +84,7 @@
     MyItems *my_items = [MyItems new];
     
     UserItem *item    = [UserItem new];
-    UInt64 unique_item_id = [my_items add_item:item];
+    UInt64 unique_item_id = [my_items addItem:item];
     
     DungeonModel *dungeon_model = [DungeonModel new];
     BlockModel   *block_model   = [BlockModel new];
@@ -102,10 +102,10 @@
     MyItems *my_items = [MyItems new];
     
     UserItem *item    = [UserItem new];
-    UInt64 unique_item_id = [my_items add_item:item];
+    UInt64 unique_item_id = [my_items addItem:item];
     
     // 実行 -------
-    UserItem *result_item = [my_items get_by_id:unique_item_id];
+    UserItem *result_item = [my_items getById:unique_item_id];
     
     // アサート ---
     STAssertEquals(result_item, item, @"");
