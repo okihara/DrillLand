@@ -16,7 +16,8 @@
 
 -(id)initWithUserItem:(UserItem*)userItem_ target:(id)r selector:(SEL)s
 {
-    NSString *strItem = [NSString stringWithFormat:@"%d %@", userItem_.unique_id, userItem_.name];
+    NSString *equiped = userItem_.isEquiped ? @"E" : @"";
+    NSString *strItem = [NSString stringWithFormat:@"%@ %@(%d)", equiped, userItem_.name, userItem_.uniqueId];
 
 	if(self=[super initWithString:strItem target:r selector:s]) {
         self->userItem = userItem_;

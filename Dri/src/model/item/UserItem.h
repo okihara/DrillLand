@@ -13,16 +13,19 @@
 
 @interface UserItem : NSObject
 {
-    uint   master_id;
-    UInt16 type;
+    UInt32 masterId;
     BOOL   isEquiped;
 }
 
-@property (nonatomic, readwrite) UInt32   unique_id;
-@property (nonatomic, readonly)  NSString *name;
+@property (nonatomic, readwrite) UInt32   masterId;
+@property (nonatomic, readwrite) UInt32   uniqueId;
 @property (nonatomic, readwrite) BOOL     isEquiped;
+@property (nonatomic, readonly)  UInt32   type;
+@property (nonatomic, readonly)  NSString *name;
 @property (nonatomic, readonly)  int      atk;
+@property (nonatomic, readonly)  int      def;
 
++(UserItem *)createWithMasterId:(UInt32)masterId;
 -(BOOL)use:(BlockModel*)target dungeon:(DungeonModel*)dungeon;
 
 @end

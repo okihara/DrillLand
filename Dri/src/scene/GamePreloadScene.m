@@ -54,6 +54,7 @@
         
         // マスターデータをロード
         [MasterLoader load:@"block_master.json"];
+        [MasterLoader load:@"item_master.json"];
 
         // ---
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"skullpile1.wav"];
@@ -67,7 +68,8 @@
 
 -(void)goto_dungeon
 {
-    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:0];
+    UInt32 dungeonId = 3;
+    CCScene *next_scene = [DungeonPreloadScene sceneWithDungeonId:dungeonId];
     [[CCDirector sharedDirector] replaceScene:next_scene];
 }
 

@@ -24,13 +24,21 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"INVENTORY" fontName:DL_FONT_NAME fontSize:20];
         label.position =  ccp(160, 440);
         [self addChild:label];
-
+        
         // アイテムデータのセットアップ
         // 後で外から渡すように
-        self->my_items = dungeon_model_.player.my_items;
         self->dungeon_model = dungeon_model_;
+        self->my_items = dungeon_model_.player.my_items;
 
-        // IMPLEMENT:
+        // setup player status
+        BlockModel *player = self->dungeon_model.player;
+        NSString *strStatus = [NSString stringWithFormat:@"atk %d def %d", player.atk, player.def];
+        CCLabelTTF *labelStatus = [CCLabelTTF labelWithString:strStatus
+                                                     fontName:DL_FONT_NAME fontSize:20];
+        labelStatus.position = ccp(160, 400);
+        [self addChild:labelStatus];
+
+        // setup item list
         self->menuItemList = [[NSMutableArray alloc] init];
         NSArray *item_list = [self->my_items getList];
         for (UserItem *user_item in item_list) {
@@ -57,7 +65,7 @@
     InventoryMenuItem *menuItem = (InventoryMenuItem *)sender;
     UserItem *userItem = menuItem.userItem;
     BlockModel *player = self->dungeon_model.player;
-    [self->my_items use:userItem.unique_id target:player dungeon:self->dungeon_model];
+    [self->my_items use:userItem.uniqueId target:player dungeon:self->dungeon_model];
 
     DLEvent *event = [DLEvent eventWithType:DL_ON_UPDATE target:nil];
     [self->dungeon_model dispatchEvent:event];

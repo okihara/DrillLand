@@ -65,7 +65,7 @@
     if (self->my_items) {
         [self->my_items release];
     }
-    self->my_items = [[MyItems alloc] init];
+    self->my_items = [[MyItems alloc] initWithBlockModel:self];
 }
 
 -(void)dealloc
@@ -138,6 +138,7 @@
     // TODO: ちゃんとして計算式を
     int damage = self.atk - target.def;
     damage += rand() % 3 - 1;
+    damage = damage < 0 ? 0 : damage;
     
     // ---
     target.hp -= damage;

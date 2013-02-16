@@ -1,75 +1,69 @@
 {
    "item_master" : [
       {
-         "hp" : "1",
-         "primary_id" : "0",
-         "atk" : "10000",
-         "name" : "空の",
-         "action_id" : "65535",
+         "primary_id" : "100",
+         "atk" : "0",
+         "name" : "PORTION",
+         "action_id" : "0",
          "description" : null,
          "use" : "1",
+         "def" : "0",
          "canEquip" : "0",
-         "def" : "100",
-         "type" : "0"
+         "type" : "1000"
       },
       {
-         "hp" : "1",
          "primary_id" : "10000",
-         "atk" : "10000",
-         "name" : "SHORT-SWORD",
+         "atk" : "6",
+         "name" : "short-sword",
          "action_id" : "65535",
          "description" : null,
          "use" : "1",
-         "canEquip" : "0",
-         "def" : "100",
-         "type" : "100"
+         "def" : "0",
+         "canEquip" : "1",
+         "type" : "2000"
       },
       {
-         "hp" : "1",
          "primary_id" : "10001",
-         "atk" : "10001",
-         "name" : "SMALL-SHELD",
+         "atk" : "0",
+         "name" : "small-sheld",
          "action_id" : "65535",
          "description" : null,
          "use" : "1",
-         "canEquip" : "0",
-         "def" : "100",
-         "type" : "100"
+         "def" : "6",
+         "canEquip" : "1",
+         "type" : "2000"
       },
       {
-         "hp" : null,
          "primary_id" : null,
          "atk" : null,
          "name" : null,
          "action_id" : null,
          "description" : null,
          "use" : null,
-         "canEquip" : null,
          "def" : null,
+         "canEquip" : null,
          "type" : null
       },
       {
-         "hp" : null,
          "primary_id" : null,
          "atk" : null,
          "name" : null,
          "action_id" : null,
          "description" : null,
          "use" : null,
-         "canEquip" : null,
          "def" : null,
+         "canEquip" : null,
          "type" : null
       },
       {
-         "hp" : null,
          "primary_id" : null,
          "atk" : null,
          "name" : null,
          "action_id" : null,
          "description" : null,
          "use" : null,
-         "canEquip" : null,
          "def" : null,
+         "canEquip" : null,
          "type" : null
       }
    ]

@@ -8,14 +8,16 @@
 
 #import "MyItems.h"
 #import "UserItem.h"
+#import "BlockModel.h"
 
 @implementation MyItems
 
--(id)init
+-(id)initWithBlockModel:(BlockModel *)blockModel
 {
     if(self=[super init]) {
         last_id = 1;
         self->myItems = [[NSMutableDictionary alloc] init];
+        self->owner = blockModel;
     }
     return self;
 }
@@ -45,12 +47,12 @@
 // add/remove
 -(UInt64)addItem:(UserItem*)userItem
 {
-    userItem.unique_id = self->last_id;
+    userItem.uniqueId = self->last_id;
     self->last_id++;
 
     [self->myItems setObject:userItem
-                       forKey:[NSNumber numberWithInt:userItem.unique_id]];
-    return userItem.unique_id;
+                      forKey:[NSNumber numberWithInt:userItem.uniqueId]];
+    return userItem.uniqueId;
 }
 
 -(void)removeItem:(UInt32)unique_id
@@ -66,7 +68,6 @@
     UserItem *user_item = [self getById:uniqueId];
     
     [user_item use:blockModel dungeon:dungeonModel];
-    [self removeItem:uniqueId];
     
     return YES;
 }
@@ -78,11 +79,15 @@
     NSArray *equipedItemList = [itemList copy];
     
     int totalAtk = 0;
+    int totalDef = 0;
     for (UserItem *userItem in equipedItemList) {
         totalAtk += userItem.atk;
+        totalDef += userItem.def;
     }
     
     // オーナーの atk を更新
+    self->owner.atk = totalAtk;
+    self->owner.def = totalDef;
 }
 
 // -----------------------------------------------------------------------------

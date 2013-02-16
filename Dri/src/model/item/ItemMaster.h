@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
-enum ITEM_TYPE {
-    NONE   = 0,
-    SPEND  = 1,
-    WEAPON = 2,
-};
+//enum ITEM_TYPE {
+//    NONE   = 0,
+//    SPEND  = 1,
+//    WEAPON = 2
+//};
 
 @interface ItemMaster : NSObject
 {
+    NSString *name;
     uint item_id;
+    uint type;
     uint atk;
     uint def;
-    uint type;
     uint action_id;
     BOOL canEquip;
 }

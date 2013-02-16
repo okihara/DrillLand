@@ -32,9 +32,10 @@
 {
     // attacker のアイテムに、UserItem を挿入するよ
     // ほとんどが Player だよ
-    // TODO: Player 
-    UserItem *userItem = [UserItem new];
-    //[block get_item_info]
+    // TODO: Player
+    int r = rand() % 3;
+    UInt32 masterId =  r == 0 ? 100 : r == 1 ? 10000 : 10001;
+    UserItem *userItem = [UserItem createWithMasterId:masterId];
     [dungeonModel.player add_item:userItem];
     
     // イベント飛ばす
