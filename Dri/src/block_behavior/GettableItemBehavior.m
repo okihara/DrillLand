@@ -33,8 +33,22 @@
     // attacker のアイテムに、UserItem を挿入するよ
     // ほとんどが Player だよ
     // TODO: Player
-    int r = rand() % 3;
-    UInt32 masterId =  r == 0 ? 100 : r == 1 ? 10000 : 10001;
+    //int r = rand() % 3;
+    uint masterId;
+    switch (block.block_id) {
+        case 12001:
+            masterId = 100;
+            break;
+        case 12004:
+            masterId = 10000;
+            break;
+        case 12005:
+            masterId = 10001;
+            break;
+        default:
+            masterId = 100;
+            break;
+    }
     UserItem *userItem = [UserItem createWithMasterId:masterId];
     [dungeonModel.player add_item:userItem];
     

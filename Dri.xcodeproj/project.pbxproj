@@ -261,6 +261,7 @@
 		C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
 		C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */; };
 		C1FA43FA16CB2F1F00A3F179 /* SequenceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */; };
+		CE0412D516D0D16800C06314 /* blk12005.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0412D416D0D16800C06314 /* blk12005.png */; };
 		CE07285016C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285116C7D4E60031834C /* DungeonModelCanTapUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */; };
 		CE07285416C7E5400031834C /* DungeonModelGroupInfoUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = CE07285316C7E53E0031834C /* DungeonModelGroupInfoUpdater.m */; };
@@ -753,6 +754,7 @@
 		C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonSceneEventQueue.m; path = src/scene/DungeonSceneEventQueue.m; sourceTree = "<group>"; };
 		C1FA43F716CB2F1F00A3F179 /* SequenceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SequenceBuilder.h; path = src/scene/SequenceBuilder.h; sourceTree = "<group>"; };
 		C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SequenceBuilder.m; path = src/scene/SequenceBuilder.m; sourceTree = "<group>"; };
+		CE0412D416D0D16800C06314 /* blk12005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk12005.png; path = Resources/spritesheet/block/blk12005.png; sourceTree = "<group>"; };
 		CE07284E16C7D4E10031834C /* DungeonModelCanTapUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelCanTapUpdater.h; path = src/model/DungeonModelCanTapUpdater.h; sourceTree = "<group>"; };
 		CE07284F16C7D4E30031834C /* DungeonModelCanTapUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonModelCanTapUpdater.m; path = src/model/DungeonModelCanTapUpdater.m; sourceTree = "<group>"; };
 		CE07285216C7E53B0031834C /* DungeonModelGroupInfoUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonModelGroupInfoUpdater.h; path = src/model/DungeonModelGroupInfoUpdater.h; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 				C132CC4F1653BB9D00AA4217 /* blk12002.png */,
 				C132CC501653BB9D00AA4217 /* blk12001.png */,
 				C1D972E216CBAF6F00017FDD /* blk12004.png */,
+				CE0412D416D0D16800C06314 /* blk12005.png */,
 				C132CC511653BB9D00AA4217 /* blk12000.png */,
 				C132CC521653BB9D00AA4217 /* blk11001.png */,
 				C132CC7F1653C0EB00AA4217 /* blk11000.json */,
@@ -1825,6 +1828,7 @@
 				C1D972DD16CB94A700017FDD /* blk12003.png in Resources */,
 				C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */,
 				C14C3A1C16CE210900B67B27 /* item_master.json in Resources */,
+				CE0412D516D0D16800C06314 /* blk12005.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

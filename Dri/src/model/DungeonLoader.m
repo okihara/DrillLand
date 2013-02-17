@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/10/26.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "DungeonLoader.h"
@@ -55,8 +55,8 @@
                 b.block_id = ID_EMPTY;
             } else {
                 NSDictionary* prop = [tileproperties objectForKey:[NSString stringWithFormat:@"%d", b_ind-1]];
-                int type_id = [[prop objectForKey:@"block_id"] intValue];
-                b = [block_builder buildWithID:type_id];
+                int block_id = [[prop objectForKey:@"block_id"] intValue];
+                b = [block_builder buildWithID:block_id];
             }
             
             [self->dungeon_model set_without_update_can_tap:cdp(i, j) block:b];
@@ -79,9 +79,10 @@ static int block_id_list[] = {
     
     ID_ITEM_BLOCK_0, // POTION
     ID_ITEM_BLOCK_1, // DORAYAKI
-    ID_ITEM_BLOCK_2, // TREASURE
+    //ID_ITEM_BLOCK_2, // TREASURE
     
     12004, // 武器シルエット
+    12005, // 盾シルエット
 
     ID_PLAYER
 };
