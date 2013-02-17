@@ -66,6 +66,11 @@
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
         
+        // menu 用のレイヤー
+        CCLayer *bottomArea = [CCLayerColor layerWithColor:ccc4(0, 25, 0, 255)];
+        bottomArea.position = ccp(0, -440);
+        [self addChild:bottomArea];
+        
         // menu
         self->itemItem = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
         self->itemMenu = [CCMenuItemFont itemWithString:@"[MENU]" target:self selector:@selector(didPressButton:)];
