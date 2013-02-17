@@ -22,7 +22,7 @@
         if ([number isKindOfClass:[NSNull class]]) {
             continue;
         }
-        uint behavior_id = [number intValue];
+        uint behavior_id = [number unsignedIntValue];
         if (!behavior_id) {
             continue;
         }

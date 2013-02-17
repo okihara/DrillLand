@@ -68,8 +68,6 @@ enum DL_PHASE {
 - (void)play_anime:(NSString*)name;
 - (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
 
-- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;
-
 // そなえて置くべきメソッド
 -(CCFiniteTimeAction*)play_front:(BlockModel*)block_model;
 -(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model;

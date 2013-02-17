@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/08/18.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Hiromitsu. All rights reserved.
 //
 
 #import "BlockView.h"
@@ -27,11 +27,13 @@
 
 - (void)setup
 {
-    self->events = [[NSMutableArray array] retain];
-    self->presentation_list = [[NSMutableArray array] retain];
-    is_alive = YES;
-    is_change = NO;
+    is_alive    = YES;
+    is_change   = NO;
     is_touching = NO;
+
+    self->events            = [[NSMutableArray array] retain];
+    self->presentation_list = [[NSMutableArray array] retain];
+
 }
 
 - (void)dealloc
@@ -41,12 +43,36 @@
     [super dealloc];
 }
 
-- (void)add_presentation:(NSObject<BlockPresentation>*)presentation
+
+//------------------------------------------------------------------------------
+
+
+- (void)add_presentation:(NSObject<BlockPresentation> *)presentation
 {
     [self->presentation_list addObject:presentation];
 }
 
+- (CCAction*)_updatePresentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
+{
+    NSMutableArray *actions = [NSMutableArray array];
+    
+    for (NSObject<BlockPresentation>* p in self->presentation_list) {
+        CCAction *action = [p handle_event:ctx event:e view:self];
+        if (action) {
+            [actions addObject:action];
+        }
+    }
+    
+    return [actions count] ? [CCSequence actionWithArray:actions] : nil;
+}
+
+- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
+{
+    return [self _updatePresentation:ctx event:e];
+}
+
 //==============================================================================
+// アニメーション
 
 -(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model
 {
@@ -102,36 +128,7 @@
     return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
 }
 
-
-//==============================================================================
-
-- (CCAction*)_update_presentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
-{
-    NSMutableArray *actions = [NSMutableArray array];
-    
-    for (NSObject<BlockPresentation>* p in self->presentation_list) {
-        CCAction *action = [p handle_event:ctx event:e view:self];
-        if (action) {
-            [actions addObject:action];
-        }
-    }
-
-    return [actions count] ? [CCSequence actionWithArray:actions] : nil;
-}
-
-
-//----------------------------------------------------------------
-
-//- (CCAction*)handle_event:(DungeonView*)ctx event:(DLEvent*)e
-- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
-{
-    return [self _update_presentation:ctx event:e];
-}
-
-
-//----------------------------------------------------------------
 // animation helper
-
 - (void)play_anime:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
@@ -139,7 +136,7 @@
         return;
     }
     CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
-    [self runAction:act];   
+    [self runAction:act];
 }
 
 // TODO: ないわーこれはないわー
@@ -153,38 +150,5 @@
     return act;
 }
 
-
-//===============================================================
-//
-// プレイヤーの移動系
-//
-//===============================================================
-
-// CCAction を返す
-// ルートにそって移動する CCAction を返す
-// TODO: 若干浮いてるね
-
-- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view
-{
-    int length = [_dungeon.routeList count];
-    if (length == 0) return nil;
-    
-    float duration = 0.15 / length;
-    NSMutableArray *action_list = [NSMutableArray arrayWithCapacity:length];
-    for (NSValue *v in _dungeon.routeList) {
-        
-        DLPoint nextPos;
-        [v getValue:&nextPos];
-        CGPoint cgpos = [view mapPosToViewPoint:nextPos];
-        CCMoveTo *act_move = [CCMoveTo actionWithDuration:duration position:cgpos];
-        
-        [action_list addObject:act_move];
-    }
-    
-    CCAction* action = [CCSequence actionWithArray:action_list];
-    //CCEaseInOut *ease = [CCEaseInOut actionWithAction:acttion rate:2];
-    [action retain];
-    return action;
-}
 
 @end

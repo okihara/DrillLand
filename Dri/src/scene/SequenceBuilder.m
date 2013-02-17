@@ -29,7 +29,10 @@
     
     // -------------------------------------------------------------------------
     // プレイヤーの移動フェイズ(ブロックの移動フェイズ)
-    CCAction *act_player_move = [dungeonView.player get_action_update_player_pos:dungeonModel view:dungeonView];
+    DLEvent *eventMove = [DLEvent eventWithType:DL_ON_MOVE target:nil];
+    [eventMove.params setObject:dungeonModel forKey:@"dungeon_model"];
+    CCAction *act_player_move = [dungeonView.player handle_event:dungeonView
+                                                           event:eventMove];
     if (act_player_move) {
         [action_list addObject:act_player_move];
     }

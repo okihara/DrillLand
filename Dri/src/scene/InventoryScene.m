@@ -57,7 +57,7 @@
 -(void)dealloc
 {
     [self->menuItemList release];
-    [super release];
+    [super dealloc];
 }
 
 - (void)___didPressButtonItems:(CCMenuItem *)sender

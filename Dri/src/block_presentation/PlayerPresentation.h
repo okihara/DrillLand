@@ -11,4 +11,6 @@
 
 @interface PlayerPresentation : NSObject<BlockPresentation>
 
+- (CCAction*)get_action_update_player_pos:(DungeonModel *)_dungeon view:(DungeonView*)view;
+
 @end
