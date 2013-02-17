@@ -78,11 +78,23 @@
     return used;
 }
 
+-(NSArray *)_equipedItemList
+{
+    NSArray *itemList = [self getList];
+
+    NSMutableArray *outList = [NSMutableArray array];
+    for (UserItem *userItem in itemList) {
+        if (userItem.isEquiped) {
+            [outList addObject:userItem];
+        }
+    }
+    return outList;
+}
+
 -(void)calcEquipments
 {
     // ソートとか要る？
-    NSArray *itemList = [self getList];
-    NSArray *equipedItemList = [itemList copy];
+    NSArray *equipedItemList = [self _equipedItemList];
     
     int totalAtk = 0;
     int totalDef = 0;
