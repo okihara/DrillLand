@@ -77,7 +77,13 @@
             
             break;
         }
+        case 2001:
+        {
+            // 装備
+            [target.my_items equip:self.uniqueId dungeon:dungeon];
             
+            break;
+        }            
         default:
             break;
     }

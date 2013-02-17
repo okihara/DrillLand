@@ -69,6 +69,11 @@ static int block_id_list[] = {
     ID_EMPTY,
     
     ID_NORMAL_BLOCK,
+    ID_NORMAL_BLOCK,
+
+    ID_NORMAL_BLOCK,
+    ID_NORMAL_BLOCK,
+
     ID_GROUPED_BLOCK_1,
     ID_GROUPED_BLOCK_2,
     ID_GROUPED_BLOCK_3,

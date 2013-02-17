@@ -1674,9 +1674,9 @@
 		C1EEBD0915E84329007F1814 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				C1D972D316CB5E4100017FDD /* dungeon */,
 				C14C3A2616D12B0500B67B27 /* block */,
 				C11D62C215F19BCD00F7633D /* block_presentation */,
-				C1D972D316CB5E4100017FDD /* dungeon */,
 				C183A1501611D64C00FE672F /* viewparts */,
 				C183A145161196BF00FE672F /* effect */,
 				C145523816369AAF0032350D /* mock */,
