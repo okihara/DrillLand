@@ -69,8 +69,8 @@
         // menu
         self->itemItem = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
         self->itemMenu = [CCMenuItemFont itemWithString:@"[MENU]" target:self selector:@selector(didPressButton:)];
-        CCMenu *menu = [CCMenu menuWithItems:itemItem, itemMenu, nil];
-        menu.position = ccp(240, 450);
+        CCMenu *menu = [CCMenu menuWithItems:itemMenu, itemItem, nil];
+        menu.position = ccp(210, 20);
         [menu alignItemsHorizontally];
         [self addChild:menu];
         
