@@ -47,7 +47,7 @@
 //------------------------------------------------------------------------------
 
 
-- (void)add_presentation:(NSObject<BlockPresentation> *)presentation
+- (void)addPresentation:(NSObject<BlockPresentation> *)presentation
 {
     [self->presentation_list addObject:presentation];
 }
@@ -66,10 +66,11 @@
     return [actions count] ? [CCSequence actionWithArray:actions] : nil;
 }
 
-- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
+- (CCAction*)handleEvent:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
     return [self _updatePresentation:ctx event:e];
 }
+
 
 //==============================================================================
 // アニメーション
@@ -86,56 +87,16 @@
     return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
 }
 
--(CCFiniteTimeAction*)play_r:(BlockModel*)block_model
-{
-    NSString *anime_name;
-    
-    switch (block_model.block_id) {
-            
-        case ID_PLAYER:
-            anime_name = @"13000r";
-            break;
-            
-        default:
-            anime_name = @"11000r";
-            break;
-    }
-    
-    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
-}
-
--(CCFiniteTimeAction*)play_l:(BlockModel*)block_model
-{
-    NSString *anime_name = [NSString stringWithFormat:@"%dl", block_model.block_id];   
-    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
-}
-
--(CCFiniteTimeAction*)play_bank:(BlockModel*)block_model
-{
-    NSString *anime_name;
-    
-    switch (block_model.block_id) {
-            
-        case ID_PLAYER:
-            anime_name = @"13000back";
-            break;
-            
-        default:
-            anime_name = @"11000back";
-            break;
-    }
-    
-    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
-}
-
 // animation helper
 - (void)play_anime:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
+    //NSAssert(anim, @"anim should be not nil");
     if (!anim) {
         return;
     }
-    CCAction* act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
+
+    CCAction *act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
     [self runAction:act];
 }
 
@@ -143,12 +104,13 @@
 - (CCFiniteTimeAction*)play_anime_onece:(NSString*)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
-    if (!anim) {
-        return nil;
-    }
-    CCFiniteTimeAction* act = [CCAnimate actionWithAnimation:anim];
-    return act;
+    //NSAssert(anim, @"anim should be not nil");
+
+    return anim ? [CCAnimate actionWithAnimation:anim] : nil;
 }
+
+//
+//==============================================================================
 
 
 @end

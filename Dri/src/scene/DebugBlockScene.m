@@ -121,7 +121,7 @@ int block_id_list[] = {
 
 - (void)handle_event_and_do_action:(DLEvent *)event
 {
-    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
+    CCAction *action = [self->current_block_view handleEvent:self->view_context event:event];
     if (action) {
         [self->current_block_view runAction:action];
     }
@@ -160,7 +160,7 @@ int block_id_list[] = {
     }
     DLEvent *event = [DLEvent eventWithType:DL_ON_DAMAGE target:self->current_block_model];
     [event.params setObject:[NSNumber numberWithInt:9999] forKey:@"damage"];
-    CCAction *action = [self->current_block_view handle_event:self->view_context event:event];
+    CCAction *action = [self->current_block_view handleEvent:self->view_context event:event];
     if (action) {
         self.isTouchEnabled = NO;
         CCSequence *seq = [CCSequence actions:(CCFiniteTimeAction*)action, [CCCallBlock actionWithBlock:^(){
@@ -193,7 +193,8 @@ int block_id_list[] = {
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-//    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
+    [[CCDirector sharedDirector] popScene];
 }
+
 
 @end

@@ -806,11 +806,11 @@
 			path = Resources/tilemap;
 			sourceTree = "<group>";
 		};
-		C1089147169FF5D10094FF8C /* action */ = {
+		C1089147169FF5D10094FF8C /* command */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = action;
+			name = command;
 			sourceTree = "<group>";
 		};
 		C10A1B7E166B9121009E748E /* sound */ = {
@@ -935,6 +935,28 @@
 				C145523A16369AFC0032350D /* MockViewContext.m */,
 			);
 			name = mock;
+			sourceTree = "<group>";
+		};
+		C14C3A2616D12B0500B67B27 /* block */ = {
+			isa = PBXGroup;
+			children = (
+				C1600A0215F3451900A4616C /* BlockView.h */,
+				C16009FE15F3450F00A4616C /* BlockView.m */,
+				C1CCAA8F1606AE6600A0EB1C /* BlockViewBuilder.h */,
+				C1CCAA901606AE6900A0EB1C /* BlockViewBuilder.m */,
+			);
+			name = block;
+			sourceTree = "<group>";
+		};
+		C14C3A2816D12B4B00B67B27 /* block */ = {
+			isa = PBXGroup;
+			children = (
+				C16009FA15F344FA00A4616C /* BlockModel.h */,
+				C16009F815F344F900A4616C /* BlockModel.m */,
+				C1CCAAAE160755CB00A0EB1C /* BlockBuilder.h */,
+				C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */,
+			);
+			name = block;
 			sourceTree = "<group>";
 		};
 		C1621D3416198B2600AB73A0 /* town000 */ = {
@@ -1454,12 +1476,12 @@
 		C1CCAA9E1607556200A0EB1C /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				C1CCAAA11607557400A0EB1C /* GamePreloadScene.h */,
+				C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */,
 				C1F089AF16A2523500D9C350 /* InventoryScene.h */,
 				C1F089B016A2523500D9C350 /* InventoryScene.m */,
 				C1D972E516CBB99200017FDD /* InventoryMenuItem.h */,
 				C1D972E616CBB99600017FDD /* InventoryMenuItem.m */,
-				C1CCAAA11607557400A0EB1C /* GamePreloadScene.h */,
-				C1CCAAA21607557400A0EB1C /* GamePreloadScene.m */,
 				C1937C481617D05A007A8D05 /* HomeScene.h */,
 				C1937C491617D05A007A8D05 /* HomeScene.m */,
 				C1937C4C1617D125007A8D05 /* SelectQuestScene.h */,
@@ -1489,10 +1511,6 @@
 			children = (
 				C1600A0115F3451900A4616C /* DungeonView.h */,
 				C16009FD15F3450F00A4616C /* DungeonView.m */,
-				C1600A0215F3451900A4616C /* BlockView.h */,
-				C16009FE15F3450F00A4616C /* BlockView.m */,
-				C1CCAA8F1606AE6600A0EB1C /* BlockViewBuilder.h */,
-				C1CCAA901606AE6900A0EB1C /* BlockViewBuilder.m */,
 			);
 			name = dungeon;
 			sourceTree = "<group>";
@@ -1510,10 +1528,6 @@
 				CE07285316C7E53E0031834C /* DungeonModelGroupInfoUpdater.m */,
 				CE07285616C879130031834C /* DungeonModelRouteMap.h */,
 				CE07285716C879170031834C /* DungeonModelRouteMap.m */,
-				C16009FA15F344FA00A4616C /* BlockModel.h */,
-				C16009F815F344F900A4616C /* BlockModel.m */,
-				C1CCAAAE160755CB00A0EB1C /* BlockBuilder.h */,
-				C1CCAAAF160755CB00A0EB1C /* BlockBuilder.m */,
 			);
 			name = dungeon;
 			sourceTree = "<group>";
@@ -1646,10 +1660,11 @@
 			isa = PBXGroup;
 			children = (
 				C1D972D516CB62B300017FDD /* dungeon */,
-				C1089147169FF5D10094FF8C /* action */,
+				C14C3A2816D12B4B00B67B27 /* block */,
 				C11D62B015EC3B1800F7633D /* block_behaivior */,
-				C1621D39161997CA00AB73A0 /* quest */,
 				C183A138160FFB1100FE672F /* item */,
+				C1089147169FF5D10094FF8C /* command */,
+				C1621D39161997CA00AB73A0 /* quest */,
 				C1CCAA70160219E600A0EB1C /* DLEvent.h */,
 				C1CCAA71160219E600A0EB1C /* DLEvent.m */,
 			);
@@ -1659,11 +1674,12 @@
 		C1EEBD0915E84329007F1814 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				C1D972D316CB5E4100017FDD /* dungeon */,
-				C145523816369AAF0032350D /* mock */,
+				C14C3A2616D12B0500B67B27 /* block */,
 				C11D62C215F19BCD00F7633D /* block_presentation */,
+				C1D972D316CB5E4100017FDD /* dungeon */,
 				C183A1501611D64C00FE672F /* viewparts */,
 				C183A145161196BF00FE672F /* effect */,
+				C145523816369AAF0032350D /* mock */,
 				C1455235163699370032350D /* DLView.h */,
 			);
 			name = view;

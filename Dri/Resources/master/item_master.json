@@ -4,7 +4,7 @@
          "primary_id" : "100",
          "atk" : "0",
          "name" : "PORTION",
-         "action_id" : "0",
+         "action_id" : "1",
          "description" : null,
          "use" : "1",
          "def" : "0",
@@ -29,9 +29,9 @@
          "action_id" : "65535",
          "description" : null,
          "use" : "1",
-         "def" : "1",
+         "def" : "2",
          "canEquip" : "1",
-         "type" : "2000"
+         "type" : "2001"
       },
       {
          "primary_id" : null,

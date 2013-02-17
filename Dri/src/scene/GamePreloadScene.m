@@ -56,12 +56,9 @@
         [MasterLoader load:@"block_master.json"];
         [MasterLoader load:@"item_master.json"];
 
-        // ---
+        // SE
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"skullpile1.wav"];
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"death3.wav"];
-
-        // -- texture
-//        [[CCTextureCache sharedTextureCache] addImage:@"block01.png"];
     }
 	return self;
 }

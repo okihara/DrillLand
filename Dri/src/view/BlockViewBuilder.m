@@ -86,7 +86,7 @@
     // 基本のプレゼン
     {
         NSObject<BlockPresentation> *p = [[BasicPresentation alloc] init];
-        [block_view add_presentation:p];
+        [block_view addPresentation:p];
         [p release];
     }
     
@@ -102,7 +102,7 @@
         {
             {            
                 NSObject<BlockPresentation>* p = [[BreakablePresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
         }
@@ -112,19 +112,19 @@
         {
             {
                 NSObject<BlockPresentation>* p = [[PlayerPresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
             
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
             
             {
                 NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
         }
@@ -134,7 +134,7 @@
         {            
             {
                 NSObject<BlockPresentation>* p = [[EnemyPresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
             
@@ -146,13 +146,13 @@
 
             {
                 NSObject<BlockPresentation>* p = [[BloodyPresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
             
             {
                 NSObject<BlockPresentation>* p = [[AttackablePresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
         }            
@@ -162,7 +162,7 @@
         {
             {
                 NSObject<BlockPresentation> *p = [[GettableItemPresentation alloc] init];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
             
@@ -174,7 +174,7 @@
         {
             {
                 NSObject<BlockPresentation>* p = [ItemBoxPresentation new];
-                [block_view add_presentation:p];
+                [block_view addPresentation:p];
                 [p release];
             }
         }

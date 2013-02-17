@@ -289,12 +289,12 @@
     if(b.block_id == ID_PLAYER) {
         
         BlockView* block = self.player;
-        return [block handle_event:self event:e];
+        return [block handleEvent:self event:e];
         
     } else {
         
         BlockView *block = [view_map get_x:b.pos.x y:b.pos.y];
-        return [block handle_event:self event:e];
+        return [block handleEvent:self event:e];
         
     }
 }

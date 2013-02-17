@@ -10,6 +10,7 @@
 #import "DungeonScene.h"
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
+#import "DebugBlockScene.h"
 
 @implementation DungeonMenuScene
 
@@ -34,12 +35,14 @@
         self.isTouchEnabled = YES;
         
         // IMPLEMENT:
-        CCMenuItemFont *item_home = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
+        CCMenuItemFont *item_home = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButton_home:)];
         CCMenuItemFont *item_reload = [CCMenuItemFont itemWithString:@"RELOAD" target:self selector:@selector(didPressButton_reload:)];
+        CCMenuItemFont *item_block = [CCMenuItemFont itemWithString:@"BLOCK" target:self selector:@selector(didPressButton_block:)];
         
         CCMenu *menu = [CCMenu menuWithItems:
                         item_home,
                         item_reload,
+                        item_block,
                         nil];
         menu.position = ccp(160, 220);
         [menu alignItemsVertically];
@@ -53,7 +56,7 @@
     [[CCDirector sharedDirector] popScene];
 }
 
-- (void)didPressButtonHome:(CCMenuItem *)sender
+- (void)didPressButton_home:(CCMenuItem *)sender
 {
     CCScene *next_scene = [HomeScene scene];
     CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:next_scene withColor:ccc3(0, 0, 0)];
@@ -65,5 +68,12 @@
     CCScene *scene = [DungeonPreloadScene sceneWithDungeonId:0];
     [[CCDirector sharedDirector] replaceScene:scene];
 }
+
+- (void)didPressButton_block:(CCMenuItem *)sender
+{
+    CCScene *next_scene = [DebugBlockScene scene];
+    [[CCDirector sharedDirector] replaceScene:next_scene];    
+}
+
 
 @end

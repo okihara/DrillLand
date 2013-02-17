@@ -29,15 +29,6 @@ enum VIEW_TYPE {
     VIEW_TYPE_MESSAGE    = 500,
 };
 
-// 使ってない
-enum DL_PHASE {
-    DL_ETC = 0,
-    DL_MOVE,
-    DL_ATTACK,
-    DL_DEFENSE,
-    DL_DESTROY
-};
-
 @interface BlockView : CCSprite
 {
     BOOL is_alive;
@@ -46,12 +37,11 @@ enum DL_PHASE {
     NSMutableArray* events;
     NSMutableArray* presentation_list;
     
-    BOOL is_touching;
-    
+    BOOL  is_touching;    
     float origin_scale;
-    uint direction;
     
     DLPoint pos;
+    uint    direction;
 }
 
 @property (readwrite, assign) BOOL is_alive;
@@ -59,17 +49,17 @@ enum DL_PHASE {
 @property (nonatomic, readwrite) DLPoint pos;
 
 - (void)setup;
-- (void)add_presentation:(NSObject<BlockPresentation>*)presentation;
+- (void)addPresentation:(NSObject<BlockPresentation>*)presentation;
 
 // event
-- (CCAction*)handle_event:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
-
-// helper
-- (void)play_anime:(NSString*)name;
-- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
+- (CCAction*)handleEvent:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
 
 // そなえて置くべきメソッド
 -(CCFiniteTimeAction*)play_front:(BlockModel*)block_model;
 -(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model;
+
+// helper
+- (void)play_anime:(NSString*)name;
+- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
 
 @end
