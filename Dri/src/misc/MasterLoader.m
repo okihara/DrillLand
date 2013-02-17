@@ -23,7 +23,7 @@ NSMutableDictionary *masterTable;
     NSString *sheetName = [filename substringWithRange:NSMakeRange(0, [filename length] - 5)];
 
     NSArray *master_list = [(NSDictionary*)jsonItem objectForKey:sheetName];
-    
+    NSAssert(master_list, @"master_list should be not nil");
     if (!masterTable) {
         masterTable = [[NSMutableDictionary alloc] init];
     }
