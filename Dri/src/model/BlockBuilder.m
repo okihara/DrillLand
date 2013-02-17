@@ -39,7 +39,8 @@
     b.view_type = [[master objectForKey:@"view_type"] intValue];
     b.hp        = [[master objectForKey:@"hp"] intValue];
     b.max_hp    = b.hp;
-    b.atk       = [[master objectForKey:@"atk"] intValue];
+    b.str       = [[master objectForKey:@"str"] intValue];
+    b.atk       = b.str;
     b.def       = [[master objectForKey:@"def"] intValue];
     b.exp       = [[master objectForKey:@"exp"] intValue];
     b.gold      = [[master objectForKey:@"gold"] intValue];

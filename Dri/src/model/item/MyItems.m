@@ -92,7 +92,7 @@
     }
     
     // オーナーの atk を更新
-    self->owner.atk = totalAtk;
+    self->owner.atk = self->owner.str + totalAtk;
     self->owner.def = totalDef;
 }
 

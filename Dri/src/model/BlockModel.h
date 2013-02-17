@@ -51,6 +51,7 @@ enum ID_BLOCK {
     
     int hp;
     int max_hp;
+    int str;
     int atk;
     int def;
     int exp;
@@ -79,6 +80,7 @@ enum ID_BLOCK {
 
 @property (nonatomic, assign) int hp;
 @property (nonatomic, assign) int max_hp;
+@property (nonatomic, assign) int str;
 @property (nonatomic, assign) int atk;
 @property (nonatomic, assign) int def;
 @property (nonatomic, assign) int exp;

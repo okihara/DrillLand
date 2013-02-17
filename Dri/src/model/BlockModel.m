@@ -20,6 +20,7 @@
 
 @synthesize hp;
 @synthesize max_hp;
+@synthesize str;
 @synthesize atk;
 @synthesize def;
 @synthesize exp;
@@ -133,15 +134,16 @@
 
 // -----------------------------------------------------------------------------
 // action/command
+// TODO: ダメージ計算を別クラスに
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon
 {
     // TODO: ちゃんとして計算式を
-    int damage = self.atk - target.def;
-    damage += rand() % 3 - 1;
-    damage = damage < 0 ? 0 : damage;
+    float damage = (float)self.atk * pow(0.96f, target.def);
+    float r = (112 + rand() % 32) / 128.0f;
+    damage *= r; 
     
     // ---
-    target.hp -= damage;
+    target.hp -= (uint)damage;
     if (target.hp <= 0) {
         target.hp = 0;
     }

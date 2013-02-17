@@ -13,7 +13,7 @@
       },
       {
          "primary_id" : "10000",
-         "atk" : "6",
+         "atk" : "3",
          "name" : "short-sword",
          "action_id" : "65535",
          "description" : null,
@@ -29,7 +29,7 @@
          "action_id" : "65535",
          "description" : null,
          "use" : "1",
-         "def" : "6",
+         "def" : "1",
          "canEquip" : "1",
          "type" : "2000"
       },
