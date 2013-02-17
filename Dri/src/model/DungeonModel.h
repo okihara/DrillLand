@@ -54,6 +54,7 @@
 // ハンドラ 外から呼ばれる
 -(BOOL)onTap:(DLPoint)pos;
 -(void)postprocess;
+-(BOOL)executeOneTurn:(DLPoint)pos;
 
 // TODO: これは外から触れる必要ある？
 // setter/getter

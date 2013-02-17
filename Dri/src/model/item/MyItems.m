@@ -9,6 +9,8 @@
 #import "MyItems.h"
 #import "UserItem.h"
 #import "BlockModel.h"
+#import "DungeonModel.h"
+
 
 @implementation MyItems
 
@@ -62,14 +64,18 @@
 
 // -----------------------------------------------------------------------------
 -(BOOL)use:(UInt64)uniqueId
-    target:(BlockModel*)blockModel 
-   dungeon:(DungeonModel*)dungeonModel
+    target:(BlockModel *)blockModel 
+   dungeon:(DungeonModel *)dungeonModel
 {
     UserItem *user_item = [self getById:uniqueId];
     
-    [user_item use:blockModel dungeon:dungeonModel];
+    BOOL used = [user_item use:blockModel dungeon:dungeonModel];
     
-    return YES;
+    if (used) {
+        [dungeonModel executeOneTurn:dungeonModel.player.pos];
+    }
+    
+    return used;
 }
 
 -(void)calcEquipments

@@ -154,6 +154,17 @@
     return YES;
 }
 
+- (BOOL)executeOneTurn:(DLPoint)pos
+{
+    // ブロックのヒットフェイズ
+    [self on_hit_block:pos];
+    
+    // ブロック(プレイヤー以外の)のアップデートフェイズ
+    [self on_update];
+    
+    return YES;
+}
+
 -(BOOL)onTap:(DLPoint)pos
 {
     return [self _executeOneTurn:pos];
