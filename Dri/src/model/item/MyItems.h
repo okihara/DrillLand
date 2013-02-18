@@ -29,5 +29,6 @@
 -(UserItem*)getById:(UInt64)uniqueId;
 -(BOOL)use:(UInt64)uniqueId target:(BlockModel*)blockModel dungeon:(DungeonModel*)dungeonModel;
 -(BOOL)equip:(UInt64)uniqueId dungeon:(DungeonModel*)dungeonModel;
+-(BOOL)unequip:(UInt64)uniqueId dungeon:(DungeonModel*)dungeonModel;
 
 @end

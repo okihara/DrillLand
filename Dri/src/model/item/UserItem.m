@@ -73,14 +73,22 @@
         case 2000:
         {
             // 装備
-            [target.my_items equip:self.uniqueId dungeon:dungeon];
+            if (self.isEquiped) {
+                [target.my_items unequip:self.uniqueId dungeon:dungeon];
+            } else {
+                [target.my_items equip:self.uniqueId dungeon:dungeon];
+            }
             
             break;
         }
         case 2001:
         {
             // 装備
-            [target.my_items equip:self.uniqueId dungeon:dungeon];
+            if (self.isEquiped) {
+                [target.my_items unequip:self.uniqueId dungeon:dungeon];
+            } else {
+                [target.my_items equip:self.uniqueId dungeon:dungeon];
+            }
             
             break;
         }            
