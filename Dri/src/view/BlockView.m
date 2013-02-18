@@ -75,42 +75,27 @@
 //==============================================================================
 // アニメーション
 
--(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model
-{
-    NSString *anime_name = [NSString stringWithFormat:@"%datk", block_model.block_id];
-    return [self play_anime_onece:anime_name];
-}
-
--(CCFiniteTimeAction*)play_front:(BlockModel*)block_model
-{
-    NSString *anime_name = [NSString stringWithFormat:@"%dfront", block_model.block_id];
-    return [CCCallFuncO actionWithTarget:self selector:@selector(play_anime:) object:anime_name];
-}
-
-// animation helper
-- (void)play_anime:(NSString*)name
+-(CCFiniteTimeAction *)_playAnime:(BlockModel *)blockModel name:(NSString *)name
 {
     CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
-    //NSAssert(anim, @"anim should be not nil");
     if (!anim) {
-        return;
+        return nil;
     }
-
-    CCAction *act = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:anim]];
-    [self runAction:act];
+    
+    CCAnimate *animate = [CCAnimate actionWithAnimation:anim];
+    if (anim.loops == NSUIntegerMax) {
+        return [CCCallFuncO actionWithTarget:self
+                                    selector:@selector(runAction:) 
+                                      object:animate];
+    } else {
+        return animate;
+    }
 }
 
-// TODO: ないわーこれはないわー
-- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name
+-(CCFiniteTimeAction*)playAnime:(BlockModel*)blockModel name:(NSString *)suffix
 {
-    CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
-    //NSAssert(anim, @"anim should be not nil");
-
-    return anim ? [CCAnimate actionWithAnimation:anim] : nil;
+    NSString *animeName = [NSString stringWithFormat:@"%d%@", blockModel.block_id, suffix];
+    return [self _playAnime:blockModel name:animeName];
 }
-
-//
-//==============================================================================
-
 
 @end

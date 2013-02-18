@@ -43,23 +43,17 @@ enum VIEW_TYPE {
     DLPoint pos;
     uint    direction;
 }
-
 @property (readwrite, assign) BOOL is_alive;
 @property (readwrite, assign) BOOL is_change;
 @property (nonatomic, readwrite) DLPoint pos;
 
 - (void)setup;
-- (void)addPresentation:(NSObject<BlockPresentation>*)presentation;
+- (void)addPresentation:(NSObject<BlockPresentation> *)presentation;
 
 // event
-- (CCAction*)handleEvent:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
+- (CCAction*)handleEvent:(NSObject<ViewContextProtocol> *)ctx event:(DLEvent*)e;
 
-// そなえて置くべきメソッド
--(CCFiniteTimeAction*)play_front:(BlockModel*)block_model;
--(CCFiniteTimeAction*)play_attack:(BlockModel*)block_model;
-
-// helper
-- (void)play_anime:(NSString*)name;
-- (CCFiniteTimeAction*)play_anime_onece:(NSString*)name;
+// アニメーション
+-(CCFiniteTimeAction*)playAnime:(BlockModel *)blockModel name:(NSString *)suffix;
 
 @end

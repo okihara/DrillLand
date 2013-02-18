@@ -31,7 +31,10 @@
         CCSpriteFrame* sprite_frame = [self load_frame:frame];
         [sprite_frame_list addObject:sprite_frame];
     }
-    return [CCAnimation animationWithSpriteFrames:sprite_frame_list delay:delay];
+    CCAnimation *anim = [CCAnimation animationWithSpriteFrames:sprite_frame_list delay:delay];
+    BOOL loop = [[jsonItem valueForKey:@"loop"] boolValue];
+    anim.loops = loop ? NSUIntegerMax : 1;
+    return anim;
 }
 
 -(void)load_animation:(NSString*)filename
@@ -44,7 +47,7 @@
     CCAnimationCache* anim_cache = [CCAnimationCache sharedAnimationCache];
     
     for (NSString *key in [action keyEnumerator]) {
-        // TODO: とりあえずすぎる
+        // TODO: ！恐怖とりあえずすぎる！
         float delay;
         if ([key isEqualToString:@"13000atk"]) {
             delay = 0.033f;

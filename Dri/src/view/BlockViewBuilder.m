@@ -62,11 +62,12 @@
             
         case ID_PLAYER:
             block_view.scale = 2.0;
-            [block_view runAction:[block_view play_front:block_model]];
+            [block_view runAction:[block_view playAnime:block_model name:@"front"]];
             break;
             
         case ID_ENEMY_BLOCK_0:
-            [block_view runAction:[block_view play_front:block_model]];
+            [block_view runAction:[block_view playAnime:block_model name:@"front"]];
+
         case ID_ENEMY_BLOCK_1:
             block_view.scale = 2.0;
             [self add_can_destroy_num:block_model block:block_view];

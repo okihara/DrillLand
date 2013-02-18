@@ -24,8 +24,10 @@
             // 
 
             // ---
-            CCFiniteTimeAction *anim_attack = [block_view play_attack:block_model];
-            CCFiniteTimeAction *anim_front  = [block_view play_front:block_model];
+            CCFiniteTimeAction *anim_attack = [block_view playAnime:block_model
+                                                                name:@"atk"];
+            CCFiniteTimeAction *anim_front  = [block_view playAnime:block_model
+                                                               name:@"front"];
             
             return [CCSequence actions:
                     [CCTargetedAction actionWithTarget:block_view action:anim_attack],
