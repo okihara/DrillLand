@@ -1,1 +1,129 @@
-{"meta": {"app": "SpriteAnimationBuilder","version": "0.3"},"imageList": {"file":["mon.png"]},"action":{"11000front":{"loop":true,"layer":[{"name":"Layer0","visible":true}],"frame":[{"duration":2,"layer":[{"image":"mon.png","uv":"mon001000.png","offset":[0,0]}]},{"duration":2,"layer":[{"image":"mon.png","uv":"mon001001.png","offset":[0,0]}]},{"duration":4,"layer":[{"image":"mon.png","uv":"mon001002.png","offset":[0,0]}]},{"duration":2,"layer":[{"image":"mon.png","uv":"mon001003.png","offset":[0,0]}]}]},"11000atk":{"loop":false,"layer":[{"name":"Layer0","visible":true}],"frame":[{"duration":10,"layer":[{"image":"mon.png","uv":"mon001100.png","offset":[0,0]}]},{"duration":10,"layer":[{"image":"mon.png","uv":"mon001101.png","offset":[0,-10]}]},{"duration":10,"layer":[{"image":"mon.png","uv":"mon001102.png","offset":[0,-12]}]}]}},"_configuration":{"zoom":1}}
+{
+	"_configuration": {
+		"zoom": 1
+	},
+	"action": {
+		"11000atk": {
+			"frame": [
+				{
+					"duration": 10,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								0
+							],
+							"uv": "mon001100.png"
+						}
+					]
+				},
+				{
+					"duration": 10,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								-10
+							],
+							"uv": "mon001101.png"
+						}
+					]
+				},
+				{
+					"duration": 10,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								-12
+							],
+							"uv": "mon001102.png"
+						}
+					]
+				}
+			],
+			"layer": [
+				{
+					"name": "Layer0",
+					"visible": 1
+				}
+			],
+			"loop": 0
+		},
+		"11000front": {
+			"frame": [
+				{
+					"duration": 2,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								0
+							],
+							"uv": "mon001000.png"
+						}
+					]
+				},
+				{
+					"duration": 2,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								0
+							],
+							"uv": "mon001001.png"
+						}
+					]
+				},
+				{
+					"duration": 4,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								0
+							],
+							"uv": "mon001002.png"
+						}
+					]
+				},
+				{
+					"duration": 2,
+					"layer": [
+						{
+							"image": "mon.png",
+							"offset": [
+								0,
+								0
+							],
+							"uv": "mon001003.png"
+						}
+					]
+				}
+			],
+			"layer": [
+				{
+					"name": "Layer0",
+					"visible": 1
+				}
+			],
+			"loop": 1
+		}
+	},
+	"imageList": {
+		"file": [
+			"mon.png"
+		]
+	},
+	"meta": {
+		"app": "SpriteAnimationBuilder",
+		"version": "0.3"
+	}
+}

@@ -10,8 +10,6 @@
 		C1089142169FE48E0094FF8C /* TestDLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089141169FE48E0094FF8C /* TestDLEvent.m */; };
 		C1089146169FE7320094FF8C /* TestDungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089145169FE7320094FF8C /* TestDungeonModel.m */; };
 		C108914A169FF9F10094FF8C /* TestMyItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C1089149169FF9F10094FF8C /* TestMyItems.m */; };
-		C10A1B82166B914B009E748E /* skullpile1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B81166B914B009E748E /* skullpile1.wav */; };
-		C10A1B84166B9449009E748E /* death3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C10A1B83166B9449009E748E /* death3.wav */; };
 		C1111251162805F100F9950E /* GettableItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1111250162805F000F9950E /* GettableItemBehavior.m */; };
 		C111125416280F9900F9950E /* GettableItemPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C111125316280F9900F9950E /* GettableItemPresentation.m */; };
 		C11768B11687F52200CC0C81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C195464315D7F485002119CC /* UIKit.framework */; };
@@ -64,6 +62,8 @@
 		C14C3A1A16CE050300B67B27 /* TestMasterLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C3A1816CE050200B67B27 /* TestMasterLoader.m */; };
 		C14C3A1C16CE210900B67B27 /* item_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A1B16CE210900B67B27 /* item_master.json */; };
 		C14C3A1D16CE210900B67B27 /* item_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A1B16CE210900B67B27 /* item_master.json */; };
+		C14C3A2B16D254A100B67B27 /* death3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A2916D254A100B67B27 /* death3.wav */; };
+		C14C3A2C16D254A100B67B27 /* skullpile1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C14C3A2A16D254A100B67B27 /* skullpile1.wav */; };
 		C16009F315F2D49100A4616C /* BreakablePresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F215F2D49100A4616C /* BreakablePresentation.m */; };
 		C16009F615F2D94100A4616C /* BloodyPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F515F2D94100A4616C /* BloodyPresentation.m */; };
 		C16009FB15F344FA00A4616C /* DungeonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C16009F715F344F900A4616C /* DungeonModel.m */; };
@@ -289,8 +289,6 @@
 		C1089145169FE7320094FF8C /* TestDungeonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDungeonModel.m; sourceTree = "<group>"; };
 		C1089148169FF9F10094FF8C /* TestMyItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMyItems.h; sourceTree = "<group>"; };
 		C1089149169FF9F10094FF8C /* TestMyItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMyItems.m; sourceTree = "<group>"; };
-		C10A1B81166B914B009E748E /* skullpile1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skullpile1.wav; sourceTree = "<group>"; };
-		C10A1B83166B9449009E748E /* death3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death3.wav; sourceTree = "<group>"; };
 		C111124F162805F000F9950E /* GettableItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemBehavior.h; path = src/block_behavior/GettableItemBehavior.h; sourceTree = "<group>"; };
 		C1111250162805F000F9950E /* GettableItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GettableItemBehavior.m; path = src/block_behavior/GettableItemBehavior.m; sourceTree = "<group>"; };
 		C111125216280F9800F9950E /* GettableItemPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GettableItemPresentation.h; path = src/block_presentation/GettableItemPresentation.h; sourceTree = "<group>"; };
@@ -365,6 +363,8 @@
 		C14C3A1716CE050200B67B27 /* TestMasterLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMasterLoader.h; sourceTree = "<group>"; };
 		C14C3A1816CE050200B67B27 /* TestMasterLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMasterLoader.m; sourceTree = "<group>"; };
 		C14C3A1B16CE210900B67B27 /* item_master.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = item_master.json; path = Resources/master/item_master.json; sourceTree = "<group>"; };
+		C14C3A2916D254A100B67B27 /* death3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = death3.wav; path = Resources/sound/se/death3.wav; sourceTree = "<group>"; };
+		C14C3A2A16D254A100B67B27 /* skullpile1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = skullpile1.wav; path = Resources/sound/se/skullpile1.wav; sourceTree = "<group>"; };
 		C16009F115F2D49100A4616C /* BreakablePresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakablePresentation.h; path = src/block_presentation/BreakablePresentation.h; sourceTree = "<group>"; };
 		C16009F215F2D49100A4616C /* BreakablePresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakablePresentation.m; path = src/block_presentation/BreakablePresentation.m; sourceTree = "<group>"; };
 		C16009F415F2D94100A4616C /* BloodyPresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BloodyPresentation.h; path = src/block_presentation/BloodyPresentation.h; sourceTree = "<group>"; };
@@ -824,8 +824,8 @@
 		C10A1B80166B9133009E748E /* se */ = {
 			isa = PBXGroup;
 			children = (
-				C10A1B83166B9449009E748E /* death3.wav */,
-				C10A1B81166B914B009E748E /* skullpile1.wav */,
+				C14C3A2916D254A100B67B27 /* death3.wav */,
+				C14C3A2A16D254A100B67B27 /* skullpile1.wav */,
 			);
 			name = se;
 			sourceTree = "<group>";
@@ -1839,12 +1839,12 @@
 				C1373814165E1EB900C9DD41 /* coin.png in Resources */,
 				C1373817165E26A400C9DD41 /* common.json in Resources */,
 				C1373818165E26A400C9DD41 /* common.png in Resources */,
-				C10A1B82166B914B009E748E /* skullpile1.wav in Resources */,
-				C10A1B84166B9449009E748E /* death3.wav in Resources */,
 				C1D972DD16CB94A700017FDD /* blk12003.png in Resources */,
 				C1D972E316CBAF6F00017FDD /* blk12004.png in Resources */,
 				C14C3A1C16CE210900B67B27 /* item_master.json in Resources */,
 				CE0412D516D0D16800C06314 /* blk12005.png in Resources */,
+				C14C3A2B16D254A100B67B27 /* death3.wav in Resources */,
+				C14C3A2C16D254A100B67B27 /* skullpile1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
