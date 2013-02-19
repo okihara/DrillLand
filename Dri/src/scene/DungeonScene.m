@@ -175,7 +175,6 @@
     switch (event.type) {
             
         case DL_ON_CANNOT_TAP:
-//            [BasicNotifierView notify:@"CAN NOT TAP" target:self];
             break;
             
         case DL_ON_CLEAR:
@@ -193,13 +192,19 @@
             break;
             
         case DL_ON_HEAL:
+        {
             [BasicNotifierView notify:@"HP GA 10 KAIFUKU!" target:self];
             [self->eventQueue addObject:event];
             break;
+        }
 
         case DL_ON_GET:
-            [BasicNotifierView notify:@"You got Dorayaki(S)" target:self];
+        {
+            UserItem *userItem = [event.params objectForKey:@"UserItem"];
+            NSString *strGot = [NSString stringWithFormat:@"You got %@", userItem.name];
+            [BasicNotifierView notify:strGot target:self];
             [self->eventQueue addObject:event];
+        }
             break;
             
         case DL_ON_UPDATE:

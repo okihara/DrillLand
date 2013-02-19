@@ -54,9 +54,7 @@
     
     // イベント飛ばす
     DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
-    // TODO: タイプ決め打ちすぎィ！
-    [e.params setObject:[NSNumber numberWithInt:ID_ITEM_BLOCK_1] 
-                 forKey:@"type"];
+    [e.params setObject:userItem forKey:@"UserItem"];
     [dungeonModel dispatchEvent:e];
 }
 
