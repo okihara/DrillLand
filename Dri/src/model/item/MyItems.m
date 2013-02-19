@@ -91,6 +91,19 @@
     return outList;
 }
 
+-(NSArray *)_equipedItemListWithType:(UInt32)type
+{
+    NSArray *equipedItemList = [self _equipedItemList];
+    
+    NSMutableArray *outList = [NSMutableArray array];
+    for (UserItem *userItem in equipedItemList) {
+        if (userItem.type == type) {
+            [outList addObject:userItem];
+        }
+    }
+    return outList;
+}
+
 -(void)calcEquipments
 {
     // ソートとか要る？
@@ -117,6 +130,12 @@
     // 装備可能アイテムか？
     
     // 同じ部位に既に装備しているアイテムがあれば、外す
+    NSArray *equipedItemListType = [self _equipedItemListWithType:userItem.type];
+    if ([equipedItemListType count] > 0) {
+        for (UserItem *userItem in equipedItemListType) {
+            [self unequip:userItem.uniqueId dungeon:dungeonModel];
+        }
+    }
     
     userItem.isEquiped = YES;
     [self calcEquipments];
