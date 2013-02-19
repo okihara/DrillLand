@@ -95,9 +95,13 @@
 
 // -----------------------------------------------------------------------------
 // my_item
--(void)add_item:(UserItem*)user_item
+-(UserItem *)add_item:(UserItem*)user_item
 {
-    [self->my_items addItem:user_item];
+    if ([[self->my_items getList] count] >= MAX_NUM_HAS) {
+        return nil;
+    } else {
+        return [self->my_items addItem:user_item];
+    }
 }
 
 // -----------------------------------------------------------------------------

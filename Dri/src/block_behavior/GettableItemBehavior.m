@@ -13,7 +13,7 @@
 
 @implementation GettableItemBehavior
 
--(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
+-(void)on_hit:(BlockModel*)block dungeon:(DungeonModel*)dungeonModel
 {
     // implement behaivior
 }
@@ -23,17 +23,9 @@
     // implement behaivior
 }
 
--(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_
+-(void)on_damage:(BlockModel*)block dungeon:(DungeonModel*)dungeonModel damage:(int)damage_
 {
-    // implement behaivior
-}
-
--(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeonModel
-{
-    // attacker のアイテムに、UserItem を挿入するよ
-    // ほとんどが Player だよ
-    // TODO: Player
-    //int r = rand() % 3;
+    // masterId を決定する部分
     uint masterId;
     switch (block.block_id) {
         case 12001:
@@ -49,13 +41,23 @@
             masterId = 100;
             break;
     }
-    UserItem *userItem = [UserItem createWithMasterId:masterId];
-    [dungeonModel.player add_item:userItem];
     
-    // イベント飛ばす
-    DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
-    [e.params setObject:userItem forKey:@"UserItem"];
-    [dungeonModel dispatchEvent:e];
+    // アイテム付加する部分
+    UserItem *userItem = [UserItem createWithMasterId:masterId];
+    UserItem *resultItem = [dungeonModel.player add_item:userItem];
+    
+    if (resultItem) {
+        DLEvent *e = [DLEvent eventWithType:DL_ON_GET target:block];
+        [e.params setObject:userItem forKey:@"UserItem"];
+        [dungeonModel dispatchEvent:e];        
+    } else {
+        block.hp = 1;
+    }
+}
+
+-(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeonModel
+{
+    // implement behaivior
 }
 
 @end

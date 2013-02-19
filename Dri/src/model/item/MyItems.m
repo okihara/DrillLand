@@ -47,14 +47,14 @@
 
 // -----------------------------------------------------------------------------
 // add/remove
--(UInt64)addItem:(UserItem*)userItem
+-(UserItem *)addItem:(UserItem*)userItem
 {
     userItem.uniqueId = self->last_id;
     self->last_id++;
 
     [self->myItems setObject:userItem
                       forKey:[NSNumber numberWithInt:userItem.uniqueId]];
-    return userItem.uniqueId;
+    return userItem;
 }
 
 -(void)removeItem:(UInt32)unique_id

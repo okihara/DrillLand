@@ -10,6 +10,17 @@
 #import "XDMap.h"
 #import "MyItems.h"
 
+@class DungeonModel;
+@class BlockModel;
+
+@protocol BlockBehaivior <NSObject>
+-(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
+-(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_;
+@end
+
+#define MAX_NUM_HAS 8
 enum ID_BLOCK {
     ID_EMPTY             = 0,
     ID_NORMAL_BLOCK      = 10000,
@@ -27,18 +38,6 @@ enum ID_BLOCK {
     
     ID_PLAYER            = 13000
 };
-
-@class DungeonModel;
-@class BlockModel;
-
-@protocol BlockBehaivior <NSObject>
-
--(void)on_hit:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_;
--(void)on_damage:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_ damage:(int)damage_;
-
-@end
 
 @interface BlockModel : NSObject
 {
@@ -99,6 +98,6 @@ enum ID_BLOCK {
 -(void)attach_behaivior:(NSObject<BlockBehaivior>*)behaivior_;
 -(void)attack:(BlockModel*)target dungeon:(DungeonModel *)dungeon;
 -(void)heal:(int)value;
--(void)add_item:(UserItem*)user_item;
+-(UserItem *)add_item:(UserItem*)user_item;
 
 @end

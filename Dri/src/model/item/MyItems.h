@@ -23,7 +23,7 @@
 -(id)initWithBlockModel:(BlockModel *)blockModel;
 
 -(NSArray*)getList;
--(UInt64)addItem:(UserItem *)userItem;
+-(UserItem *)addItem:(UserItem*)userItem;
 -(void)removeItem:(UInt32)unique_id;
 
 -(UserItem*)getById:(UInt64)uniqueId;
