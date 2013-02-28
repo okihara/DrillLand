@@ -47,7 +47,7 @@
 
 // -----------------------------------------------------------------------------
 // add/remove
--(UserItem *)addItem:(UserItem*)userItem
+-(UserItem *)addItem:(UserItem *)userItem
 {
     userItem.uniqueId = self->last_id;
     self->last_id++;

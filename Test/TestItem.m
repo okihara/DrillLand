@@ -46,10 +46,11 @@ BOOL reached = NO;
 - (void)testUse
 {
     // 準備 -------
-    UserItem *user_item = [UserItem new];
+    UserItem *user_item = [UserItem createWithMasterId:100];
     
     BlockModel *block_model = [[BlockModel alloc] init];
-    block_model.hp = 1;
+    block_model.hp     = 1;
+    block_model.max_hp = 100;
     STAssertEquals(1, block_model.hp, @"");
     
     DungeonModel *dungeon_model = [DungeonModel new];
@@ -65,10 +66,5 @@ BOOL reached = NO;
     STAssertTrue(reached, @"イベントがオブザーバーまで届いていない");
 }
 
-- (void)testPropertyName
-{
-    UserItem *userItem = [UserItem new];
-    STAssertTrue([@"hoge" isEqualToString:userItem.name], @"");
-}
 
 @end

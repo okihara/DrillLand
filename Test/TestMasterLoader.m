@@ -27,7 +27,7 @@
     NSDictionary *master = [MasterLoader getMaster:@"item_master" 
                                          primaryId:10000];
     NSString *name = (NSString *)[master valueForKey:@"name"];
-    STAssertTrue([name isEqualToString:@"SHORT-SWORD"], @"");
+    STAssertTrue([name isEqualToString:@"short-sword"], @"");
 }
 
 @end
