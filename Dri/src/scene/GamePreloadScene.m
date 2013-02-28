@@ -18,6 +18,7 @@
 #import "DungeonPreloadScene.h"
 #import "SelectQuestScene.h"
 
+
 @implementation GamePreloadScene
 
 +(CCScene*)scene {
@@ -27,30 +28,37 @@
 	return scene;
 }
 
-// on "init" you need to initialize your instance
 -(id) init
 {
 	if( (self=[super init]) ) {
 
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"loading" fontName:DL_FONT_NAME fontSize:20];
-        label.position =  ccp(160, 440);
+        label.position = ccp(160, 440);
         [self addChild:label];
 
         // ---
         [CCMenuItemFont setFontName:DL_FONT_NAME];
 
+        // ローダーを作る
         SpriteFrameLoader *frame_loader = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
+        // 主人公キャラ
         [frame_loader load_sprite:@"blk13000.json"];
         [animation_loader load_animation:@"anim13000.json"];
+        
         [frame_loader load_sprite:@"blk13000a.json"];
         [animation_loader load_animation:@"anim13000a.json"];
         
+        
+        // 青スライム
         [frame_loader load_sprite:@"blk11000.json"];
         [animation_loader load_animation:@"anim11000.json"];
 
+        
+        // 使っとりゃーせんね
         [frame_loader load_sprite:@"common.json"];
+        
         
         // マスターデータをロード
         [MasterLoader load:@"block_master.json"];
