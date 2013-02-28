@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/09/25.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "AnimationLoader.h"
@@ -39,14 +39,26 @@
 
 -(void)load_animation:(NSString*)filename
 {
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];
-    NSString *jsonData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSString *path = [[[NSBundle mainBundle] resourcePath]
+                      stringByAppendingPathComponent:filename];
+    NSString *jsonData = [NSString stringWithContentsOfFile:path
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:nil];
     id jsonItem = [jsonData JSONValue];
     NSDictionary *action = [(NSDictionary*)jsonItem objectForKey:@"action"];
     
     CCAnimationCache* anim_cache = [CCAnimationCache sharedAnimationCache];
     
     for (NSString *key in [action keyEnumerator]) {
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // TODO: ！恐怖とりあえずすぎる！
         float delay;
         if ([key isEqualToString:@"13000atk"]) {
@@ -54,6 +66,15 @@
         } else {
             delay = 0.072f;
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         CCAnimation *anim = [self load_action:[action objectForKey:key] delay:delay];
         
         [anim_cache addAnimation:anim name:key];
