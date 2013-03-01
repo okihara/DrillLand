@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/08/18.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Hiromitsu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -29,7 +29,9 @@ enum VIEW_TYPE {
     VIEW_TYPE_MESSAGE    = 500,
 };
 
-@interface BlockView : CCSprite
+#import "GameObject.h"
+
+@interface BlockView : GameObject
 {
     BOOL is_alive;
     BOOL is_change;

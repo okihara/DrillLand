@@ -12,7 +12,6 @@
 
 
 @interface BlockView()
-- (CCFiniteTimeAction *)_playAnime:(BlockModel *)blockModel name:(NSString *)name;
 - (CCAction *)_updatePresentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
 @end
 
@@ -30,7 +29,6 @@
 
     self->events            = [[NSMutableArray array] retain];
     self->presentation_list = [[NSMutableArray array] retain];
-
 }
 
 - (void)dealloc
@@ -73,31 +71,10 @@
     return [actions count] ? [CCSequence actionWithArray:actions] : nil;
 }
 
-
-//------------------------------------------------------------------------------
-// アニメーション
-
--(CCFiniteTimeAction*)playAnime:(BlockModel*)blockModel name:(NSString *)suffix
+- (CCFiniteTimeAction *)playAnime:(BlockModel*)blockModel name:(NSString *)suffix
 {
     NSString *animeName = [NSString stringWithFormat:@"%d%@", blockModel.block_id, suffix];
-    return [self _playAnime:blockModel name:animeName];
-}
-
--(CCFiniteTimeAction *)_playAnime:(BlockModel *)blockModel name:(NSString *)name
-{
-    CCAnimation *anim = [[CCAnimationCache sharedAnimationCache] animationByName:name];
-    if (!anim) {
-        return nil;
-    }
-    
-    CCAnimate *animate = [CCAnimate actionWithAnimation:anim];
-    if (anim.loops == NSUIntegerMax) {
-        return [CCCallFuncO actionWithTarget:self
-                                    selector:@selector(runAction:) 
-                                      object:animate];
-    } else {
-        return animate;
-    }
+    return [self play:animeName];
 }
 
 @end
