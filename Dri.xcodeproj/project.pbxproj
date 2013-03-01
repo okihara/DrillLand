@@ -201,6 +201,7 @@
 		C19547BB15D7F48B002119CC /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BA15D7F48B002119CC /* vec3.c */; };
 		C19547BD15D7F48B002119CC /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BC15D7F48B002119CC /* vec4.c */; };
 		C19547C215D7F48B002119CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C115D7F48B002119CC /* main.m */; };
+		C1A4C59D16E0A4B80040C2CA /* blk11010.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A4C59C16E0A4B80040C2CA /* blk11010.png */; };
 		C1A5E6FE15FDC5B800CD1F6C /* LargeNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */; };
 		C1CCAA6715FF922F00A0EB1C /* BasicNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */; };
 		C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */; };
@@ -659,6 +660,7 @@
 		C19547BE15D7F48B002119CC /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		C19547C015D7F48B002119CC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C19547C115D7F48B002119CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C1A4C59C16E0A4B80040C2CA /* blk11010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk11010.png; path = Resources/spritesheet/block/blk11010.png; sourceTree = "<group>"; };
 		C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LargeNotifierView.h; path = src/view/LargeNotifierView.h; sourceTree = "<group>"; };
 		C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LargeNotifierView.m; path = src/view/LargeNotifierView.m; sourceTree = "<group>"; };
 		C1CCAA6515FF922F00A0EB1C /* BasicNotifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicNotifierView.h; path = src/view/BasicNotifierView.h; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 				C1D972E216CBAF6F00017FDD /* blk12004.png */,
 				CE0412D416D0D16800C06314 /* blk12005.png */,
 				C132CC511653BB9D00AA4217 /* blk12000.png */,
+				C1A4C59C16E0A4B80040C2CA /* blk11010.png */,
 				C132CC521653BB9D00AA4217 /* blk11001.png */,
 				C132CC7F1653C0EB00AA4217 /* blk11000.json */,
 				C132CC531653BB9D00AA4217 /* blk11000.png */,
@@ -1845,6 +1848,7 @@
 				CE0412D516D0D16800C06314 /* blk12005.png in Resources */,
 				C14C3A2B16D254A100B67B27 /* death3.wav in Resources */,
 				C14C3A2C16D254A100B67B27 /* skullpile1.wav in Resources */,
+				C1A4C59D16E0A4B80040C2CA /* blk11010.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
