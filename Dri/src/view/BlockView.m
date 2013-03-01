@@ -11,19 +11,16 @@
 #import "DungeonView.h"
 
 
+@interface BlockView()
+- (CCFiniteTimeAction *)_playAnime:(BlockModel *)blockModel name:(NSString *)name;
+- (CCAction *)_updatePresentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e;
+@end
+
 @implementation BlockView
 
 @synthesize is_alive;
 @synthesize is_change; // TODO: カプセル化違反
 @synthesize pos;
-
-- (id)init
-{
-	if (self=[super init]) {
-        [self setup];
-	}
-	return self;
-}
 
 - (void)setup
 {
@@ -45,12 +42,22 @@
 
 
 //------------------------------------------------------------------------------
+// Event
 
+- (CCAction*)handleEvent:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
+{
+    return [self _updatePresentation:ctx event:e];
+}
+
+
+//------------------------------------------------------------------------------
+// Presentation
 
 - (void)addPresentation:(NSObject<BlockPresentation> *)presentation
 {
     [self->presentation_list addObject:presentation];
 }
+
 
 - (CCAction*)_updatePresentation:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
 {
@@ -66,14 +73,15 @@
     return [actions count] ? [CCSequence actionWithArray:actions] : nil;
 }
 
-- (CCAction*)handleEvent:(NSObject<ViewContextProtocol>*)ctx event:(DLEvent*)e
-{
-    return [self _updatePresentation:ctx event:e];
-}
 
-
-//==============================================================================
+//------------------------------------------------------------------------------
 // アニメーション
+
+-(CCFiniteTimeAction*)playAnime:(BlockModel*)blockModel name:(NSString *)suffix
+{
+    NSString *animeName = [NSString stringWithFormat:@"%d%@", blockModel.block_id, suffix];
+    return [self _playAnime:blockModel name:animeName];
+}
 
 -(CCFiniteTimeAction *)_playAnime:(BlockModel *)blockModel name:(NSString *)name
 {
@@ -90,12 +98,6 @@
     } else {
         return animate;
     }
-}
-
--(CCFiniteTimeAction*)playAnime:(BlockModel*)blockModel name:(NSString *)suffix
-{
-    NSString *animeName = [NSString stringWithFormat:@"%d%@", blockModel.block_id, suffix];
-    return [self _playAnime:blockModel name:animeName];
 }
 
 @end

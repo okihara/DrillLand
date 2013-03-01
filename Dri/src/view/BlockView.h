@@ -49,12 +49,7 @@ enum VIEW_TYPE {
 
 - (void)setup;
 - (void)addPresentation:(NSObject<BlockPresentation> *)presentation;
-
-// event
-- (CCAction*)handleEvent:(NSObject<ViewContextProtocol> *)ctx
-                   event:(DLEvent*)e;
-
-// アニメーション
--(CCFiniteTimeAction*)playAnime:(BlockModel *)blockModel name:(NSString *)suffix;
+- (CCAction*)handleEvent:(NSObject<ViewContextProtocol> *)ctx event:(DLEvent*)e;
+- (CCFiniteTimeAction*)playAnime:(BlockModel *)blockModel name:(NSString *)suffix;
 
 @end
