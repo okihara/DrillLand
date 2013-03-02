@@ -28,6 +28,29 @@
 	return scene;
 }
 
+uint blockIdList[] = {
+    13000,
+    11000,
+};
+
+- (void)_loadDungeonData:(SpriteFrameLoader *)frame_loader animation_loader:(AnimationLoader *)animation_loader
+{
+    // 大前提: このダンジョンで必要なものだけをロードすべき
+    int num = sizeof(blockIdList) / sizeof(blockIdList[0]);
+    for (int i = 0; i < num; i++) {
+        [frame_loader     load_sprite:    [NSString stringWithFormat:@"blk%05d.json",  blockIdList[i]]];
+        [animation_loader load_animation: [NSString stringWithFormat:@"anim%05d.json", blockIdList[i]]];
+    }
+
+    // 主人公キャラの追加データ
+    // TODO: １っこでええやろ
+    [frame_loader     load_sprite:@"blk13000a.json"];
+    [animation_loader load_animation:@"anim13000a.json"];
+
+    // 使ってた(´・ω・｀)
+    [frame_loader load_sprite:@"common.json"];
+}
+
 -(id) init
 {
 	if( (self=[super init]) ) {
@@ -43,23 +66,8 @@
         SpriteFrameLoader *frame_loader     = [[[SpriteFrameLoader alloc] init] autorelease];
         AnimationLoader   *animation_loader = [[[AnimationLoader alloc] init] autorelease];
         
-        // 大前提: このダンジョンで必要なものだけをロードすべき
         
-        // 主人公キャラ
-        [frame_loader     load_sprite:@"blk13000.json"];
-        [animation_loader load_animation:@"anim13000.json"];
-        
-        [frame_loader     load_sprite:@"blk13000a.json"];
-        [animation_loader load_animation:@"anim13000a.json"];
-        
-        
-        // 青スライム
-        [frame_loader     load_sprite:@"blk11000.json"];
-        [animation_loader load_animation:@"anim11000.json"];
-        
-        
-        // 使っとりゃーせんね
-        [frame_loader load_sprite:@"common.json"];
+        [self _loadDungeonData:frame_loader animation_loader:animation_loader];
         
         
         // マスターデータをロード

@@ -202,6 +202,7 @@
 		C19547BD15D7F48B002119CC /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C19547BC15D7F48B002119CC /* vec4.c */; };
 		C19547C215D7F48B002119CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19547C115D7F48B002119CC /* main.m */; };
 		C1A4C59D16E0A4B80040C2CA /* blk11010.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A4C59C16E0A4B80040C2CA /* blk11010.png */; };
+		C1A4C5A016E172750040C2CA /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A4C59F16E172740040C2CA /* GameObject.m */; };
 		C1A5E6FE15FDC5B800CD1F6C /* LargeNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */; };
 		C1CCAA6715FF922F00A0EB1C /* BasicNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6615FF922F00A0EB1C /* BasicNotifierView.m */; };
 		C1CCAA6F16009ACD00A0EB1C /* DamageNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CCAA6E16009ACD00A0EB1C /* DamageNumView.m */; };
@@ -661,6 +662,8 @@
 		C19547C015D7F48B002119CC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C19547C115D7F48B002119CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C1A4C59C16E0A4B80040C2CA /* blk11010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blk11010.png; path = Resources/spritesheet/block/blk11010.png; sourceTree = "<group>"; };
+		C1A4C59E16E172730040C2CA /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = src/view/GameObject.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		C1A4C59F16E172740040C2CA /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = src/view/GameObject.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		C1A5E6FC15FDC5B700CD1F6C /* LargeNotifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LargeNotifierView.h; path = src/view/LargeNotifierView.h; sourceTree = "<group>"; };
 		C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LargeNotifierView.m; path = src/view/LargeNotifierView.m; sourceTree = "<group>"; };
 		C1CCAA6515FF922F00A0EB1C /* BasicNotifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicNotifierView.h; path = src/view/BasicNotifierView.h; sourceTree = "<group>"; };
@@ -943,6 +946,8 @@
 		C14C3A2616D12B0500B67B27 /* block */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4C59E16E172730040C2CA /* GameObject.h */,
+				C1A4C59F16E172740040C2CA /* GameObject.m */,
 				C1600A0215F3451900A4616C /* BlockView.h */,
 				C16009FE15F3450F00A4616C /* BlockView.m */,
 				C1CCAA8F1606AE6600A0EB1C /* BlockViewBuilder.h */,
@@ -2074,6 +2079,7 @@
 				C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */,
 				C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
 				C1D972E716CBB99A00017FDD /* InventoryMenuItem.m in Sources */,
+				C1A4C5A016E172750040C2CA /* GameObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
