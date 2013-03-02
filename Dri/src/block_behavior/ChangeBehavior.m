@@ -27,49 +27,40 @@
     // implement behaivior
 }
 
-- (void)change_if_needed:(BlockModel *)block dungeon_model:(DungeonModel *)dungeon_model
+- (int)_getChangedId
 {
-    // TODO: とりあえずすぎる
-    
     int r = rand();
-    
-    DLPoint pos = block.pos;
-    
+
     if (r % 15 == 0) {
-        
-        // モデルの情報書き換える      
-        // TODO: 無理矢理書き換えてる
-        BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
-        block = [builder buildWithID:ID_ITEM_BLOCK_0];
-        // TODO: set でOK? メモリリークしない？
-        [dungeon_model set:pos block:block];
-        
+        return ID_ITEM_BLOCK_0;
     } else if (r % 15 == 1) {
-        
-        // モデルの情報書き換える      
-        // TODO: 無理矢理書き換えてる
-        BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
-        block = [builder buildWithID:ID_ITEM_BLOCK_2];
-        // TODO: set でOK? メモリリークしない？
-        [dungeon_model set:pos block:block];
-        
+        return ID_ITEM_BLOCK_2;
     } else if (r% 15 == 2) {
-        
-        // モデルの情報書き換える      
-        // TODO: 無理矢理書き換えてる
-        BlockBuilder *builder = [[[BlockBuilder alloc] init] autorelease];
-        block = [builder buildWithID:ID_ITEM_BLOCK_2];
-        // TODO: set でOK? メモリリークしない？
-        [dungeon_model set:pos block:block];
-        
+        return ID_ITEM_BLOCK_2;
+    } else if (r% 15 == 3) {
+        return 11010;
     }
+    return 0;
+}
+
+- (void)_changeIfNeeded:(BlockModel *)block dungeon_model:(DungeonModel *)dungeon_model
+{
+    int changedId = [self _getChangedId];
+    if (changedId == 0) { return; }
+    
+    BlockBuilder *builder  = [[[BlockBuilder alloc] init] autorelease];
+    BlockModel   *newBlock = [builder buildWithID:changedId];
+    if (!newBlock) { return; }
+    
+    // TODO: set でOK? メモリリークしない？
+    DLPoint pos = block.pos;
+    [dungeon_model set:pos block:newBlock];
 }
 
 -(void)on_break:(BlockModel*)block dungeon:(DungeonModel*)dungeon_
 {
     // 必要なら違うブロックに変わる
-    [self change_if_needed:block dungeon_model:dungeon_];  
+    [self _changeIfNeeded:block dungeon_model:dungeon_];  
 }
 
 @end
-
