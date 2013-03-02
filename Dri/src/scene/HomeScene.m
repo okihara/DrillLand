@@ -22,7 +22,7 @@
         self.isTouchEnabled = YES;
 
         // IMPLEMENT:
-        CCSprite *town_banner = [CCSprite spriteWithFile:@"home000.png"];
+        CCSprite *town_banner = [CCSprite spriteWithFile:@"town000.png"];
         town_banner.position = ccp(160, 390);
         [self addChild:town_banner];
         

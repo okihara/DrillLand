@@ -59,7 +59,7 @@
 "meta": {
 	"app": "http://www.texturepacker.com",
 	"version": "1.0",
-	"image": "mon.png",
+	"image": "blk11000.png",
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
