@@ -33,13 +33,22 @@ uint blockIdList[] = {
     11000,
 };
 
-- (void)_loadDungeonData:(SpriteFrameLoader *)frame_loader animation_loader:(AnimationLoader *)animation_loader
+- (void)_loadModel:(int)blockId frame_loader:(SpriteFrameLoader *)frame_loader animation_loader:(AnimationLoader *)animation_loader
 {
+    [frame_loader     load_sprite:    [NSString stringWithFormat:@"blk%05d.json",  blockId]];
+    [animation_loader load_animation: [NSString stringWithFormat:@"anim%05d.json", blockId]];
+}
+
+- (void)_loadDungeonData
+{
+    // ローダーを作る
+    SpriteFrameLoader *frame_loader     = [[[SpriteFrameLoader alloc] init] autorelease];
+    AnimationLoader   *animation_loader = [[[AnimationLoader alloc] init] autorelease];
+    
     // 大前提: このダンジョンで必要なものだけをロードすべき
     int num = sizeof(blockIdList) / sizeof(blockIdList[0]);
     for (int i = 0; i < num; i++) {
-        [frame_loader     load_sprite:    [NSString stringWithFormat:@"blk%05d.json",  blockIdList[i]]];
-        [animation_loader load_animation: [NSString stringWithFormat:@"anim%05d.json", blockIdList[i]]];
+        [self _loadModel:blockIdList[i] frame_loader:frame_loader animation_loader:animation_loader];
     }
 
     // 主人公キャラの追加データ
@@ -60,14 +69,7 @@ uint blockIdList[] = {
         [self addChild:label];
         
         // ---
-        [CCMenuItemFont setFontName:DL_FONT_NAME];
-        
-        // ローダーを作る
-        SpriteFrameLoader *frame_loader     = [[[SpriteFrameLoader alloc] init] autorelease];
-        AnimationLoader   *animation_loader = [[[AnimationLoader alloc] init] autorelease];
-        
-        
-        [self _loadDungeonData:frame_loader animation_loader:animation_loader];
+        [self _loadDungeonData];
         
         
         // マスターデータをロード
@@ -77,6 +79,9 @@ uint blockIdList[] = {
         // SE
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"skullpile1.wav"];
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"death3.wav"];
+        
+        // ---
+        [CCMenuItemFont setFontName:DL_FONT_NAME];
     }
 	return self;
 }
