@@ -39,7 +39,7 @@ enum VIEW_TYPE {
     NSMutableArray* events;
     NSMutableArray* presentation_list;
     
-    DLPoint pos;
+    DLPoint pos; // これたぶんいらん。updateColor のためだけに使ってる
     uint    direction;
 }
 @property (readwrite, assign) BOOL is_alive;

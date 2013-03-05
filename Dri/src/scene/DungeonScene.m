@@ -73,12 +73,12 @@
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
         
-        // menu 用のレイヤー
+        // MENU の下に引くレイヤー
         CCLayer *bottomArea = [CCLayerColor layerWithColor:ccc4(0, 25, 0, 255)];
         bottomArea.position = ccp(0, -440);
         [self addChild:bottomArea];
         
-        // menu
+        // MENU そのもの
         self->itemItem = [CCMenuItemFont itemWithString:@"[ITEM]" target:self selector:@selector(didPressButton:)];
         self->itemMenu = [CCMenuItemFont itemWithString:@"[MENU]" target:self selector:@selector(didPressButton:)];
         CCMenu *menu = [CCMenu menuWithItems:itemMenu, itemItem, nil];
@@ -115,19 +115,6 @@
 
 // -----------------------------------------------------------------------------
 
-
-- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-//    DLPoint pos = [self _mapPosFromTouches:touches];
-//    //[self->dungeon_view on_touch_start:pos];
-}
-
-- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-//    DLPoint pos = [self _mapPosFromTouches:touches];
-//    [self->dungeon_view on_touch_start:pos];
-}
-
 - (void)_runSequence
 {
     // タップ後のシーケンス再生
@@ -143,6 +130,9 @@
     [self->dungeon_model postprocess];
 }
 
+// -----------------------------------------------------------------------------
+// Behavior
+// -----------------------------------------------------------------------------
 - (void)_handleStateNormal:(NSSet *)touches
 {
     // モデルへ通知
