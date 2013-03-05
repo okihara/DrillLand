@@ -25,7 +25,6 @@
 {
     is_alive    = YES;
     is_change   = NO;
-    is_touching = NO;
 
     self->events            = [[NSMutableArray array] retain];
     self->presentation_list = [[NSMutableArray array] retain];

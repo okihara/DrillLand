@@ -39,9 +39,6 @@ enum VIEW_TYPE {
     NSMutableArray* events;
     NSMutableArray* presentation_list;
     
-    BOOL  is_touching;    
-    float origin_scale;
-    
     DLPoint pos;
     uint    direction;
 }
