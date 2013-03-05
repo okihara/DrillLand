@@ -85,6 +85,7 @@
 
 -(void)add_player:(BlockView*)block
 {
+    self->player = block;
     [self->player_layer addChild:block];
 }
 

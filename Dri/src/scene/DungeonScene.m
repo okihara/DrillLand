@@ -31,31 +31,38 @@
 - (id)initWithDungeonModel:(DungeonModel*)dungeon_model_
 {
 	if (self=[super init]) {
-        
-        // 乱数初期化
+
+        // ---------------------------------------------------------------------
+        // セットアップ
+        // TODO: Scene の Behaivior に移すべきもの
+        // ---------------------------------------------------------------------
         srand(time(nil));
-        
+        [BasicNotifierView setup:self];
         self->seqBuilder = [[SequenceBuilder alloc] init];
         self->eventQueue = [[DungeonSceneEventQueue alloc] init];
-     
-        // setup dungeon view
-        dungeon_view = [DungeonView node];
-        [self addChild:dungeon_view];
+
         
+        // ---------------------------------------------------------------------
+        // シーン内オブジェクトの構築
+        // TODO: JSON から読んで構築するようにする
+        // ---------------------------------------------------------------------
         // setup dungeon model
         self->dungeon_model = dungeon_model_;
         [self->dungeon_model addObserver:self];
 
-        // setup player
-        BlockView *player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
-        [dungeon_view add_player:player];
-        dungeon_view.player = player;
-        //[player release];
+        // setup dungeon view
+        self->dungeon_view = [DungeonView node];
+        [self addChild:dungeon_view];        
 
-        // 勇者を初期位置に
+        // これなにやってるの？
         [dungeon_view update_view:dungeon_model];
-        CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(8,3)];
+        
+        // setup player
+        // 勇者を初期位置に
+        BlockView *player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
+        CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(8, 3)];
         player.position = p_pos;
+        [dungeon_view add_player:player];
         
         // fade 用のレイヤー
         self->fade_layer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
@@ -79,9 +86,11 @@
         [menu alignItemsHorizontally];
         [self addChild:menu];
         
-        // 小通知
-        [BasicNotifierView setup:self];
         
+        // ---------------------------------------------------------------------        
+        // 構築後に必要な処理
+        // TODO: init の中でするものではない
+        // ---------------------------------------------------------------------
         [self _runFirstSequece];
 	}
 	return self;
@@ -97,8 +106,9 @@
 
 - (void)dealloc
 {
-    [self->dungeon_model release];
+    [self->eventQueue release];
     [self->seqBuilder release];
+    [self->dungeon_model release];
     [super dealloc];
 }
 
@@ -257,9 +267,9 @@
 
 - (void)_runFirstSequece {
     
-    if (1) {
+    if (0) {
         // FADE OUT
-        CCFiniteTimeAction* fi = [CCFadeOut actionWithDuration:0.1f];
+        CCFiniteTimeAction *fi = [CCFadeOut actionWithDuration:0.1f];
         [self->fade_layer runAction:fi];
         self.isTouchEnabled = YES;
         return;
