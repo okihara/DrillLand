@@ -9,6 +9,7 @@
 #import "AggressiveBehaivior.h"
 #import "DungeonModel.h"
 
+// ENEMY の Behavior みたくなってるよね
 @implementation AggressiveBehaivior
 
 // これは武器/敵によってロジックが変わるので、ここに書くべきではない
@@ -47,9 +48,13 @@
     // implement behavior
 }
 
--(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
+-(void)on_break:(BlockModel*)targetBlock dungeon:(DungeonModel*)dungeonModel
 {
-    // implement behavior
+    int addend = targetBlock.gold;
+    if(addend > 0) {
+        dungeonModel.player.gold += addend;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateGold" object:[NSNumber numberWithInt:dungeonModel.player.gold]];
+    }
 }
 
 @end

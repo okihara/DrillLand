@@ -3,7 +3,7 @@
 //  Dri
 //
 //  Created by  on 12/08/16.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "BlockModel.h"

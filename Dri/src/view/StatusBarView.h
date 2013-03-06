@@ -16,6 +16,7 @@
     CCLabelBMFont *name;
     CCLabelBMFont *level;
     CCLabelBMFont *floor;
+    CCLabelBMFont *gold;
 }
 
 @end
