@@ -17,6 +17,7 @@
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
 #import "SelectQuestScene.h"
+#import "SaveData.h"
 
 
 @implementation GamePreloadScene
@@ -82,6 +83,12 @@ uint blockIdList[] = {
         
         // ---
         [CCMenuItemFont setFontName:DL_FONT_NAME];
+        
+        // TODO: SAVE
+        if (![[SaveData new] get]) {
+            NSDictionary *saveData = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:3] forKey:@"gold"];
+            [[SaveData new] save:saveData];
+        }
     }
 	return self;
 }

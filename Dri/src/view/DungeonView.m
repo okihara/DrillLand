@@ -32,6 +32,9 @@
 {
 	if(self=[super init]) {
         
+        // ---------------------------------------------------------------------
+        // view ができる前にする処理
+        // ---------------------------------------------------------------------
         self->disp_w = DM_WIDTH;
         self->disp_h = DV_DISP_H;
 
@@ -43,7 +46,11 @@
         self->selected_block = nil;
         
         self->view_map = [[ObjectXDMap alloc] init];
+
         
+        // ---------------------------------------------------------------------
+        // view の構築
+        // ---------------------------------------------------------------------
         self->base_layer = [[CCLayer alloc] init];
         self->base_layer.position = ccp(self->offset_x, self->offset_y);
         [self addChild:self->base_layer];
@@ -63,7 +70,11 @@
         
         self->fade_layer = [[CCLayerColor layerWithColor:ccc4(0, 0, 0, 0)] retain];
         [self addChild:self->fade_layer];
-    
+
+        
+        // ---------------------------------------------------------------------
+        // view ができた後にできる処理
+        // ---------------------------------------------------------------------
         self->effect_launcher = [[EffectLauncher alloc] init];
         self->effect_launcher.target_layer = self->effect_layer;
         

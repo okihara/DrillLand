@@ -19,6 +19,7 @@
 #import "MyItems.h"
 #import "UserItem.h"
 #import "SequenceBuilder.h"
+#import "SaveData.h"
 
 
 @interface DungeonScene ()
@@ -41,23 +42,26 @@
         self->seqBuilder = [[SequenceBuilder alloc] init];
         self->eventQueue = [[DungeonSceneEventQueue alloc] init];
 
+        // setup dungeon model
+        self->dungeon_model = dungeon_model_;
+        [self->dungeon_model addObserver:self];
+        // TODO: SAVE
+        NSDictionary *saveData = [[SaveData new] get];
+        int gold = [[saveData objectForKey:@"gold"] intValue];
+        dungeon_model_.player.gold = gold;
+        
         
         // ---------------------------------------------------------------------
         // シーン内オブジェクトの構築
         // TODO: JSON から読んで構築するようにする
         // ---------------------------------------------------------------------
-        // setup dungeon model
-        self->dungeon_model = dungeon_model_;
-        [self->dungeon_model addObserver:self];
 
         // setup dungeon view
         self->dungeon_view = [DungeonView node];
-        [self addChild:dungeon_view];        
-
+        [self addChild:dungeon_view];
         // これなにやってるの？
         [dungeon_view update_view:dungeon_model];
         
-        // setup player
         // 勇者を初期位置に
         BlockView *player = [BlockViewBuilder build:dungeon_model.player ctx:dungeon_model];
         CGPoint p_pos = [dungeon_view mapPosToViewPoint:cdp(8, 3)];
@@ -72,6 +76,7 @@
         self->statusbar = [[StatusBarView alloc] init];
         self->statusbar.position = ccp(320 / 2, 480 - 60 / 2);
         [self addChild:self->statusbar];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateGold" object:[NSNumber numberWithInt:dungeon_model_.player.gold]];
         
         // MENU の下に引くレイヤー
         CCLayer *bottomArea = [CCLayerColor layerWithColor:ccc4(0, 25, 0, 255)];
@@ -94,14 +99,6 @@
         [self _runFirstSequece];
 	}
 	return self;
-}
-
-+ (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model
-{
-	CCScene *scene = [CCScene node];
-	CCLayer *layer = [[[DungeonScene alloc] initWithDungeonModel:dungeon_model] autorelease];
-	[scene addChild:layer];
-	return scene;
 }
 
 - (void)dealloc
@@ -188,6 +185,9 @@
             [BasicNotifierView notify:@"QUEST CLEAR" target:self duration:3.0f];
             CCDelayTime *delay = [CCDelayTime actionWithDuration:7.0f];
             [self runAction:[CCSequence actions:delay, goto_result, nil]];
+
+            // TODO: SAVE
+            [[SaveData new] save:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:dungeon_.player.gold] forKey:@"gold"]];
         }
             break;
             
@@ -280,6 +280,14 @@
     [dungeon_view.player runAction:[CCSequence actions:nl, action_1, [CCCallBlock actionWithBlock:^(){
         self.isTouchEnabled = YES;
     }], nil]];
+}
+
++ (CCScene *)sceneWithDungeonModel:(DungeonModel*)dungeon_model
+{
+	CCScene *scene = [CCScene node];
+	CCLayer *layer = [[[DungeonScene alloc] initWithDungeonModel:dungeon_model] autorelease];
+	[scene addChild:layer];
+	return scene;
 }
 
 @end

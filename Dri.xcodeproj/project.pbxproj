@@ -53,6 +53,7 @@
 		C1373818165E26A400C9DD41 /* common.png in Resources */ = {isa = PBXBuildFile; fileRef = C1373816165E26A400C9DD41 /* common.png */; };
 		C137381B1661B4C300C9DD41 /* ItemBoxPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C137381A1661B4C300C9DD41 /* ItemBoxPresentation.m */; };
 		C13FBDF8160B3C7B00B4AF35 /* DungeonMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */; };
+		C14321E416E732E900BC6B6F /* SaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = C14321E316E732E700BC6B6F /* SaveData.m */; };
 		C1455233163604E40032350D /* DebugBlockScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1455232163604E40032350D /* DebugBlockScene.m */; };
 		C145523B16369AFC0032350D /* MockViewContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523A16369AFC0032350D /* MockViewContext.m */; };
 		C145523E163A2A4F0032350D /* DungeonLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C145523D163A2A4D0032350D /* DungeonLoader.m */; };
@@ -349,6 +350,8 @@
 		C137381A1661B4C300C9DD41 /* ItemBoxPresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemBoxPresentation.m; path = src/block_presentation/ItemBoxPresentation.m; sourceTree = "<group>"; };
 		C13FBDF6160B3C7A00B4AF35 /* DungeonMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonMenuScene.h; path = src/scene/DungeonMenuScene.h; sourceTree = "<group>"; };
 		C13FBDF7160B3C7A00B4AF35 /* DungeonMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonMenuScene.m; path = src/scene/DungeonMenuScene.m; sourceTree = "<group>"; };
+		C14321E216E732E500BC6B6F /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveData.h; path = src/misc/SaveData.h; sourceTree = "<group>"; };
+		C14321E316E732E700BC6B6F /* SaveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SaveData.m; path = src/misc/SaveData.m; sourceTree = "<group>"; };
 		C1455231163604E40032350D /* DebugBlockScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugBlockScene.h; path = src/scene/DebugBlockScene.h; sourceTree = "<group>"; };
 		C1455232163604E40032350D /* DebugBlockScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DebugBlockScene.m; path = src/scene/DebugBlockScene.m; sourceTree = "<group>"; };
 		C1455235163699370032350D /* DLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLView.h; path = src/scene/DLView.h; sourceTree = "<group>"; };
@@ -1465,6 +1468,8 @@
 		C1CCAA9A1607550A00A0EB1C /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				C14321E216E732E500BC6B6F /* SaveData.h */,
+				C14321E316E732E700BC6B6F /* SaveData.m */,
 				C132CC151651101B00AA4217 /* MasterLoader.h */,
 				C132CC161651101C00AA4217 /* MasterLoader.m */,
 				C183A14216111A3000FE672F /* AnimationLoader.h */,
@@ -2080,6 +2085,7 @@
 				C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */,
 				C1D972E716CBB99A00017FDD /* InventoryMenuItem.m in Sources */,
 				C1A4C5A016E172750040C2CA /* GameObject.m in Sources */,
+				C14321E416E732E900BC6B6F /* SaveData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
