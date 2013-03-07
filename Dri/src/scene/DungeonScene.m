@@ -45,7 +45,7 @@
         // setup dungeon model
         self->dungeon_model = dungeon_model_;
         [self->dungeon_model addObserver:self];
-        // TODO: SAVE
+        // セーブデータを読み込む
         NSDictionary *saveData = [[SaveData new] get];
         int gold = [[saveData objectForKey:@"gold"] intValue];
         dungeon_model_.player.gold = gold;
@@ -185,9 +185,6 @@
             [BasicNotifierView notify:@"QUEST CLEAR" target:self duration:3.0f];
             CCDelayTime *delay = [CCDelayTime actionWithDuration:7.0f];
             [self runAction:[CCSequence actions:delay, goto_result, nil]];
-
-            // TODO: SAVE
-            [[SaveData new] save:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:dungeon_.player.gold] forKey:@"gold"]];
         }
             break;
             

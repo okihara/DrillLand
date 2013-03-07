@@ -84,11 +84,8 @@ uint blockIdList[] = {
         // ---
         [CCMenuItemFont setFontName:DL_FONT_NAME];
         
-        // TODO: SAVE
-        if (![[SaveData new] get]) {
-            NSDictionary *saveData = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:3] forKey:@"gold"];
-            [[SaveData new] save:saveData];
-        }
+        // SAVE DATA を初期化
+        [[SaveData new] setup];
     }
 	return self;
 }

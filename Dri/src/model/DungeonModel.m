@@ -13,6 +13,8 @@
 #import "DungeonModelCanTapUpdater.h"
 #import "DungeonModelGroupInfoUpdater.h"
 #import "DungeonModelRouteMap.h"
+#import "SaveData.h"
+
 
 @implementation DungeonModel
 
@@ -121,6 +123,9 @@
             }
         }
     }
+    
+    // １ターン毎にセーブ
+    [[SaveData new] save:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.player.gold] forKey:@"gold"]];
 }
 
 
@@ -150,7 +155,7 @@
     
     // ブロック(プレイヤー以外の)のアップデートフェイズ
     [self on_update];
-    
+        
     return YES;
 }
 

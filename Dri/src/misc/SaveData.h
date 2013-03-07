@@ -13,6 +13,7 @@
     NSString     *fileName;
 }
 
+- (void)setup;
 - (void)save:(id)data;
 - (id)get;
 - (id)load;

@@ -36,6 +36,8 @@
 {
     NSLog(@"PLAYER DIED P hp=%d", context_.hp);
     
+    dungeon_.player.gold = dungeon_.player.gold / 2;
+    
     DLEvent *e = [DLEvent eventWithType:DL_ON_DESTROY target:context_];
     [dungeon_ dispatchEvent:e];
 }

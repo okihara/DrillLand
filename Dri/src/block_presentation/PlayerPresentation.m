@@ -3,13 +3,12 @@
 //  Dri
 //
 //  Created by  on 12/09/16.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hiromitsu. All rights reserved.
 //
 
 #import "PlayerPresentation.h"
 #import "DungeonView.h"
 #import "DungeonOverScene.h"
-#import "SaveData.h"
 
 
 @implementation PlayerPresentation
@@ -30,8 +29,6 @@
             
         case DL_ON_DESTROY:
         {
-            // TODO: SAVE
-            [[SaveData new] save:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:dungeonModel.player.gold / 2] forKey:@"gold"]];
             // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ
             // DungeonScene にイベント投げるぐらいにするべき
             return [CCCallBlock actionWithBlock:^(){

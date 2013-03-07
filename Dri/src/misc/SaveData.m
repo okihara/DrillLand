@@ -28,6 +28,14 @@ id cache;
     return filePath;
 }
 
+- (void)setup
+{
+    if (![self get]) {
+        NSDictionary *saveData = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:3] forKey:@"gold"];
+        [self save:saveData];
+    }
+}
+
 - (void)save:(id)data
 {
     //NSArray *array = [NSArray arrayWithObjects:@"山田太郎", @"東京都中央区", nil];
