@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define INITIAL_GOLD 3
+
 @interface SaveData : NSObject
 {
     NSString     *fileName;

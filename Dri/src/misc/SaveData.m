@@ -31,7 +31,7 @@ id cache;
 - (void)setup
 {
     if (![self get]) {
-        NSDictionary *saveData = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:3] forKey:@"gold"];
+        NSDictionary *saveData = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:INITIAL_GOLD] forKey:@"gold"];
         [self save:saveData];
     }
 }
