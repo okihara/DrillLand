@@ -18,7 +18,7 @@
 #import "DungeonPreloadScene.h"
 #import "SelectQuestScene.h"
 #import "SaveData.h"
-
+#import "TitleScene.h"
 
 @implementation GamePreloadScene
 
@@ -108,7 +108,9 @@ uint blockIdList[] = {
     [super onEnter];
 
 //    [self goto_debug_block_view];
-    [self goto_dungeon];
+//    [self goto_dungeon];
+    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]];
+
 //    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 //    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
 }
