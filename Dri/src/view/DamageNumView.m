@@ -19,9 +19,10 @@
 
 +(void)spawn:(int)num target:(CCNode*)parent position:(CGPoint)pos color:(ccColor3B)color
 {
-    CCNode* num_view = [[DamageNumView alloc] initWithString:[NSString stringWithFormat:@"%d", num] color:color];
+    CCNode *num_view = [[DamageNumView alloc] initWithString:[NSString stringWithFormat:@"%d", num] color:color];
     num_view.position = pos;
     [parent addChild:num_view];
+    [num_view release];
 }
 
 -(void) suicide
