@@ -31,13 +31,13 @@
         CCMenuItemFont *item_quest_2 = [CCMenuItemFont itemWithString:@"QUEST 001" target:self selector:@selector(didPressButton_1:)];
         CCMenuItemFont *item_quest_3 = [CCMenuItemFont itemWithString:@"QUEST 002" target:self selector:@selector(didPressButton_2:)];
         CCMenuItemFont *item_quest_4 = [CCMenuItemFont itemWithString:@"QUEST 003" target:self selector:@selector(didPressButton_3:)];
-        CCMenuItemFont *item_home    = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
+//        CCMenuItemFont *item_home    = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButtonHome:)];
         CCMenu *menu = [CCMenu menuWithItems:
                         item_quest_1,
                         item_quest_2,
                         item_quest_3,
                         item_quest_4,
-                        item_home,
+//                        item_home,
                         nil];
         menu.position = ccp(160, 200);
         [menu alignItemsVertically];

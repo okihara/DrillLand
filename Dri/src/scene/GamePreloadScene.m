@@ -19,6 +19,7 @@
 #import "SelectQuestScene.h"
 #import "SaveData.h"
 #import "TitleScene.h"
+#import "CCBReader.h"
 
 @implementation GamePreloadScene
 
@@ -109,7 +110,9 @@ uint blockIdList[] = {
 
 //    [self goto_debug_block_view];
 //    [self goto_dungeon];
-    [[CCDirector sharedDirector] replaceScene:[TitleScene scene]];
+
+    CCScene *nextScene = [CCBReader sceneWithNodeGraphFromFile:@"title.ccbi"];
+    [[CCDirector sharedDirector] replaceScene:nextScene];
 
 //    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 //    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
