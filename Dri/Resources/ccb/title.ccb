@@ -177,7 +177,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string>start</string>
+						<string>START</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -194,7 +194,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>12</real>
+							<real>24</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -299,8 +299,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

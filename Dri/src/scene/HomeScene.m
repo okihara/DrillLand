@@ -64,9 +64,9 @@
 {
     // TODO: fade の処理が散らばるなあ。。。
     // CCDirector に protocol でトランジッション指定できる replaceScene 作ったらいいかも
-    CCScene *scene = [SelectQuestScene scene];
-    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
-    [[CCDirector sharedDirector] replaceScene:trans];
+//    CCScene *scene = [SelectQuestScene scene];
+//    CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:scene withColor:ccc3(0, 0, 0)];
+//    [[CCDirector sharedDirector] replaceScene:trans];
 }
 
 + (CCScene *)scene

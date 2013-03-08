@@ -37,7 +37,7 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
+    //[[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
 }
 
 @end

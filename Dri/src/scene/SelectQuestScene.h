@@ -10,7 +10,5 @@
 
 @interface SelectQuestScene : CCLayer
 
-+(CCScene*)scene;
-
 @end
 

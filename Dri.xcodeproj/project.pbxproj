@@ -26,6 +26,7 @@
 		C128226916EA237C00C7B600 /* foo.ccbresourcelog in Resources */ = {isa = PBXBuildFile; fileRef = C128226616EA237C00C7B600 /* foo.ccbresourcelog */; };
 		C128226E16EA2B1C00C7B600 /* title.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = C128226D16EA2B1C00C7B600 /* title.ccbi */; };
 		C128227016EA326400C7B600 /* title.ccb in Resources */ = {isa = PBXBuildFile; fileRef = C128226F16EA326400C7B600 /* title.ccb */; };
+		C128227216EA36A400C7B600 /* select_quest.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = C128227116EA36A400C7B600 /* select_quest.ccbi */; };
 		C130834E163A8B9F009B254B /* TreasureBoxBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C130834D163A8B9E009B254B /* TreasureBoxBehavior.m */; };
 		C1308351163A8C62009B254B /* ChangeBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = C1308350163A8C60009B254B /* ChangeBehavior.m */; };
 		C132CC1416510E4600AA4217 /* block_master.json in Resources */ = {isa = PBXBuildFile; fileRef = C132CC1316510E4600AA4217 /* block_master.json */; };
@@ -360,6 +361,7 @@
 		C128226616EA237C00C7B600 /* foo.ccbresourcelog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foo.ccbresourcelog; sourceTree = "<group>"; };
 		C128226D16EA2B1C00C7B600 /* title.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = title.ccbi; path = Resources/title.ccbi; sourceTree = "<group>"; };
 		C128226F16EA326400C7B600 /* title.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = title.ccb; sourceTree = "<group>"; };
+		C128227116EA36A400C7B600 /* select_quest.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = select_quest.ccbi; path = Resources/select_quest.ccbi; sourceTree = "<group>"; };
 		C130834C163A8B9D009B254B /* TreasureBoxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreasureBoxBehavior.h; path = src/block_behavior/TreasureBoxBehavior.h; sourceTree = "<group>"; };
 		C130834D163A8B9E009B254B /* TreasureBoxBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreasureBoxBehavior.m; path = src/block_behavior/TreasureBoxBehavior.m; sourceTree = "<group>"; };
 		C130834F163A8C5F009B254B /* ChangeBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeBehavior.h; path = src/block_behavior/ChangeBehavior.h; sourceTree = "<group>"; };
@@ -1231,6 +1233,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C128227116EA36A400C7B600 /* select_quest.ccbi */,
 				C128226D16EA2B1C00C7B600 /* title.ccbi */,
 				C128226416EA237C00C7B600 /* ccb */,
 				C1C6ACA816E9F048005226FD /* ccbResources */,
@@ -2149,6 +2152,7 @@
 				C128226916EA237C00C7B600 /* foo.ccbresourcelog in Resources */,
 				C128226E16EA2B1C00C7B600 /* title.ccbi in Resources */,
 				C128227016EA326400C7B600 /* title.ccb in Resources */,
+				C128227216EA36A400C7B600 /* select_quest.ccbi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,12 +8,14 @@
 
 #import "TitleScene.h"
 #import "SelectQuestScene.h"
+#import "CCBReader.h"
 
 @implementation TitleScene
 
 - (void)pressedStart:(id)sender
 {
-    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
+    CCScene *nextScene = [CCBReader sceneWithNodeGraphFromFile:@"select_quest.ccbi"];
+    [[CCDirector sharedDirector] replaceScene:nextScene];
 }
 
 @end
