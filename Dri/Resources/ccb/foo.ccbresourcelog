@@ -1,6 +1,10 @@
 select_quest.ccbi
+shop.ccbi
+status.ccbi
 title.ccbi
 select_quest.ccbi
+shop.ccbi
+status.ccbi
 title.ccbi
 ccbDefaultImages-hd.plist
 ccbDefaultImages-hd.png
@@ -35,6 +39,7 @@ heal.png
 hit1.plist
 hit2.plist
 hoge.plist
+shop.plist
 blk10001.png
 blk10002.png
 blk10003.png
@@ -72,8 +77,10 @@ blk12004.png
 blk12005.png
 blk13000.png
 blk13000a.png
+black.png
 coin.png
 common.png
+shop.png
 sky00.png
 title.png
 guild000.png

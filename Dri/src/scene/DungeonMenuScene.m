@@ -11,6 +11,7 @@
 #import "HomeScene.h"
 #import "DungeonPreloadScene.h"
 #import "DebugBlockScene.h"
+#import "DungeonOverScene.h"
 
 @implementation DungeonMenuScene
 
@@ -35,7 +36,7 @@
         self.isTouchEnabled = YES;
         
         // IMPLEMENT:
-        CCMenuItemFont *item_home = [CCMenuItemFont itemWithString:@"HOME" target:self selector:@selector(didPressButton_home:)];
+        CCMenuItemFont *item_home = [CCMenuItemFont itemWithString:@"EXIT" target:self selector:@selector(didPressButton_home:)];
         CCMenuItemFont *item_reload = [CCMenuItemFont itemWithString:@"RELOAD" target:self selector:@selector(didPressButton_reload:)];
         CCMenuItemFont *item_block = [CCMenuItemFont itemWithString:@"BLOCK" target:self selector:@selector(didPressButton_block:)];
         
@@ -58,7 +59,7 @@
 
 - (void)didPressButton_home:(CCMenuItem *)sender
 {
-    CCScene *next_scene = [HomeScene scene];
+    CCScene *next_scene = [DungeonOverScene scene];
     CCTransitionFade *trans = [CCTransitionFade transitionWithDuration:0.5f scene:next_scene withColor:ccc3(0, 0, 0)];
     [[CCDirector sharedDirector] replaceScene:trans];
 }

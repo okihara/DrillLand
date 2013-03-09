@@ -48,6 +48,12 @@
     [[CCDirector sharedDirector] pushScene:nextScene];
 }
 
+- (void)didPressButton_shop:(CCMenuItem *)sender
+{
+    CCScene *nextScene = [CCBReader sceneWithNodeGraphFromFile:@"shop.ccbi"];
+    [[CCDirector sharedDirector] pushScene:nextScene];
+}
+
 //- (void)didPressButtonHome:(CCMenuItem *)sender
 //{
 //    CCScene *scene = [HomeScene scene];

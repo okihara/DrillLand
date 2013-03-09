@@ -3,12 +3,11 @@
 //  Dri
 //
 //  Created by  on 12/08/29.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Hiromitsu. All rights reserved.
 //
 
 #import "DungeonOverScene.h"
-#import "HomeScene.h"
-#import "SelectQuestScene.h"
+#import "CCBReader.h"
 
 @implementation DungeonOverScene
 
@@ -39,6 +38,8 @@
 {
 //    [[CCDirector sharedDirector] replaceScene:[HomeScene scene]];
 //    [[CCDirector sharedDirector] replaceScene:[SelectQuestScene scene]];
+    CCScene *nextScene = [CCBReader sceneWithNodeGraphFromFile:@"select_quest.ccbi"];
+    [[CCDirector sharedDirector] replaceScene:nextScene];
 }
 
 @end

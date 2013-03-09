@@ -210,6 +210,10 @@
 		C1A5E6FE15FDC5B800CD1F6C /* LargeNotifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5E6FD15FDC5B700CD1F6C /* LargeNotifierView.m */; };
 		C1ACD6B616EAD3D6009B21BF /* StatusScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ACD6B516EAD3D6009B21BF /* StatusScene.m */; };
 		C1ACD6B916EAD423009B21BF /* status.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = C1ACD6B816EAD423009B21BF /* status.ccbi */; };
+		C1ACD6BB16EAEDEB009B21BF /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = C1ACD6BA16EAEDEB009B21BF /* shop.png */; };
+		C1ACD6BD16EAF21A009B21BF /* shop.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = C1ACD6BC16EAF21A009B21BF /* shop.ccbi */; };
+		C1ACD6C016EAF413009B21BF /* ShopScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ACD6BF16EAF413009B21BF /* ShopScene.m */; };
+		C1ACD6C416EB075E009B21BF /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = C1ACD6C316EB075E009B21BF /* black.png */; };
 		C1C6AC4A16E9AAC5005226FD /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C6AC4916E9AAC5005226FD /* title.png */; };
 		C1C6AC8D16E9EFDC005226FD /* CCBAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C6AC5216E9EFDC005226FD /* CCBAnimationManager.m */; };
 		C1C6AC8E16E9EFDC005226FD /* CCBKeyframe.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C6AC5416E9EFDC005226FD /* CCBKeyframe.m */; };
@@ -720,6 +724,11 @@
 		C1ACD6B416EAD3D6009B21BF /* StatusScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusScene.h; path = src/scene/StatusScene.h; sourceTree = "<group>"; };
 		C1ACD6B516EAD3D6009B21BF /* StatusScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusScene.m; path = src/scene/StatusScene.m; sourceTree = "<group>"; };
 		C1ACD6B816EAD423009B21BF /* status.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = status.ccbi; path = Resources/status.ccbi; sourceTree = "<group>"; };
+		C1ACD6BA16EAEDEB009B21BF /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shop.png; path = Resources/spritesheet/common/shop.png; sourceTree = "<group>"; };
+		C1ACD6BC16EAF21A009B21BF /* shop.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = shop.ccbi; path = Resources/shop.ccbi; sourceTree = "<group>"; };
+		C1ACD6BE16EAF412009B21BF /* ShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopScene.h; path = src/scene/ShopScene.h; sourceTree = "<group>"; };
+		C1ACD6BF16EAF413009B21BF /* ShopScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopScene.m; path = src/scene/ShopScene.m; sourceTree = "<group>"; };
+		C1ACD6C316EB075E009B21BF /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = black.png; path = Resources/spritesheet/common/black.png; sourceTree = "<group>"; };
 		C1C6AC4916E9AAC5005226FD /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Resources/spritesheet/common/title.png; sourceTree = "<group>"; };
 		C1C6AC5116E9EFDC005226FD /* CCBAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBAnimationManager.h; sourceTree = "<group>"; };
 		C1C6AC5216E9EFDC005226FD /* CCBAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBAnimationManager.m; sourceTree = "<group>"; };
@@ -1221,6 +1230,7 @@
 		C195464C15D7F485002119CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1ACD6BC16EAF21A009B21BF /* shop.ccbi */,
 				C1ACD6B816EAD423009B21BF /* status.ccbi */,
 				C128227116EA36A400C7B600 /* select_quest.ccbi */,
 				C128226D16EA2B1C00C7B600 /* title.ccbi */,
@@ -1749,6 +1759,8 @@
 		C1CCAA9E1607556200A0EB1C /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				C1ACD6BE16EAF412009B21BF /* ShopScene.h */,
+				C1ACD6BF16EAF413009B21BF /* ShopScene.m */,
 				C1ACD6B416EAD3D6009B21BF /* StatusScene.h */,
 				C1ACD6B516EAD3D6009B21BF /* StatusScene.m */,
 				C14321EA16E8DB6500BC6B6F /* TitleScene.h */,
@@ -1861,9 +1873,11 @@
 		C1EE3BD516083B4500DE62CD /* common */ = {
 			isa = PBXGroup;
 			children = (
+				C1ACD6C316EB075E009B21BF /* black.png */,
 				C1C6AC4916E9AAC5005226FD /* title.png */,
 				C1373815165E26A400C9DD41 /* common.json */,
 				C1373816165E26A400C9DD41 /* common.png */,
+				C1ACD6BA16EAEDEB009B21BF /* shop.png */,
 				C1373813165E1EB900C9DD41 /* coin.png */,
 			);
 			name = common;
@@ -2141,6 +2155,9 @@
 				C128226E16EA2B1C00C7B600 /* title.ccbi in Resources */,
 				C128227216EA36A400C7B600 /* select_quest.ccbi in Resources */,
 				C1ACD6B916EAD423009B21BF /* status.ccbi in Resources */,
+				C1ACD6BB16EAEDEB009B21BF /* shop.png in Resources */,
+				C1ACD6BD16EAF21A009B21BF /* shop.ccbi in Resources */,
+				C1ACD6C416EB075E009B21BF /* black.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2395,6 +2412,7 @@
 				C1C6ACA616E9EFDC005226FD /* zip.c in Sources */,
 				C1C6ACA716E9EFDC005226FD /* SSZipArchive.m in Sources */,
 				C1ACD6B616EAD3D6009B21BF /* StatusScene.m in Sources */,
+				C1ACD6C016EAF413009B21BF /* ShopScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
