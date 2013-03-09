@@ -20,9 +20,13 @@
         label.anchorPoint = ccp(0, 0);
         [self addChild:label];
 
-        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"TIP:WWWWWW" fontName:DL_FONT_NAME fontSize:15];
+        CCLabelTTF *tips = [CCLabelTTF labelWithString:@"<TIPS>" fontName:DL_FONT_NAME fontSize:15];
         tips.position =  ccp(160, 240);
         [self addChild:tips];
+        
+        CCLabelTTF *tips_body = [CCLabelTTF labelWithString:@"I have a pen." fontName:DL_FONT_NAME fontSize:15];
+        tips_body.position =  ccp(160, 210);
+        [self addChild:tips_body];
     }
     return self;
 }

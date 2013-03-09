@@ -216,8 +216,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
-							<real>40</real>
+							<real>200</real>
+							<real>100</real>
 							<integer>0</integer>
 						</array>
 					</dict>

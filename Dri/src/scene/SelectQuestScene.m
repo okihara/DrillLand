@@ -6,9 +6,8 @@
 //
 
 #import "SelectQuestScene.h"
-#import "DungeonScene.h"
-#import "HomeScene.h"
 #import "DungeonPreloadScene.h"
+#import "CCBReader.h"
 
 @implementation SelectQuestScene
 
@@ -43,11 +42,17 @@
     [self goto_dungeon_scene:dungeon_id];
 }
 
-- (void)didPressButtonHome:(CCMenuItem *)sender
+- (void)didPressButton_status:(CCMenuItem *)sender
 {
-    CCScene *scene = [HomeScene scene];
-    [[CCDirector sharedDirector] replaceScene:scene];    
+    CCScene *nextScene = [CCBReader sceneWithNodeGraphFromFile:@"status.ccbi"];
+    [[CCDirector sharedDirector] pushScene:nextScene];
 }
+
+//- (void)didPressButtonHome:(CCMenuItem *)sender
+//{
+//    CCScene *scene = [HomeScene scene];
+//    [[CCDirector sharedDirector] replaceScene:scene];    
+//}
 
 @end
 
