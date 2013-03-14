@@ -308,6 +308,7 @@
 		C1EEBD0E15E870BB007F1814 /* hit2.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1EEBD0D15E870BB007F1814 /* hit2.plist */; };
 		C1EEE634169BCED3007DB940 /* TestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EEE633169BCED3007DB940 /* TestItem.m */; };
 		C1F089B116A2523500D9C350 /* InventoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F089B016A2523500D9C350 /* InventoryScene.m */; };
+		C1F83BB116F1C54100F71DC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F83BB016F1C54100F71DC4 /* Default-568h@2x.png */; };
 		C1FA43F416CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
 		C1FA43F516CB24F100A3F179 /* DungeonSceneEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */; };
 		C1FA43F916CB2F1F00A3F179 /* SequenceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FA43F816CB2F1F00A3F179 /* SequenceBuilder.m */; };
@@ -883,6 +884,7 @@
 		C1EEE633169BCED3007DB940 /* TestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestItem.m; sourceTree = "<group>"; };
 		C1F089AF16A2523500D9C350 /* InventoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InventoryScene.h; path = src/scene/InventoryScene.h; sourceTree = "<group>"; };
 		C1F089B016A2523500D9C350 /* InventoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InventoryScene.m; path = src/scene/InventoryScene.m; sourceTree = "<group>"; };
+		C1F83BB016F1C54100F71DC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C1FA43F216CB24F100A3F179 /* DungeonSceneEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DungeonSceneEventQueue.h; path = src/scene/DungeonSceneEventQueue.h; sourceTree = "<group>"; };
 		C1FA43F316CB24F100A3F179 /* DungeonSceneEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DungeonSceneEventQueue.m; path = src/scene/DungeonSceneEventQueue.m; sourceTree = "<group>"; };
 		C1FA43F716CB2F1F00A3F179 /* SequenceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SequenceBuilder.h; path = src/scene/SequenceBuilder.h; sourceTree = "<group>"; };
@@ -1183,6 +1185,7 @@
 		C195462A15D7F485002119CC = {
 			isa = PBXGroup;
 			children = (
+				C1F83BB016F1C54100F71DC4 /* Default-568h@2x.png */,
 				C195464B15D7F485002119CC /* Dri */,
 				C11768B31687F52200CC0C81 /* Test */,
 				C195463815D7F485002119CC /* Frameworks */,
@@ -2046,7 +2049,7 @@
 		C195462C15D7F485002119CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = C195462F15D7F485002119CC /* Build configuration list for PBXProject "Dri" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2158,6 +2161,7 @@
 				C1ACD6BB16EAEDEB009B21BF /* shop.png in Resources */,
 				C1ACD6BD16EAF21A009B21BF /* shop.ccbi in Resources */,
 				C1ACD6C416EB075E009B21BF /* black.png in Resources */,
+				C1F83BB116F1C54100F71DC4 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2495,7 +2499,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2506,6 +2513,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
@@ -2518,7 +2526,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2527,6 +2538,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
