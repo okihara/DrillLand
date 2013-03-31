@@ -6,7 +6,7 @@ date = "12/09/16"
 classname = ARGV[0] || 'Hoge'
 puts classname
 
-presen_path = '../Dri/src/block_presentation/'
+presen_path = './Dri/src/block_presentation/'
 header_fname = presen_path + classname + 'Presentation.h'
 impl_fname   = presen_path + classname + 'Presentation.m'
 

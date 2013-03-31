@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 MYNAME = 'Masataka Okihara'
-MYCOMPANYNAME = 'HIROMITSU'
+MYCOMPANYNAME = 'Hiromitsu'
 
 suffix = 'Behavior'
 date = "12/09/16"
 classname = (ARGV[0] || 'Hoge') + suffix
 puts classname
 
-presen_path = '../Dri/src/block_behavior/'
-header_fname = presen_path + classname + '.h'
-impl_fname   = presen_path + classname + '.m'
+target_path = './Dri/src/block_behavior/'
+header_filename = classname + '.h'
+header_filepath = target_path + header_filename
+impl_fname   = target_path + classname + '.m'
 
-puts header_fname
+puts header_filepath
 puts impl_fname
 
 puts '------------------------------------'
 
 template_header = <<"TEMPLATE"
 //
-//  #{header_fname}
+//  #{header_filename}
 //
 //  Created by #{MYNAME} on #{date}.
 //  Copyright (c) 2012 #{MYCOMPANYNAME} All rights reserved.
@@ -43,7 +44,7 @@ template_impl = <<"TEMPLATE"
 //  Copyright (c) 2012 #{MYCOMPANYNAME} All rights reserved.
 //
 
-#import "#{header_fname}"
+#import "#{header_filepath}"
 #import "BlockModel.h"
 
 @implementation #{classname}
@@ -74,7 +75,7 @@ TEMPLATE
 
 # puts template_impl
 
-f = open(header_fname, 'w')
+f = open(header_filepath, 'w')
 f.puts(template_header)
 f.close
 

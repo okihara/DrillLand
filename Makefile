@@ -7,3 +7,10 @@ master:
 
 stat:
 	find Dri/src -name "*.m" -exec wc -l {} \; | sort -n -r | head
+
+gen-behav:
+	ruby script/gen_behaiv.rb $(NAME)
+
+gen-presen:
+	ruby script/gen_presen.rb $(NAME)
+
