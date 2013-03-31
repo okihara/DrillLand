@@ -7,8 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCControlButton.h"
 
 @interface SelectQuestScene : CCLayer
+{
+    CCSprite        *lock_shop;
+    CCControlButton *button_shop;
+}
 
 @end
 

@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface StatusScene : CCLayer {
+@interface StatusScene : CCLayer
+{
+    CCLabelBMFont *label_atk;
+    CCLabelBMFont *label_def;
+    CCLabelBMFont *label_xp;
+    CCLabelBMFont *label_gold;
     
+    NSDictionary *ref_userdata;
 }
 
 @end

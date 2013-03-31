@@ -39,7 +39,6 @@ heal.png
 hit1.plist
 hit2.plist
 hoge.plist
-shop.plist
 blk10001.png
 blk10002.png
 blk10003.png
@@ -80,6 +79,7 @@ blk13000a.png
 black.png
 coin.png
 common.png
+lock.png
 shop.png
 sky00.png
 title.png
