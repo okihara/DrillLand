@@ -13,7 +13,7 @@
 @implementation AggressiveBehaivior
 
 // これは武器/敵によってロジックが変わるので、ここに書くべきではない
--(BOOL)in_attack_range:(BlockModel*)context_ dungeon_model:(DungeonModel*)dungeon
+-(BOOL)_in_attack_range:(BlockModel*)context_ dungeon_model:(DungeonModel*)dungeon
 {
     // 上下左右
     BlockModel* p = (BlockModel*)dungeon.player;
@@ -34,7 +34,7 @@
 -(void)on_update:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     BlockModel* player = (BlockModel*)dungeon_.player;
-    if ([self in_attack_range:context_ dungeon_model:dungeon_]) {
+    if ([self _in_attack_range:context_ dungeon_model:dungeon_]) {
         
         DLEvent *e = [DLEvent eventWithType:DL_ON_ATTACK target:context_];
         [dungeon_ dispatchEvent:e];
@@ -48,6 +48,7 @@
     // implement behavior
 }
 
+// TOOD: Gold をもっているという Behavior に切り出すこと
 -(void)on_break:(BlockModel*)targetBlock dungeon:(DungeonModel*)dungeonModel
 {
     int addend = targetBlock.gold;

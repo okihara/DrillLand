@@ -21,6 +21,7 @@
             
         case DL_ON_DAMAGE:
         {
+            // アクション演出
             CCFiniteTimeAction *shake;
             shake = [ctx launch_effect:@"shake" target:ctx params:nil];
             return shake;
@@ -29,6 +30,7 @@
             
         case DL_ON_DESTROY:
         {
+            // アクション：イベント
             // TODO: ここでシーン遷移するのはどう考えてもおかしいやろ
             // DungeonScene にイベント投げるぐらいにするべき
             return [CCCallBlock actionWithBlock:^(){
@@ -39,6 +41,7 @@
             
         case DL_ON_MOVE:
         {
+            // アクション：移動
             return [self get_action_update_player_pos:dungeonModel view:ctx];
         }
             break;

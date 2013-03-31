@@ -18,11 +18,12 @@
 
         case DL_ON_DESTROY:
         {
+            // アクション：演出
             // implement here
             CCCallBlock *act_0 = [CCCallBlock actionWithBlock:^{
                 [dungeon_view launch_particle:@"block" position:block_view.position];
                 
-                // --
+                // アクション：移動（いなくなるのは移動と同じ）
                 block_view.is_alive = NO;
                 [dungeon_view remove_block_view_if_dead:block_model.pos];
             }];

@@ -24,6 +24,7 @@
 
         case DL_ON_DAMAGE:
         {
+            // アクション：演出(shake)
             CCFiniteTimeAction *shake = [dungeon_view launch_effect:@"shake" target:block_view params:nil];
             return [CCSequence actions:shake, [CCDelayTime actionWithDuration:0], nil];
         }
@@ -31,20 +32,24 @@
             
         case DL_ON_DESTROY:
         {
+            // アクション：演出
             CCCallBlock *act_0 = [CCCallBlock actionWithBlock:^{
                 [dungeon_view launch_particle:@"block" position:block_view.position];
             }];
-            
+
+            // アクション：移動
             CCMoveBy *act_1 = [CCDelayTime actionWithDuration:0.05f];
             
             CCCallBlock *act_2 = [CCCallBlock actionWithBlock:^{
-                
+
+                // アクション：生成
                 // coin
                 [GetGoldView spawn:dungeon_view.effect_layer position:block_view.position num_exp:10];
                 
                 // exp
                 [GetExpView spawn:dungeon_view.effect_layer position:block_view.position num_exp:3];
                 
+                // アクション：効果音
                 [[SimpleAudioEngine sharedEngine] playEffect:@"death3.wav"];
                 
                 // --

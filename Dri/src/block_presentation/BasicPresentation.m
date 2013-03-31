@@ -24,8 +24,9 @@
                 DungeonModel *dungeon_model = [e.params objectForKey:@"dungeon_model"];
                 [ctx remove_block_view_if_dead:block.pos];
                 [ctx update_block:block.pos.y x:block.pos.x dungeon_model:dungeon_model];
-                
                 BlockView *new_block_view = [ctx get_block_view:block.pos];
+                
+                // アクション：移動
                 CCJumpBy *act_jump = [CCTargetedAction actionWithTarget:new_block_view action:[CCJumpBy actionWithDuration:0.3f position:ccp(0, 0) height:100 jumps:1]];
                 [new_block_view runAction:act_jump];
                 
@@ -33,18 +34,6 @@
             
             return [CCSequence actions:act_1, nil];
             
-        }
-            break;
-            
-        case DL_ON_HIT:
-        {
-            return nil;
-        }
-            break;
-            
-        case DL_ON_DESTROY:
-        {
-            return nil;
         }
             break;
             

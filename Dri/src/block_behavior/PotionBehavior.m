@@ -29,6 +29,7 @@
 -(void)on_break:(BlockModel*)context_ dungeon:(DungeonModel*)dungeon_
 {
     // TODO: 10 って決め打ちかーい
+    // TODO: player って決め打ちかーい
     [dungeon_.player heal:10];
     
     DLEvent *e = [DLEvent eventWithType:DL_ON_HEAL target:dungeon_.player];

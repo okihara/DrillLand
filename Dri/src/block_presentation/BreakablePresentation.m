@@ -21,6 +21,8 @@
     switch (e.type) {
             
         case DL_ON_HIT:
+            
+            // アクション：演出
             return [CCCallBlock actionWithBlock:^{
                 [ctx launch_particle:@"hit2" position:view_.position];
             }];
@@ -28,6 +30,7 @@
             
         case DL_ON_DESTROY:
         {
+            // アクション：演出
             CCCallBlock *act_0 = [CCCallBlock actionWithBlock:^{
                 [ctx launch_particle:@"block" position:view_.position];
             }];
@@ -42,6 +45,7 @@
                 // exp
                 [GetExpView spawn:ctx.effect_layer position:view_.position num_exp:3];
                 
+                // アクション：効果音
                 [[SimpleAudioEngine sharedEngine] playEffect:@"skullpile1.wav"];
                 
                 // --

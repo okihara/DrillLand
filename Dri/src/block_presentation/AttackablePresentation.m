@@ -23,7 +23,7 @@
             // 俺のターンエフェクトがいるならここに書く
             // 
 
-            // ---
+            // アクション：アニメーション
             CCFiniteTimeAction *anim_attack = [block_view playAnime:block_model
                                                                 name:@"atk"];
             CCFiniteTimeAction *anim_front  = [block_view playAnime:block_model

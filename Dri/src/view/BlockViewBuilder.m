@@ -20,6 +20,7 @@
 
 @implementation BlockViewBuilder
 
+// TODO: ここらへんもプレゼンテーションやね
 // 経路探索の結果を数字で表示
 + (void)add_route_num:(BlockModel *)b ctx:(DungeonModel *)ctx block:(BlockView *)block
 {

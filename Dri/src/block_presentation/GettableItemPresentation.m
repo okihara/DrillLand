@@ -20,6 +20,7 @@
         {
 //            CCMoveBy *act_1 = [CCTargetedAction actionWithTarget:block_view action:[CCFadeOut actionWithDuration:0.3f]];
             
+            // アクション：移動
             CCMoveBy *mb = [CCTargetedAction actionWithTarget:block_view action:[CCMoveBy actionWithDuration:0.1f position:ccp(0, BLOCK_WIDTH)]];
             CCDelayTime *delay = [CCDelayTime actionWithDuration:0.3f];
             // implement here

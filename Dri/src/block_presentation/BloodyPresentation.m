@@ -19,6 +19,7 @@
             
         case DL_ON_DAMAGE:
         {
+            // アクション：演出
             CCCallBlock *act = [CCCallBlock actionWithBlock:^{
                 // effect
                 [ctx launch_particle:@"blood" position:view_.position];
@@ -34,7 +35,8 @@
         // Healable Presentation 作る？
         case DL_ON_HEAL:
         {
-            
+           
+            // アクション：演出
             ccColor3B color = ccc3(0, 255, 0);
             NSDictionary *params = [NSDictionary
                                     dictionaryWithObject:[NSValue valueWithBytes:&color objCType:@encode(ccColor3B)]
