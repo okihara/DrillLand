@@ -11,6 +11,11 @@
 
 @implementation TestDungeonModel
 
+- (void)setUp
+{
+    [super setUp];
+}
+
 - (void)testNew
 {
     // 準備 -------
@@ -21,5 +26,20 @@
     // アサート ---
     STAssertNotNil(dungeon_model, @"create");
 }
+
+- (void)testMovePlayer
+{
+    // 準備 -------
+    DungeonModel *dungeon_model = [DungeonModel new];
+    
+    // 実行 -------
+    [dungeon_model move_player:cdp(0, 3)];
+    
+    // アサート ---
+    STAssertEquals(dungeon_model.player.pos.x, 1, @"");
+    STAssertEquals(dungeon_model.player.pos.y, 3, @"");
+}
+
+
 
 @end

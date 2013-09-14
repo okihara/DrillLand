@@ -84,8 +84,8 @@
 -(id) init
 {
 	if( (self=[super init]) ) {
-        bound_w  = CAP_W;
-        bound_h =  CAP_H;
+        self->bound_w = CAP_W;
+        self->bound_h = CAP_H;
         [self clear];
     }
     return self;
@@ -102,13 +102,13 @@
 
 -(void)clear
 {
-    [self fill:NULL];
+    [self fill:nil];
 }
 
 -(id)get_x:(int)_x y:(int)_y
 {
     if ([self is_outbound:_x y:_y]) {
-        return NULL;
+        return nil;
     }
     return tile_map[_y][_x];
 }
@@ -116,7 +116,7 @@
 -(void)set_x:(int)_x y:(int)_y value:(id)_value
 {
     if ([self is_outbound:_x y:_y]) {
-        return;
+        assert(0);
     }
     tile_map[_y][_x] = _value;
 }

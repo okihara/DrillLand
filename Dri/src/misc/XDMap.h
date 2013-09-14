@@ -10,7 +10,7 @@
 #import "DL.h"
 
 #define CAP_W 7
-#define CAP_H 100
+#define CAP_H 50
 
 @interface XDMap : NSObject
 {
