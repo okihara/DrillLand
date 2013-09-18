@@ -228,7 +228,7 @@
 
 //------------------------------------------------------------------------------
 
--(void)load_from_file:(NSString*)filename
+-(void)loadFile:(NSString*)filename
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_from_file:filename];
@@ -236,7 +236,7 @@
     [loader release];
 }
 
--(void)load_random:(UInt16)seed
+-(void)loadRandom:(UInt16)seed
 {
     DungeonLoader *loader = [[DungeonLoader alloc] initWithDungeonModel:self];
     [loader load_random:seed];
